@@ -1,0 +1,18 @@
+{
+  "format_version": "1.1",
+  "package_name": "infra/tools/luci/isolate/mac-amd64",
+  "version_file": ".versions/isolate.cipd_version",
+  "files": [
+    {
+      "name": "isolate",
+      "size": 12153412,
+      "executable": true,
+      "hash": "EX98o361WbVn4uHGnWMtiN8zM6UMtXH0iIe--bwVgD0C"
+    },
+    {
+      "name": ".versions/isolate.cipd_version",
+      "size": 123,
+      "hash": "cTSkYZap3IhM-J0IBE3kO07U7-AkI7D5Ku45u085iE8C"
+    }
+  ]
+}

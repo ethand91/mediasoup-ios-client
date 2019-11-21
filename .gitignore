@@ -1,0 +1,7 @@
+xcuserdata/
+*.xcsmblueprint
+*.xccheckout
+build/
+DerivedData/
+*.moved-aside
+*.pbxuser
