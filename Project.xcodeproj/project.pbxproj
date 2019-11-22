@@ -7,25 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		355C612A2387702600986297 /* Consumer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61292387702600986297 /* Consumer.mm */; };
 		357C48C2238670BC005B8D0D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C48C1238670BC005B8D0D /* libc++.tbd */; };
-		359FA0B823865A8C00EBE05C /* ConsumerWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 359FA0B623865A8C00EBE05C /* ConsumerWrapper.cpp */; };
-		359FA0BA23865EB900EBE05C /* ConsumerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 359FA0B723865A8C00EBE05C /* ConsumerWrapper.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		359FA0BD23866BDC00EBE05C /* libwebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 359FA0BC23866BD300EBE05C /* libwebrtc.a */; };
 		35DD85BB23868D3300CFE886 /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DD85BA23868D2400CFE886 /* libmediasoupclient.a */; };
-		35E2E48F238529EF00E315FD /* Consumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E2E48E238529EF00E315FD /* Consumer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		355C61292387702600986297 /* Consumer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Consumer.mm; sourceTree = "<group>"; };
 		357C48C1238670BC005B8D0D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		357C48C823867BD5005B8D0D /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		359FA0B623865A8C00EBE05C /* ConsumerWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConsumerWrapper.cpp; sourceTree = "<group>"; };
-		359FA0B723865A8C00EBE05C /* ConsumerWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConsumerWrapper.hpp; sourceTree = "<group>"; };
 		359FA0BC23866BD300EBE05C /* libwebrtc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebrtc.a; path = Project/dependencies/libwebrtc.a; sourceTree = "<group>"; };
 		35DD85BA23868D2400CFE886 /* libmediasoupclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmediasoupclient.a; path = Project/dependencies/libmediasoupclient/build/libmediasoupclient.a; sourceTree = "<group>"; };
 		35E2E47C2385284800E315FD /* Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E2E4802385284800E315FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35E2E48D238528E000E315FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		35E2E48E238529EF00E315FD /* Consumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumer.swift; sourceTree = "<group>"; };
 		35E2E49523852C1D00E315FD /* dependencies */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dependencies; path = Project/dependencies; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,30 +37,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		357C48C3238675CA005B8D0D /* libmediasoup */ = {
+		355C612D23877D9C00986297 /* C++Wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				357C48C4238675D7005B8D0D /* Include */,
-				359FA0B623865A8C00EBE05C /* ConsumerWrapper.cpp */,
-				357C48C823867BD5005B8D0D /* module.modulemap */,
+				355C61292387702600986297 /* Consumer.mm */,
 			);
-			path = libmediasoup;
-			sourceTree = "<group>";
-		};
-		357C48C4238675D7005B8D0D /* Include */ = {
-			isa = PBXGroup;
-			children = (
-				359FA0B723865A8C00EBE05C /* ConsumerWrapper.hpp */,
-			);
-			path = Include;
-			sourceTree = "<group>";
-		};
-		357C48C52386770D005B8D0D /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				357C48C3238675CA005B8D0D /* libmediasoup */,
-			);
-			path = Sources;
+			path = "C++Wrapper";
 			sourceTree = "<group>";
 		};
 		35E2E4722385284700E315FD = {
@@ -90,10 +66,8 @@
 		35E2E47E2385284800E315FD /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				357C48C52386770D005B8D0D /* Sources */,
+				355C612D23877D9C00986297 /* C++Wrapper */,
 				35E2E4802385284800E315FD /* Info.plist */,
-				35E2E48D238528E000E315FD /* Bridging-Header.h */,
-				35E2E48E238529EF00E315FD /* Consumer.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -115,7 +89,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				359FA0BA23865EB900EBE05C /* ConsumerWrapper.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,8 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				359FA0B823865A8C00EBE05C /* ConsumerWrapper.cpp in Sources */,
-				35E2E48F238529EF00E315FD /* Consumer.swift in Sources */,
+				355C612A2387702600986297 /* Consumer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,12 +330,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/Project/dependencies/libmediasoupclient/**";
 				HEADER_SEARCH_PATHS = (
-					"${SRCROOT}/Project/dependencies/libmediasoupclient/**",
+					"${SRCROOT}/Project/dependencies/libmediasoupclient/include",
 					"${SRCROOT}/Project/dependencies/webrtc/src",
 					"${SRCROOT}/Project/dependencies/webrtc/src/third_party/abseil-cpp",
 					"${SRCROOT}/Project/Sources/libmediasoup/Include",
+					"${SRCROOT}/Project/dependencies",
 				);
 				INFOPLIST_FILE = Project/Info.plist;
 				INSTALL_OWNER = Ethan;
@@ -406,12 +380,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/Project/dependencies/libmediasoupclient/**";
 				HEADER_SEARCH_PATHS = (
-					"${SRCROOT}/Project/dependencies/libmediasoupclient/**",
+					"${SRCROOT}/Project/dependencies/libmediasoupclient/include",
 					"${SRCROOT}/Project/dependencies/webrtc/src",
 					"${SRCROOT}/Project/dependencies/webrtc/src/third_party/abseil-cpp",
 					"${SRCROOT}/Project/Sources/libmediasoup/Include",
+					"${SRCROOT}/Project/dependencies",
 				);
 				INFOPLIST_FILE = Project/Info.plist;
 				INSTALL_OWNER = Ethan;

@@ -1,4 +1,0 @@
-module libmediasoup {
-    header "Include/ConsumerWrapper.hpp"
-    export *
-}
