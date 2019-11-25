@@ -1,13 +1,8 @@
 #import <Foundation/Foundation.h>
 
 #import "Device.hpp"
-
-@interface DeviceWrapper : NSObject
-@end
-
-@interface DeviceWrapper ()
-@property(atomic, readonly, assign) mediasoupclient::Device *device;
-@end
+#import "Transport.hpp"
+#import "include/Device.h"
 
 @implementation DeviceWrapper
 @synthesize device = _device;
@@ -50,6 +45,7 @@
     if (appData != nullptr) {
         appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
     }
+    
 }
 
 @end

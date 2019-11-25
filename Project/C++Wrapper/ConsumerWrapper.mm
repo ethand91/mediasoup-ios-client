@@ -9,26 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Consumer.hpp"
-
-@interface ConsumerWrapper : NSObject
-@property (nonatomic, readonly) NSString *id;
-@property (nonatomic, readonly) NSString *localId;
-@property (nonatomic, readonly) NSString *producerId;
-@property (nonatomic, readonly) NSObject *track;
-@property (nonatomic, readonly) NSObject *rtpParameters;
-@property (nonatomic, readonly) NSObject *appData;
-@end
-
-@interface ConsumerWrapper ()
-@property (atomic, readonly, assign) mediasoupclient::Consumer *consumer;
-@end
-
-// Listeners
-@protocol ConsumerWrapperListener <NSObject>
-@optional
--(void)onTransportClose:(NSObject *)consumer;
-
-@end
+#import "include/Consumer.h"
 
 @implementation ConsumerWrapper
 @synthesize consumer = _consumer;
@@ -36,27 +17,6 @@
 -(void)onClose:(mediasoupclient::Consumer *)consumer {
     NSLog(@"Consumer Close");
 }
-
-/*
--(id)init:(NSString *)id listener:(Protocol *)listener producerId:(NSString *)producerId track:(NSObject *)track rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
-    self = [super init];
-    if (self) {
-        nlohmann::json rtpParametersJson = nlohmann::json::parse(std::string([rtpParameters UTF8String]));
-        nlohmann::json appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
-        //rtpParameters[@"rtpParameters"] = (__bridge std::string *)rtpParameters;
-        _consumer = new mediasoupclient::Consumer(
-                                                  (__bridge mediasoupclient::Consumer::PrivateListener *)self,
-                                                  (__bridge mediasoupclient::Consumer::Listener *)listener,
-                                                  (std::string)[id UTF8String],
-                                                  (std::string)[id UTF8String],
-                                                  (std::string)[producerId UTF8String],
-                                                  (__bridge webrtc::MediaStreamTrackInterface *)track,
-                                                  rtpParametersJson,
-                                                  appDataJson);
-    }
-    return self;
-}
- */
 
 -(NSString *)getNativeId {
     return [NSString stringWithUTF8String:self.consumer->GetId().c_str()];

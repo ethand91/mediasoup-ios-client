@@ -1,26 +1,15 @@
 #import <Foundation/Foundation.h>
 
 #import "Producer.hpp"
-
-@interface ProducerWrapper : NSObject
-@property(nonatomic, readonly) NSString *id;
-@property(nonatomic, readonly) NSString *localId;
-@property(nonatomic, readonly) NSObject *track;
-@property(nonatomic, readonly) NSObject *rtpParameters;
-@property(nonatomic, readonly) NSObject *appData;
-@end
-
-@interface ProducerWrapper ()
-@property (atomic, readonly, assign) mediasoupclient::Producer *producer;
-@end
+#import "include/Producer.h"
 
 @implementation ProducerWrapper
 @synthesize producer = _producer;
 
-- (id)init {
+- (instancetype) initWithProducer:(mediasoupclient::Producer *)producer{
     self = [super init];
     if (self) {
-        //_producer = new mediasoupclient::Producer()
+        _producer = producer;
     }
     return self;
 }

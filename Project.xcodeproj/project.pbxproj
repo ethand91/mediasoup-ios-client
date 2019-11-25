@@ -19,6 +19,9 @@
 		355C61412387D9D300986297 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C61382387D96300986297 /* CoreAudio.framework */; };
 		355C61452387DA7B00986297 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C61442387DA7B00986297 /* AVFoundation.framework */; };
 		355C61472387DB6400986297 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C61462387DB6400986297 /* WebRTC.framework */; };
+		35FB2484238B81C70092EBCB /* SendTransportWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */; };
+		35FB2488238B9E400092EBCB /* Producer.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* Producer.h */; };
+		35FB2489238B9E470092EBCB /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* Transport.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,11 @@
 		35E2E47C2385284800E315FD /* Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E2E4802385284800E315FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35E2E49523852C1D00E315FD /* dependencies */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dependencies; path = Project/dependencies; sourceTree = "<group>"; };
+		35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SendTransportWrapper.mm; sourceTree = "<group>"; };
+		35FB2486238B823F0092EBCB /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transport.h; sourceTree = "<group>"; };
+		35FB2487238B870E0092EBCB /* Producer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Producer.h; sourceTree = "<group>"; };
+		35FB248B238BA8920092EBCB /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
+		35FB248C238BA8C00092EBCB /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +72,12 @@
 		355C612D23877D9C00986297 /* C++Wrapper */ = {
 			isa = PBXGroup;
 			children = (
+				35FB2485238B82200092EBCB /* include */,
 				355C61292387702600986297 /* ConsumerWrapper.mm */,
 				355C613223877F2B00986297 /* ProducerWrapper.mm */,
 				355C61362387995200986297 /* TransportWrapper.mm */,
 				353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */,
+				35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */,
 			);
 			path = "C++Wrapper";
 			sourceTree = "<group>";
@@ -117,6 +127,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		35FB2485238B82200092EBCB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				35FB2486238B823F0092EBCB /* Transport.h */,
+				35FB2487238B870E0092EBCB /* Producer.h */,
+				35FB248B238BA8920092EBCB /* Consumer.h */,
+				35FB248C238BA8C00092EBCB /* Device.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -124,6 +145,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35FB2489238B9E470092EBCB /* Transport.h in Headers */,
+				35FB2488238B9E400092EBCB /* Producer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +223,7 @@
 				353BD12E2387E6FE00A8734C /* DeviceWrapper.mm in Sources */,
 				355C61372387995200986297 /* TransportWrapper.mm in Sources */,
 				355C613323877F2B00986297 /* ProducerWrapper.mm in Sources */,
+				35FB2484238B81C70092EBCB /* SendTransportWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +405,7 @@
 					"${SRCROOT}/Project/dependencies/libmediasoupclient/include",
 					"${SRCROOT}/Project/dependencies/webrtc/src",
 					"${SRCROOT}/Project/dependencies/webrtc/src/third_party/abseil-cpp",
+					"${SRCROOT}/Project/C++Wrapper/include",
 					"${SRCROOT}/Project/Sources/libmediasoup/Include",
 					"${SRCROOT}/Project/dependencies",
 				);
@@ -441,6 +466,7 @@
 					"${SRCROOT}/Project/dependencies/libmediasoupclient/include",
 					"${SRCROOT}/Project/dependencies/webrtc/src",
 					"${SRCROOT}/Project/dependencies/webrtc/src/third_party/abseil-cpp",
+					"${SRCROOT}/Project/C++Wrapper/include",
 					"${SRCROOT}/Project/Sources/libmediasoup/Include",
 					"${SRCROOT}/Project/dependencies",
 				);

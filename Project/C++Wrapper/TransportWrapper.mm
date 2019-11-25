@@ -1,24 +1,33 @@
 #import <Foundation/Foundation.h>
 
 #import "Transport.hpp"
-
-@interface TransportWrapper : NSObject
-@property(nonatomic, readonly)NSString *id;
-@property(nonatomic, readonly)NSObject *iceParameters;
-@property(nonatomic, readonly)NSObject *iceCandidates;
-@property(nonatomic, readonly)NSObject *dtlsParameters;
-@property(nonatomic, readonly)NSObject *peerConnectionOptions;
-@property(nonatomic, readonly)NSObject *extendedRtpCapabilities;
-@property(nonatomic, readonly)NSObject *canProduceByKind;
-@property(nonatomic, readonly)NSObject *appData;
-@end
-
-@interface TransportWrapper ()
-@property(atomic, readonly, assign) mediasoupclient::Transport *transport;
-@end
+#import "include/Transport.h"
 
 @implementation TransportWrapper
 @synthesize transport = _transport;
+@synthesize listener = _listener;
+
+-(std::future<void>)onConnect:(mediasoupclient::Transport *)transport dtlsParameters:(nlohmann::json &)dtlsParameters {
+    std::string dtlsParametersString = dtlsParameters.dump();
+    
+    [self.listener
+             onConnect:(NSObject *)self.transport
+             dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
+    
+    std::promise<void> promise;
+    promise.set_value();
+    
+    return promise.get_future();
+}
+
+-(void)onConnectionStateChange:(mediasoupclient::Transport *)transport connectionState:(std::string &)connectionState {
+    // Check if listener is being listened to
+    if([self.listener respondsToSelector:@selector(onConnectionStateChange:connectionState:)]) {
+        [self.listener
+                onConnectionStateChange:(NSObject *)self.transport
+                connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
+    }
+}
 
 -(NSString *)getNativeId {
     return [NSString stringWithUTF8String:self.transport->GetId().c_str()];
@@ -54,11 +63,6 @@
 
 -(void)nativeClose {
     self.transport->Close();
-}
-
-// TODO::
--(void)nativeProduce:(NSObject *)track encodings:(NSString *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
-    
 }
 
 @end
