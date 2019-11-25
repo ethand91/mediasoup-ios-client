@@ -18,6 +18,15 @@
     NSLog(@"Consumer Close");
 }
 
+-(instancetype) initWithConsumer:(mediasoupclient::Consumer *)consumer {
+    self = [super init];
+    if (self) {
+        _consumer = consumer;
+    }
+    
+    return self;
+}
+
 -(NSString *)getNativeId {
     return [NSString stringWithUTF8String:self.consumer->GetId().c_str()];
 }

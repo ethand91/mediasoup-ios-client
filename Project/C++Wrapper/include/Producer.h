@@ -25,33 +25,6 @@ public:
     void OnTransportClose(mediasoupclient::Producer *producer) override {};
 };
 
-/*
-@interface ProducerListenerImpl : NSObject
-@property(nonatomic, weak)id<ProducerListenerWrapper> listener;
-@end
- */
-
-/*
-@implementation ProducerListenerImpl
-@synthesize listener = _listener;
-
--(instancetype)init:(Protocol<ProducerListenerWrapper> *)listener {
-    self = [super init];
-    if (self) {
-        _listener = listener;
-    }
-    
-    return self;
-}
-
--(void)onTransportClose:(mediasoupclient::Producer *)producer {
-    if([self.listener respondsToSelector:@selector(onTransportClose:)]) {
-        [self.listener onTransportClose:(__bridge NSObject *)producer];
-    }
-}
-@end
- */
-
 @interface ProducerWrapper : NSObject
 @property(nonatomic, readonly) NSString *id;
 @property(nonatomic, readonly) NSString *localId;

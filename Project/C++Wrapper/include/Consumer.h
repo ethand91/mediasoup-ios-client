@@ -10,6 +10,21 @@
 #ifndef Consumer_h
 #define Consumer_h
 
+// Listeners
+@protocol ConsumerListenerWrapper <NSObject>
+@optional
+-(void)onTransportClose:(NSObject *)consumer;
+@end
+
+class ConsumerListener : public mediasoupclient::Consumer::Listener {
+public:
+    ConsumerListener(Protocol<ConsumerListenerWrapper> *listener) {}
+    
+    ~ConsumerListener() = default;
+    
+    void OnTransportClose(mediasoupclient::Consumer *consumer) override {};
+};
+
 @interface ConsumerWrapper : NSObject
 @property (nonatomic, readonly) NSString *id;
 @property (nonatomic, readonly) NSString *localId;
@@ -17,6 +32,7 @@
 @property (nonatomic, readonly) NSObject *track;
 @property (nonatomic, readonly) NSObject *rtpParameters;
 @property (nonatomic, readonly) NSObject *appData;
+-(instancetype)initWithConsumer:(mediasoupclient::Consumer *)consumer;
 @end
 
 @interface ConsumerWrapper ()

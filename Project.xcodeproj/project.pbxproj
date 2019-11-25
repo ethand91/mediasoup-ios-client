@@ -22,6 +22,7 @@
 		35FB2484238B81C70092EBCB /* SendTransportWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */; };
 		35FB2488238B9E400092EBCB /* Producer.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* Producer.h */; };
 		35FB2489238B9E470092EBCB /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* Transport.h */; };
+		35FB248E238BA98A0092EBCB /* RecvTransport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35FB248D238BA98A0092EBCB /* RecvTransport.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		35FB2487238B870E0092EBCB /* Producer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Producer.h; sourceTree = "<group>"; };
 		35FB248B238BA8920092EBCB /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
 		35FB248C238BA8C00092EBCB /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		35FB248D238BA98A0092EBCB /* RecvTransport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RecvTransport.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				355C61362387995200986297 /* TransportWrapper.mm */,
 				353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */,
 				35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */,
+				35FB248D238BA98A0092EBCB /* RecvTransport.mm */,
 			);
 			path = "C++Wrapper";
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */,
+				35FB248E238BA98A0092EBCB /* RecvTransport.mm in Sources */,
 				353BD12E2387E6FE00A8734C /* DeviceWrapper.mm in Sources */,
 				355C61372387995200986297 /* TransportWrapper.mm in Sources */,
 				355C613323877F2B00986297 /* ProducerWrapper.mm in Sources */,
