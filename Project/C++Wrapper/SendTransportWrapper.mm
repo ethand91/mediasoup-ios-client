@@ -8,6 +8,15 @@
 @synthesize sendTransport = _sendTransport;
 @synthesize listener = _listener;
 
+-(instancetype)initWithSendTransport:(mediasoupclient::SendTransport *)sendTransport {
+    self = [super init];
+    if(self) {
+        _sendTransport = sendTransport;
+    }
+
+    return self;
+}
+
 -(std::future<std::string>)onProduce:(mediasoupclient::Transport *)transport kind:(std::string &)kind rtpParameters:(nlohmann::json)rtpParameters appData:(nlohmann::json &)appData {
     std::string rtpParametersString = rtpParameters.dump();
     std::string appDataString = appData.dump();

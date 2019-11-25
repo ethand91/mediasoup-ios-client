@@ -7,6 +7,15 @@
 @implementation RecvTransportWrapper
 @synthesize recvTransport = _recvTransport;
 
+-(instancetype)initWithRecvTransport:(mediasoupclient::RecvTransport *)recvTransport {
+    self = [super init];
+    if(self) {
+        _recvTransport = recvTransport;
+    }
+    
+    return self;
+}
+
 -(ConsumerWrapper *)nativeConsume:(Protocol<ConsumerListenerWrapper> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
     auto consumerListener = new ConsumerListener(listener);
     std::string consumerId = std::string([id UTF8String]);

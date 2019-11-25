@@ -7,6 +7,15 @@
 @synthesize transport = _transport;
 @synthesize listener = _listener;
 
+-(instancetype)initWithTransport:(mediasoupclient::Transport *)transport {
+    self = [super init];
+    if (self) {
+        _transport = transport;
+    }
+    
+    return self;
+}
+
 -(std::future<void>)onConnect:(mediasoupclient::Transport *)transport dtlsParameters:(nlohmann::json &)dtlsParameters {
     std::string dtlsParametersString = dtlsParameters.dump();
     
