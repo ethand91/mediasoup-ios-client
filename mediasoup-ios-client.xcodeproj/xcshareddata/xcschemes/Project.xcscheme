@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "35E2E47B2385284800E315FD"
-               BuildableName = "Project.framework"
-               BlueprintName = "Project"
-               ReferencedContainer = "container:Project.xcodeproj">
+               BuildableName = "mediasoup_ios_client.framework"
+               BlueprintName = "mediasoup-ios-client"
+               ReferencedContainer = "container:mediasoup-ios-client.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35D762E2238CBAC80033D7AD"
-               BuildableName = "ProjectTests.xctest"
-               BlueprintName = "ProjectTests"
-               ReferencedContainer = "container:Project.xcodeproj">
+               BlueprintIdentifier = "35D1721B238CF9BB00FAF301"
+               BuildableName = "mediasoup-ios-clientTests.xctest"
+               BlueprintName = "mediasoup-ios-clientTests"
+               ReferencedContainer = "container:mediasoup-ios-client.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35E2E47B2385284800E315FD"
-            BuildableName = "Project.framework"
-            BlueprintName = "Project"
-            ReferencedContainer = "container:Project.xcodeproj">
+            BuildableName = "mediasoup_ios_client.framework"
+            BlueprintName = "mediasoup-ios-client"
+            ReferencedContainer = "container:mediasoup-ios-client.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
