@@ -3,7 +3,7 @@ Mediasoup 3 iOS Client
 
 ---
 
-**This project currently only supports arm64**
+**This project supports both 64 bit iOS devices and 64 bit iOS Simulators**
 
 # Getting Started
 
