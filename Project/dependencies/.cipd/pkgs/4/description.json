@@ -1,4 +1,0 @@
-{
-  "subdir": "src/tools/luci-go",
-  "package_name": "infra/tools/luci/swarming/mac-amd64"
-}

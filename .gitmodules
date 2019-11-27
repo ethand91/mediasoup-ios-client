@@ -1,6 +1,12 @@
 [submodule "Project/dependencies/libmediasoupclient"]
-	path = Project/dependencies/libmediasoupclient
+	path = mediasoup-client-ios/dependencies/libmediasoupclient
 	url = https://github.com/ethand91/libmediasoupclient.git
 [submodule "Project/dependencies/webrtc/src"]
-  path = Project/dependencies/webrtc/src
+  path = mediasoup-client-ios/dependencies/webrtc/src
   url = https://github.com/ethand91/webrtc-mac-src.git
+[submodule "mediasoup-client-ios/dependencies/libmediasoupclient"]
+	path = mediasoup-client-ios/dependencies/libmediasoupclient
+	url = https://github.com/ethand91/libmediasoupclient.git
+[submodule "mediasoup-client-ios/dependencies/webrtc/src"]
+	path = mediasoup-client-ios/dependencies/webrtc/src
+	url = https://github.com/ethand91/webrtc-mac-src.git
