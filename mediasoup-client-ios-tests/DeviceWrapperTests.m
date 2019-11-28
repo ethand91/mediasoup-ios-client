@@ -7,14 +7,17 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "Device.h"
 
 @interface DeviceWrapperTests : XCTestCase
-
+@property (nonatomic) DeviceWrapper *device;
 @end
 
 @implementation DeviceWrapperTests
 
 - (void)setUp {
+    [super setUp];
+    self.device = [[DeviceWrapper alloc] init];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 

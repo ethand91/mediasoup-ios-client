@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		353BD12E2387E6FE00A8734C /* DeviceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */; };
+		35406E2D238FCA07004F4523 /* MediasoupClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35406E2C238FCA07004F4523 /* MediasoupClient.mm */; };
+		35406E37238FCBD3004F4523 /* MediasoupClient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 35406E2B238FC979004F4523 /* MediasoupClient.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		3544B7E7238E604A00A6AA17 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; };
 		3544B7E8238E604A00A6AA17 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61292387702600986297 /* ConsumerWrapper.mm */; };
@@ -66,6 +68,8 @@
 /* Begin PBXFileReference section */
 		353BD1292387E23500A8734C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceWrapper.mm; sourceTree = "<group>"; };
+		35406E2B238FC979004F4523 /* MediasoupClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MediasoupClient.hpp; sourceTree = "<group>"; };
+		35406E2C238FCA07004F4523 /* MediasoupClient.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupClient.mm; sourceTree = "<group>"; };
 		3544B7E6238E604A00A6AA17 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"; sourceTree = "<group>"; };
 		355C61292387702600986297 /* ConsumerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConsumerWrapper.mm; sourceTree = "<group>"; };
 		355C613223877F2B00986297 /* ProducerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProducerWrapper.mm; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 			children = (
 				355C612D23877D9C00986297 /* C++Wrapper */,
 				35E2E4802385284800E315FD /* Info.plist */,
+				35406E2B238FC979004F4523 /* MediasoupClient.hpp */,
+				35406E2C238FCA07004F4523 /* MediasoupClient.mm */,
 			);
 			path = "mediasoup-client-ios";
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 				35FB2488238B9E400092EBCB /* Producer.h in Headers */,
 				35D762DE238CBA2E0033D7AD /* Device.h in Headers */,
 				35D762DD238CBA2C0033D7AD /* Consumer.h in Headers */,
+				35406E37238FCBD3004F4523 /* MediasoupClient.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +251,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "mediasoup-client-ios" */;
 			buildPhases = (
+				35A708F3238FABC900BD3716 /* ShellScript */,
 				35E2E4772385284800E315FD /* Headers */,
 				35E2E4782385284800E315FD /* Sources */,
 				35E2E4792385284800E315FD /* Frameworks */,
@@ -313,6 +321,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		35A708F3238FABC900BD3716 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Script to copy mediasoup/webrtc header files to project\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include\"\n\necho \"Copying mediasoup header files to the Framework\"\n# Copy mediasoup headers to framework\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/\"\n\necho \"Copying webrtc header files to the framework\"\n# Copy webrtc api to the framework\nfor header in `find ./api -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\n# Copy webrtc third_party abseil-cpp\necho \"Copying webrtc third party header files\"\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp\"\n\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35D17218238CF9BB00FAF301 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -328,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */,
+				35406E2D238FCA07004F4523 /* MediasoupClient.mm in Sources */,
 				35FB248E238BA98A0092EBCB /* RecvTransport.mm in Sources */,
 				353BD12E2387E6FE00A8734C /* DeviceWrapper.mm in Sources */,
 				355C61372387995200986297 /* TransportWrapper.mm in Sources */,
