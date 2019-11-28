@@ -12,3 +12,7 @@ Mediasoup 3 iOS Client
 # Documentation
 
 (Coming Soon)
+
+# Contributing
+
+Due to the webrtc static library files being to big to commit to github, you will need to clone this repository and follow the instructions located in the "build" directory.
