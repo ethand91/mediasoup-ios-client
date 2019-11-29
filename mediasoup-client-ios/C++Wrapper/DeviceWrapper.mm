@@ -1,21 +1,70 @@
-#import <Foundation/Foundation.h>
+#include <iostream>
 
 #import "Device.hpp"
 #import "Transport.hpp"
-#import "include/Device.h"
-#import "include/Transport.h"
+#import "include/DeviceWrapper.h"
+#import "include/TransportWrapper.h"
 
 @implementation DeviceWrapper
-@synthesize device = _device;
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        _device = new mediasoupclient::Device();
-    }
-    return self;
++(NSObject *)nativeNewDevice {
+    mediasoupclient::Device *device = new mediasoupclient::Device();
+    
+    return reinterpret_cast<NSObject *>(device);
 }
 
++(void)nativeFreeDevice:(NSObject *)nativeDevice {
+    delete reinterpret_cast<mediasoupclient::Device *>(nativeDevice);
+}
+
++(void)nativeLoad:(NSObject *)nativeDevice routerRtpCapabilities:(NSString *)routerRtpCapabilities {
+    try {
+        nlohmann::json routerRtpCapabilitiesJson = nlohmann::json::parse(std::string([routerRtpCapabilities UTF8String]));
+        reinterpret_cast<mediasoupclient::Device *>(nativeDevice)->Load(routerRtpCapabilitiesJson);
+    } catch (const std::exception &e) {
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"LoadException" reason:message userInfo:nil];
+        
+        throw exception;
+    }
+}
+
++(bool)nativeIsLoaded:(NSObject *)nativeDevice {
+    bool result = reinterpret_cast<mediasoupclient::Device *>(nativeDevice)->IsLoaded();
+
+    return result;
+}
+
++(NSString *)nativeGetRtpCapabilities:(NSObject *)nativeDevice {
+    try {
+        const nlohmann::json rtpCapabilities = ((__bridge mediasoupclient::Device *)nativeDevice)->GetRtpCapabilities();
+        std::string rtpCapabilitiesString = rtpCapabilities.dump();
+        
+        return [NSString stringWithUTF8String:rtpCapabilitiesString.c_str()];
+    } catch (const std::exception &e) {
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+        
+        throw exception;
+    }
+}
+
+-(bool)nativeCanProduce:(NSObject *)nativeObject kind:(NSString *)kind {
+    try {
+        std::string kindString = std::string([kind UTF8String]);
+        bool result = reinterpret_cast<mediasoupclient::Device *>(nativeObject)->CanProduce(kindString);
+        
+        return result;
+    } catch (const std::exception &e) {
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+        
+        throw exception;
+    }
+}
+
+@end
+
+/*
 -(void)nativeLoad:(NSString *)routerRtpCapabilities {
     nlohmann::json routerRtpCapabilitiesJson = nlohmann::json::parse(std::string([routerRtpCapabilities UTF8String]));
     self.device->Load(routerRtpCapabilitiesJson);
@@ -84,5 +133,4 @@
         return nullptr;
     }
 }
-
-@end
+*/

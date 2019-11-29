@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		353BD12E2387E6FE00A8734C /* DeviceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */; };
 		35406E2D238FCA07004F4523 /* MediasoupClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35406E2C238FCA07004F4523 /* MediasoupClient.mm */; };
-		35406E37238FCBD3004F4523 /* MediasoupClient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 35406E2B238FC979004F4523 /* MediasoupClient.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		35406E37238FCBD3004F4523 /* MediasoupClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 35406E2B238FC979004F4523 /* MediasoupClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3544B7E7238E604A00A6AA17 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; };
 		3544B7E8238E604A00A6AA17 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61292387702600986297 /* ConsumerWrapper.mm */; };
@@ -18,7 +18,6 @@
 		35C66C3F238E670C003C2E1E /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C66C3E238E6701003C2E1E /* libmediasoupclient.a */; };
 		35C66C41238E6722003C2E1E /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C66C40238E6717003C2E1E /* libsdptransform.a */; };
 		35C66C47238E7F21003C2E1E /* libwebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C66C46238E7F21003C2E1E /* libwebrtc.a */; };
-		35D1721F238CF9BE00FAF301 /* ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D1721E238CF9BE00FAF301 /* ProjectTests.m */; };
 		35D17221238CF9BE00FAF301 /* mediasoup_client_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E2E47C2385284800E315FD /* mediasoup_client_ios.framework */; };
 		35D1722B238CFB4B00FAF301 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353BD1292387E23500A8734C /* UIKit.framework */; };
 		35D1722C238CFB4B00FAF301 /* UIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 353BD1292387E23500A8734C /* UIKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -28,12 +27,15 @@
 		35D17230238CFB5100FAF301 /* AVFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 355C61442387DA7B00986297 /* AVFoundation.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		35D17231238CFB5300FAF301 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C613C2387D97100986297 /* AudioToolbox.framework */; };
 		35D17232238CFB5300FAF301 /* AudioToolbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 355C613C2387D97100986297 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		35D17234238CFBFD00FAF301 /* DeviceWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D17233238CFBFD00FAF301 /* DeviceWrapperTests.m */; };
-		35D762DD238CBA2C0033D7AD /* Consumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB248B238BA8920092EBCB /* Consumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35D762DE238CBA2E0033D7AD /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB248C238BA8C00092EBCB /* Device.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35D17234238CFBFD00FAF301 /* DeviceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D17233238CFBFD00FAF301 /* DeviceTests.m */; };
+		35D7427E2390B78300C22679 /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 35D7427D2390B71500C22679 /* Device.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35D742802390B8AD00C22679 /* Device.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35D7427F2390B8AD00C22679 /* Device.mm */; };
+		35D742832390EAE300C22679 /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D742822390EAE300C22679 /* Parameters.m */; };
+		35D762DD238CBA2C0033D7AD /* ConsumerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB248B238BA8920092EBCB /* ConsumerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35D762DE238CBA2E0033D7AD /* DeviceWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB248C238BA8C00092EBCB /* DeviceWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2484238B81C70092EBCB /* SendTransportWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */; };
-		35FB2488238B9E400092EBCB /* Producer.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* Producer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35FB2489238B9E470092EBCB /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* Transport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* ProducerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* TransportWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB248E238BA98A0092EBCB /* RecvTransport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35FB248D238BA98A0092EBCB /* RecvTransport.mm */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +70,7 @@
 /* Begin PBXFileReference section */
 		353BD1292387E23500A8734C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceWrapper.mm; sourceTree = "<group>"; };
-		35406E2B238FC979004F4523 /* MediasoupClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MediasoupClient.hpp; sourceTree = "<group>"; };
+		35406E2B238FC979004F4523 /* MediasoupClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupClient.h; sourceTree = "<group>"; };
 		35406E2C238FCA07004F4523 /* MediasoupClient.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupClient.mm; sourceTree = "<group>"; };
 		3544B7E6238E604A00A6AA17 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"; sourceTree = "<group>"; };
 		355C61292387702600986297 /* ConsumerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConsumerWrapper.mm; sourceTree = "<group>"; };
@@ -86,16 +88,19 @@
 		35C66C46238E7F21003C2E1E /* libwebrtc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebrtc.a; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal/libwebrtc.a"; sourceTree = "<group>"; };
 		35D171EE238CD51C00FAF301 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		35D1721C238CF9BB00FAF301 /* mediasoup-client-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mediasoup-client-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		35D1721E238CF9BE00FAF301 /* ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectTests.m; sourceTree = "<group>"; };
 		35D17220238CF9BE00FAF301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35D17233238CFBFD00FAF301 /* DeviceWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceWrapperTests.m; sourceTree = "<group>"; };
+		35D17233238CFBFD00FAF301 /* DeviceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceTests.m; sourceTree = "<group>"; };
+		35D7427D2390B71500C22679 /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		35D7427F2390B8AD00C22679 /* Device.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Device.mm; sourceTree = "<group>"; };
+		35D742822390EAE300C22679 /* Parameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parameters.m; sourceTree = "<group>"; };
+		35D742842390F0DF00C22679 /* Parameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameters.h; sourceTree = "<group>"; };
 		35E2E47C2385284800E315FD /* mediasoup_client_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mediasoup_client_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E2E4802385284800E315FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SendTransportWrapper.mm; sourceTree = "<group>"; };
-		35FB2486238B823F0092EBCB /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transport.h; sourceTree = "<group>"; };
-		35FB2487238B870E0092EBCB /* Producer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Producer.h; sourceTree = "<group>"; };
-		35FB248B238BA8920092EBCB /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
-		35FB248C238BA8C00092EBCB /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		35FB2486238B823F0092EBCB /* TransportWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportWrapper.h; sourceTree = "<group>"; };
+		35FB2487238B870E0092EBCB /* ProducerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProducerWrapper.h; sourceTree = "<group>"; };
+		35FB248B238BA8920092EBCB /* ConsumerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsumerWrapper.h; sourceTree = "<group>"; };
+		35FB248C238BA8C00092EBCB /* DeviceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceWrapper.h; sourceTree = "<group>"; };
 		35FB248D238BA98A0092EBCB /* RecvTransport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RecvTransport.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,11 +148,20 @@
 		35D1721D238CF9BB00FAF301 /* mediasoup-client-ios-tests */ = {
 			isa = PBXGroup;
 			children = (
-				35D1721E238CF9BE00FAF301 /* ProjectTests.m */,
+				35D742812390EA8100C22679 /* data */,
 				35D17220238CF9BE00FAF301 /* Info.plist */,
-				35D17233238CFBFD00FAF301 /* DeviceWrapperTests.m */,
+				35D17233238CFBFD00FAF301 /* DeviceTests.m */,
 			);
 			path = "mediasoup-client-ios-tests";
+			sourceTree = "<group>";
+		};
+		35D742812390EA8100C22679 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				35D742822390EAE300C22679 /* Parameters.m */,
+				35D742842390F0DF00C22679 /* Parameters.h */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 		35E2E4722385284700E315FD = {
@@ -175,8 +189,10 @@
 			children = (
 				355C612D23877D9C00986297 /* C++Wrapper */,
 				35E2E4802385284800E315FD /* Info.plist */,
-				35406E2B238FC979004F4523 /* MediasoupClient.hpp */,
+				35406E2B238FC979004F4523 /* MediasoupClient.h */,
 				35406E2C238FCA07004F4523 /* MediasoupClient.mm */,
+				35D7427D2390B71500C22679 /* Device.h */,
+				35D7427F2390B8AD00C22679 /* Device.mm */,
 			);
 			path = "mediasoup-client-ios";
 			sourceTree = "<group>";
@@ -203,10 +219,10 @@
 		35FB2485238B82200092EBCB /* include */ = {
 			isa = PBXGroup;
 			children = (
-				35FB2486238B823F0092EBCB /* Transport.h */,
-				35FB2487238B870E0092EBCB /* Producer.h */,
-				35FB248B238BA8920092EBCB /* Consumer.h */,
-				35FB248C238BA8C00092EBCB /* Device.h */,
+				35FB2486238B823F0092EBCB /* TransportWrapper.h */,
+				35FB2487238B870E0092EBCB /* ProducerWrapper.h */,
+				35FB248B238BA8920092EBCB /* ConsumerWrapper.h */,
+				35FB248C238BA8C00092EBCB /* DeviceWrapper.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -218,11 +234,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35FB2489238B9E470092EBCB /* Transport.h in Headers */,
-				35FB2488238B9E400092EBCB /* Producer.h in Headers */,
-				35D762DE238CBA2E0033D7AD /* Device.h in Headers */,
-				35D762DD238CBA2C0033D7AD /* Consumer.h in Headers */,
-				35406E37238FCBD3004F4523 /* MediasoupClient.hpp in Headers */,
+				35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */,
+				35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */,
+				35D762DE238CBA2E0033D7AD /* DeviceWrapper.h in Headers */,
+				35D762DD238CBA2C0033D7AD /* ConsumerWrapper.h in Headers */,
+				35406E37238FCBD3004F4523 /* MediasoupClient.h in Headers */,
+				35D7427E2390B78300C22679 /* Device.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,8 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35D1721F238CF9BE00FAF301 /* ProjectTests.m in Sources */,
-				35D17234238CFBFD00FAF301 /* DeviceWrapperTests.m in Sources */,
+				35D17234238CFBFD00FAF301 /* DeviceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,12 +372,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */,
+				35D742802390B8AD00C22679 /* Device.mm in Sources */,
 				35406E2D238FCA07004F4523 /* MediasoupClient.mm in Sources */,
 				35FB248E238BA98A0092EBCB /* RecvTransport.mm in Sources */,
 				353BD12E2387E6FE00A8734C /* DeviceWrapper.mm in Sources */,
 				355C61372387995200986297 /* TransportWrapper.mm in Sources */,
 				355C613323877F2B00986297 /* ProducerWrapper.mm in Sources */,
 				35FB2484238B81C70092EBCB /* SendTransportWrapper.mm in Sources */,
+				35D742832390EAE300C22679 /* Parameters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +399,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 26J9966VY9;
 				HEADER_SEARCH_PATHS = "${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include/**";
@@ -404,6 +423,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 26J9966VY9;
 				HEADER_SEARCH_PATHS = "${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include/**";
@@ -572,6 +592,8 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_MODULES_DISABLE_PRIVATE_WARNING = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -615,6 +637,8 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/mediasoup-client-ios/**";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -629,6 +653,8 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_MODULES_DISABLE_PRIVATE_WARNING = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -672,6 +698,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/mediasoup-client-ios/**";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";

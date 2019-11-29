@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Transport.hpp"
-#import "include/Transport.h"
+#import "include/TransportWrapper.h"
 
 @implementation TransportWrapper
 @synthesize transport = _transport;

@@ -1,11 +1,12 @@
-#include "Device.h"
+#include "MediasoupClient.h"
+#include "DeviceWrapper.h"
 
 const char *initialize()
 {
     return "Test";
 }
 
-const char *createDevice()
+const DeviceWrapper * createDevice()
 {
-    return "Device";
+    return [[DeviceWrapper alloc] init];
 }

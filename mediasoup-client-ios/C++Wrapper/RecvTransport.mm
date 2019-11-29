@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 
 #include "Transport.hpp"
-#include "include/Transport.h"
-#include "include/Consumer.h"
+#include "include/TransportWrapper.h"
+#include "include/ConsumerWrapper.h"
 
 @implementation RecvTransportWrapper
 @synthesize recvTransport = _recvTransport;

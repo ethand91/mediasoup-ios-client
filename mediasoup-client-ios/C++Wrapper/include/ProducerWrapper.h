@@ -1,14 +1,14 @@
 //
-//  Producer.h
+//  ProducerWrapper.h
 //  Project
 //
 //  Created by Denvir Ethan on 2019/11/25.
 //  Copyright © 2019 Denvir Ethan. All rights reserved.
 //
-#include "Producer.hpp"
+#import "Producer.hpp"
 
-#ifndef Producer_h
-#define Producer_h
+#ifndef ProducerWrapper_h
+#define ProducerWrapper_h
 
 // Listeners
 @protocol ProducerListenerWrapper <NSObject>
@@ -38,4 +38,4 @@ public:
 @property (atomic, readonly, assign) mediasoupclient::Producer *producer;
 @end
 
-#endif /* Producer_h */
+#endif /* ProducerWrapper_h */

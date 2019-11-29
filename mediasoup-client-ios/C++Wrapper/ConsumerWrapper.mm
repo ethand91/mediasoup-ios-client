@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Consumer.hpp"
-#import "include/Consumer.h"
+#import "include/ConsumerWrapper.h"
 
 @implementation ConsumerWrapper
 @synthesize consumer = _consumer;

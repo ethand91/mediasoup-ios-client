@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 
 #include "Transport.hpp"
-#include "include/Transport.h"
-#include "include/Producer.h"
+#include "include/TransportWrapper.h"
+#include "include/ProducerWrapper.h"
 
 @implementation SendTransportWrapper
 @synthesize sendTransport = _sendTransport;

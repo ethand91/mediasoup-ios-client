@@ -6,14 +6,15 @@
 //  Copyright © 2019 Denvir Ethan. All rights reserved.
 //
 
-#ifndef MediasoupClient_hpp
-#define MediasoupClient_hpp
+#ifndef MediasoupClient_h
+#define MediasoupClient_h
+#include "DeviceWrapper.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 const char *initialize();
-const char *createDevice();
+const DeviceWrapper * createDevice();
 #ifdef __cplusplus
 }
 #endif

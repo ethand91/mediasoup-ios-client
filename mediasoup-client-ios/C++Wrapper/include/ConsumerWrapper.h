@@ -1,14 +1,14 @@
 //
-//  Consumer.h
+//  ConsumerWrapper.h
 //  Project
 //
 //  Created by Denvir Ethan on 2019/11/25.
 //  Copyright © 2019 Denvir Ethan. All rights reserved.
 //
-#include "Consumer.hpp"
+#import "Consumer.hpp"
 
-#ifndef Consumer_h
-#define Consumer_h
+#ifndef ConsumerWrapper_h
+#define ConsumerWrapper_h
 
 // Listeners
 @protocol ConsumerListenerWrapper <NSObject>
@@ -47,4 +47,4 @@ public:
 @end
 
 
-#endif /* Consumer_h */
+#endif /* ConsumerWrapper_h */

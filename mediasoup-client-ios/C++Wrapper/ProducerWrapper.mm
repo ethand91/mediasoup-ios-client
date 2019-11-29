@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Producer.hpp"
-#import "include/Producer.h"
+#import "include/ProducerWrapper.h"
 
 @implementation ProducerWrapper
 @synthesize producer = _producer;

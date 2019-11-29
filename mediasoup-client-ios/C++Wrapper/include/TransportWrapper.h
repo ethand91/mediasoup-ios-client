@@ -1,5 +1,5 @@
 //
-//  Transport.h
+//  TransportWrapper.h
 //  Project
 //
 //  Created by Denvir Ethan on 2019/11/25.
@@ -7,8 +7,8 @@
 //
 #include "Transport.hpp"
 
-#ifndef Transport_h
-#define Transport_h
+#ifndef TransportWrapper_h
+#define TransportWrapper_h
 
 @protocol TransportListenerWrapper <NSObject>
 @required
@@ -85,4 +85,4 @@ public:
 -(instancetype)initWithRecvTransport:(mediasoupclient::RecvTransport *)recvTransport;
 @end
 
-#endif /* Transport_h */
+#endif /* TransportWrapper_h */
