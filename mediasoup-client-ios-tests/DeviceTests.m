@@ -55,4 +55,30 @@
     XCTAssertTrue([self.device canProduce:@"video"]);
 }
 
+-(void)testCanProduceAudioSuccess {
+    [self.device load:[Parameters generateRouterRtpCapabilities]];
+    
+    XCTAssertTrue([self.device canProduce:@"audio"]);
+}
+
+-(void)testCanProduceVideoFailure {
+    [self.device load:[Parameters generateRouterRtpCapabilities:false includeAudio:true]];
+    
+    XCTAssertFalse([self.device canProduce:@"video"]);
+}
+
+-(void)testCanProduceAudioFailure {
+    [self.device load:[Parameters generateRouterRtpCapabilities:true includeAudio:false]];
+    
+    XCTAssertFalse([self.device canProduce:@"audio"]);
+}
+
+-(void)testCanProduceVideoNotLoaded {
+    XCTAssertThrowsSpecific([self.device canProduce:@"video"], NSException, @"Not loaded");
+}
+
+-(void)testCanProduceAudioNotLoaded {
+    XCTAssertThrowsSpecific([self.device canProduce:@"audio"], NSException, @"Not loaded");
+}
+
 @end

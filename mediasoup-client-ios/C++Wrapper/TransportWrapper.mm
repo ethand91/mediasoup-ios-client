@@ -1,77 +1,136 @@
 #import <Foundation/Foundation.h>
 
-#import "Transport.hpp"
 #import "include/TransportWrapper.h"
 
-@implementation TransportWrapper
-@synthesize transport = _transport;
-@synthesize listener = _listener;
+@implementation TransportWrapper : NSObject
 
--(instancetype)initWithTransport:(mediasoupclient::Transport *)transport {
-    self = [super init];
-    if (self) {
-        _transport = transport;
-    }
++(NSString *)getNativeId:(NSObject *)nativeTransport {
+    const std::string nativeId = reinterpret_cast<mediasoupclient::Transport *>(nativeTransport)->GetId();
     
-    return self;
+    return [NSString stringWithUTF8String:nativeId.c_str()];
 }
 
--(std::future<void>)onConnect:(mediasoupclient::Transport *)transport dtlsParameters:(nlohmann::json &)dtlsParameters {
-    std::string dtlsParametersString = dtlsParameters.dump();
++(NSString *)getNativeConnectionState:(NSObject *)nativeTransport {
+    const std::string nativeConnectionState = reinterpret_cast<mediasoupclient::Transport *>(nativeTransport)->GetConnectionState();
     
-    [self.listener
-             onConnect:(NSObject *)self.transport
-             dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
-    
-    std::promise<void> promise;
-    promise.set_value();
-    
-    return promise.get_future();
+    return [NSString stringWithUTF8String:nativeConnectionState.c_str()];
 }
 
--(void)onConnectionStateChange:(mediasoupclient::Transport *)transport connectionState:(std::string &)connectionState {
-    // Check if listener is being listened to
-    if([self.listener respondsToSelector:@selector(onConnectionStateChange:connectionState:)]) {
-        [self.listener
-                onConnectionStateChange:(NSObject *)self.transport
-                connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
++(NSString *)getNativeAppData:(NSObject *)nativeTransport {
+    const std::string nativeAppData = reinterpret_cast<mediasoupclient::Transport *>(nativeTransport)->GetAppData().dump();
+    
+    return [NSString stringWithUTF8String:nativeAppData.c_str()];
+}
+
++(NSString *)getNativeStats:(NSObject *)nativeTransport {
+    try {
+        const std::string nativeStats = reinterpret_cast<mediasoupclient::Transport *>(nativeTransport)->GetStats().dump();
+        
+        return [NSString stringWithUTF8String:nativeStats.c_str()];
+    } catch(const std::exception &e) {
+        // TODO log
+        return nullptr;
     }
 }
 
--(NSString *)getNativeId {
-    return [NSString stringWithUTF8String:self.transport->GetId().c_str()];
++(bool)isNativeClosed:(NSObject *)nativeTransport {
+    return reinterpret_cast<mediasoupclient::Transport *>(nativeTransport)->IsClosed();
 }
 
--(NSString *)getNativeConnectionState {
-    return [NSString stringWithUTF8String:self.transport->GetConnectionState().c_str()];
++(void)nativeRestartIce:(NSObject *)nativeTransport iceParameters:(NSString *)iceParameters {
+    try {
+        nlohmann::json iceParametersJson = nlohmann::json::object();
+        
+        if (iceParameters != nullptr) {
+            iceParametersJson = nlohmann::json::parse(std::string([iceParameters UTF8String]));
+        }
+        
+        reinterpret_cast<mediasoupclient::Transport *>(nativeTransport)->RestartIce(iceParametersJson);
+    } catch (const std::exception &e) {
+        //TODO
+    }
 }
 
--(NSString *)getNativeAppData {
-    std::string appDataString = self.transport->GetAppData().dump();
-    return [NSString stringWithUTF8String:appDataString.c_str()];
++(void)nativeUpdateIceServers:(NSObject *)nativeTransport iceServers:(NSString *)iceServers {
+    try {
+        auto iceServersJson = nlohmann::json::array();
+        
+        if (iceServers != nullptr) {
+            iceServersJson = nlohmann::json::parse(std::string([iceServers UTF8String]));
+        }
+        
+        reinterpret_cast<mediasoupclient::Transport *>(nativeTransport)->UpdateIceServers(iceServersJson);
+    } catch (const std::exception &e) {
+        // TODO
+    }
 }
 
--(NSString *)getNativeStats {
-    std::string statsString = self.transport->GetStats().dump();
-    return [NSString stringWithUTF8String:statsString.c_str()];
++(void)nativeClose:(NSObject *)nativeTransport {
+    reinterpret_cast<mediasoupclient::Transport *>(nativeTransport)->Close();
 }
 
--(Boolean *)getNativeClosed {
-    return (Boolean *)self.transport->IsClosed();
++(NSObject *)nativeGetNativeTransport:(NSObject *)nativeTransport {
+    return reinterpret_cast<NSObject *>(nativeTransport);
 }
 
--(void)nativeRestartIce:(NSString *)iceParameters {
-    nlohmann::json iceParametersJson = nlohmann::json::parse(std::string([iceParameters UTF8String]));
-    self.transport->RestartIce(iceParametersJson);
++(NSObject *)nativeProduce:(NSObject *)nativeTransport listener:(Protocol<ProducerListenerWrapper> *)listener track:(NSObject *)track encodings:(NSString *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
+    try {
+        auto producerListener = new ProducerListenerWrapperImpl(listener);
+        auto mediaTrack = reinterpret_cast<webrtc::MediaStreamTrackInterface *>(track);
+        std::vector<webrtc::RtpEncodingParameters> encodingsVector;
+        
+        if(encodings != nullptr) {
+            // TODO
+        }
+        
+        nlohmann::json codecOptionsJson = nlohmann::json::object();
+        
+        if (codecOptions != nullptr) {
+            codecOptionsJson = nlohmann::json::parse(std::string([codecOptions UTF8String]));
+        }
+        
+        nlohmann::json appDataJson = nlohmann::json::object();
+        
+        if (appData != nullptr) {
+            appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
+        }
+        
+        mediasoupclient::SendTransport *transport = reinterpret_cast<mediasoupclient::SendTransport *>(nativeTransport);
+        mediasoupclient::Producer *producer = transport->Produce(producerListener, mediaTrack, &encodingsVector, &codecOptionsJson, appDataJson);
+        
+        return reinterpret_cast<NSObject *>(producer);
+    } catch (std::exception &e) {
+        // TODO
+        return nullptr;
+    }
 }
 
--(void)nativeUpdateIceServers:(NSString *)iceServers {
-    nlohmann::json iceServersJson = nlohmann::json::parse(std::string([iceServers UTF8String]));
-    self.transport->UpdateIceServers(iceServersJson);
-}
-
--(void)nativeClose {
-    self.transport->Close();
++(NSObject *)nativeConsume:(NSObject *)nativeTransport listener:(Protocol<ConsumerListenerWrapper> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
+    try {
+        auto consumerListener = new ConsumerListenerWrapperImpl(listener);
+        const std::string idString = std::string([id UTF8String]);
+        const std::string producerIdString = std::string([producerId UTF8String]);
+        const std::string kindString = std::string([kind UTF8String]);
+        nlohmann::json rtpParametersJson = nlohmann::json::object();
+        
+        if (rtpParameters != nullptr) {
+            rtpParametersJson = nlohmann::json::parse(std::string([rtpParameters UTF8String]));
+        }
+        
+        nlohmann::json appDataJson = nlohmann::json::object();
+        
+        if (appData != nullptr) {
+            appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
+        }
+        
+        mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::RecvTransport *>(nativeTransport);
+        mediasoupclient::Consumer *consumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
+        
+        return reinterpret_cast<NSObject *>(consumer);
+    } catch (std::exception &e) {
+        // TODO
+        return nullptr;
+    }
 }
 
 @end

@@ -10,32 +10,43 @@
 #ifndef ProducerWrapper_h
 #define ProducerWrapper_h
 
+@interface ProducerWrapper : NSObject {}
++(NSString *)getNativeId:(NSObject *)nativeProducer;
++(bool)isNativeClosed:(NSObject *)nativeProducer;
++(NSString *)getNativeKind:(NSObject *)nativeProducer;
++(NSObject *)getNativeTrack:(NSObject *)nativeProducer;
++(bool)isNativePaused:(NSObject *)nativeProducer;
++(int)getNativeMaxSpatialLayer:(NSObject *)nativeProducer;
++(NSString *)getNativeAppData:(NSObject *)nativeProducer;
++(NSString *)getNativeRtpParameters:(NSObject *)nativeProducer;
++(NSString *)getNativeStats:(NSObject *)nativeProducer;
++(void)nativeResume:(NSObject *)nativeProducer;
++(void)nativePause:(NSObject *)nativeProducer;
++(void)setNativeMaxSpatialLayer:(NSObject *)nativeProducer layer:(int)layer;
++(void)nativeReplaceTrack:(NSObject *)nativeProducer track:(NSObject *)track;
++(void)nativeClose:(NSObject *)nativeProducer;
+
+@end
+
 // Listeners
 @protocol ProducerListenerWrapper <NSObject>
 @optional
 -(void)onTransportClose:(NSObject *)producer;
 @end
 
-class ProducerListener : public mediasoupclient::Producer::Listener {
+class ProducerListenerWrapperImpl : public mediasoupclient::Producer::Listener {
+private:
+    Protocol<ProducerListenerWrapper> *listener;
 public:
-    ProducerListener(Protocol<ProducerListenerWrapper> *listener) {};
+    ProducerListenerWrapperImpl(Protocol<ProducerListenerWrapper> *listener) {
+        this->listener = listener;
+    };
     
-    ~ProducerListener() = default;
+    ~ProducerListenerWrapperImpl() = default;
     
-    void OnTransportClose(mediasoupclient::Producer *producer) override {};
+    void OnTransportClose(mediasoupclient::Producer *producer) override {
+        [this->listener onTransportClose:reinterpret_cast<NSObject *>(producer)];
+    };
 };
-
-@interface ProducerWrapper : NSObject
-@property(nonatomic, readonly) NSString *id;
-@property(nonatomic, readonly) NSString *localId;
-@property(nonatomic, readonly) NSObject *track;
-@property(nonatomic, readonly) NSObject *rtpParameters;
-@property(nonatomic, readonly) NSObject *appData;
--(instancetype)initWithProducer:(mediasoupclient::Producer *)producer;
-@end
-
-@interface ProducerWrapper ()
-@property (atomic, readonly, assign) mediasoupclient::Producer *producer;
-@end
 
 #endif /* ProducerWrapper_h */

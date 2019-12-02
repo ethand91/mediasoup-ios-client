@@ -3,74 +3,90 @@
 #import "Producer.hpp"
 #import "include/ProducerWrapper.h"
 
-@implementation ProducerWrapper
-@synthesize producer = _producer;
+@implementation ProducerWrapper : NSObject
 
-- (instancetype) initWithProducer:(mediasoupclient::Producer *)producer{
-    self = [super init];
-    if (self) {
-        _producer = producer;
++(NSString *)getNativeId:(NSObject *)nativeProducer {
+    const std::string nativeId = reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->GetId();
+    
+    return [NSString stringWithUTF8String:nativeId.c_str()];
+}
+
++(bool)isNativeClosed:(NSObject *)nativeProducer {
+    return reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->IsClosed();
+}
+
++(NSString *)getNativeKind:(NSObject *)nativeProducer {
+    const std::string nativeKind = reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->GetKind();
+    
+    return [NSString stringWithUTF8String:nativeKind.c_str()];
+}
+
++(NSObject *)getNativeTrack:(NSObject *)nativeProducer {
+    auto mediaStreamTrack = reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->GetTrack();
+    
+    return reinterpret_cast<NSObject *>(mediaStreamTrack);
+}
+
++(bool)isNativePaused:(NSObject *)nativeProducer {
+    return reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->IsPaused();
+}
+
++(int)getNativeMaxSpatialLayer:(NSObject *)nativeProducer {
+    auto maxSpatialLayer = reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->GetMaxSpatialLayer();
+    
+    return maxSpatialLayer;
+}
+
++(NSString *)getNativeAppData:(NSObject *)nativeProducer {
+    const std::string nativeAppData = reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->GetAppData();
+    
+    return [NSString stringWithUTF8String:nativeAppData.c_str()];
+}
+
++(NSString *)getNativeRtpParameters:(NSObject *)nativeProducer {
+    const std::string nativeRtpParameters = reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->GetRtpParameters();
+    
+    return [NSString stringWithUTF8String:nativeRtpParameters.c_str()];
+}
+
++(NSString *)getNativeStats:(NSObject *)nativeProducer {
+    try {
+        const std::string nativeStats = reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->GetStats().dump();
+        
+        return [NSString stringWithUTF8String:nativeStats.c_str()];
+    } catch (const std::exception &e) {
+        //TODO
+        return nullptr;
     }
-    return self;
 }
 
--(NSString *)getNativeId {
-    return [NSString stringWithUTF8String:self.producer->GetId().c_str()];
++(void)nativeResume:(NSObject *)nativeProducer {
+    reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->Resume();
 }
 
--(Boolean *)isNativeClosed {
-    return (Boolean *)self.producer->IsClosed();
++(void)nativePause:(NSObject *)nativeProducer {
+    reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->Pause();
 }
 
--(NSString *)getNativeKind {
-    return [NSString stringWithUTF8String:self.producer->GetKind().c_str()];
++(void)setNativeMaxSpatialLayer:(NSObject *)nativeProducer layer:(int)layer {
+    try {
+        reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->SetMaxSpatialLayer(layer);
+    } catch (const std::exception &e) {
+        // TODO
+    }
 }
 
--(NSObject *)getNativeTrack {
-    return (NSObject *)CFBridgingRelease(self.producer->GetTrack());
++(void)nativeReplaceTrack:(NSObject *)nativeProducer track:(NSObject *)track {
+    try {
+        auto mediaStreamTrack = reinterpret_cast<webrtc::MediaStreamTrackInterface *>(track);
+        reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->ReplaceTrack(mediaStreamTrack);
+    } catch (const std::exception &e) {
+        // TODO
+    }
 }
 
--(Boolean *)isNativePaused {
-    return (Boolean *)self.producer->IsPaused();
-}
-
--(uint8_t)getNativeMaxSpatialLayer {
-    return self.producer->GetMaxSpatialLayer();
-}
-
--(NSString *)getNativeAppData {
-    std::string appDataString = self.producer->GetAppData().dump();
-    return [NSString stringWithUTF8String:appDataString.c_str()];
-}
-
--(NSString *)getNativeRtpParameters {
-    std::string rtpParametersString = self.producer->GetRtpParameters().dump();
-    return [NSString stringWithUTF8String:rtpParametersString.c_str()];
-}
-
--(NSString *)getNativeStats {
-    std::string statsString = self.producer->GetStats().dump();
-    return [NSString stringWithUTF8String:statsString.c_str()];
-}
-
--(void)nativeResume {
-    self.producer->Resume();
-}
-
--(void)setNativeMaxSpatialLayer:(uint8_t)layer {
-    self.producer->SetMaxSpatialLayer(layer);
-}
-
--(void)nativePause {
-    self.producer->Pause();
-}
-
--(void)nativeReplaceTrack:(NSObject *)track {
-    self.producer->ReplaceTrack((webrtc::MediaStreamTrackInterface *)CFBridgingRetain(track));
-}
-
--(void)nativeClose {
-    self.producer->Close();
++(void)nativeClose:(NSObject *)nativeProducer {
+    reinterpret_cast<mediasoupclient::Producer *>(nativeProducer)->Close();
 }
 
 @end

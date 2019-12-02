@@ -13,6 +13,10 @@
 @implementation Parameters
 
 +(NSString *)generateRouterRtpCapabilities {
+    return [self generateRouterRtpCapabilities:true includeAudio:true];
+}
+
++(NSString *)generateRouterRtpCapabilities:(bool)includeVideo includeAudio:(bool)includeAudio {
     NSDictionary *audioParameters = @{ @"useinbandfec": @"1" };
     
     NSDictionary* audioCodec = @{
@@ -56,7 +60,15 @@
         @"parameters": rtxParameters
     };
     
-    NSArray* codecs = @[audioCodec, videoCodec, rtxCodec];
+    NSArray* codecs;
+    
+    if (includeAudio && includeVideo) {
+        codecs = @[audioCodec, videoCodec, rtxCodec];
+    } else if (!includeAudio && includeVideo) {
+        codecs = @[videoCodec, rtxCodec];
+    } else {
+        codecs = @[audioCodec];
+    }
     
     NSDictionary* headerEx1 = @{
         @"kind": @"audio",

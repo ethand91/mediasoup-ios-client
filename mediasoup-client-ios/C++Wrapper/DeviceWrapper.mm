@@ -1,5 +1,3 @@
-#include <iostream>
-
 #import "Device.hpp"
 #import "Transport.hpp"
 #import "include/DeviceWrapper.h"
@@ -48,7 +46,7 @@
     }
 }
 
--(bool)nativeCanProduce:(NSObject *)nativeObject kind:(NSString *)kind {
++(bool)nativeCanProduce:(NSObject *)nativeObject kind:(NSString *)kind {
     try {
         std::string kindString = std::string([kind UTF8String]);
         bool result = reinterpret_cast<mediasoupclient::Device *>(nativeObject)->CanProduce(kindString);

@@ -10,41 +10,41 @@
 #ifndef ConsumerWrapper_h
 #define ConsumerWrapper_h
 
+@interface ConsumerWrapper : NSObject {}
++(NSString *)getNativeId:(NSObject *)nativeConsumer;
++(NSString *)getNativeProducerId:(NSObject *)nativeConsumer;
++(bool)isNativeClosed:(NSObject *)nativeConsumer;
++(bool)isNativePaused:(NSObject *)nativeConsumer;
++(NSString *)getNativeKind:(NSObject *)nativeConsumer;
++(NSObject *)getNativeTrack:(NSObject *)nativeConsumer;
++(NSString *)getNativeRtpParameters:(NSObject *)nativeConsumer;
++(NSString *)getNativeAppData:(NSObject *)nativeConsumer;
++(void)nativeResume:(NSObject *)nativeConsumer;
++(void)nativePause:(NSObject *)nativeConsumer;
++(NSString *)getNativeStats:(NSObject *)nativeConsumer;
++(void)nativeClose:(NSObject *)nativeConsumer;
+
+@end
+
 // Listeners
 @protocol ConsumerListenerWrapper <NSObject>
 @optional
 -(void)onTransportClose:(NSObject *)consumer;
 @end
 
-class ConsumerListener : public mediasoupclient::Consumer::Listener {
+class ConsumerListenerWrapperImpl : public mediasoupclient::Consumer::Listener {
+private:
+    Protocol<ConsumerListenerWrapper> *listener;
 public:
-    ConsumerListener(Protocol<ConsumerListenerWrapper> *listener) {}
+    ConsumerListenerWrapperImpl(Protocol<ConsumerListenerWrapper> *listener) {
+        this->listener = listener;
+    }
     
-    ~ConsumerListener() = default;
+    ~ConsumerListenerWrapperImpl() = default;
     
-    void OnTransportClose(mediasoupclient::Consumer *consumer) override {};
+    void OnTransportClose(mediasoupclient::Consumer *consumer) override {
+        [this->listener onTransportClose:reinterpret_cast<NSObject *>(consumer)];
+    };
 };
-
-@interface ConsumerWrapper : NSObject
-@property (nonatomic, readonly) NSString *id;
-@property (nonatomic, readonly) NSString *localId;
-@property (nonatomic, readonly) NSString *producerId;
-@property (nonatomic, readonly) NSObject *track;
-@property (nonatomic, readonly) NSObject *rtpParameters;
-@property (nonatomic, readonly) NSObject *appData;
--(instancetype)initWithConsumer:(mediasoupclient::Consumer *)consumer;
-@end
-
-@interface ConsumerWrapper ()
-@property (atomic, readonly, assign) mediasoupclient::Consumer *consumer;
-@end
-
-// Listeners
-@protocol ConsumerWrapperListener <NSObject>
-@optional
--(void)onTransportClose:(NSObject *)consumer;
-
-@end
-
 
 #endif /* ConsumerWrapper_h */

@@ -7,9 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351A83222394A68700BA7A13 /* Transport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A83212394A68700BA7A13 /* Transport.mm */; };
+		351A83232394AD5C00BA7A13 /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A83202394A4BA00BA7A13 /* Transport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		351A83242394AD5F00BA7A13 /* Mediasoupclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EEA28023911D3B00134D1C /* Mediasoupclient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		351A83282394AF7C00BA7A13 /* MediasoupclientWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		351A832E2394B7A900BA7A13 /* Consumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A832C2394B08E00BA7A13 /* Consumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		351A832F2394B7AB00BA7A13 /* Producer.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A832D2394B09600BA7A13 /* Producer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		351A83312394B7F400BA7A13 /* Consumer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A83302394B7F400BA7A13 /* Consumer.mm */; };
+		351A83342394B8C900BA7A13 /* RTCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A83332394B8C900BA7A13 /* RTCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		351A83362394BA1900BA7A13 /* RTCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 351A83352394BA1900BA7A13 /* RTCUtils.m */; };
+		351A83382394C11C00BA7A13 /* Producer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A83372394C11C00BA7A13 /* Producer.mm */; };
+		351A833B2394DC7700BA7A13 /* SendTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A83392394DC6A00BA7A13 /* SendTransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		351A833C2394DC7900BA7A13 /* RecvTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A833A2394DC7300BA7A13 /* RecvTransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		351A833E2394DE2B00BA7A13 /* RecvTransport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A833D2394DE2B00BA7A13 /* RecvTransport.mm */; };
+		351A83402394DE3A00BA7A13 /* SendTransport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A833F2394DE3A00BA7A13 /* SendTransport.mm */; };
+		351A83432394E0AF00BA7A13 /* MediasoupclientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 351A83412394E06800BA7A13 /* MediasoupclientTests.m */; };
 		353BD12E2387E6FE00A8734C /* DeviceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */; };
-		35406E2D238FCA07004F4523 /* MediasoupClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35406E2C238FCA07004F4523 /* MediasoupClient.mm */; };
-		35406E37238FCBD3004F4523 /* MediasoupClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 35406E2B238FC979004F4523 /* MediasoupClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3544B7E7238E604A00A6AA17 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; };
 		3544B7E8238E604A00A6AA17 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61292387702600986297 /* ConsumerWrapper.mm */; };
@@ -33,10 +46,10 @@
 		35D742832390EAE300C22679 /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D742822390EAE300C22679 /* Parameters.m */; };
 		35D762DD238CBA2C0033D7AD /* ConsumerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB248B238BA8920092EBCB /* ConsumerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35D762DE238CBA2E0033D7AD /* DeviceWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB248C238BA8C00092EBCB /* DeviceWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35FB2484238B81C70092EBCB /* SendTransportWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */; };
+		35EEA27923911B5D00134D1C /* MediasoupclientWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */; };
+		35EEA27E23911CB000134D1C /* Mediasoupclient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA27D23911CB000134D1C /* Mediasoupclient.mm */; };
 		35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* ProducerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* TransportWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35FB248E238BA98A0092EBCB /* RecvTransport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35FB248D238BA98A0092EBCB /* RecvTransport.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,10 +81,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		351A83202394A4BA00BA7A13 /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transport.h; sourceTree = "<group>"; };
+		351A83212394A68700BA7A13 /* Transport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Transport.mm; sourceTree = "<group>"; };
+		351A832C2394B08E00BA7A13 /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
+		351A832D2394B09600BA7A13 /* Producer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Producer.h; sourceTree = "<group>"; };
+		351A83302394B7F400BA7A13 /* Consumer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Consumer.mm; sourceTree = "<group>"; };
+		351A83332394B8C900BA7A13 /* RTCUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTCUtils.h; sourceTree = "<group>"; };
+		351A83352394BA1900BA7A13 /* RTCUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTCUtils.m; sourceTree = "<group>"; };
+		351A83372394C11C00BA7A13 /* Producer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Producer.mm; sourceTree = "<group>"; };
+		351A83392394DC6A00BA7A13 /* SendTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendTransport.h; sourceTree = "<group>"; };
+		351A833A2394DC7300BA7A13 /* RecvTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecvTransport.h; sourceTree = "<group>"; };
+		351A833D2394DE2B00BA7A13 /* RecvTransport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RecvTransport.mm; sourceTree = "<group>"; };
+		351A833F2394DE3A00BA7A13 /* SendTransport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SendTransport.mm; sourceTree = "<group>"; };
+		351A83412394E06800BA7A13 /* MediasoupclientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediasoupclientTests.m; sourceTree = "<group>"; };
 		353BD1292387E23500A8734C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceWrapper.mm; sourceTree = "<group>"; };
-		35406E2B238FC979004F4523 /* MediasoupClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupClient.h; sourceTree = "<group>"; };
-		35406E2C238FCA07004F4523 /* MediasoupClient.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupClient.mm; sourceTree = "<group>"; };
 		3544B7E6238E604A00A6AA17 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"; sourceTree = "<group>"; };
 		355C61292387702600986297 /* ConsumerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConsumerWrapper.mm; sourceTree = "<group>"; };
 		355C613223877F2B00986297 /* ProducerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProducerWrapper.mm; sourceTree = "<group>"; };
@@ -96,12 +120,14 @@
 		35D742842390F0DF00C22679 /* Parameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameters.h; sourceTree = "<group>"; };
 		35E2E47C2385284800E315FD /* mediasoup_client_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mediasoup_client_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E2E4802385284800E315FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SendTransportWrapper.mm; sourceTree = "<group>"; };
+		35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupclientWrapper.mm; sourceTree = "<group>"; };
+		35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupclientWrapper.h; sourceTree = "<group>"; };
+		35EEA27D23911CB000134D1C /* Mediasoupclient.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Mediasoupclient.mm; sourceTree = "<group>"; };
+		35EEA28023911D3B00134D1C /* Mediasoupclient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mediasoupclient.h; sourceTree = "<group>"; };
 		35FB2486238B823F0092EBCB /* TransportWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportWrapper.h; sourceTree = "<group>"; };
 		35FB2487238B870E0092EBCB /* ProducerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProducerWrapper.h; sourceTree = "<group>"; };
 		35FB248B238BA8920092EBCB /* ConsumerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsumerWrapper.h; sourceTree = "<group>"; };
 		35FB248C238BA8C00092EBCB /* DeviceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceWrapper.h; sourceTree = "<group>"; };
-		35FB248D238BA98A0092EBCB /* RecvTransport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RecvTransport.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		351A83322394B89B00BA7A13 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				351A83332394B8C900BA7A13 /* RTCUtils.h */,
+				351A83352394BA1900BA7A13 /* RTCUtils.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		355C612D23877D9C00986297 /* C++Wrapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,8 +174,7 @@
 				355C613223877F2B00986297 /* ProducerWrapper.mm */,
 				355C61362387995200986297 /* TransportWrapper.mm */,
 				353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */,
-				35FB2483238B81C70092EBCB /* SendTransportWrapper.mm */,
-				35FB248D238BA98A0092EBCB /* RecvTransport.mm */,
+				35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */,
 			);
 			path = "C++Wrapper";
 			sourceTree = "<group>";
@@ -151,6 +185,7 @@
 				35D742812390EA8100C22679 /* data */,
 				35D17220238CF9BE00FAF301 /* Info.plist */,
 				35D17233238CFBFD00FAF301 /* DeviceTests.m */,
+				351A83412394E06800BA7A13 /* MediasoupclientTests.m */,
 			);
 			path = "mediasoup-client-ios-tests";
 			sourceTree = "<group>";
@@ -187,12 +222,17 @@
 		35E2E47E2385284800E315FD /* mediasoup-client-ios */ = {
 			isa = PBXGroup;
 			children = (
+				351A83322394B89B00BA7A13 /* utils */,
+				35EEA27F23911D2200134D1C /* include */,
 				355C612D23877D9C00986297 /* C++Wrapper */,
 				35E2E4802385284800E315FD /* Info.plist */,
-				35406E2B238FC979004F4523 /* MediasoupClient.h */,
-				35406E2C238FCA07004F4523 /* MediasoupClient.mm */,
-				35D7427D2390B71500C22679 /* Device.h */,
 				35D7427F2390B8AD00C22679 /* Device.mm */,
+				35EEA27D23911CB000134D1C /* Mediasoupclient.mm */,
+				351A83212394A68700BA7A13 /* Transport.mm */,
+				351A83302394B7F400BA7A13 /* Consumer.mm */,
+				351A83372394C11C00BA7A13 /* Producer.mm */,
+				351A833D2394DE2B00BA7A13 /* RecvTransport.mm */,
+				351A833F2394DE3A00BA7A13 /* SendTransport.mm */,
 			);
 			path = "mediasoup-client-ios";
 			sourceTree = "<group>";
@@ -216,6 +256,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		35EEA27F23911D2200134D1C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				35D7427D2390B71500C22679 /* Device.h */,
+				35EEA28023911D3B00134D1C /* Mediasoupclient.h */,
+				351A83202394A4BA00BA7A13 /* Transport.h */,
+				351A832C2394B08E00BA7A13 /* Consumer.h */,
+				351A832D2394B09600BA7A13 /* Producer.h */,
+				351A83392394DC6A00BA7A13 /* SendTransport.h */,
+				351A833A2394DC7300BA7A13 /* RecvTransport.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		35FB2485238B82200092EBCB /* include */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +277,7 @@
 				35FB2487238B870E0092EBCB /* ProducerWrapper.h */,
 				35FB248B238BA8920092EBCB /* ConsumerWrapper.h */,
 				35FB248C238BA8C00092EBCB /* DeviceWrapper.h */,
+				35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -237,9 +292,16 @@
 				35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */,
 				35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */,
 				35D762DE238CBA2E0033D7AD /* DeviceWrapper.h in Headers */,
+				351A83342394B8C900BA7A13 /* RTCUtils.h in Headers */,
+				351A833C2394DC7900BA7A13 /* RecvTransport.h in Headers */,
 				35D762DD238CBA2C0033D7AD /* ConsumerWrapper.h in Headers */,
-				35406E37238FCBD3004F4523 /* MediasoupClient.h in Headers */,
+				351A833B2394DC7700BA7A13 /* SendTransport.h in Headers */,
+				351A83282394AF7C00BA7A13 /* MediasoupclientWrapper.h in Headers */,
+				351A832F2394B7AB00BA7A13 /* Producer.h in Headers */,
 				35D7427E2390B78300C22679 /* Device.h in Headers */,
+				351A832E2394B7A900BA7A13 /* Consumer.h in Headers */,
+				351A83242394AD5F00BA7A13 /* Mediasoupclient.h in Headers */,
+				351A83232394AD5C00BA7A13 /* Transport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351A83432394E0AF00BA7A13 /* MediasoupclientTests.m in Sources */,
 				35D17234238CFBFD00FAF301 /* DeviceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,15 +434,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351A833E2394DE2B00BA7A13 /* RecvTransport.mm in Sources */,
+				35EEA27923911B5D00134D1C /* MediasoupclientWrapper.mm in Sources */,
 				355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */,
 				35D742802390B8AD00C22679 /* Device.mm in Sources */,
-				35406E2D238FCA07004F4523 /* MediasoupClient.mm in Sources */,
-				35FB248E238BA98A0092EBCB /* RecvTransport.mm in Sources */,
+				351A83382394C11C00BA7A13 /* Producer.mm in Sources */,
+				351A83402394DE3A00BA7A13 /* SendTransport.mm in Sources */,
+				351A83222394A68700BA7A13 /* Transport.mm in Sources */,
+				35EEA27E23911CB000134D1C /* Mediasoupclient.mm in Sources */,
 				353BD12E2387E6FE00A8734C /* DeviceWrapper.mm in Sources */,
 				355C61372387995200986297 /* TransportWrapper.mm in Sources */,
+				351A83362394BA1900BA7A13 /* RTCUtils.m in Sources */,
 				355C613323877F2B00986297 /* ProducerWrapper.mm in Sources */,
-				35FB2484238B81C70092EBCB /* SendTransportWrapper.mm in Sources */,
 				35D742832390EAE300C22679 /* Parameters.m in Sources */,
+				351A83312394B7F400BA7A13 /* Consumer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

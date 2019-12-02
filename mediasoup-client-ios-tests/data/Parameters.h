@@ -11,6 +11,7 @@
 
 @interface Parameters: NSObject {}
 +(NSString *)generateRouterRtpCapabilities;
++(NSString *)generateRouterRtpCapabilities:(bool)includeVideo includeAudio:(bool)includeAudio;
 @end
 
 

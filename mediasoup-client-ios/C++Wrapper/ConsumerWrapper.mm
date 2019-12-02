@@ -11,6 +11,79 @@
 #import "Consumer.hpp"
 #import "include/ConsumerWrapper.h"
 
+@implementation ConsumerWrapper : NSObject
+
++(NSString *)getNativeId:(NSObject *)nativeConsumer {
+    const std::string nativeId = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetId();
+    
+    return [NSString stringWithUTF8String:nativeId.c_str()];
+}
+
++(NSString *)getNativeProducerId:(NSObject *)nativeConsumer {
+    const std::string nativeProducerId = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetProducerId();
+    
+    return [NSString stringWithUTF8String:nativeProducerId.c_str()];
+}
+
++(bool)isNativeClosed:(NSObject *)nativeConsumer {
+    return reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->IsClosed();
+}
+
++(bool)isNativePaused:(NSObject *)nativeConsumer {
+    return reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->IsPaused();
+}
+
++(NSString *)getNativeKind:(NSObject *)nativeConsumer {
+    const std::string nativeKind = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetKind();
+    
+    return [NSString stringWithUTF8String:nativeKind.c_str()];
+}
+
++(NSObject *)getNativeTrack:(NSObject *)nativeConsumer {
+    auto mediaStreamTrack = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetTrack();
+    
+    return reinterpret_cast<NSObject *>(mediaStreamTrack);
+}
+
++(NSString *)getNativeRtpParameters:(NSObject *)nativeConsumer {
+    const std::string nativeRtpParameters = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetRtpParameters().dump();
+    
+    return [NSString stringWithUTF8String:nativeRtpParameters.c_str()];
+}
+
++(NSString *)getNativeAppData:(NSObject *)nativeConsumer {
+    const std::string nativeAppData = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetAppData().dump();
+    
+    return [NSString stringWithUTF8String:nativeAppData.c_str()];
+}
+
++(void)nativeResume:(NSObject *)nativeConsumer {
+    reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->Resume();
+}
+
++(void)nativePause:(NSObject *)nativeConsumer {
+    reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->Pause();
+}
+
++(NSString *)getNativeStats:(NSObject *)nativeConsumer {
+    try {
+        const std::string nativeStats = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetStats().dump();
+        
+        return [NSString stringWithUTF8String:nativeStats.c_str()];
+    } catch (const std::exception &e) {
+        // TODO
+        return nullptr;
+    }
+}
+
++(void)nativeClose:(NSObject *)nativeConsumer {
+    reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->Close();
+}
+
+@end
+
+
+/*
 @implementation ConsumerWrapper
 @synthesize consumer = _consumer;
 
@@ -79,3 +152,4 @@
 }
 
 @end
+ */
