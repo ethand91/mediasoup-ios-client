@@ -1,3 +1,5 @@
+#include <iostream>
+
 #import "Device.hpp"
 #import "Transport.hpp"
 #import "include/DeviceWrapper.h"
@@ -60,75 +62,65 @@
     }
 }
 
-@end
-
-/*
--(void)nativeLoad:(NSString *)routerRtpCapabilities {
-    nlohmann::json routerRtpCapabilitiesJson = nlohmann::json::parse(std::string([routerRtpCapabilities UTF8String]));
-    self.device->Load(routerRtpCapabilitiesJson);
-}
-
--(Boolean *)nativeIsLoaded {
-    return (Boolean *)self.device->IsLoaded();
-}
-
--(NSString *)nativeGetRtpCapabilities {
-    std::string rtpCapabilitiesString = self.device->GetRtpCapabilities().dump();
-    return [NSString stringWithUTF8String:rtpCapabilitiesString.c_str()];
-}
-
--(Boolean *)nativeCanProduce:(NSString *)kind {
-    return (Boolean *)self.device->CanProduce(std::string([kind UTF8String]));
-}
-
--(SendTransportWrapper *)nativeCreateSendTransport:(Protocol<SendTransportListenerWrapper> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(NSString *)options appData:(NSString *)appData {
-    
++(NSValue *)nativeCreateSendTransport:(NSObject *)nativeDevice listener:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
     try {
-        auto transportListener = new SendTransportListener(listener);
-        std::string idString = std::string([id UTF8String]);
-        nlohmann::json iceParametersJson = nlohmann::json::parse(std::string([iceParameters UTF8String]));
-        nlohmann::json iceCandidatesJson = nlohmann::json::parse(std::string([iceCandidates UTF8String]));
-        nlohmann::json dtlsParametersJson = nlohmann::json::parse(std::string([dtlsParameters UTF8String]));
+        std::cout << "nativeCreateSendTransport" << std::endl;
+        
+        auto transportListener = new SendTransportListenerWrapper(listener);
+        const std::string idString = std::string([id UTF8String]);
+        const std::string iceParametersString = std::string([iceParameters UTF8String]);
+        const std::string iceCandidatesString = std::string([iceCandidates UTF8String]);
+        const std::string dtlsParametersString = std::string([dtlsParameters UTF8String]);
+        mediasoupclient::PeerConnection::Options* pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>(options);
+        std::cout << "nativeCreateSendTransport 2" << std::endl;
         
         nlohmann::json appDataJson = nlohmann::json::object();
-        
         if (appData != nullptr) {
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
         
-        // TODO: options
-        mediasoupclient::SendTransport *sendTransport = self.device->CreateSendTransport(transportListener, idString, iceParametersJson, iceCandidatesJson, dtlsParametersJson, nullptr, appDataJson);
+        mediasoupclient::SendTransport *transport = reinterpret_cast<mediasoupclient::Device *>(nativeDevice)->CreateSendTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), pcOptions, appDataJson);
         
-        SendTransportWrapper *sendTransportWrapper = [[SendTransportWrapper alloc] initWithSendTransport:sendTransport];
+        std::cout << "SendTransport created id=" << transport->GetId() << std::endl;
+        //return reinterpret_cast<NSObject *>(transport);
+        return [NSValue valueWithPointer:transport];
+    } catch(std::exception &e) {
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
         
-        return sendTransportWrapper;
+        throw exception;
+    }
+    
+    return nullptr;
+}
+
++(NSValue *)nativeCreateRecvTransport:(NSObject *)nativeDevice listener:(Protocol<RecvTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
+    try {
+        auto transportListener = new RecvTransportListenerWrapper(listener);
+        const std::string idString = std::string([id UTF8String]);
+        const std::string iceParametersString = std::string([iceParameters UTF8String]);
+        const std::string iceCandidatesString = std::string([iceCandidates UTF8String]);
+        const std::string dtlsParametersString = std::string([dtlsParameters UTF8String]);
+        
+        mediasoupclient::PeerConnection::Options* pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>(options);
+        
+        nlohmann::json appDataJson = nlohmann::json::object();
+        if (appData != nullptr) {
+            appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
+        }
+        
+        mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::Device *>(nativeDevice)->CreateRecvTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), pcOptions, appDataJson);
+        
+        //return reinterpret_cast<NSObject *>(transport);
+        return [NSValue valueWithPointer:transport];
     } catch (std::exception &e) {
-        return nullptr;
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+        
+        throw exception;
     }
+    
+    return nullptr;
 }
 
--(RecvTransportWrapper *)nativeCreateRecvTransport:(Protocol<TransportListenerWrapper> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(NSString *)options appData:(NSString *)appData {
-    
-    try {
-        auto transportListener = new RecvTransportListener(listener);
-        std::string idString = std::string([id UTF8String]);
-        nlohmann::json iceParametersJson = nlohmann::json::parse(std::string([iceParameters UTF8String]));
-        nlohmann::json iceCandidatesJson = nlohmann::json::parse(std::string([iceCandidates UTF8String]));
-        nlohmann::json dtlsParametersJson = nlohmann::json::parse(std::string([dtlsParameters UTF8String]));
-        
-        nlohmann::json appDataJson = nlohmann::json::object();
-        if (appData != nullptr) {
-            appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
-        }
-        
-        // TODO: options
-        mediasoupclient::RecvTransport *recvTransport = self.device->CreateRecvTransport(transportListener, idString, iceParametersJson, iceCandidatesJson, dtlsParametersJson, nullptr, appDataJson);
-        
-        RecvTransportWrapper *recvTransportWrapper = [[RecvTransportWrapper alloc] initWithRecvTransport:recvTransport];
-        
-        return recvTransportWrapper;
-    } catch(const std::exception &e) {
-        return nullptr;
-    }
-}
-*/
+@end

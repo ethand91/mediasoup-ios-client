@@ -6,6 +6,10 @@
 //  Copyright © 2019 Denvir Ethan. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import <WebRTC/RTCPeerConnectionFactoryOptions.h>
+
+#import "SendTransport.h"
+#import "RecvTransport.h"
 
 #ifndef Device_h
 #define Device_h
@@ -19,8 +23,10 @@
 -(bool)isLoaded;
 -(NSString *)getRtpCapabilities;
 -(bool)canProduce:(NSString *)kind;
--(void)createSendTransport; //TODO
--(void)createRecvTransport; //TODO
+-(SendTransport *)createSendTransport:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters;
+-(SendTransport *)createSendTransport:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
+-(RecvTransport *)createRecvTransport:(Protocol<RecvTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters;
+-(RecvTransport *)createRecvTransport:(Protocol<RecvTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
 @end
 
 #endif /* Device_h */

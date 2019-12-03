@@ -8,8 +8,12 @@
 
 #import <XCTest/XCTest.h>
 #import "Device.h"
+#import "SendTransport.h"
 
 #import "data/Parameters.h"
+#import "mocks/SendTransportListernerImpl.h"
+#import "mocks/RecvTransportListenerImpl.h"
+#import "utils/util.h"
 
 @interface DeviceTests : XCTestCase
 @property (nonatomic) Device *device;
@@ -20,11 +24,10 @@
 - (void)setUp {
     [super setUp];
     self.device = [[Device alloc] init];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
 }
 
 -(void)testDeviceLoadFailed {
@@ -79,6 +82,84 @@
 
 -(void)testCanProduceAudioNotLoaded {
     XCTAssertThrowsSpecific([self.device canProduce:@"audio"], NSException, @"Not loaded");
+}
+
+-(void)testInvalidCanProduceArgument {
+    XCTAssertThrowsSpecific([self.device canProduce:@"bacon"], NSException, @"invalid kind");
+}
+
+-(void)testCreateSendTransportSuccess {
+    [self.device load:[Parameters generateRouterRtpCapabilities]];
+    
+    SendTransportListenerImpl *listener = [[SendTransportListenerImpl alloc] init];
+    NSDictionary *remoteTransportParameters = [Parameters generateTransportRemoteParameters];
+    
+    NSString *id = [remoteTransportParameters valueForKeyPath:@"id"];
+    NSDictionary *dtlsParameters = [remoteTransportParameters valueForKeyPath:@"dtlsParameters"];
+    NSDictionary *iceCandidates = [remoteTransportParameters valueForKeyPath:@"iceCandidates"];
+    NSDictionary *iceParameters = [remoteTransportParameters valueForKeyPath:@"iceParameters"];
+    
+    SendTransport *transport = [self.device createSendTransport:listener.delegate
+                                                            id:id
+                                                            iceParameters:[Util dictionaryToJson:iceParameters]
+                                                            iceCandidates:[Util dictionaryToJson:iceCandidates]
+                                                            dtlsParameters:[Util dictionaryToJson:dtlsParameters]];
+    
+    XCTAssertTrue([[transport getId] isEqualToString:id]);
+}
+
+-(void)testCreateSendTransportFailure {
+    SendTransportListenerImpl *listener = [[SendTransportListenerImpl alloc] init];
+    NSDictionary *remoteTransportParameters = [Parameters generateTransportRemoteParameters];
+    
+    NSString *id = [remoteTransportParameters valueForKeyPath:@"id"];
+    NSDictionary *dtlsParameters = [remoteTransportParameters valueForKeyPath:@"dtlsParameters"];
+    NSDictionary *iceCandidates = [remoteTransportParameters valueForKeyPath:@"iceCandidates"];
+    NSDictionary *iceParameters = [remoteTransportParameters valueForKeyPath:@"iceParameters"];
+    
+    XCTAssertThrowsSpecific([self.device createSendTransport:listener.delegate
+                                                          id:id
+                                                          iceParameters:[Util dictionaryToJson:iceParameters]
+                                                          iceCandidates:[Util dictionaryToJson:iceCandidates]
+                                                          dtlsParameters:[Util dictionaryToJson:dtlsParameters]],
+                                                          NSException, @"Not loaded");
+}
+
+-(void)testCreateRecvTransportSuccess {
+    [self.device load:[Parameters generateRouterRtpCapabilities]];
+    
+    RecvTransportListenerImpl *listener = [[RecvTransportListenerImpl alloc] init];
+    NSDictionary *remoteTransportParameters = [Parameters generateTransportRemoteParameters];
+    
+    NSString *id = [remoteTransportParameters valueForKeyPath:@"id"];
+    NSDictionary *dtlsParameters = [remoteTransportParameters valueForKeyPath:@"dtlsParameters"];
+    NSDictionary *iceCandidates = [remoteTransportParameters valueForKeyPath:@"iceCandidates"];
+    NSDictionary *iceParameters = [remoteTransportParameters valueForKeyPath:@"iceParameters"];
+    
+    RecvTransport *transport = [self.device createRecvTransport:listener.delegate
+                                                             id:id
+                                                             iceParameters:[Util dictionaryToJson:iceParameters]
+                                                             iceCandidates:[Util dictionaryToJson:iceCandidates]
+                                                             dtlsParameters:[Util dictionaryToJson:dtlsParameters]];
+    
+    XCTAssertTrue([[transport getId] isEqualToString:id]);
+}
+
+-(void)testCreateRecvTransportFailure {
+    RecvTransportListenerImpl *listener = [[RecvTransportListenerImpl alloc] init];
+    NSDictionary *remoteTransportParameters = [Parameters generateTransportRemoteParameters];
+    
+    NSString *id = [remoteTransportParameters valueForKeyPath:@"id"];
+    NSDictionary *dtlsParameters = [remoteTransportParameters valueForKeyPath:@"dtlsParameters"];
+    NSDictionary *iceCandidates = [remoteTransportParameters valueForKeyPath:@"iceCandidates"];
+    NSDictionary *iceParameters = [remoteTransportParameters valueForKeyPath:@"iceParameters"];
+    
+    XCTAssertThrowsSpecific([self.device createRecvTransport:listener.delegate
+                                                          id:id
+                                                          iceParameters:[Util dictionaryToJson:iceParameters]
+                                                          iceCandidates:[Util dictionaryToJson:iceCandidates]
+                                                          dtlsParameters:[Util dictionaryToJson:dtlsParameters]],
+                                                          NSException, @"Not loaded");
 }
 
 @end

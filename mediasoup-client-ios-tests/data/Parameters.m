@@ -130,4 +130,84 @@
     return jsonString;
 }
 
++(NSDictionary *)generateTransportRemoteParameters {
+    NSDictionary *fingerprint1 = @{
+        @"algorithm": @"sha-266",
+        @"value": @"A9:F4:E0:D2:74:D3:0F:D9:CA:A5:2F:9F:7F:47:FA:F0:C4:72:DD:73:49:D0:3B:14:90:20:51:30:1B:90:8E:71"
+    };
+    
+    NSDictionary *fingerprint2 = @{
+        @"algorithm": @"sha-384",
+        @"value": @"03:D9:0B:87:13:98:F6:6D:BC:FC:92:2E:39:D4:E1:97:32:61:30:56:84:70:81:6E:D1:82:97:EA:D9:C1:21:0F:6B:C5:E7:7F:E1:97:0C:17:97:6E:CF:B3:EF:2E:74:B0"
+    };
+    
+    NSDictionary *fingerprint3 = @{
+        @"algorithm": @"sha-512",
+        @"value": @"84:27:A4:28:A4:73:AF:43:02:2A:44:68:FF:2F:29:5C:3B:11:9A:60:F4:A8:F0:F5:AC:A0:E3:49:3E:B1:34:53:A9:85:CE:51:9B:ED:87:5E:B8:F4:8E:3D:FA:20:51:B8:96:EE:DA:56:DC:2F:5C:62:79:15:23:E0:21:82:2B:2C"
+    };
+    
+    NSArray *fingerprintsArray = @[fingerprint1, fingerprint2, fingerprint3];
+    
+    NSDictionary *dtlsParameters = @{
+        @"role": @"auto",
+        @"fingerprints": fingerprintsArray
+    };
+    
+    NSDictionary *iceCandidate1 = @{
+        @"family": @"ipv4",
+        @"foundation": @"udpcandidate",
+        @"ip": @"9.9.9.9",
+        @"port": @40032,
+        @"priority": @1078862079,
+        @"protocol": @"udp",
+        @"type": @"host"
+    };
+    
+    NSDictionary *iceCandidate2 = @{
+        @"family": @"ipv6",
+        @"foundation": @"udpcandidate",
+        @"ip": @"9:9:9:9:9:9",
+        @"port": @41443,
+        @"priority": @"udp",
+        @"type": @"host"
+    };
+    
+    NSArray *iceCandidatesArray = @[iceCandidate1, iceCandidate2];
+    
+    NSDictionary *iceParameters = @{
+        @"iceLite": @true,
+        @"password": @"dsadasudas7943nksafjsa",
+        @"usernameFragment": @"h24tdsdgsdges"
+    };
+    
+    NSDictionary *transportRemoteParameters = @{
+        @"id": [[NSUUID UUID] UUIDString],
+        @"dtlsParameters": dtlsParameters,
+        @"iceCandidates": iceCandidatesArray,
+        @"iceParameters": iceParameters
+    };
+    
+    return transportRemoteParameters;
+}
+
++(NSString *)generateIceServers {
+    NSDictionary *stunServer = @{
+        @"urls": @"stun:stun.example.org"
+    };
+    
+    NSDictionary *turnServer = @{
+        @"urls": @"turn:turnserver.example.org",
+        @"username": @"mediasoup",
+        @"credential": @"password"
+    };
+    
+    NSArray *iceServersArray = @[stunServer, turnServer];
+    
+    // Convert to json string
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:iceServersArray options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    return jsonString;
+}
+
 @end

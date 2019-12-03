@@ -23,14 +23,12 @@
     return [self consume:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:nil];
 }
 
-/*
 -(Consumer *)consume:(Protocol<ConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
     [self checkTransportExists];
     
     // TODO listener
     return [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
 }
- */
 
 -(void)checkTransportExists {
     if (self._nativeTransport == nil) {

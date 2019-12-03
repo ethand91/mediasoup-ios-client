@@ -6,6 +6,7 @@
 //  Copyright © 2019 Denvir Ethan. All rights reserved.
 //
 #import "Consumer.hpp"
+#import "Consumer.h"
 
 #ifndef ConsumerWrapper_h
 #define ConsumerWrapper_h
@@ -26,21 +27,15 @@
 
 @end
 
-// Listeners
-@protocol ConsumerListenerWrapper <NSObject>
-@optional
--(void)onTransportClose:(NSObject *)consumer;
-@end
-
-class ConsumerListenerWrapperImpl : public mediasoupclient::Consumer::Listener {
+class ConsumerListenerWrapper : public mediasoupclient::Consumer::Listener {
 private:
-    Protocol<ConsumerListenerWrapper> *listener;
+    Protocol<ConsumerListener> *listener;
 public:
-    ConsumerListenerWrapperImpl(Protocol<ConsumerListenerWrapper> *listener) {
+    ConsumerListenerWrapper(Protocol<ConsumerListener> *listener) {
         this->listener = listener;
     }
     
-    ~ConsumerListenerWrapperImpl() = default;
+    ~ConsumerListenerWrapper() = default;
     
     void OnTransportClose(mediasoupclient::Consumer *consumer) override {
         [this->listener onTransportClose:reinterpret_cast<NSObject *>(consumer)];

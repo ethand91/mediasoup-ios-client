@@ -22,19 +22,19 @@
 }
 
 -(NSString *)getId {
-    return [TransportWrapper nativeGetId:self._nativeTransport];
+    return [TransportWrapper getNativeId:self._nativeTransport];
 }
 
 -(NSString *)getConnectionState {
-    return [TransportWrapper nativeGetConnectionState:self._nativeTransport];
+    return [TransportWrapper getNativeConnectionState:self._nativeTransport];
 }
 
 -(NSString *)getAppData {
-    return [TransportWrapper nativeGetData:self._nativeTransport];
+    return [TransportWrapper getNativeAppData:self._nativeTransport];
 }
 
 -(NSString *)getStats {
-    return [TransportWrapper nativeGetStats:self._nativeTransport];
+    return [TransportWrapper getNativeStats:self._nativeTransport];
 }
 
 -(bool)isClosed {
@@ -50,7 +50,7 @@
 }
 
 -(void)close {
-    [TransportWrapper close:self._nativeTransport];
+    [TransportWrapper nativeClose:self._nativeTransport];
 }
 
 @end

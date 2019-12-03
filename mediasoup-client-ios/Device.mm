@@ -1,3 +1,5 @@
+#include <iostream>
+
 #import "Device.h"
 #import "DeviceWrapper.h"
 
@@ -33,6 +35,33 @@
     [self checkDeviceExists];
     
     return [DeviceWrapper nativeCanProduce:self._nativeDevice kind:kind];
+}
+
+-(SendTransport *)createSendTransport:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters {
+    std::cout << "createSendTransport" << std::endl;
+    return [self createSendTransport:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters options:nil appData:nil];
+}
+
+-(SendTransport *)createSendTransport:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
+    std::cout << "createSendTransport before check" << std::endl;
+    [self checkDeviceExists];
+    
+    std::cout << "createSendTransport after check" << std::endl;
+    NSObject *transport = [DeviceWrapper nativeCreateSendTransport:self._nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters options:options appData:appData];
+    
+    return [[SendTransport alloc] initWithNativeTransport:transport];
+}
+
+-(RecvTransport *)createRecvTransport:(Protocol<RecvTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters {
+    return [self createRecvTransport:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters options:nil appData:nil];
+}
+
+-(RecvTransport *)createRecvTransport:(Protocol<RecvTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
+    [self checkDeviceExists];
+    
+    NSObject *transport = [DeviceWrapper nativeCreateRecvTransport:self._nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters options:options appData:appData];
+    
+    return [[RecvTransport alloc] initWithNativeTransport:transport];
 }
 
 -(void)checkDeviceExists {

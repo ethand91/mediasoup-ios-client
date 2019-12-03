@@ -27,6 +27,7 @@
 
 @protocol TransportListener <NSObject>
 
+@required
 -(void)onConnect:(Transport *)transport dtlsParameters:(NSString *)dtlsParameters;
 -(void)onConnectionStateChange:(Transport *)transport connectionState:(NSString *)connectionState;
 

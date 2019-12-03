@@ -21,5 +21,9 @@
 
 @end
 
+@protocol RecvTransportListener <TransportListener>
+
+@end
+
 
 #endif /* RecvTransport_h */

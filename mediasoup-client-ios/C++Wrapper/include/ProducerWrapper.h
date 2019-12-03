@@ -6,6 +6,7 @@
 //  Copyright © 2019 Denvir Ethan. All rights reserved.
 //
 #import "Producer.hpp"
+#import "Producer.h"
 
 #ifndef ProducerWrapper_h
 #define ProducerWrapper_h
@@ -28,21 +29,15 @@
 
 @end
 
-// Listeners
-@protocol ProducerListenerWrapper <NSObject>
-@optional
--(void)onTransportClose:(NSObject *)producer;
-@end
-
-class ProducerListenerWrapperImpl : public mediasoupclient::Producer::Listener {
+class ProducerListenerWrapper : public mediasoupclient::Producer::Listener {
 private:
-    Protocol<ProducerListenerWrapper> *listener;
+    Protocol<ProducerListener> *listener;
 public:
-    ProducerListenerWrapperImpl(Protocol<ProducerListenerWrapper> *listener) {
+    ProducerListenerWrapper(Protocol<ProducerListener> *listener) {
         this->listener = listener;
     };
     
-    ~ProducerListenerWrapperImpl() = default;
+    ~ProducerListenerWrapper() = default;
     
     void OnTransportClose(mediasoupclient::Producer *producer) override {
         [this->listener onTransportClose:reinterpret_cast<NSObject *>(producer)];

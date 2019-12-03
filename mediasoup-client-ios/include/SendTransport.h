@@ -22,4 +22,9 @@
 
 @end
 
+@protocol SendTransportListener <TransportListener>
+@required
+-(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
+@end
+
 #endif /* SendTransport_h */
