@@ -26,12 +26,12 @@ public:
     
     ~SendTransportListenerWrapper() = default;
     
-    std::future<void> OnConnect(mediasoupclient::Transport *transport, const nlohmann::json &dtlsParameters) override {
+    std::future<void> OnConnect(mediasoupclient::Transport *nativeTransport, const nlohmann::json &dtlsParameters) override {
         std::cout << "onConnect" << std::endl;
         
         const std::string dtlsParametersString = dtlsParameters.dump();
         
-        NSValue *transportObject = [NSValue valueWithPointer:transport];
+        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
         SendTransport *sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
         
         [this->listener onConnect:sendTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
@@ -42,17 +42,17 @@ public:
         return promise.get_future();
     };
     
-    void OnConnectionStateChange(mediasoupclient::Transport *transport, const std::string &connectionState) override {
+    void OnConnectionStateChange(mediasoupclient::Transport *nativeTransport, const std::string &connectionState) override {
         std::cout << "onConnectionStateChange : " << connectionState << std::endl;
         
-        NSValue *transportObject = [NSValue valueWithPointer:transport];
+        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
         SendTransport *sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
         
         [this->listener onConnectionStateChange:sendTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
     };
     
     std::future<std::string> OnProduce(
-                                       mediasoupclient::SendTransport *transport,
+                                       mediasoupclient::SendTransport *nativeTransport,
                                        const std::string &kind,
                                        nlohmann::json rtpParameters,
                                        const nlohmann::json &appData) override {
@@ -61,7 +61,7 @@ public:
         const std::string rtpParametersString = rtpParameters.dump();
         const std::string appDataString = appData.dump();
         
-        NSValue * transportObject = [NSValue valueWithPointer:transport];
+        NSValue * transportObject = [NSValue valueWithPointer:nativeTransport];
         SendTransport *sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
         
         auto result = [this->listener onProduce:sendTransport
@@ -87,10 +87,10 @@ public:
     
     ~RecvTransportListenerWrapper() = default;
     
-    std::future<void> OnConnect(mediasoupclient::Transport *transport, const nlohmann::json &dtlsParameters) override {
+    std::future<void> OnConnect(mediasoupclient::Transport *nativeTransport, const nlohmann::json &dtlsParameters) override {
         const std::string dtlsParametersString = dtlsParameters.dump();
         
-        NSValue *transportObject = [NSValue valueWithPointer:transport];
+        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
         RecvTransport *recvTransport = [[RecvTransport alloc] initWithNativeTransport:transportObject];
         
         [this->listener onConnect:recvTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
@@ -101,10 +101,10 @@ public:
         return promise.get_future();
     };
     
-    void OnConnectionStateChange(mediasoupclient::Transport *transport, const std::string &connectionState) override {
+    void OnConnectionStateChange(mediasoupclient::Transport *nativeTransport, const std::string &connectionState) override {
         std::cout << "onConnectionStateChange : " << connectionState << std::endl;
         
-        NSValue *transportObject = [NSValue valueWithPointer:transport];
+        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
         RecvTransport *recvTransport = [[RecvTransport alloc] initWithNativeTransport:transportObject];
         
         [this->listener onConnectionStateChange:recvTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
@@ -121,9 +121,9 @@ public:
 +(void)nativeUpdateIceServers:(NSValue *)nativeTransport iceServers:(NSString *)iceServers;
 +(void)nativeClose:(NSValue *)nativeTransport;
 +(NSValue *)nativeGetNativeTransport:(NSValue *)nativeTransport;
-+(NSObject *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(NSObject *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
++(NSValue *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
 +(void)nativeFreeTransport:(NSValue *)nativeTransport;
-+(NSObject *)nativeConsume:(NSValue *)nativeTransport listener:(Protocol<ConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
++(NSValue *)nativeConsume:(NSValue *)nativeTransport listener:(Protocol<ConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
 +(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport;
 
 @end

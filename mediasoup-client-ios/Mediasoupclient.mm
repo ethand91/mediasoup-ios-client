@@ -5,4 +5,12 @@
 +(NSString *)version {
     return [MediasoupclientWrapper nativeVersion];
 }
+
++(void)initialize {
+    [MediasoupclientWrapper nativeInitialize];
+}
+
++(void)cleanUp {
+    [MediasoupclientWrapper nativeCleanup];
+}
 @end

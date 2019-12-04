@@ -4,7 +4,7 @@
 
 @implementation Producer : NSObject
 
--(id)initWithNativeProducer:(NSObject *)nativeProducer {
+-(instancetype)initWithNativeProducer:(NSObject *)nativeProducer {
     self = [super init];
     if (self) {
         self._nativeProducer = nativeProducer;

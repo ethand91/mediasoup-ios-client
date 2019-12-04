@@ -8,4 +8,12 @@
     return [NSString stringWithUTF8String:version.c_str()];
 }
 
++(void)nativeInitialize {
+    mediasoupclient::Initialize();
+}
+
++(void)nativeCleanup {
+    mediasoupclient::Cleanup();
+}
+
 @end

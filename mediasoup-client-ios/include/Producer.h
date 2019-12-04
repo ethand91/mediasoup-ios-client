@@ -12,7 +12,7 @@
 #define Producer_h
 
 @interface Producer : NSObject
-@property(nonatomic) NSObject* _nativeProducer;
+@property(nonatomic) NSValue* _nativeProducer;
 
 -(NSString *)getId;
 -(bool)isClosed;

@@ -21,8 +21,6 @@ endif()
 message(STATUS "Building for sdk name ${SDK_NAME}")
 
 # set mediasoup flags
-set(MEDIASOUPCLIENT_LOG_TRACE ON)
-set(MEDIASOUPCLIENT_LOG_DEBUG ON)
 set(LIBSDPTRANSFORM_BUILD_TESTS OFF)
 set(LIBSDPTRANSFORM_BUILD_READMEHELPER OFF)
 
@@ -40,10 +38,10 @@ endif()
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -arch arm arm64")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -arch arm arm64")
 
-set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk")
-#set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk")
-#set(CMAKE_OSX_ARCHITECTURES x86_64)
-set(CMAKE_OSX_ARCHITECTURES arm64)
+#set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk")
+set(CMAKE_OSX_SYSROOT "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk")
+set(CMAKE_OSX_ARCHITECTURES x86_64)
+#set(CMAKE_OSX_ARCHITECTURES arm64)
 set(IPHONE_SDKVER "13.2")
 set(IPHONE_VERSION_MIN "9.0")
 

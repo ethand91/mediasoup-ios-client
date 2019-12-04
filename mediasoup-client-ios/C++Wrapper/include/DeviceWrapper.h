@@ -15,14 +15,14 @@
 #define DeviceWrapper_h
 
 @interface DeviceWrapper : NSObject {}
-+(NSObject *)nativeNewDevice;
-+(void)nativeFreeDevice:(NSObject *)nativeDevice;
-+(void)nativeLoad:(NSObject *)nativeDevice routerRtpCapabilities:(NSString *)routerRtpCapabilities;
-+(bool)nativeIsLoaded:(NSObject *)nativeDevice;
-+(NSString *)nativeGetRtpCapabilities:(NSObject *)nativeDevice;
-+(bool)nativeCanProduce:(NSObject *)nativeDevice kind:(NSString *)kind;
-+(NSValue *)nativeCreateSendTransport:(NSObject *)nativeDevice listener:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
-+(NSValue *)nativeCreateRecvTransport:(NSObject *)nativeDevice listener:(Protocol<RecvTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
++(NSValue *)nativeNewDevice;
++(void)nativeFreeDevice:(NSValue *)nativeDevice;
++(void)nativeLoad:(NSValue *)nativeDevice routerRtpCapabilities:(NSString *)routerRtpCapabilities;
++(bool)nativeIsLoaded:(NSValue *)nativeDevice;
++(NSString *)nativeGetRtpCapabilities:(NSValue *)nativeDevice;
++(bool)nativeCanProduce:(NSValue *)nativeDevice kind:(NSString *)kind;
++(NSValue *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
++(NSValue *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(Protocol<RecvTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
 @end
 
 #endif /* DeviceWrapper_h */

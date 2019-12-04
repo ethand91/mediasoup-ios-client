@@ -12,6 +12,8 @@
 
 @interface Mediasoupclient : NSObject {}
 +(NSString *)version;
++(void)initialize;
++(void)cleanup;
 @end
 
 #endif /* Mediasoupclient_h */

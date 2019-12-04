@@ -4,7 +4,7 @@
 
 @implementation Consumer : NSObject
 
--(id)initWithNativeConsumer:(NSObject *)nativeConsumer {
+-(instancetype)initWithNativeConsumer:(NSObject *)nativeConsumer {
     self = [super init];
     if (self) {
         self._nativeConsumer = nativeConsumer;

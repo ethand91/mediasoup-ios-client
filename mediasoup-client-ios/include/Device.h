@@ -15,7 +15,7 @@
 #define Device_h
 
 @interface Device : NSObject
-@property(nonatomic) NSObject* _nativeDevice;
+@property(nonatomic) NSValue* _nativeDevice;
 
 -(id)init;
 -(void)dispose;

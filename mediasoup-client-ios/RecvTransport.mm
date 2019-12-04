@@ -1,10 +1,11 @@
 #import <Foundation/Foundation.h>
 #import "RecvTransport.h"
 #import "TransportWrapper.h"
+#import "Consumer.h"
 
 @implementation RecvTransport : Transport
 
--(id)initWithNativeTransport:(NSObject *)nativeTransport {
+-(instancetype)initWithNativeTransport:(NSObject *)nativeTransport {
     self = [super init];
     if (self) {
         self._nativeTransport = nativeTransport;
@@ -27,7 +28,10 @@
     [self checkTransportExists];
     
     // TODO listener
-    return [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
+    NSValue *consumerObject = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
+    Consumer *consumer = [[Consumer alloc] initWithNativeConsumer:consumerObject];
+    
+    return consumer;
 }
 
 -(void)checkTransportExists {

@@ -12,20 +12,20 @@
 #define ProducerWrapper_h
 
 @interface ProducerWrapper : NSObject {}
-+(NSString *)getNativeId:(NSObject *)nativeProducer;
-+(bool)isNativeClosed:(NSObject *)nativeProducer;
-+(NSString *)getNativeKind:(NSObject *)nativeProducer;
-+(NSObject *)getNativeTrack:(NSObject *)nativeProducer;
-+(bool)isNativePaused:(NSObject *)nativeProducer;
-+(int)getNativeMaxSpatialLayer:(NSObject *)nativeProducer;
-+(NSString *)getNativeAppData:(NSObject *)nativeProducer;
-+(NSString *)getNativeRtpParameters:(NSObject *)nativeProducer;
-+(NSString *)getNativeStats:(NSObject *)nativeProducer;
-+(void)nativeResume:(NSObject *)nativeProducer;
-+(void)nativePause:(NSObject *)nativeProducer;
-+(void)setNativeMaxSpatialLayer:(NSObject *)nativeProducer layer:(int)layer;
-+(void)nativeReplaceTrack:(NSObject *)nativeProducer track:(NSObject *)track;
-+(void)nativeClose:(NSObject *)nativeProducer;
++(NSString *)getNativeId:(NSValue *)nativeProducer;
++(bool)isNativeClosed:(NSValue *)nativeProducer;
++(NSString *)getNativeKind:(NSValue *)nativeProducer;
++(NSObject *)getNativeTrack:(NSValue *)nativeProducer;
++(bool)isNativePaused:(NSValue *)nativeProducer;
++(int)getNativeMaxSpatialLayer:(NSValue *)nativeProducer;
++(NSString *)getNativeAppData:(NSValue *)nativeProducer;
++(NSString *)getNativeRtpParameters:(NSValue *)nativeProducer;
++(NSString *)getNativeStats:(NSValue *)nativeProducer;
++(void)nativeResume:(NSValue *)nativeProducer;
++(void)nativePause:(NSValue *)nativeProducer;
++(void)setNativeMaxSpatialLayer:(NSValue *)nativeProducer layer:(int)layer;
++(void)nativeReplaceTrack:(NSValue *)nativeProducer track:(NSValue *)track;
++(void)nativeClose:(NSValue *)nativeProducer;
 
 @end
 
@@ -39,8 +39,11 @@ public:
     
     ~ProducerListenerWrapper() = default;
     
-    void OnTransportClose(mediasoupclient::Producer *producer) override {
-        [this->listener onTransportClose:reinterpret_cast<NSObject *>(producer)];
+    void OnTransportClose(mediasoupclient::Producer *nativeProducer) override {
+        NSValue *producerObject = [NSValue valueWithPointer:nativeProducer];
+        Producer *producer = [[Producer alloc] initWithNativeProducer:producerObject];
+        
+        [this->listener onTransportClose:producer];
     };
 };
 

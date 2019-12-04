@@ -5,7 +5,7 @@
 
 @implementation Device : NSObject
 
--(id)init {
+-(instancetype)init {
     self = [super init];
     if (self) {
         self._nativeDevice = [DeviceWrapper nativeNewDevice];

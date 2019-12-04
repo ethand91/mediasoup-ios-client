@@ -37,8 +37,11 @@ public:
     
     ~ConsumerListenerWrapper() = default;
     
-    void OnTransportClose(mediasoupclient::Consumer *consumer) override {
-        [this->listener onTransportClose:reinterpret_cast<NSObject *>(consumer)];
+    void OnTransportClose(mediasoupclient::Consumer *nativeConsumer) override {
+        NSValue *consumerObject = [NSValue valueWithPointer:nativeConsumer];
+        Consumer *consumer = [[Consumer alloc] initWithNativeConsumer:consumerObject];
+        
+        [this->listener onTransportClose:consumer];
     };
 };
 
