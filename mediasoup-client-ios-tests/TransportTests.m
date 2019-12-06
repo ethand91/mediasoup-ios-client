@@ -16,10 +16,10 @@
 #import "utils/util.h"
 
 @interface TransportTests : XCTestCase<SendTransportListener, RecvTransportListener>
-@property (nonatomic) Device *device;
-@property (nonatomic) SendTransport *sendTransport;
-@property (nonatomic) RecvTransport *recvTransport;
-@property (nonatomic) NSString *connectionState;
+@property (nonatomic, strong) Device *device;
+@property (nonatomic, strong) SendTransport *sendTransport;
+@property (nonatomic, strong) RecvTransport *recvTransport;
+@property (nonatomic, strong) NSString *connectionState;
 @property (nonatomic) id delegate;
 @end
 
@@ -42,7 +42,7 @@
                                                              iceParameters:[Util dictionaryToJson:iceParameters]
                                                              iceCandidates:[Util dictionaryToJson:iceCandidates]
                                                              dtlsParameters:[Util dictionaryToJson:dtlsParameters]];
-    
+     
     self.sendTransport = [self.device createSendTransport:self.delegate
                                                        id:id
                                                        iceParameters:[Util dictionaryToJson:iceParameters]

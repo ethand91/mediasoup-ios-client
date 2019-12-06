@@ -12,7 +12,7 @@
 
 @implementation Transport : NSObject
 
--(instancetype)initWithNativeTransport:(NSObject *)nativeTransport {
+-(instancetype)initWithNativeTransport:(NSValue *)nativeTransport {
     self = [super init];
     if (self) {
         self._nativeTransport = nativeTransport;

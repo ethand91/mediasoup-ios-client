@@ -1,12 +1,9 @@
 #define MSC_CLASS "transport_wrapper"
 
-#include <iostream>
-
 #import <Foundation/Foundation.h>
 #import "Logger.hpp"
 
 #import "include/TransportWrapper.h"
-#import "webrtc/MediaStreamTrackImpl.h"
 
 using namespace mediasoupclient;
 
@@ -112,12 +109,12 @@ using namespace mediasoupclient;
     return [NSValue valueWithPointer:[TransportWrapper extractNativeTransport:nativeTransport]];
 }
 
-+(NSValue *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
++(NSValue *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(NSUInteger)mediaTrack encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
         auto producerListener = new ProducerListenerWrapper(listener);
-        auto mediaTrack = reinterpret_cast<webrtc::MediaStreamTrackInterface *>(track.hash);
+        auto mediaStreamTrack = reinterpret_cast<webrtc::MediaStreamTrackInterface *>(mediaTrack);
         
         std::vector<webrtc::RtpEncodingParameters> encodingsVector;
         
@@ -138,10 +135,10 @@ using namespace mediasoupclient;
         }
         
         mediasoupclient::SendTransport *transport = reinterpret_cast<mediasoupclient::SendTransport *>([nativeTransport pointerValue]);
-
-        mediasoupclient::Producer *producer = transport->Produce(producerListener, mediaTrack, &encodingsVector, &codecOptionsJson, appDataJson);
+        mediasoupclient::Producer *producer = transport->Produce(producerListener, mediaStreamTrack, &encodingsVector, &codecOptionsJson, appDataJson);
+        OwnedProducer *ownedProducer = new OwnedProducer(producer, producerListener);
         
-        return [NSValue valueWithPointer:producer];
+        return [NSValue valueWithPointer:ownedProducer];
     } catch (std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];
@@ -173,8 +170,10 @@ using namespace mediasoupclient;
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
         
-        mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::RecvTransport *>([nativeTransport pointerValue]);
-        mediasoupclient::Consumer *consumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
+        mediasoupclient::RecvTransport *transport = reinterpret_cast<OwnedRecvTransport *>([nativeTransport pointerValue])->transport();
+        mediasoupclient::Consumer *nativeConsumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
+        
+        OwnedConsumer *consumer = new OwnedConsumer(nativeConsumer, consumerListener);
         
         return [NSValue valueWithPointer:consumer];
     } catch (std::exception &e) {

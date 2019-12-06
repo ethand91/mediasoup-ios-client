@@ -6,7 +6,7 @@
     return [MediasoupclientWrapper nativeVersion];
 }
 
-+(void)initialize {
++(void)initializePC {
     [MediasoupclientWrapper nativeInitialize];
 }
 

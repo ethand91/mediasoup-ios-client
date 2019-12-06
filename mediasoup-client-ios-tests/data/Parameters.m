@@ -168,7 +168,8 @@
         @"foundation": @"udpcandidate",
         @"ip": @"9:9:9:9:9:9",
         @"port": @41443,
-        @"priority": @"udp",
+        @"priority": @104232353,
+        @"protocol": @"udp",
         @"type": @"host"
     };
     

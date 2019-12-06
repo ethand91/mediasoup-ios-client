@@ -14,7 +14,7 @@
 #define SendTransport_h
 
 @interface SendTransport : Transport
-@property(nonatomic) NSValue* _nativeTransport;
+@property(nonatomic, strong) NSValue* _nativeTransport;
 
 -(void)dispose;
 -(Producer *)produce:(Protocol<ProducerListener> *)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions;

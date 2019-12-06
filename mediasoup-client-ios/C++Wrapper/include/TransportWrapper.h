@@ -16,6 +16,37 @@
 #ifndef TransportWrapper_h
 #define TransportWrapper_h
 
+@interface TransportWrapper : NSObject {}
++(NSString *)getNativeId:(NSValue *)nativeTransport;
++(NSString *)getNativeConnectionState:(NSValue *)nativeTransport;
++(NSString *)getNativeAppData:(NSValue *)nativeTransport;
++(NSString *)getNativeStats:(NSValue *)nativeTransport;
++(bool)isNativeClosed:(NSValue *)nativeTransport;
++(void)nativeRestartIce:(NSValue *)nativeTransport iceParameters:(NSString *)iceParameters;
++(void)nativeUpdateIceServers:(NSValue *)nativeTransport iceServers:(NSString *)iceServers;
++(void)nativeClose:(NSValue *)nativeTransport;
++(NSValue *)nativeGetNativeTransport:(NSValue *)nativeTransport;
++(NSValue *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(NSUInteger)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
++(void)nativeFreeTransport:(NSValue *)nativeTransport;
++(NSValue *)nativeConsume:(NSValue *)nativeTransport listener:(Protocol<ConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
++(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport;
+
+@end
+
+class OwnedSendTransport {
+public:
+    OwnedSendTransport(mediasoupclient::SendTransport *transport, mediasoupclient::SendTransport::Listener *listener)
+    : transport_(transport), listener_(listener) {}
+    
+    ~OwnedSendTransport() = default;
+    
+    mediasoupclient::SendTransport *transport() const { return transport_.get(); }
+    
+private:
+    std::unique_ptr<mediasoupclient::SendTransport> transport_;
+    std::unique_ptr<mediasoupclient::SendTransport::Listener> listener_;
+};
+
 class SendTransportListenerWrapper : public mediasoupclient::SendTransport::Listener {
 private:
     Protocol<SendTransportListener> *listener;
@@ -77,6 +108,20 @@ public:
     };
 };
 
+class OwnedRecvTransport {
+public:
+    OwnedRecvTransport(mediasoupclient::RecvTransport *transport, mediasoupclient::RecvTransport::Listener *listener)
+    : transport_(transport), listener_(listener) {}
+    
+    ~OwnedRecvTransport() = default;
+    
+    mediasoupclient::RecvTransport *transport() const { return transport_.get(); }
+    
+private:
+    std::unique_ptr<mediasoupclient::RecvTransport> transport_;
+    std::unique_ptr<mediasoupclient::RecvTransport::Listener> listener_;
+};
+
 class RecvTransportListenerWrapper : public mediasoupclient::RecvTransport::Listener {
 private:
     Protocol<TransportListener> *listener;
@@ -110,22 +155,5 @@ public:
         [this->listener onConnectionStateChange:recvTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
     };
 };
-
-@interface TransportWrapper : NSObject {}
-+(NSString *)getNativeId:(NSValue *)nativeTransport;
-+(NSString *)getNativeConnectionState:(NSValue *)nativeTransport;
-+(NSString *)getNativeAppData:(NSValue *)nativeTransport;
-+(NSString *)getNativeStats:(NSValue *)nativeTransport;
-+(bool)isNativeClosed:(NSValue *)nativeTransport;
-+(void)nativeRestartIce:(NSValue *)nativeTransport iceParameters:(NSString *)iceParameters;
-+(void)nativeUpdateIceServers:(NSValue *)nativeTransport iceServers:(NSString *)iceServers;
-+(void)nativeClose:(NSValue *)nativeTransport;
-+(NSValue *)nativeGetNativeTransport:(NSValue *)nativeTransport;
-+(NSValue *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
-+(void)nativeFreeTransport:(NSValue *)nativeTransport;
-+(NSValue *)nativeConsume:(NSValue *)nativeTransport listener:(Protocol<ConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
-+(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport;
-
-@end
 
 #endif /* TransportWrapper_h */

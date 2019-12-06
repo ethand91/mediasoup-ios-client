@@ -15,7 +15,7 @@
 +(NSString *)getNativeId:(NSValue *)nativeProducer;
 +(bool)isNativeClosed:(NSValue *)nativeProducer;
 +(NSString *)getNativeKind:(NSValue *)nativeProducer;
-+(NSObject *)getNativeTrack:(NSValue *)nativeProducer;
++(webrtc::MediaStreamTrackInterface *)getNativeTrack:(NSValue *)nativeProducer;
 +(bool)isNativePaused:(NSValue *)nativeProducer;
 +(int)getNativeMaxSpatialLayer:(NSValue *)nativeProducer;
 +(NSString *)getNativeAppData:(NSValue *)nativeProducer;
@@ -24,10 +24,24 @@
 +(void)nativeResume:(NSValue *)nativeProducer;
 +(void)nativePause:(NSValue *)nativeProducer;
 +(void)setNativeMaxSpatialLayer:(NSValue *)nativeProducer layer:(int)layer;
-+(void)nativeReplaceTrack:(NSValue *)nativeProducer track:(NSValue *)track;
++(void)nativeReplaceTrack:(NSValue *)nativeProducer track:(NSUInteger)track;
 +(void)nativeClose:(NSValue *)nativeProducer;
 
 @end
+
+class OwnedProducer {
+public:
+    OwnedProducer(mediasoupclient::Producer *producer, mediasoupclient::Producer::Listener *listener)
+    : producer_(producer), listener_(listener) {}
+    
+    ~OwnedProducer() = default;
+    
+    mediasoupclient::Producer *producer() const { return producer_.get(); }
+    
+private:
+    std::unique_ptr<mediasoupclient::Producer> producer_;
+    std::unique_ptr<mediasoupclient::Producer::Listener> listener_;
+};
 
 class ProducerListenerWrapper : public mediasoupclient::Producer::Listener {
 private:

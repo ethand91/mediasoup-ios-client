@@ -96,9 +96,9 @@ using namespace mediasoupclient;
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
         
-        mediasoupclient::SendTransport *transport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateSendTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), pcOptions, appDataJson);
+        mediasoupclient::SendTransport *nativeTransport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateSendTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), pcOptions, appDataJson);
         
-        return [NSValue valueWithPointer:transport];
+        return [NSValue valueWithPointer:nativeTransport];
     } catch(std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];
@@ -127,9 +127,9 @@ using namespace mediasoupclient;
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
         
-        mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateRecvTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), pcOptions, appDataJson);
+        mediasoupclient::RecvTransport *nativeTransport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateRecvTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), pcOptions, appDataJson);
         
-        return [NSValue valueWithPointer:transport];
+        return [NSValue valueWithPointer:nativeTransport];
     } catch (std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];

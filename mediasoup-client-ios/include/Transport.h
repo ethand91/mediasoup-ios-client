@@ -12,7 +12,7 @@
 #define Transport_h
 
 @interface Transport : NSObject
-@property(nonatomic) NSValue* _nativeTransport;
+@property(nonatomic, strong) NSValue* _nativeTransport;
 
 -(NSString *)getId;
 -(NSString *)getConnectionState;

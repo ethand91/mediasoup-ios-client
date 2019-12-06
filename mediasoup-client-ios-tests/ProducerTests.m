@@ -20,9 +20,10 @@
 #import "utils/util.h"
 
 @interface ProducerTests : XCTestCase<ProducerListener>
-@property (nonatomic) Device *device;
-@property (nonatomic) SendTransport *sendTransport;
-@property (nonatomic) Producer *producer;
+@property (nonatomic, strong) Device *device;
+@property (nonatomic, strong) SendTransport *sendTransport;
+@property (nonatomic, strong) Producer *producer;
+@property (nonatomic, strong) RTCAudioTrack *track;
 @property (nonatomic) id delegate;
 @end
 
@@ -31,6 +32,7 @@
 - (void)setUp {
     [super setUp];
     
+    [Mediasoupclient initializePC];
     [Logger setDefaultHandler];
     [Logger setLogLevel:4];
     
@@ -45,23 +47,18 @@
     
     SendTransportListenerImpl *listener = [[SendTransportListenerImpl alloc] init];
     
-    NSLog(@"Test 1 %@", listener);
     self.sendTransport = [self.device createSendTransport:listener.delegate
                                                        id:id
                                                        iceParameters:[Util dictionaryToJson:iceParameters]
                                                        iceCandidates:[Util dictionaryToJson:iceCandidates]
                                                        dtlsParameters:[Util dictionaryToJson:dtlsParameters]];
     
-    NSLog(@"Test 2");
     
     RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
-    NSLog(@"Factory %@", factory);
-    RTCAudioTrack *audioTrack = [factory audioTrackWithTrackId:@"dsdasdsa"];
+    self.track = [factory audioTrackWithTrackId:@"dsdasdsa"];
     self.delegate = self;
     
-    NSLog(@"Test 3 %@", audioTrack);
-    self.producer = [self.sendTransport produce:self.delegate track:audioTrack encodings:@[] codecOptions:nil];
-    NSLog(@"Test 4");
+    self.producer = [self.sendTransport produce:self.delegate track:self.track encodings:@[] codecOptions:nil];
 }
 
 - (void)tearDown {
@@ -71,8 +68,60 @@
     XCTAssertNotNil([self.producer getId]);
 }
 
--(void)onTransportClose:(Producer *)producer {
+-(void)testIsNotClosed {
+    XCTAssertFalse([self.producer isClosed]);
+}
+
+-(void)testGetKind {
+    XCTAssertTrue([self.producer.getKind isEqualToString:@"audio"]);
+}
+
+-(void)testGetTrack {
+    RTCMediaStreamTrack *track = [self.producer getTrack];
+    XCTAssertNotNil(track);
+    XCTAssertTrue([[track kind] isEqualToString:@"audio"]);
+}
+
+-(void)testNotPaused {
+    XCTAssertFalse([self.producer isPaused]);
+}
+
+-(void)testGetMaxSpatialLayer {
+    XCTAssertEqual([self.producer getMaxSpatialLayer], 0);
+}
+
+-(void)testPause {
+    [self.producer pause];
+    XCTAssertTrue([self.producer isPaused]);
+}
+
+-(void)testResume {
+    [self.producer pause];
+    XCTAssertTrue([self.producer isPaused]);
     
+    [self.producer resume];
+    XCTAssertFalse([self.producer isPaused]);
+}
+
+-(void)testReplaceTrack {
+    RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
+    RTCAudioTrack *newTrack = [factory audioTrackWithTrackId:@"new"];
+    
+    [self.producer replaceTrack:newTrack];
+    XCTAssertTrue([[self.producer getTrack].trackId isEqualToString:@"new"]);
+}
+
+-(void)testGetStats {
+    XCTAssertNotNil([self.producer getStats]);
+}
+
+-(void)testClose {
+    [self.producer close];
+    XCTAssertTrue([self.producer isClosed]);
+}
+
+-(void)onTransportClose:(Producer *)producer {
+    NSLog(@"onTransportClose");
 }
 
 @end

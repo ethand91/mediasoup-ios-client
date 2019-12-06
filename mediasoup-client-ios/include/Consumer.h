@@ -12,7 +12,7 @@
 #define Consumer_h
 
 @interface Consumer : NSObject
-@property(nonatomic) NSObject* _nativeConsumer;
+@property(nonatomic, strong) NSObject* _nativeConsumer;
 
 -(NSString *)getId;
 -(NSString *)getProducerId;

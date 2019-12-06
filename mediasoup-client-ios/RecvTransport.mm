@@ -6,7 +6,7 @@
 @implementation RecvTransport : Transport
 
 -(instancetype)initWithNativeTransport:(NSObject *)nativeTransport {
-    self = [super init];
+    self = [super initWithNativeTransport:nativeTransport];
     if (self) {
         self._nativeTransport = nativeTransport;
     }

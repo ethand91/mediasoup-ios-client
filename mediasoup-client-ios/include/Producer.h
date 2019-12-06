@@ -7,12 +7,14 @@
 //
 
 #import "WebRTC/RTCMediaStreamTrack.h"
+#import "WebRTC/RTCPeerConnectionFactory.h"
 
 #ifndef Producer_h
 #define Producer_h
 
 @interface Producer : NSObject
-@property(nonatomic) NSValue* _nativeProducer;
+@property(nonatomic, strong) NSValue* _nativeProducer;
+@property(nonatomic, strong) RTCMediaStreamTrack * _nativeTrack;
 
 -(NSString *)getId;
 -(bool)isClosed;

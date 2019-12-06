@@ -4,10 +4,18 @@
 
 @implementation Producer : NSObject
 
--(instancetype)initWithNativeProducer:(NSObject *)nativeProducer {
+-(instancetype)initWithNativeProducer:(NSValue *)nativeProducer {
     self = [super init];
     if (self) {
         self._nativeProducer = nativeProducer;
+        
+        webrtc::MediaStreamTrackInterface *nativeTrack = [ProducerWrapper getNativeTrack:self._nativeProducer];
+        rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
+
+        RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
+        
+        self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:factory];
+        free(factory);
     }
     
     return self;
@@ -26,7 +34,7 @@
 }
 
 -(RTCMediaStreamTrack *)getTrack {
-    return (RTCMediaStreamTrack *)[ProducerWrapper getNativeTrack:self._nativeProducer];
+    return self._nativeTrack;
 }
 
 -(bool)isPaused {
@@ -58,9 +66,15 @@
 }
 
 -(void)replaceTrack:(RTCMediaStreamTrack *)track {
-    NSObject *nativeMediaStreamTrack = reinterpret_cast<NSObject *>(track);
+    [ProducerWrapper nativeReplaceTrack:self._nativeProducer track:track.hash];
     
-    [ProducerWrapper nativeReplaceTrack:self._nativeProducer track:nativeMediaStreamTrack];
+    webrtc::MediaStreamTrackInterface *nativeTrack = [ProducerWrapper getNativeTrack:self._nativeProducer];
+    rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> mediaTrack(nativeTrack);
+
+    RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
+    
+    self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:mediaTrack factory:factory];
+    free(factory);
 }
 
 -(NSString *)getStats {

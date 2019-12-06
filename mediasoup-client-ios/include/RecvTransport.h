@@ -13,7 +13,7 @@
 #define RecvTransport_h
 
 @interface RecvTransport : Transport
-@property(nonatomic) NSValue* _nativeTransport;
+@property(nonatomic, strong) NSValue* _nativeTransport;
 
 -(void)dispose;
 -(Consumer *)consume:(Protocol<ConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters;

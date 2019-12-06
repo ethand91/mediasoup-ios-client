@@ -13,7 +13,7 @@ using namespace mediasoupclient;
 +(NSString *)getNativeId:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    const std::string nativeId = reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->GetId();
+    const std::string nativeId = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetId();
     
     return [NSString stringWithUTF8String:nativeId.c_str()];
 }
@@ -21,35 +21,35 @@ using namespace mediasoupclient;
 +(bool)isNativeClosed:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    return reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->IsClosed();
+    return reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->IsClosed();
 }
 
 +(NSString *)getNativeKind:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    const std::string nativeKind = reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->GetKind();
+    const std::string nativeKind = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetKind();
     
     return [NSString stringWithUTF8String:nativeKind.c_str()];
 }
 
-+(NSValue *)getNativeTrack:(NSValue *)nativeProducer {
++(webrtc::MediaStreamTrackInterface *)getNativeTrack:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    auto mediaStreamTrack = reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->GetTrack();
+    auto mediaStreamTrack = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetTrack();
     
-    return reinterpret_cast<NSObject *>(mediaStreamTrack);
+    return mediaStreamTrack;
 }
 
 +(bool)isNativePaused:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    return reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->IsPaused();
+    return reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->IsPaused();
 }
 
 +(int)getNativeMaxSpatialLayer:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    auto maxSpatialLayer = reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->GetMaxSpatialLayer();
+    auto maxSpatialLayer = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetMaxSpatialLayer();
     
     return maxSpatialLayer;
 }
@@ -57,7 +57,7 @@ using namespace mediasoupclient;
 +(NSString *)getNativeAppData:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    const std::string nativeAppData = reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->GetAppData();
+    const std::string nativeAppData = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetAppData();
     
     return [NSString stringWithUTF8String:nativeAppData.c_str()];
 }
@@ -65,7 +65,7 @@ using namespace mediasoupclient;
 +(NSString *)getNativeRtpParameters:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    const std::string nativeRtpParameters = reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->GetRtpParameters();
+    const std::string nativeRtpParameters = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetRtpParameters();
     
     return [NSString stringWithUTF8String:nativeRtpParameters.c_str()];
 }
@@ -74,7 +74,7 @@ using namespace mediasoupclient;
     MSC_TRACE();
     
     try {
-        const std::string nativeStats = reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->GetStats().dump();
+        const std::string nativeStats = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetStats().dump();
         
         return [NSString stringWithUTF8String:nativeStats.c_str()];
     } catch (const std::exception &e) {
@@ -86,20 +86,20 @@ using namespace mediasoupclient;
 +(void)nativeResume:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->Resume();
+    reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->Resume();
 }
 
 +(void)nativePause:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->Pause();
+    reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->Pause();
 }
 
 +(void)setNativeMaxSpatialLayer:(NSValue *)nativeProducer layer:(int)layer {
     MSC_TRACE();
     
     try {
-        reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->SetMaxSpatialLayer(layer);
+        reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->SetMaxSpatialLayer(layer);
     } catch (const std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];
@@ -109,12 +109,12 @@ using namespace mediasoupclient;
     }
 }
 
-+(void)nativeReplaceTrack:(NSValue *)nativeProducer track:(NSValue *)track {
++(void)nativeReplaceTrack:(NSValue *)nativeProducer track:(NSUInteger *)track {
     MSC_TRACE();
     
     try {
-        auto mediaStreamTrack = reinterpret_cast<webrtc::MediaStreamTrackInterface *>([track pointerValue]);
-        reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->ReplaceTrack(mediaStreamTrack);
+        auto mediaStreamTrack = reinterpret_cast<webrtc::MediaStreamTrackInterface *>(track);
+        reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->ReplaceTrack(mediaStreamTrack);
     } catch (const std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];
@@ -127,7 +127,7 @@ using namespace mediasoupclient;
 +(void)nativeClose:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    reinterpret_cast<mediasoupclient::Producer *>([nativeProducer pointerValue])->Close();
+    reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->Close();
 }
 
 @end

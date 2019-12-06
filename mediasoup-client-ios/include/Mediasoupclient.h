@@ -12,7 +12,7 @@
 
 @interface Mediasoupclient : NSObject {}
 +(NSString *)version;
-+(void)initialize;
++(void)initializePC;
 +(void)cleanup;
 @end
 

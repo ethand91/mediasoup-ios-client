@@ -1,4 +1,3 @@
-#include <iostream>
 #import <Foundation/Foundation.h>
 #import "SendTransport.h"
 #import "TransportWrapper.h"
@@ -6,8 +5,8 @@
 
 @implementation SendTransport : Transport
 
--(instancetype)initWithNativeTransport:(NSObject *)nativeTransport {
-    self = [super init];
+-(instancetype)initWithNativeTransport:(NSValue *)nativeTransport {
+    self = [super initWithNativeTransport:nativeTransport];
     if (self) {
         self._nativeTransport = nativeTransport;
     }
@@ -22,16 +21,17 @@
 }
 
 -(Producer *)produce:(Protocol<ProducerListener> *)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions {
-    std::cout << "produce 0" << std::endl;
     return [self produce:listener track:track encodings:encodings codecOptions:codecOptions appData:nil];
 }
 
 -(Producer *)produce:(Protocol<ProducerListener> *)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
-    std::cout << "produce 1" << std::endl;
-    NSLog(@"TESTING TRACK %@", track);
-    NSValue *producerObject = [TransportWrapper nativeProduce:self._nativeTransport listener:listener track:track encodings:encodings codecOptions:codecOptions appData:appData];
+    NSUInteger nativeTrack = track.hash;
+    
+    NSValue *producerObject = [TransportWrapper nativeProduce:self._nativeTransport listener:listener track:nativeTrack encodings:encodings codecOptions:codecOptions appData:appData];
+    
+    NSString *kind = [ProducerWrapper getNativeKind:producerObject];
+    
     Producer *producer = [[Producer alloc] initWithNativeProducer:producerObject];
-    std::cout << "produce 2" << std::endl;
     
     return producer;
 }

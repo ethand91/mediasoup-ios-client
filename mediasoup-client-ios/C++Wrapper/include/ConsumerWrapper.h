@@ -27,6 +27,20 @@
 
 @end
 
+class OwnedConsumer {
+public:
+    OwnedConsumer(mediasoupclient::Consumer *consumer, mediasoupclient::Consumer::Listener *listener)
+    : consumer_(consumer), listener_(listener) {}
+    
+    ~OwnedConsumer() = default;
+    
+    mediasoupclient::Consumer *consumer() const { return consumer_.get(); }
+    
+private:
+    std::unique_ptr<mediasoupclient::Consumer> consumer_;
+    std::unique_ptr<mediasoupclient::Consumer::Listener> listener_;
+};
+
 class ConsumerListenerWrapper : public mediasoupclient::Consumer::Listener {
 private:
     Protocol<ConsumerListener> *listener;
