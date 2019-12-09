@@ -18,7 +18,6 @@
 }
 
 +(void)nativeInitialize {
-    NSLog(@"InitializePC");
     [RTCPeerConnectionFactory initialize];
     mediasoupclient::Initialize();
 }

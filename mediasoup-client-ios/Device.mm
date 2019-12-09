@@ -6,8 +6,6 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 
-#include <iostream>
-
 #import "Device.h"
 #import "DeviceWrapper.h"
 
@@ -46,15 +44,12 @@
 }
 
 -(SendTransport *)createSendTransport:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters {
-    std::cout << "createSendTransport" << std::endl;
     return [self createSendTransport:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters options:nil appData:nil];
 }
 
 -(SendTransport *)createSendTransport:(Protocol<SendTransportListener> *)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
-    std::cout << "createSendTransport before check" << std::endl;
     [self checkDeviceExists];
     
-    std::cout << "createSendTransport after check" << std::endl;
     NSObject *transport = [DeviceWrapper nativeCreateSendTransport:self._nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters options:options appData:appData];
     
     return [[SendTransport alloc] initWithNativeTransport:transport];

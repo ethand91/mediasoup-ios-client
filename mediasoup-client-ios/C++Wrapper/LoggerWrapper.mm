@@ -6,7 +6,6 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 
-#include <iostream>
 #import <Foundation/Foundation.h>
 
 #import "Logger.hpp"
