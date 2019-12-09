@@ -1,6 +1,5 @@
-#include <iostream>
-
 #import "include/MediasoupclientWrapper.h"
+#import "WebRTC/RTCPeerConnectionFactory.h"
 
 @implementation MediasoupclientWrapper
 
@@ -11,6 +10,8 @@
 }
 
 +(void)nativeInitialize {
+    NSLog(@"InitializePC");
+    [RTCPeerConnectionFactory initialize];
     mediasoupclient::Initialize();
 }
 

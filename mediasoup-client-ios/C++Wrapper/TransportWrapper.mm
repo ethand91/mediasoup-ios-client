@@ -170,7 +170,7 @@ using namespace mediasoupclient;
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
         
-        mediasoupclient::RecvTransport *transport = reinterpret_cast<OwnedRecvTransport *>([nativeTransport pointerValue])->transport();
+        mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::RecvTransport *>([nativeTransport pointerValue]);
         mediasoupclient::Consumer *nativeConsumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
         
         OwnedConsumer *consumer = new OwnedConsumer(nativeConsumer, consumerListener);

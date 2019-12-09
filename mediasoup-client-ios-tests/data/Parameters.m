@@ -211,4 +211,56 @@
     return jsonString;
 }
 
++(NSDictionary *)generateConsumerRemoteParameters {
+    NSDictionary *opusParameters = @{
+        @"useinbandfec": @1
+    };
+    
+    NSDictionary *opusCodec = @{
+        @"mimeType": @"audio/opus",
+        @"clockRate": @"48000",
+        @"payloadType": @100,
+        @"channels": @2,
+        @"rtcpFeedback": @[],
+        @"parameters": opusParameters
+    };
+    
+    NSArray *opusArray = @[opusCodec];
+    
+    NSDictionary *encodingsObject = @{
+        @"ssrc": @22222222
+    };
+    
+    NSArray *encodings = @[encodingsObject];
+    
+    NSDictionary *headerExtensionsObject = @{
+        @"uri": @"urn:ietf:params:rtp-hdrext:ssrc-audio-level",
+        @"id": @1
+    };
+    
+    NSArray *headerExtensions = @[headerExtensionsObject];
+    
+    NSDictionary *rtcpObject = @{
+        @"cname": [[NSUUID UUID] UUIDString],
+        @"reducedSize": @true,
+        @"mux": @true
+    };
+    
+    NSDictionary *rtpParameters = @{
+        @"codecs": opusArray,
+        @"encodings": encodings,
+        @"headerExtensions": headerExtensions,
+        @"rtcp": rtcpObject
+    };
+    
+    NSDictionary *remoteParameters = @{
+        @"producerId": @"producer",
+        @"id": @"consumer",
+        @"kind": @"audio",
+        @"rtpParameters": rtpParameters
+    };
+    
+    return remoteParameters;
+}
+
 @end

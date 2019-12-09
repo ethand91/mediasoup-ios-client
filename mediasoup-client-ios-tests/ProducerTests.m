@@ -24,7 +24,7 @@
 @property (nonatomic, strong) SendTransport *sendTransport;
 @property (nonatomic, strong) Producer *producer;
 @property (nonatomic, strong) RTCAudioTrack *track;
-@property (nonatomic) id delegate;
+@property (nonatomic, assign) id delegate;
 @end
 
 @implementation ProducerTests
@@ -33,8 +33,6 @@
     [super setUp];
     
     [Mediasoupclient initializePC];
-    [Logger setDefaultHandler];
-    [Logger setLogLevel:4];
     
     self.device = [[Device alloc] init];
     [self.device load:[Parameters generateRouterRtpCapabilities]];

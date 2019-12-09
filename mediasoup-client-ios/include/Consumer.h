@@ -12,7 +12,8 @@
 #define Consumer_h
 
 @interface Consumer : NSObject
-@property(nonatomic, strong) NSObject* _nativeConsumer;
+@property(nonatomic, strong) NSValue* _nativeConsumer;
+@property(nonatomic, strong) RTCMediaStreamTrack *_nativeTrack;
 
 -(NSString *)getId;
 -(NSString *)getProducerId;

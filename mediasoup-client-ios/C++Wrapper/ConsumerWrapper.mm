@@ -5,151 +5,102 @@
 //  Created by Denvir Ethan on 2019/11/22.
 //  Copyright © 2019 Denvir Ethan. All rights reserved.
 //
+#define MSC_CLASS "consumer_wrapper"
 
 #import <Foundation/Foundation.h>
 
+#import "Logger.hpp"
 #import "Consumer.hpp"
 #import "include/ConsumerWrapper.h"
 
+using namespace mediasoupclient;
+
 @implementation ConsumerWrapper : NSObject
 
-+(NSString *)getNativeId:(NSObject *)nativeConsumer {
-    const std::string nativeId = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetId();
++(NSString *)getNativeId:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    const std::string nativeId = reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->GetId();
     
     return [NSString stringWithUTF8String:nativeId.c_str()];
 }
 
-+(NSString *)getNativeProducerId:(NSObject *)nativeConsumer {
-    const std::string nativeProducerId = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetProducerId();
++(NSString *)getNativeProducerId:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    const std::string nativeProducerId = reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->GetProducerId();
     
     return [NSString stringWithUTF8String:nativeProducerId.c_str()];
 }
 
-+(bool)isNativeClosed:(NSObject *)nativeConsumer {
-    return reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->IsClosed();
++(bool)isNativeClosed:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    
+    return reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->IsClosed();
 }
 
-+(bool)isNativePaused:(NSObject *)nativeConsumer {
-    return reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->IsPaused();
++(bool)isNativePaused:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    
+    return reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->IsPaused();
 }
 
-+(NSString *)getNativeKind:(NSObject *)nativeConsumer {
-    const std::string nativeKind = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetKind();
++(NSString *)getNativeKind:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    const std::string nativeKind = reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->GetKind();
     
     return [NSString stringWithUTF8String:nativeKind.c_str()];
 }
 
-+(NSObject *)getNativeTrack:(NSObject *)nativeConsumer {
-    auto mediaStreamTrack = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetTrack();
++(webrtc::MediaStreamTrackInterface *)getNativeTrack:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    auto mediaStreamTrack = reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->GetTrack();
     
-    return reinterpret_cast<NSObject *>(mediaStreamTrack);
+    return mediaStreamTrack;
 }
 
-+(NSString *)getNativeRtpParameters:(NSObject *)nativeConsumer {
-    const std::string nativeRtpParameters = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetRtpParameters().dump();
++(NSString *)getNativeRtpParameters:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    const std::string nativeRtpParameters = reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->GetRtpParameters().dump();
     
     return [NSString stringWithUTF8String:nativeRtpParameters.c_str()];
 }
 
-+(NSString *)getNativeAppData:(NSObject *)nativeConsumer {
-    const std::string nativeAppData = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetAppData().dump();
++(NSString *)getNativeAppData:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    const std::string nativeAppData = reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->GetAppData().dump();
     
     return [NSString stringWithUTF8String:nativeAppData.c_str()];
 }
 
-+(void)nativeResume:(NSObject *)nativeConsumer {
-    reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->Resume();
++(void)nativeResume:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->Resume();
 }
 
-+(void)nativePause:(NSObject *)nativeConsumer {
-    reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->Pause();
++(void)nativePause:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->Pause();
 }
 
-+(NSString *)getNativeStats:(NSObject *)nativeConsumer {
++(NSString *)getNativeStats:(NSValue *)nativeConsumer {
+    MSC_TRACE();
     try {
-        const std::string nativeStats = reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->GetStats().dump();
+        const std::string nativeStats = reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->GetStats().dump();
         
         return [NSString stringWithUTF8String:nativeStats.c_str()];
     } catch (const std::exception &e) {
-        // TODO
+        MSC_ERROR("%s", e.what());
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+        
+        throw exception;
+        
         return nullptr;
     }
 }
 
-+(void)nativeClose:(NSObject *)nativeConsumer {
-    reinterpret_cast<mediasoupclient::Consumer *>(nativeConsumer)->Close();
++(void)nativeClose:(NSValue *)nativeConsumer {
+    MSC_TRACE();
+    reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->Close();
 }
 
 @end
-
-
-/*
-@implementation ConsumerWrapper
-@synthesize consumer = _consumer;
-
--(void)onClose:(mediasoupclient::Consumer *)consumer {
-    NSLog(@"Consumer Close");
-}
-
--(instancetype) initWithConsumer:(mediasoupclient::Consumer *)consumer {
-    self = [super init];
-    if (self) {
-        _consumer = consumer;
-    }
-    
-    return self;
-}
-
--(NSString *)getNativeId {
-    return [NSString stringWithUTF8String:self.consumer->GetId().c_str()];
-}
-
--(NSString *)getNativeProducerId {
-    return [NSString stringWithUTF8String:self.consumer->GetProducerId().c_str()];
-}
-
--(Boolean *)isNativeClosed {
-    return (Boolean *)self.consumer->IsClosed();
-}
-
--(Boolean *)isNativePaused {
-    return (Boolean *)self.consumer->IsPaused();
-}
-
--(NSString *)getNativeKind {
-    return [NSString stringWithUTF8String:self.consumer->GetKind().c_str()];
-}
-
--(NSObject *)getNativeTrack {
-    return (NSObject *)CFBridgingRelease(self.consumer->GetTrack());
-}
-
--(NSString *)getNativeRtpParameters {
-    const std::string rtpParametersString = self.consumer->GetRtpParameters().dump();
-    return [NSString stringWithUTF8String:rtpParametersString.c_str()];
-}
-
--(NSString *)getNativeAppData {
-    const std::string appDataString = self.consumer->GetAppData().dump();
-    return [NSString stringWithUTF8String:appDataString.c_str()];
-}
-
--(void)nativeResume {
-    self.consumer->Resume();
-}
-
--(void)nativePause {
-    self.consumer->Pause();
-}
-
--(NSString *)getNativeStats {
-    const std::string statsString = self.consumer->GetStats().dump();
-    return [NSString stringWithUTF8String:statsString.c_str()];
-}
-
--(void)nativeClose {
-    self.consumer->Close();
-}
-
-@end
- */

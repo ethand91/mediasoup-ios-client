@@ -20,6 +20,12 @@
 		351A833E2394DE2B00BA7A13 /* RecvTransport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A833D2394DE2B00BA7A13 /* RecvTransport.mm */; };
 		351A83402394DE3A00BA7A13 /* SendTransport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A833F2394DE3A00BA7A13 /* SendTransport.mm */; };
 		351A83432394E0AF00BA7A13 /* MediasoupclientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 351A83412394E06800BA7A13 /* MediasoupclientTests.m */; };
+		35256BEF239A07B000E27BB3 /* ConsumerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35256BEE239A07B000E27BB3 /* ConsumerTests.m */; };
+		35256BF1239A4A7800E27BB3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C613C2387D97100986297 /* AudioToolbox.framework */; };
+		35256BF6239A4AA600E27BB3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */; };
+		35256BF7239A4AA600E27BB3 /* CoreMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		35256BF8239A4AA800E27BB3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35256BF4239A4AA100E27BB3 /* CoreVideo.framework */; };
+		35256BF9239A4AA800E27BB3 /* CoreVideo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35256BF4239A4AA100E27BB3 /* CoreVideo.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3538C5532397A8AA007EB078 /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 35D7427D2390B71500C22679 /* Device.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3538C5562397A9C5007EB078 /* Device.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35D7427F2390B8AD00C22679 /* Device.mm */; };
 		3538C55A2397AE5C007EB078 /* DeviceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */; };
@@ -30,7 +36,7 @@
 		353EA3E123960EBE000D5353 /* TransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 353EA3E023960EBE000D5353 /* TransportTests.m */; };
 		353EA3E323963B6A000D5353 /* ProducerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 353EA3E223963B6A000D5353 /* ProducerTests.m */; };
 		3544B7E7238E604A00A6AA17 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; };
-		3544B7E8238E604A00A6AA17 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3544B7E8238E604A00A6AA17 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61292387702600986297 /* ConsumerWrapper.mm */; };
 		355C613323877F2B00986297 /* ProducerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C613223877F2B00986297 /* ProducerWrapper.mm */; };
 		355C61372387995200986297 /* TransportWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61362387995200986297 /* TransportWrapper.mm */; };
@@ -76,6 +82,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				35256BF9239A4AA800E27BB3 /* CoreVideo.framework in Embed Frameworks */,
+				35256BF7239A4AA600E27BB3 /* CoreMedia.framework in Embed Frameworks */,
 				35D17230238CFB5100FAF301 /* AVFoundation.framework in Embed Frameworks */,
 				35D1722E238CFB5000FAF301 /* CoreAudio.framework in Embed Frameworks */,
 				35D17232238CFB5300FAF301 /* AudioToolbox.framework in Embed Frameworks */,
@@ -99,6 +107,9 @@
 		351A833D2394DE2B00BA7A13 /* RecvTransport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RecvTransport.mm; sourceTree = "<group>"; };
 		351A833F2394DE3A00BA7A13 /* SendTransport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SendTransport.mm; sourceTree = "<group>"; };
 		351A83412394E06800BA7A13 /* MediasoupclientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediasoupclientTests.m; sourceTree = "<group>"; };
+		35256BEE239A07B000E27BB3 /* ConsumerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConsumerTests.m; sourceTree = "<group>"; };
+		35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		35256BF4239A4AA100E27BB3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		3538C5542397A91A007EB078 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		353BD1292387E23500A8734C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceWrapper.mm; sourceTree = "<group>"; };
@@ -162,12 +173,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				35C66C47238E7F21003C2E1E /* libwebrtc.a in Frameworks */,
+				35256BF6239A4AA600E27BB3 /* CoreMedia.framework in Frameworks */,
 				35D884FA2397A08000BA6764 /* libsdptransform.a in Frameworks */,
 				35D884F82397A07000BA6764 /* libmediasoupclient.a in Frameworks */,
 				3544B7E7238E604A00A6AA17 /* WebRTC.framework in Frameworks */,
 				35D1722F238CFB5100FAF301 /* AVFoundation.framework in Frameworks */,
+				35256BF1239A4A7800E27BB3 /* AudioToolbox.framework in Frameworks */,
 				35D1722B238CFB4B00FAF301 /* UIKit.framework in Frameworks */,
 				35D17231238CFB5300FAF301 /* AudioToolbox.framework in Frameworks */,
+				35256BF8239A4AA800E27BB3 /* CoreVideo.framework in Frameworks */,
 				35D1722D238CFB5000FAF301 /* CoreAudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +234,7 @@
 				351A83412394E06800BA7A13 /* MediasoupclientTests.m */,
 				353EA3E023960EBE000D5353 /* TransportTests.m */,
 				353EA3E223963B6A000D5353 /* ProducerTests.m */,
+				35256BEE239A07B000E27BB3 /* ConsumerTests.m */,
 			);
 			path = "mediasoup-client-ios-tests";
 			sourceTree = "<group>";
@@ -274,6 +289,8 @@
 		35E2E4892385289700E315FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35256BF4239A4AA100E27BB3 /* CoreVideo.framework */,
+				35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */,
 				3538C5542397A91A007EB078 /* libc++.tbd */,
 				35D884F92397A08000BA6764 /* libsdptransform.a */,
 				35D884F72397A07000BA6764 /* libmediasoupclient.a */,
@@ -463,6 +480,7 @@
 				35D17234238CFBFD00FAF301 /* DeviceTests.m in Sources */,
 				353EA3D82395F26C000D5353 /* Parameters.m in Sources */,
 				353EA3DF23960C01000D5353 /* RecvTransportListenerImpl.m in Sources */,
+				35256BEF239A07B000E27BB3 /* ConsumerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +530,7 @@
 					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include/**",
 				);
 				INFOPLIST_FILE = "mediasoup-client-ios-tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,7 +562,7 @@
 					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include/**",
 				);
 				INFOPLIST_FILE = "mediasoup-client-ios-tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -760,7 +778,10 @@
 					"-Wextra",
 					"-Wpedantic",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mediasoup.ios.mediasoup-client-ios";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -834,7 +855,10 @@
 					"-Wextra",
 					"-Wpedantic",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mediasoup.ios.mediasoup-client-ios";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

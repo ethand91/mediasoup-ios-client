@@ -78,7 +78,12 @@ using namespace mediasoupclient;
         
         return [NSString stringWithUTF8String:nativeStats.c_str()];
     } catch (const std::exception &e) {
-        //TODO
+        MSC_ERROR("%s", e.what());
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+        
+        throw exception;
+        
         return nullptr;
     }
 }

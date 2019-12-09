@@ -1,13 +1,23 @@
 #import <Foundation/Foundation.h>
+#import "WebRTC/RTCPeerConnectionFactory.h"
+
 #import "Consumer.h"
 #import "ConsumerWrapper.h"
 
 @implementation Consumer : NSObject
 
--(instancetype)initWithNativeConsumer:(NSObject *)nativeConsumer {
+-(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer {
     self = [super init];
     if (self) {
         self._nativeConsumer = nativeConsumer;
+        
+        webrtc::MediaStreamTrackInterface *nativeTrack = [ConsumerWrapper getNativeTrack:self._nativeConsumer];
+        rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
+
+        RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
+        
+        self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:factory];
+        free(factory);
     }
     
     return self;
@@ -34,7 +44,7 @@
 }
 
 -(RTCMediaStreamTrack *)getTrack {
-    return (RTCMediaStreamTrack *)[ConsumerWrapper getNativeTrack:self._nativeConsumer];
+    return self._nativeTrack;
 }
 
 -(NSString *)getRtpParameters {

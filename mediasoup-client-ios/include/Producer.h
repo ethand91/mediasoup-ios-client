@@ -14,7 +14,7 @@
 
 @interface Producer : NSObject
 @property(nonatomic, strong) NSValue* _nativeProducer;
-@property(nonatomic, strong) RTCMediaStreamTrack * _nativeTrack;
+@property(nonatomic, strong) RTCMediaStreamTrack *_nativeTrack;
 
 -(NSString *)getId;
 -(bool)isClosed;

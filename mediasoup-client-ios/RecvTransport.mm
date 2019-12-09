@@ -27,9 +27,11 @@
 -(Consumer *)consume:(Protocol<ConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
     [self checkTransportExists];
     
-    // TODO listener
+    NSLog(@"consume 1 id=%@", id);
     NSValue *consumerObject = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
+    NSLog(@"consume 2");
     Consumer *consumer = [[Consumer alloc] initWithNativeConsumer:consumerObject];
+    NSLog(@"Got consumer id = %@", [consumer getId]);
     
     return consumer;
 }

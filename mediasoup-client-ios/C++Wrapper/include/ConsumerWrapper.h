@@ -12,18 +12,18 @@
 #define ConsumerWrapper_h
 
 @interface ConsumerWrapper : NSObject {}
-+(NSString *)getNativeId:(NSObject *)nativeConsumer;
-+(NSString *)getNativeProducerId:(NSObject *)nativeConsumer;
-+(bool)isNativeClosed:(NSObject *)nativeConsumer;
-+(bool)isNativePaused:(NSObject *)nativeConsumer;
-+(NSString *)getNativeKind:(NSObject *)nativeConsumer;
-+(NSObject *)getNativeTrack:(NSObject *)nativeConsumer;
-+(NSString *)getNativeRtpParameters:(NSObject *)nativeConsumer;
-+(NSString *)getNativeAppData:(NSObject *)nativeConsumer;
-+(void)nativeResume:(NSObject *)nativeConsumer;
-+(void)nativePause:(NSObject *)nativeConsumer;
-+(NSString *)getNativeStats:(NSObject *)nativeConsumer;
-+(void)nativeClose:(NSObject *)nativeConsumer;
++(NSString *)getNativeId:(NSValue *)nativeConsumer;
++(NSString *)getNativeProducerId:(NSValue *)nativeConsumer;
++(bool)isNativeClosed:(NSValue *)nativeConsumer;
++(bool)isNativePaused:(NSValue *)nativeConsumer;
++(NSString *)getNativeKind:(NSValue *)nativeConsumer;
++(webrtc::MediaStreamTrackInterface *)getNativeTrack:(NSValue *)nativeConsumer;
++(NSString *)getNativeRtpParameters:(NSValue *)nativeConsumer;
++(NSString *)getNativeAppData:(NSValue *)nativeConsumer;
++(void)nativeResume:(NSValue *)nativeConsumer;
++(void)nativePause:(NSValue *)nativeConsumer;
++(NSString *)getNativeStats:(NSValue *)nativeConsumer;
++(void)nativeClose:(NSValue *)nativeConsumer;
 
 @end
 
