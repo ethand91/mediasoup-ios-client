@@ -1,9 +1,9 @@
 //
 //  ConsumerWrapper.h
-//  Project
+//  mediasoup-client-ios
 //
-//  Created by Denvir Ethan on 2019/11/25.
-//  Copyright © 2019 Denvir Ethan. All rights reserved.
+//  Created by Ethan.
+//  Copyright © 2019 Ethan. All rights reserved.
 //
 #import "Consumer.hpp"
 #import "Consumer.h"

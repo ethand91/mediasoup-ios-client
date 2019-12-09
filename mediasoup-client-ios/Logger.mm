@@ -1,3 +1,11 @@
+//
+//  Logger.mm
+//  mediasoup-client-ios
+//
+//  Created by Ethan.
+//  Copyright © 2019 Ethan. All rights reserved.
+//
+
 #import "Logger.h"
 #import "LoggerWrapper.h"
 

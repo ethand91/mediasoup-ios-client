@@ -1,3 +1,11 @@
+//
+//  ProducerWrapper.mm
+//  mediasoup-client-ios
+//
+//  Created by Ethan.
+//  Copyright © 2019 Ethan. All rights reserved.
+//
+
 #define MSC_CLASS "producer_wrapper"
 
 #import <Foundation/Foundation.h>

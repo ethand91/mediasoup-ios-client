@@ -1,3 +1,11 @@
+//
+//  Consumer.mm
+//  mediasoup-client-ios
+//
+//  Created by Ethan.
+//  Copyright © 2019 Ethan. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 #import "WebRTC/RTCPeerConnectionFactory.h"
 

@@ -2,8 +2,8 @@
 //  Mediasoupclient.h
 //  mediasoup-client-ios
 //
-//  Created by Denvir Ethan on 2019/11/29.
-//  Copyright © 2019 Denvir Ethan. All rights reserved.
+//  Created by Ethan.
+//  Copyright © 2019 Ethan. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 
@@ -11,8 +11,13 @@
 #define Mediasoupclient_h
 
 @interface Mediasoupclient : NSObject {}
+/*!
+    @returns The libmediasoupclient version
+ */
 +(NSString *)version;
+/*! @brief Initializes the libmediasoupclient, initializes libwebrtc */
 +(void)initializePC;
+/*! @brief libmediasoupclient cleanup, cleans up libwebrtc */
 +(void)cleanup;
 @end
 

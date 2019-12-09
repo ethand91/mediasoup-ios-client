@@ -2,8 +2,8 @@
 //  Logger.h
 //  mediasoup-client-ios
 //
-//  Created by Denvir Ethan on 2019/12/04.
-//  Copyright © 2019 Denvir Ethan. All rights reserved.
+//  Created by Ethan.
+//  Copyright © 2019 Ethan. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 
@@ -15,12 +15,20 @@ typedef NS_ENUM(int, LogLevel) {
     LOG_ERROR = 1,
     LOG_WARN = 2,
     LOG_DEBUG = 3,
-    LOG_TRACE = 4
 };
 
 @interface Logger : NSObject {}
 
+/*!
+    @brief Sets the log level of the libmediasoupclient
+    @discussion This method sets the log level of libmediasoupclient valid values are (0 = log nothing, 1 = log errors, 2 = log warnings and above, 3 = log debug/traces and above)
+    @param level The log level to set
+ */
 +(void)setLogLevel:(LogLevel)level;
+/*!
+    @brief Initializes the libmediasoupclient log
+    @discussion Set the libmediasoupclient log, <b>this must be called before calling set log level</b>
+ */
 +(void)setDefaultHandler;
 
 @end

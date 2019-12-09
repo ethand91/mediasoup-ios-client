@@ -1,3 +1,11 @@
+//
+//  LoggerWrapper.mm
+//  mediasoup-client-ios
+//
+//  Created by Ethan.
+//  Copyright © 2019 Ethan. All rights reserved.
+//
+
 #include <iostream>
 #import <Foundation/Foundation.h>
 
