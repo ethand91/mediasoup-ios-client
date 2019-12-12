@@ -51,5 +51,29 @@ lipo -create arm64_libs/obj/libwebrtc.a x64_libs/obj/libwebrtc.a -output univers
 mv [out_ios_libs]directory [XCode project]/mediasoup-client-ios/dependencies/webrtc/src/
 ```
 
+---
+
+## Build libmediasoupclient
+
+```bash
+cd [XCode project]/mediasoup-client-ios/dependencies
+
+# Build iOS arm64
+cmake . -Bbuild -DLIBWEBRTC_INCLUDE_PATH=/[XCode project]/mediasoup-client-ios/dependencies/webrtc/src -DLIBWEBRTC_BINARY_PATH=/[XCode project]/mediasoup-client-ios/webrtc/src/out_ios_libs/universal -DMEDIASOUP_LOG_TRACE=ON -DMEDIASOUP_LOG_DEV=ON -DCMAKE_CXX_FLAGS="-fvisibility=hidden" -DLIBSDPTRANSFORM_BUILD_TESTS=OFF -DIOS_SDK=iphone -DIOS_ARCHS="arm64"
+
+make -C build
+
+# Build x86_64 simulator
+cmake . -Bbuild_86_64 -DLIBWEBRTC_INCLUDE_PATH=/[XCode project]/mediasoup-client-ios/dependencies/webrtc/src -DLIBWEBRTC_BINARY_PATH=/[XCode project]/mediasoup-client-ios/webrtc/src/out_ios_libs/universal -DMEDIASOUP_LOG_TRACE=ON -DMEDIASOUP_LOG_DEV=ON -DCMAKE_CXX_FLAGS="-fvisibility=hidden" -DLIBSDPTRANSFORM_BUILD_TESTS=OFF -DIOS_SDK=iphonesimulator -DIOS_ARCHS="x86_64"
+
+make -C build_86_64
+
+
+# Create a FAT libmediasoup/libsdptransform library
+lipo -create build/libmediasoup/libmediasoup.a build_86_64/libmediasoup/libmediasoup.a -output lib/
+lipo -create build/libmediasoup/libsdptransform/libsdptransform.a build_86_64/libmediasoup/libsdptransform/libsdptransform -output lib/
+```
+
+Once build include the libwebrtc.a, libmediasoup.a, libsdptransform.a in the project
 
 
