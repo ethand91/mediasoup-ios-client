@@ -6,6 +6,13 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import "Logger.h"
+#import "Device.h"
+#import "Transport.h"
+#import "Consumer.h"
+#import "Producer.h"
+#import "SendTransport.h"
+#import "RecvTransport.h"
 
 #ifndef Mediasoupclient_h
 #define Mediasoupclient_h
