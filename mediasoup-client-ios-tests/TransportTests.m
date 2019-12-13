@@ -9,18 +9,22 @@
 #import <XCTest/XCTest.h>
 #import "Device.h"
 #import "SendTransport.h"
+#import "RTCUtils.h"
 
 #import "data/Parameters.h"
 #import "mocks/SendTransportListernerImpl.h"
 #import "mocks/RecvTransportListenerImpl.h"
 #import "utils/util.h"
 
-@interface TransportTests : XCTestCase<SendTransportListener, RecvTransportListener>
+@interface TransportTests : XCTestCase<SendTransportListener, RecvTransportListener, ProducerListener>
 @property (nonatomic, strong) Device *device;
 @property (nonatomic, strong) SendTransport *sendTransport;
 @property (nonatomic, strong) RecvTransport *recvTransport;
 @property (nonatomic, strong) NSString *connectionState;
+@property (nonatomic, strong) RTCAudioTrack *track;
+@property (nonatomic, strong) NSArray *encodings;
 @property (nonatomic) id delegate;
+@property (nonatomic) id producerDelegate;
 @end
 
 @implementation TransportTests
@@ -94,6 +98,19 @@
     XCTAssertNoThrow([self.recvTransport restartIce:[Util dictionaryToJson:iceParameters]]);
 }
 
+-(void)testProduce {
+    RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
+    self.track = [factory audioTrackWithTrackId:@"dsdasdsa"];
+    self.producerDelegate = self;
+    
+    RTCRtpEncodingParameters *encoding1 = [RTCUtils genRtpEncodingParameters:true maxBitrateBps:500000 minBitrateBps:0 maxFramerate:60 numTemporalLayers:0 scaleResolutionDownBy:0.0];
+    
+    self.encodings = @[encoding1];
+    
+    Producer *producer = [self.sendTransport produce:self.delegate track:self.track encodings:self.encodings codecOptions:nil];
+    XCTAssertNotNil(producer);
+}
+
 /* TODO
 -(void)testUpdateIceServers {
     NSString *iceServers = [Parameters generateIceServers];
@@ -101,7 +118,7 @@
     XCTAssertNoThrow([self.sendTransport updateIceServers:iceServers]);
     XCTAssertNoThrow([self.recvTransport updateIceServers:iceServers]);
 }
- */
+*/
 
 -(void)onConnect:(Transport *)transport dtlsParameters:(NSString *)dtlsParameters {
     
@@ -113,6 +130,10 @@
 
 -(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
     return @"id";
+}
+
+- (void)onTransportClose:(Producer *)producer {
+    
 }
 
 @end

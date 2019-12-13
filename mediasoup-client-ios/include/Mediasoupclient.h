@@ -13,6 +13,7 @@
 #import "Producer.h"
 #import "SendTransport.h"
 #import "RecvTransport.h"
+#import "RTCUtils.h"
 
 #ifndef Mediasoupclient_h
 #define Mediasoupclient_h

@@ -49,25 +49,14 @@
                                                        iceCandidates:[Util dictionaryToJson:iceCandidates]
                                                        dtlsParameters:[Util dictionaryToJson:dtlsParameters]];
     
-    NSLog(@"Transport created");
-    
     NSDictionary *remoteConsumerParameters = [Parameters generateConsumerRemoteParameters];
     NSString *consumerId = [remoteConsumerParameters valueForKey:@"id"];
     NSString *kind = [remoteConsumerParameters valueForKey:@"kind"];
     NSString *producerId = [remoteConsumerParameters valueForKey:@"producerId"];
     NSDictionary *rtpParameters = [remoteConsumerParameters valueForKey:@"rtpParameters"];
-    
-    NSLog(@"To infinity and beyond! %@", consumerId);
-
-    if (![[RTCAudioSession sharedInstance] respondsToSelector:@selector(setConfiguration:active:error:)]) {
-        NSLog(@"Der be no selector boy");
-    } else {
-        NSLog(@"We Gots a selector!");
-    }
 
     self.delegate = self;
     self.consumer = [self.recvTransport consume:self.delegate id:consumerId producerId:producerId kind:kind rtpParameters:[Util dictionaryToJson:rtpParameters]];
-    NSLog(@"Setup done");
 }
 
 - (void)tearDown {

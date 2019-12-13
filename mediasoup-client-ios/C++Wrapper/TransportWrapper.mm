@@ -124,10 +124,24 @@ using namespace mediasoupclient;
         auto producerListener = new ProducerListenerWrapper(listener);
         auto mediaStreamTrack = reinterpret_cast<webrtc::MediaStreamTrackInterface *>(mediaTrack);
         
-        std::vector<webrtc::RtpEncodingParameters> encodingsVector;
+        __block std::vector<webrtc::RtpEncodingParameters> encodingsVector;
         
         if(encodings != nullptr) {
-            // TODO
+            encodingsVector.reserve(encodings.count);
+            
+            // Build the equvilent c++ encoding from objective-c encoding
+            for (RTCRtpEncodingParameters *encoding in encodings) {
+                webrtc::RtpEncodingParameters nativeEncoding;
+                nativeEncoding.active = encoding.isActive;
+                
+                if (encoding.maxBitrateBps != nil) nativeEncoding.max_bitrate_bps = (int)(size_t)encoding.maxBitrateBps;
+                if (encoding.minBitrateBps != nil) nativeEncoding.min_bitrate_bps = (int)(size_t)encoding.minBitrateBps;
+                if (encoding.maxFramerate != nil) nativeEncoding.max_framerate = (int)(size_t)encoding.maxFramerate;
+                if (encoding.numTemporalLayers != nil) nativeEncoding.num_temporal_layers = (int)(size_t)encoding.numTemporalLayers;
+                if (encoding.scaleResolutionDownBy != nil) nativeEncoding.scale_resolution_down_by = (double)[encoding.scaleResolutionDownBy doubleValue];
+                
+                encodingsVector.emplace_back(nativeEncoding);
+            }
         }
         
         nlohmann::json codecOptionsJson = nlohmann::json::object();

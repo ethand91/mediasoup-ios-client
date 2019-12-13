@@ -35,8 +35,6 @@
 		353EA3DF23960C01000D5353 /* RecvTransportListenerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 353EA3DE23960C01000D5353 /* RecvTransportListenerImpl.m */; };
 		353EA3E123960EBE000D5353 /* TransportTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 353EA3E023960EBE000D5353 /* TransportTests.m */; };
 		353EA3E323963B6A000D5353 /* ProducerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 353EA3E223963B6A000D5353 /* ProducerTests.m */; };
-		3544B7E7238E604A00A6AA17 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; };
-		3544B7E8238E604A00A6AA17 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61292387702600986297 /* ConsumerWrapper.mm */; };
 		355C613323877F2B00986297 /* ProducerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C613223877F2B00986297 /* ProducerWrapper.mm */; };
 		355C61372387995200986297 /* TransportWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61362387995200986297 /* TransportWrapper.mm */; };
@@ -61,6 +59,10 @@
 		35D884FA2397A08000BA6764 /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D884F92397A08000BA6764 /* libsdptransform.a */; };
 		35EEA27923911B5D00134D1C /* MediasoupclientWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */; };
 		35EEA27E23911CB000134D1C /* Mediasoupclient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA27D23911CB000134D1C /* Mediasoupclient.mm */; };
+		35F7267E23A3260A009BCD7F /* RTCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F7267D23A3260A009BCD7F /* RTCUtils.m */; };
+		35F7268023A3261C009BCD7F /* RTCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 35F7267F23A3261C009BCD7F /* RTCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35F7268F23A3311F009BCD7F /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; };
+		35F7269023A3311F009BCD7F /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* ProducerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* TransportWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -85,9 +87,9 @@
 				35256BF9239A4AA800E27BB3 /* CoreVideo.framework in Embed Frameworks */,
 				35256BF7239A4AA600E27BB3 /* CoreMedia.framework in Embed Frameworks */,
 				35D17230238CFB5100FAF301 /* AVFoundation.framework in Embed Frameworks */,
+				35F7269023A3311F009BCD7F /* WebRTC.framework in Embed Frameworks */,
 				35D1722E238CFB5000FAF301 /* CoreAudio.framework in Embed Frameworks */,
 				35D17232238CFB5300FAF301 /* AudioToolbox.framework in Embed Frameworks */,
-				3544B7E8238E604A00A6AA17 /* WebRTC.framework in Embed Frameworks */,
 				35D1722C238CFB4B00FAF301 /* UIKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -153,6 +155,8 @@
 		35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupclientWrapper.h; sourceTree = "<group>"; };
 		35EEA27D23911CB000134D1C /* Mediasoupclient.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Mediasoupclient.mm; sourceTree = "<group>"; };
 		35EEA28023911D3B00134D1C /* Mediasoupclient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mediasoupclient.h; sourceTree = "<group>"; };
+		35F7267D23A3260A009BCD7F /* RTCUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTCUtils.m; sourceTree = "<group>"; };
+		35F7267F23A3261C009BCD7F /* RTCUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTCUtils.h; sourceTree = "<group>"; };
 		35FB2486238B823F0092EBCB /* TransportWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportWrapper.h; sourceTree = "<group>"; };
 		35FB2487238B870E0092EBCB /* ProducerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProducerWrapper.h; sourceTree = "<group>"; };
 		35FB248B238BA8920092EBCB /* ConsumerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsumerWrapper.h; sourceTree = "<group>"; };
@@ -176,10 +180,10 @@
 				35256BF6239A4AA600E27BB3 /* CoreMedia.framework in Frameworks */,
 				35D884FA2397A08000BA6764 /* libsdptransform.a in Frameworks */,
 				35D884F82397A07000BA6764 /* libmediasoupclient.a in Frameworks */,
-				3544B7E7238E604A00A6AA17 /* WebRTC.framework in Frameworks */,
 				35D1722F238CFB5100FAF301 /* AVFoundation.framework in Frameworks */,
 				35256BF1239A4A7800E27BB3 /* AudioToolbox.framework in Frameworks */,
 				35D1722B238CFB4B00FAF301 /* UIKit.framework in Frameworks */,
+				35F7268F23A3311F009BCD7F /* WebRTC.framework in Frameworks */,
 				35D17231238CFB5300FAF301 /* AudioToolbox.framework in Frameworks */,
 				35256BF8239A4AA800E27BB3 /* CoreVideo.framework in Frameworks */,
 				35D1722D238CFB5000FAF301 /* CoreAudio.framework in Frameworks */,
@@ -271,6 +275,7 @@
 		35E2E47E2385284800E315FD /* mediasoup-client-ios */ = {
 			isa = PBXGroup;
 			children = (
+				35F7267C23A325DC009BCD7F /* webrtc */,
 				35EEA27F23911D2200134D1C /* include */,
 				355C612D23877D9C00986297 /* C++Wrapper */,
 				35E2E4802385284800E315FD /* Info.plist */,
@@ -323,6 +328,15 @@
 			path = include;
 			sourceTree = "<group>";
 		};
+		35F7267C23A325DC009BCD7F /* webrtc */ = {
+			isa = PBXGroup;
+			children = (
+				35F7267F23A3261C009BCD7F /* RTCUtils.h */,
+				35F7267D23A3260A009BCD7F /* RTCUtils.m */,
+			);
+			path = webrtc;
+			sourceTree = "<group>";
+		};
 		35FB2485238B82200092EBCB /* include */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +369,7 @@
 				351A83282394AF7C00BA7A13 /* MediasoupclientWrapper.h in Headers */,
 				351A832F2394B7AB00BA7A13 /* Producer.h in Headers */,
 				351A832E2394B7A900BA7A13 /* Consumer.h in Headers */,
+				35F7268023A3261C009BCD7F /* RTCUtils.h in Headers */,
 				351A83242394AD5F00BA7A13 /* Mediasoupclient.h in Headers */,
 				351A83232394AD5C00BA7A13 /* Transport.h in Headers */,
 			);
@@ -491,6 +506,7 @@
 				3538C5562397A9C5007EB078 /* Device.mm in Sources */,
 				351A833E2394DE2B00BA7A13 /* RecvTransport.mm in Sources */,
 				35EEA27923911B5D00134D1C /* MediasoupclientWrapper.mm in Sources */,
+				35F7267E23A3260A009BCD7F /* RTCUtils.m in Sources */,
 				355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */,
 				3538C55A2397AE5C007EB078 /* DeviceWrapper.mm in Sources */,
 				351A83382394C11C00BA7A13 /* Producer.mm in Sources */,
@@ -741,6 +757,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
 					"$(BUILT_PRODUCTS_DIR)/mediasoup_client_ios.framework/Frameworks/",
+					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -770,7 +787,7 @@
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-stdlib=libc++",
@@ -793,6 +810,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 			};
 			name = Debug;
 		};
@@ -818,6 +836,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
 					"$(BUILT_PRODUCTS_DIR)/mediasoup_client_ios.framework/Frameworks/",
+					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -847,7 +866,7 @@
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-stdlib=libc++",
@@ -869,6 +888,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 			};
 			name = Release;
 		};
