@@ -5,7 +5,6 @@
 //  Created by Ethan.
 //  Copyright © 2019 Ethan. All rights reserved.
 //
-#include <iostream>
 #import "Transport.hpp"
 #import "ProducerWrapper.h"
 #import "ConsumerWrapper.h"
@@ -58,8 +57,6 @@ public:
     ~SendTransportListenerWrapper() = default;
     
     std::future<void> OnConnect(mediasoupclient::Transport *nativeTransport, const nlohmann::json &dtlsParameters) override {
-        std::cout << "onConnect" << std::endl;
-        
         const std::string dtlsParametersString = dtlsParameters.dump();
         
         NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
@@ -74,8 +71,6 @@ public:
     };
     
     void OnConnectionStateChange(mediasoupclient::Transport *nativeTransport, const std::string &connectionState) override {
-        std::cout << "onConnectionStateChange : " << connectionState << std::endl;
-        
         NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
         SendTransport *sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
         
@@ -87,7 +82,6 @@ public:
                                        const std::string &kind,
                                        nlohmann::json rtpParameters,
                                        const nlohmann::json &appData) override {
-        std::cout << "onProduce" << std::endl;
         
         const std::string rtpParametersString = rtpParameters.dump();
         const std::string appDataString = appData.dump();
@@ -99,7 +93,6 @@ public:
                             kind:[NSString stringWithUTF8String:kind.c_str()]
                             rtpParameters:[NSString stringWithUTF8String:rtpParametersString.c_str()]
                             appData:[NSString stringWithUTF8String:appDataString.c_str()]];
-        std::cout << "onProduce result = " << result << std::endl;
         
         std::promise<std::string> promise;
         promise.set_value(std::string([result UTF8String]));
@@ -147,8 +140,6 @@ public:
     };
     
     void OnConnectionStateChange(mediasoupclient::Transport *nativeTransport, const std::string &connectionState) override {
-        std::cout << "onConnectionStateChange : " << connectionState << std::endl;
-        
         NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
         RecvTransport *recvTransport = [[RecvTransport alloc] initWithNativeTransport:transportObject];
         
