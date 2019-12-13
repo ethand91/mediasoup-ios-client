@@ -117,7 +117,7 @@ using namespace mediasoupclient;
     return [NSValue valueWithPointer:[TransportWrapper extractNativeTransport:nativeTransport]];
 }
 
-+(NSValue *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(NSUInteger)mediaTrack encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
++(NSValue *)nativeProduce:(NSValue *)nativeTransport listener:(id<ProducerListener>)listener track:(NSUInteger)mediaTrack encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -172,7 +172,7 @@ using namespace mediasoupclient;
     }
 }
 
-+(NSValue *)nativeConsume:(NSValue *)nativeTransport listener:(Protocol<ConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
++(NSValue *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
