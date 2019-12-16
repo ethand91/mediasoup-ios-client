@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Logger.hpp"
+#import <libmediasoupclient/include/Logger.hpp>
 
 using namespace mediasoupclient;
 

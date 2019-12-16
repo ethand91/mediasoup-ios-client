@@ -8,9 +8,10 @@
 
 #define MSC_CLASS "device_wrapper"
 
-#import "Device.hpp"
-#import "Logger.hpp"
-#import "Transport.hpp"
+#import <libmediasoupclient/include/Device.hpp>
+#import <libmediasoupclient/include/Logger.hpp>
+#import <libmediasoupclient/include/Transport.hpp>
+
 #import "include/DeviceWrapper.h"
 #import "include/TransportWrapper.h"
 

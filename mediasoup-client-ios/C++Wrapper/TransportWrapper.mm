@@ -9,7 +9,7 @@
 #define MSC_CLASS "transport_wrapper"
 
 #import <Foundation/Foundation.h>
-#import "Logger.hpp"
+#import <libmediasoupclient/include/Logger.hpp>
 
 #import "include/TransportWrapper.h"
 

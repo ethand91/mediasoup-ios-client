@@ -478,7 +478,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Script to copy mediasoup/webrtc header files to project\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include\"\n\necho \"Copying mediasoup header files to the Framework\"\n# Copy mediasoup headers to framework\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/\"\n\necho \"Copying webrtc header files to the framework\"\n# Copy webrtc api to the framework\nfor header in `find ./api -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\n# Copy webrtc third_party abseil-cpp\necho \"Copying webrtc third party header files\"\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp\"\n\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n";
+			shellScript = "# Script to copy mediasoup/webrtc header files to project\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include\"\n\necho \"Copying mediasoup header files to the Framework\"\n# Copy mediasoup headers to framework\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    cp -rf \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/\"\n\necho \"Copying webrtc header files to the framework\"\n# Copy webrtc api to the framework\nfor header in `find ./api -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\n# Copy webrtc third_party abseil-cpp\necho \"Copying webrtc third party header files\"\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp\"\n\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -770,6 +770,7 @@
 					"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src",
 					"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 					"${SRCROOT}/mediasoup-client-ios/dependencies",
+					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
 				);
 				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
@@ -849,6 +850,7 @@
 					"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src",
 					"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 					"${SRCROOT}/mediasoup-client-ios/dependencies",
+					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
 				);
 				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
