@@ -8,10 +8,10 @@
 #define MSC_CLASS "consumer_wrapper"
 
 #import <Foundation/Foundation.h>
-#import <libmediasoupclient/include/Logger.hpp>
-#import <libmediasoupclient/include/Consumer.hpp>
+#import "Logger.hpp"
+#import "Consumer.hpp"
 
-#import "include/ConsumerWrapper.h"
+#import "wrapper/ConsumerWrapper.h"
 
 using namespace mediasoupclient;
 

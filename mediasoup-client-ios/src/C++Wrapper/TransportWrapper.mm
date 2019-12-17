@@ -9,9 +9,10 @@
 #define MSC_CLASS "transport_wrapper"
 
 #import <Foundation/Foundation.h>
-#import <libmediasoupclient/include/Logger.hpp>
 
-#import "include/TransportWrapper.h"
+#import "Logger.hpp"
+
+#import "wrapper/TransportWrapper.h"
 
 using namespace mediasoupclient;
 

@@ -9,10 +9,10 @@
 #define MSC_CLASS "producer_wrapper"
 
 #import <Foundation/Foundation.h>
-#import <libmediasoupclient/include/Producer.hpp>
-#import <libmediasoupclient/include/Logger.hpp>
+#import "Producer.hpp"
+#import "Logger.hpp"
 
-#import "include/ProducerWrapper.h"
+#import "wrapper/ProducerWrapper.h"
 
 using namespace mediasoupclient;
 
