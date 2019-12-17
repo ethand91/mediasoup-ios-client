@@ -193,6 +193,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		350559B323A8C9AD00576D83 /* wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				35FB2486238B823F0092EBCB /* TransportWrapper.h */,
+				35FB2487238B870E0092EBCB /* ProducerWrapper.h */,
+				35FB248B238BA8920092EBCB /* ConsumerWrapper.h */,
+				35FB248C238BA8C00092EBCB /* DeviceWrapper.h */,
+				35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */,
+				3570311B2397802C00761AF5 /* LoggerWrapper.h */,
+			);
+			path = wrapper;
+			sourceTree = "<group>";
+		};
+		350559B423A8CA1D00576D83 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				35D7427F2390B8AD00C22679 /* Device.mm */,
+				35EEA27D23911CB000134D1C /* Mediasoupclient.mm */,
+				351A83212394A68700BA7A13 /* Transport.mm */,
+				351A83302394B7F400BA7A13 /* Consumer.mm */,
+				351A83372394C11C00BA7A13 /* Producer.mm */,
+				351A833D2394DE2B00BA7A13 /* RecvTransport.mm */,
+				351A833F2394DE3A00BA7A13 /* SendTransport.mm */,
+				3570311723977DF800761AF5 /* Logger.mm */,
+				355C612D23877D9C00986297 /* C++Wrapper */,
+				35F7267C23A325DC009BCD7F /* webrtc */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		353EA3D32395F025000D5353 /* mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,7 +246,6 @@
 		355C612D23877D9C00986297 /* C++Wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				35FB2485238B82200092EBCB /* include */,
 				355C61292387702600986297 /* ConsumerWrapper.mm */,
 				355C613223877F2B00986297 /* ProducerWrapper.mm */,
 				355C61362387995200986297 /* TransportWrapper.mm */,
@@ -275,18 +304,9 @@
 		35E2E47E2385284800E315FD /* mediasoup-client-ios */ = {
 			isa = PBXGroup;
 			children = (
-				35F7267C23A325DC009BCD7F /* webrtc */,
+				350559B423A8CA1D00576D83 /* src */,
 				35EEA27F23911D2200134D1C /* include */,
-				355C612D23877D9C00986297 /* C++Wrapper */,
 				35E2E4802385284800E315FD /* Info.plist */,
-				35D7427F2390B8AD00C22679 /* Device.mm */,
-				35EEA27D23911CB000134D1C /* Mediasoupclient.mm */,
-				351A83212394A68700BA7A13 /* Transport.mm */,
-				351A83302394B7F400BA7A13 /* Consumer.mm */,
-				351A83372394C11C00BA7A13 /* Producer.mm */,
-				351A833D2394DE2B00BA7A13 /* RecvTransport.mm */,
-				351A833F2394DE3A00BA7A13 /* SendTransport.mm */,
-				3570311723977DF800761AF5 /* Logger.mm */,
 			);
 			path = "mediasoup-client-ios";
 			sourceTree = "<group>";
@@ -316,6 +336,8 @@
 		35EEA27F23911D2200134D1C /* include */ = {
 			isa = PBXGroup;
 			children = (
+				35F7267F23A3261C009BCD7F /* RTCUtils.h */,
+				350559B323A8C9AD00576D83 /* wrapper */,
 				3570311923977E0F00761AF5 /* Logger.h */,
 				35D7427D2390B71500C22679 /* Device.h */,
 				35EEA28023911D3B00134D1C /* Mediasoupclient.h */,
@@ -331,23 +353,9 @@
 		35F7267C23A325DC009BCD7F /* webrtc */ = {
 			isa = PBXGroup;
 			children = (
-				35F7267F23A3261C009BCD7F /* RTCUtils.h */,
 				35F7267D23A3260A009BCD7F /* RTCUtils.m */,
 			);
 			path = webrtc;
-			sourceTree = "<group>";
-		};
-		35FB2485238B82200092EBCB /* include */ = {
-			isa = PBXGroup;
-			children = (
-				35FB2486238B823F0092EBCB /* TransportWrapper.h */,
-				35FB2487238B870E0092EBCB /* ProducerWrapper.h */,
-				35FB248B238BA8920092EBCB /* ConsumerWrapper.h */,
-				35FB248C238BA8C00092EBCB /* DeviceWrapper.h */,
-				35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */,
-				3570311B2397802C00761AF5 /* LoggerWrapper.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -771,6 +779,7 @@
 					"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 					"${SRCROOT}/mediasoup-client-ios/dependencies",
 					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
+					"${SRCROOT}/mediasoup-client-ios/include/**",
 				);
 				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
@@ -851,6 +860,7 @@
 					"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 					"${SRCROOT}/mediasoup-client-ios/dependencies",
 					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
+					"${SRCROOT}/mediasoup-client-ios/include/**",
 				);
 				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
