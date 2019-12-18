@@ -21,6 +21,13 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "9.0"
   spec.source       = { :git => "https://github.com/ethand91/mediasoup-ios-client.git", :tag => "0.0.2", :submodules => true }
 
+  # Get libraries that are too big to push to github
+  spec.prepare_command = <<-CMD
+    mkdir -p mediasoup-ios-client/dependencies/webrtc/src/out_ios_libs/universal
+
+    wget -P mediasoup-ios-client/dependencies/webrtc/src/out_ios_libs/universal/libwebrtc.a https://www.dropbox.com/s/sxnhub3p07hgtt5/libwebrtc.a
+  CMD
+
 	# Disable arc
   spec.requires_arc = false
 	# Include C++ library
