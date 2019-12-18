@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
   spec.license      = "MIT"
   spec.author       = { "ethand91" => "ethan@maru.jp" }
   spec.platform     = :ios, "9.0"
-  spec.source       = { :git => "https://github.com/ethand91/mediasoup-ios-client.git", :tag => "0.0.2" }
+  spec.source       = { :git => "https://github.com/ethand91/mediasoup-ios-client.git", :tag => "0.0.2", :submodules => true }
 
 	# Disable arc
   spec.requires_arc = false
@@ -83,9 +83,8 @@ Pod::Spec.new do |spec|
 	# Include needed static libraries
   spec.vendored_libraries = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libmediasoupclient.a",
     "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libsdptransform.a",
-    "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal/libwebrtc.a"
 
-  spec.libraries = "mediasoupclient", "sdptransform", "webrtc"
+  spec.libraries = "mediasoupclient", "sdptransform"
 
   spec.header_mappings_dir = "mediasoup-client-ios"
 
