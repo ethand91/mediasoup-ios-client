@@ -6,11 +6,11 @@ Objective-C wrapper library for libmediasoupclient for building mediasoup iOS ba
 
 ## Website and Documentation
 
-* [mediasoup.org][mediasoup-website]
+* [mediasoup.org](https://mediasoup.org/)
 
 ## Support Forum
 
-* [mediasoup.discourse.group][mediasoup-discourse]
+* [mediasoup.discourse.group](https://mediasoup.discourse.group/)
 
 ---
 
