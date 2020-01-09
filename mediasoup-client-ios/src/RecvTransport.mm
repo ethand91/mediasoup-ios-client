@@ -40,9 +40,7 @@
     // when called at the same time on a different thread (sdp answer is produced with both video and audio being mid:0)
     dispatch_queue_t main = dispatch_get_main_queue();
     dispatch_block_t block = ^{
-        NSValue *nativeConsumer = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
-        
-        consumer = [[Consumer alloc] initWithNativeConsumer:nativeConsumer];
+        consumer = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
     };
     
     // Prevent deadlock if already on the main thread

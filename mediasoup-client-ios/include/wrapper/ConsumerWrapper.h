@@ -44,19 +44,25 @@ private:
 class ConsumerListenerWrapper : public mediasoupclient::Consumer::Listener {
 private:
     Protocol<ConsumerListener> *listener;
+    ::Consumer *consumer;
 public:
     ConsumerListenerWrapper(Protocol<ConsumerListener> *listener) {
         this->listener = listener;
     }
     
-    ~ConsumerListenerWrapper() = default;
+    ~ConsumerListenerWrapper() {
+        if (this->consumer != nullptr) {
+            free(this->consumer);
+        }
+    }
     
     void OnTransportClose(mediasoupclient::Consumer *nativeConsumer) override {
-        NSValue *consumerObject = [NSValue valueWithPointer:nativeConsumer];
-        Consumer *consumer = [[Consumer alloc] initWithNativeConsumer:consumerObject];
-        
-        [this->listener onTransportClose:consumer];
+        [this->listener onTransportClose:this->consumer];
     };
+    
+    void SetConsumer(::Consumer *consumer) {
+        this->consumer = consumer;
+    }
 };
 
 #endif /* ConsumerWrapper_h */

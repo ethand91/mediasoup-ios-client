@@ -80,6 +80,11 @@
     XCTAssertTrue([[track kind] isEqualToString:@"audio"]);
 }
 
+-(void)testTransportClose {
+    [self.sendTransport close];
+    XCTAssertTrue([self.producer isClosed]);
+}
+
 -(void)testNotPaused {
     XCTAssertFalse([self.producer isPaused]);
 }

@@ -35,11 +35,7 @@
 -(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData {
     NSUInteger nativeTrack = track.hash;
     
-    NSValue *producerObject = [TransportWrapper nativeProduce:self._nativeTransport listener:listener track:nativeTrack encodings:encodings codecOptions:codecOptions appData:appData];
-    
-    NSString *kind = [ProducerWrapper getNativeKind:producerObject];
-    
-    Producer *producer = [[Producer alloc] initWithNativeProducer:producerObject];
+    Producer *producer = [TransportWrapper nativeProduce:self._nativeTransport listener:listener track:nativeTrack encodings:encodings codecOptions:codecOptions appData:appData];
     
     return producer;
 }

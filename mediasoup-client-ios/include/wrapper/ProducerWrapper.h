@@ -46,19 +46,25 @@ private:
 class ProducerListenerWrapper : public mediasoupclient::Producer::Listener {
 private:
     Protocol<ProducerListener> *listener;
+    ::Producer *producer;
 public:
     ProducerListenerWrapper(Protocol<ProducerListener> *listener) {
         this->listener = listener;
     };
     
-    ~ProducerListenerWrapper() = default;
+    ~ProducerListenerWrapper() {
+        if (this->producer != nullptr) {
+            free(this->producer);
+        }
+    };
     
     void OnTransportClose(mediasoupclient::Producer *nativeProducer) override {
-        NSValue *producerObject = [NSValue valueWithPointer:nativeProducer];
-        Producer *producer = [[Producer alloc] initWithNativeProducer:producerObject];
-        
-        [this->listener onTransportClose:producer];
+        [this->listener onTransportClose:this->producer];
     };
+    
+    void SetProducer(::Producer *producer) {
+        this->producer = producer;
+    }
 };
 
 #endif /* ProducerWrapper_h */

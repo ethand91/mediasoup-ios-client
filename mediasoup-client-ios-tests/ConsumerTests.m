@@ -89,6 +89,11 @@
     XCTAssertTrue([[[self.consumer getTrack] kind] isEqualToString:@"audio"]);
 }
 
+-(void)testTransportClose {
+    [self.recvTransport close];
+    XCTAssertTrue([self.consumer isClosed]);
+}
+
 -(void)testGetRtpParameters {
     XCTAssertNotNil([self.consumer getRtpParameters]);
 }
