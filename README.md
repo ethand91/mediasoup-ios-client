@@ -24,6 +24,10 @@ Objective-C wrapper library for libmediasoupclient for building mediasoup iOS ba
 Extract the frameworks and place them in your projects [Frameworks] folder.
 You may need to configure your projects search paths
 
+**This framework does not currently support bitcode**
+
+This will hopefully be implemented in the future
+
 **Swift users will need to implement a Objective-C Bridging Header**
 
 ## Documentation
