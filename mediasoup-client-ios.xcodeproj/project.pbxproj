@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		357ABBA9240517BD005EF744 /* fat-library */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 357ABBAC240517BE005EF744 /* Build configuration list for PBXAggregateTarget "fat-library" */;
+			buildPhases = (
+				357ABBAF240517DA005EF744 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "fat-library";
+			productName = "fat-library";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		351A83222394A68700BA7A13 /* Transport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A83212394A68700BA7A13 /* Transport.mm */; };
 		351A83232394AD5C00BA7A13 /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A83202394A4BA00BA7A13 /* Transport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -432,6 +446,9 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Denvir Ethan";
 				TargetAttributes = {
+					357ABBA9240517BD005EF744 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					35D1721B238CF9BB00FAF301 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -456,6 +473,7 @@
 			targets = (
 				35E2E47B2385284800E315FD /* mediasoup-client-ios */,
 				35D1721B238CF9BB00FAF301 /* mediasoup-client-iosTests */,
+				357ABBA9240517BD005EF744 /* fat-library */,
 			);
 		};
 /* End PBXProject section */
@@ -471,6 +489,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		357ABBAF240517DA005EF744 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nFRAMEWORK_NAME=\"mediasoup-client-ios\"\nOUTPUT_DIR=\"${SRCROOT}/build\"\n\n# If the framework already exists delete it\nif [ -d \"${OUTPUT_DIR}\" ]; then\n    rm -rf \"${OUTPUT_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch arm64 only_active_arch=no -sdk \"iphoneos\" -derivedDataPath \"${OUTPUT_DIR}\"\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch x86_64 only_active_arch=no -sdk \"iphonesimulator\" -derivedDataPath \"${OUTPUT_DIR}\"\n\n# Remove framework file if it exists\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\" ]; then\n    rm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\"\nfi\n\n# Copy the device version of the framework\ncp -r \"${OUTPUT_DIR}/Build/Products/Release-iphoneos/mediasoup_client_ios.framework\" \"${OUTPUT_DIR}/mediasoup_client_ios.framework\"\n\n# Create the FAT framework\nlipo -create -output \"${OUTPUT_DIR}/mediasoup_client_ios.framework/mediasoup_client_ios\" \"${OUTPUT_DIR}/Build/Products/Release-iphoneos/mediasoup_client_ios.framework/mediasoup_client_ios\" \"${OUTPUT_DIR}/Build/Products/Release-iphonesimulator/mediasoup_client_ios.framework/mediasoup_client_ios\"\n";
+		};
 		35A708F3238FABC900BD3716 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,6 +575,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		357ABBAA240517BE005EF744 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G8EYG6ATY;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		357ABBAB240517BE005EF744 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G8EYG6ATY;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		35D17225238CF9BE00FAF301 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -907,6 +960,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		357ABBAC240517BE005EF744 /* Build configuration list for PBXAggregateTarget "fat-library" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				357ABBAA240517BE005EF744 /* Debug */,
+				357ABBAB240517BE005EF744 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		35D17224238CF9BE00FAF301 /* Build configuration list for PBXNativeTarget "mediasoup-client-iosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
