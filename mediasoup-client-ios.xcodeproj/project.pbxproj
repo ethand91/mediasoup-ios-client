@@ -152,6 +152,7 @@
 		3570311723977DF800761AF5 /* Logger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Logger.mm; sourceTree = "<group>"; };
 		3570311923977E0F00761AF5 /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
 		3570311B2397802C00761AF5 /* LoggerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoggerWrapper.h; sourceTree = "<group>"; };
+		357ABBB024052BAE005EF744 /* mediasoup_ios_client.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = mediasoup_ios_client.modulemap; sourceTree = "<group>"; };
 		35C66C46238E7F21003C2E1E /* libwebrtc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebrtc.a; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal/libwebrtc.a"; sourceTree = "<group>"; };
 		35D171EE238CD51C00FAF301 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		35D1721C238CF9BB00FAF301 /* mediasoup-client-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mediasoup-client-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,6 +322,7 @@
 				350559B423A8CA1D00576D83 /* src */,
 				35EEA27F23911D2200134D1C /* include */,
 				35E2E4802385284800E315FD /* Info.plist */,
+				357ABBB024052BAE005EF744 /* mediasoup_ios_client.modulemap */,
 			);
 			path = "mediasoup-client-ios";
 			sourceTree = "<group>";
@@ -850,6 +852,8 @@
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
 				);
+				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
+				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -931,6 +935,8 @@
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
 				);
+				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
+				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
