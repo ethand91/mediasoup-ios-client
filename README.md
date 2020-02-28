@@ -24,13 +24,9 @@ Add the below into your Podfile:
 use_frameworks!
 
 target "target" do
-  pod "mediasoup_ios_client", :git => "https://github.com/ethand91/mediasoup-ios-client.git", :submodules => true, :tag => "1.0.0" 
+  pod "mediasoup-ios-client"
 end
 ```
-
-**This framework does not currently support bitcode**
-
-This will hopefully be implemented in the future
 
 **Swift users will need to implement a Objective-C Bridging Header**
 
