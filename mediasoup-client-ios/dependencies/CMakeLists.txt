@@ -37,8 +37,8 @@ set(IPHONE_SDKVER "13.2")
 set(IPHONE_VERSION_MIN "9.0")
 
 # enable bitcode
-set(BITCODE "-fembed-bitcode")
-set(CMAKE_XCODE_ATTRIBUTE_BITCODE_GENERATION_MODE bitcode CACHE INTERNAL "")
+add_definitions(-DENABLE_BITCODE)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fembed-bitcode")
 
 message(STATUS "\n========== libmediasoupclient iOS Build Configuration ==========\n")
 message(STATUS "CMAKE_OSX_SYSROOT             = " ${CMAKE_OSX_SYSROOT})
@@ -46,6 +46,3 @@ message(STATUS "CMAKE_OSX_ARCHITECTURES       = " ${CMAKE_OSX_ARCHITECTURES})
 
 # Source dependencies
 add_subdirectory("libmediasoupclient")
-
-# Include webrtc third party abseil-cpp
-include_directories(SYSTEM "${LIBWEBRTC_INCLUDE_PATH}/third_party/abseil-cpp")
