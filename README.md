@@ -24,7 +24,7 @@ Add the below into your Podfile:
 use_frameworks!
 
 target "target" do
-  pod "mediasoup-ios-client"
+  pod "mediasoup_ios_client"
 end
 ```
 
