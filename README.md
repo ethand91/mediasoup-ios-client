@@ -16,19 +16,23 @@ Objective-C wrapper library for libmediasoupclient for building mediasoup iOS ba
 
 ## Getting Started
 
-### Download the required frameworks
+### Cocoapods
 
-* mediasoup-ios-client Framework: https://www.dropbox.com/s/7mz09tza4xbrwta/mediasoup_client_ios.framework.zip
-* WebRTC.framework: https://www.dropbox.com/s/qmqodqf4slsmvk5/WebRTC.framework.zip
+Add the below into your Podfile:
 
-Extract the frameworks and place them in your projects [Frameworks] folder.
-You may need to configure your projects search paths
+```ruby
+use_frameworks!
 
-**This framework does not currently support bitcode**
-
-This will hopefully be implemented in the future
+target "target" do
+  pod "mediasoup_ios_client"
+end
+```
 
 **Swift users will need to implement a Objective-C Bridging Header**
+
+Bridging header sample:
+
+https://github.com/ethand91/mediasoup-ios-client-sample/blob/master/mediasoup-ios-cient-sample/mediasoup-ios-cient-sample-Bridging-Header.h
 
 ## Documentation
 
