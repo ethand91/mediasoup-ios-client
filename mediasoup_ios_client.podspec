@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "mediasoup_ios_client"
-  spec.version      = "1.0.0"
+  spec.version      = "1.1.0"
   spec.summary      = "Mediasoup 3 iOS Client"
 
   spec.description  = <<-DESC
@@ -11,14 +11,13 @@ Pod::Spec.new do |spec|
   spec.license      = "MIT"
   spec.author       = { "ethand91" => "ethan@maru.jp" }
   spec.platform     = :ios, "9.0"
-  spec.source       = { :git => "https://github.com/ethand91/mediasoup-ios-client.git", :submodules => true }
+  spec.source       = { :git => "https://github.com/ethand91/mediasoup-ios-client.git", :submodules => true, :tag => "1.1.0" }
   spec.module_name = "mediasoup"
 
 	# Disable arc
   spec.requires_arc = false
 	# Set the xcode variables for the pod target
   spec.pod_target_xcconfig = {
-    "ENABLE_BITCODE" => "NO",
     "USE_HEADERMAP" => "NO",
     "ALWAYS_SEARCH_USER_PATHS" => "NO",
     "CLANG_CXX_LANGUAGE_STANDARD" => "c++14",
