@@ -28,6 +28,10 @@ target "target" do
 end
 ```
 
+**You will need to set enable bitcode to false**
+
+Due to the size of the WebRTC.framework with bitcode, it cannot be uploaded to Github.
+
 **Swift users will need to implement a Objective-C Bridging Header**
 
 Bridging header sample:
