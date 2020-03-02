@@ -24,6 +24,16 @@ gclient sync
 
 ---
 
+## Enable VP9 codec (Optional)
+
+```bash
+vim tools_webrtc/ios/build_ios_libs.py
+
+# change "LIBVPX_BUILD_VP9" from False to True
+```
+
+
+
 ## Build the iOS WebRTC Universal Framework
 
 ```bash
