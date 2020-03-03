@@ -28,6 +28,10 @@ target "target" do
 end
 ```
 
+**You will need to set enable bitcode to false**
+
+Due to the size of the WebRTC.framework with bitcode, it cannot be uploaded to Github.
+
 **Swift users will need to implement a Objective-C Bridging Header**
 
 Bridging header sample:
@@ -120,28 +124,11 @@ Producer *videoProducer = [sendTransport produce:producerHandler.delegate track:
 
 ### Clone the repo and install submodules
 
+Due to the size of the WebRTC static library it cannot be uploaded to Github, therefore you will need to follow the instructions in the build folder and build it yourself.
+
 ```bash
 git clone https://github.com/ethand91/mediasoup-ios-client.git
 submodule init
 submodule update
 ```
-
-### Get the libraries
-
-Due to the libwebrtc.a library being to big to upload to github, you will need to either:
-
-* Follow the instructions located in the build directory
-* Download the compiled libraries from an external provider
-
-Previously built libraries can be found below:
-
-* libmediasoupclient.a (arm64,x86_64): https://www.dropbox.com/s/8u1vvoutzcfqhhg/libmediasoupclient.a
-* libsdptransform.a (arm64, x86_64): https://www.dropbox.com/s/jbk30y56dckjwj2/libsdptransform.a
-* libwebrtc.a (arm64, x86_64): https://www.dropbox.com/s/sxnhub3p07hgtt5/libwebrtc.a
-* WebRTC.framework (m74 branch): https://www.dropbox.com/s/qmqodqf4slsmvk5/WebRTC.framework.zip
-
-The default library paths are as follows: (if you change the directory of the libraries make sure to update the relevant search paths):
-* libmediasoupclient.a/libsdptransform.a - dependencies/libmediasoupclient/lib
-* libwebrtc.a - dependencies/webrtc/src/out_ios_libs/universal
-* WebRTC.framework - dependencies/webrtc/src/out_ios_libs/
  
