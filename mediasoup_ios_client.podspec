@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "mediasoup_ios_client"
-  spec.version      = "1.1.2"
+  spec.version      = "1.2.2"
   spec.summary      = "Mediasoup 3 iOS Client"
 
   spec.description  = <<-DESC
@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.license      = "MIT"
   spec.author       = { "ethand91" => "ethan@maru.jp" }
   spec.platform     = :ios, "9.0"
-  spec.source       = { :git => "https://github.com/ethand91/mediasoup-ios-client.git", :submodules => true, :tag => "1.1.2" }
+  spec.source       = { :git => "https://github.com/ethand91/mediasoup-ios-client.git", :submodules => true, :tag => "1.2.2" }
   spec.module_name = "mediasoup"
 
 	# Disable arc

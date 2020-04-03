@@ -51,8 +51,9 @@
     @param kind Producer's media kind (video or audio)
     @param rtpParameters Producer's RTP parameters
     @param appData Custom application data (given in the transport.producer() method)
+    @param callback Callback that receives the id of the producer
  */
--(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
+-(void)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData callback:(void(^)(NSString *))callback;
 @end
 
 #endif /* SendTransport_h */
