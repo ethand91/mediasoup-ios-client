@@ -83,11 +83,11 @@ NSDictionary *transportData = [mySignalling request:@"createTransport"];
  NSLog(@"sendTransport::onConnectionStateChange newState = %@", connectionState);
 }
 
--(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
+-(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData callback:(void(^)(NSString *))callback {
  // Here we must communicate our local parameters to our remote transport
  NSString *id = [mySignalling request:@"produce" transportId:[transport getId] kind:kind rtpParameters:rtpParameters appData:appData];
  
- return id;
+ callback(id);
 }
 @end
 
