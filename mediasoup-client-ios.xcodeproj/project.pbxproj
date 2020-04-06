@@ -59,6 +59,8 @@
 		3570311823977DF800761AF5 /* Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3570311723977DF800761AF5 /* Logger.mm */; };
 		3570311A23977E0F00761AF5 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3570311923977E0F00761AF5 /* Logger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3570311C2397802C00761AF5 /* LoggerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3570311B2397802C00761AF5 /* LoggerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AC33A5243ABE83009A569A /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; };
+		35AC33A6243ABE83009A569A /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544B7E6238E604A00A6AA17 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35D1722B238CFB4B00FAF301 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353BD1292387E23500A8734C /* UIKit.framework */; };
 		35D1722C238CFB4B00FAF301 /* UIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 353BD1292387E23500A8734C /* UIKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		35D1722D238CFB5000FAF301 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C61382387D96300986297 /* CoreAudio.framework */; };
@@ -99,6 +101,7 @@
 				35256BF9239A4AA800E27BB3 /* CoreVideo.framework in Embed Frameworks */,
 				35256BF7239A4AA600E27BB3 /* CoreMedia.framework in Embed Frameworks */,
 				35D17230238CFB5100FAF301 /* AVFoundation.framework in Embed Frameworks */,
+				35AC33A6243ABE83009A569A /* WebRTC.framework in Embed Frameworks */,
 				35D1722E238CFB5000FAF301 /* CoreAudio.framework in Embed Frameworks */,
 				35D17232238CFB5300FAF301 /* AudioToolbox.framework in Embed Frameworks */,
 				35D1722C238CFB4B00FAF301 /* UIKit.framework in Embed Frameworks */,
@@ -195,6 +198,7 @@
 				35256BF1239A4A7800E27BB3 /* AudioToolbox.framework in Frameworks */,
 				35D1722B238CFB4B00FAF301 /* UIKit.framework in Frameworks */,
 				35D17231238CFB5300FAF301 /* AudioToolbox.framework in Frameworks */,
+				35AC33A5243ABE83009A569A /* WebRTC.framework in Frameworks */,
 				35256BF8239A4AA800E27BB3 /* CoreVideo.framework in Frameworks */,
 				35D1722D238CFB5000FAF301 /* CoreAudio.framework in Frameworks */,
 				35516F3A2408C93100AC60B4 /* libsdptransform.a in Frameworks */,
@@ -813,7 +817,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
 					"$(BUILT_PRODUCTS_DIR)/mediasoup_client_ios.framework/Frameworks/",
@@ -848,6 +852,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
+					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 				);
 				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
@@ -898,7 +903,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
 					"$(BUILT_PRODUCTS_DIR)/mediasoup_client_ios.framework/Frameworks/",
@@ -933,6 +938,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
+					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 				);
 				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
