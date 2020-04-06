@@ -28,10 +28,10 @@
     NSLog(@"onConnectionStateChange");
 }
 
--(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
+- (void)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData callback:(void (^)(NSString *))callback {
     NSLog(@"onProduce");
     
-    return @"id";
+    callback(@"id");
 }
 
 @end

@@ -4,6 +4,22 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Frameworks/WebRTC.framework/Info.plist</key>
+		<data>
+		2EY3b9ZIJzMv7MvF2zZNS/PQq60=
+		</data>
+		<key>Frameworks/WebRTC.framework/LICENSE.md</key>
+		<data>
+		dlz3MRufR5pbJj88Dw0EbJAB9GM=
+		</data>
+		<key>Frameworks/WebRTC.framework/WebRTC</key>
+		<data>
+		ZB71vQEqCdwZyprhkfwWOeGXL1c=
+		</data>
+		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
+		<data>
+		i7y9WtLu7CLH19hh2MO5snPFO8o=
+		</data>
 		<key>Headers/Consumer.h</key>
 		<data>
 		JQxUFVhiQIfUeHc1+3NWaZAuuVA=
@@ -94,7 +110,7 @@
 		</data>
 		<key>Headers/TransportWrapper.h</key>
 		<data>
-		4bRI7WvuAHt7I8YSgdCjIu5g8gI=
+		4X0oorhYFkspE6vGpnSdUFJu6kM=
 		</data>
 		<key>Headers/Utils.hpp</key>
 		<data>
@@ -1475,6 +1491,50 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Frameworks/WebRTC.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2EY3b9ZIJzMv7MvF2zZNS/PQq60=
+			</data>
+			<key>hash2</key>
+			<data>
+			0O2gguMqr6i7nrSBCfSH/Pab+Mb8n9uB7NLJqJgye4A=
+			</data>
+		</dict>
+		<key>Frameworks/WebRTC.framework/LICENSE.md</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dlz3MRufR5pbJj88Dw0EbJAB9GM=
+			</data>
+			<key>hash2</key>
+			<data>
+			cZnKTtmMjJAvZRtyalTzgxDigUrEPiAKxxgxwyIj5O0=
+			</data>
+		</dict>
+		<key>Frameworks/WebRTC.framework/WebRTC</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ZB71vQEqCdwZyprhkfwWOeGXL1c=
+			</data>
+			<key>hash2</key>
+			<data>
+			0ZC/clDjiipRlVlnvBLgWxM2aqlIWaSCwDpsOVQCcoY=
+			</data>
+		</dict>
+		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			i7y9WtLu7CLH19hh2MO5snPFO8o=
+			</data>
+			<key>hash2</key>
+			<data>
+			PuIfT9DwkIhNqMBAuDsaYDgIifjkAlSmspNYgpRWet8=
+			</data>
+		</dict>
 		<key>Headers/Consumer.h</key>
 		<dict>
 			<key>hash</key>
@@ -1721,11 +1781,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4bRI7WvuAHt7I8YSgdCjIu5g8gI=
+			4X0oorhYFkspE6vGpnSdUFJu6kM=
 			</data>
 			<key>hash2</key>
 			<data>
-			xnVgPbDDL9c2E/JiJufnnp+dhqGjC0L7nXPHOxhPAHE=
+			eND5c0BBKC0HPxlkHOW/jOSqXKKjOr/fxmMegizncCI=
 			</data>
 		</dict>
 		<key>Headers/Utils.hpp</key>

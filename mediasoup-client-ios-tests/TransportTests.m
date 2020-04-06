@@ -128,12 +128,14 @@
     self.connectionState = connectionState;
 }
 
--(NSString *)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
-    return @"id";
-}
-
 - (void)onTransportClose:(Producer *)producer {
     
+}
+
+- (void)onProduce:(Transport *)transport kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData callback:(void (^)(NSString *))callback {
+    NSLog(@"Test %@", callback);
+    
+    callback(@"id");
 }
 
 @end

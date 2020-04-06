@@ -94,6 +94,7 @@ public:
         [this->listener onProduce:sendTransport
             kind: [NSString stringWithUTF8String: kind.c_str()]
             rtpParameters: [NSString stringWithUTF8String: rtpParametersString.c_str()]
+            appData: [NSString stringWithUTF8String:appDataString.c_str()]
             callback: ^(NSString* id) {
                 promise.set_value(std::string([id UTF8String]));
             }
