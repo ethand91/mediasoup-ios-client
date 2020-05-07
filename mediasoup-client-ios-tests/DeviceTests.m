@@ -52,6 +52,15 @@
     XCTAssertThrowsSpecific([self.device getRtpCapabilities], NSException, @"Not loaded");
 }
 
+-(void)testGetSctpCapabilitiesSuccess {
+    [self.device load:[Parameters generateRouterRtpCapabilities]];
+    XCTAssertNotNil([self.device getSctpCapabilities]);
+}
+
+-(void)testGetSctpCapabilitiesFail {
+    XCTAssertThrowsSpecific([self.device getSctpCapabilities], NSException, @"Not loaded");
+}
+
 -(void)testCanProduceVideoSuccess {
     [self.device load:[Parameters generateRouterRtpCapabilities]];
     

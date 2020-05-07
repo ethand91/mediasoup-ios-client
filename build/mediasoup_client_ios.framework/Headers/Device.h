@@ -42,6 +42,7 @@
     @throws The device has not been loaded
  */
 -(NSString *)getRtpCapabilities;
+-(NSString *)getSctpCapabilities;
 /*!
     @brief Returns whether the device can produce media of the given kind
     @discussion This depends on the media codecs enabled in the mediasoup router and the media capabilities of libwebrtc
@@ -67,11 +68,12 @@
    @param iceParameters ICE parameters of the server side transport
    @param iceCandidates ICE candidates of the server side transport
    @param dtlsParameters DTLS parameters of the server side transport
+   @param sctpParameters SCTP parameters of the server side transport
    @param options PeerConnection options
    @param appData Custom application data
    @return SendTransport
 */
--(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
+-(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
 /*!
     @brief Creates a new WebRTC transport to <b>receive</b> media
     @discussion The transport must be previously created in the mediasoup router
@@ -91,11 +93,12 @@
    @param iceParameters ICE parameters of the server side transport
    @param iceCandidates ICE candidates of the server side transport
    @param dtlsParameters DTLS parameters of the server side transport
+   @param sctpParameters SCTP parameters of the server side transport
    @param options PeerConnection options
    @param appData Custom application data
    @return RecvTransport
 */
--(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
+-(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
 @end
 
 #endif /* Device_h */
