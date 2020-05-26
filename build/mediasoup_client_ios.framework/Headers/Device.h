@@ -42,6 +42,11 @@
     @throws The device has not been loaded
  */
 -(NSString *)getRtpCapabilities;
+/*!
+    @brief Returns the devices sctpCapabilities
+    @returns Devices SCTP Capabilities
+    @throws The device has not been loaded
+ */
 -(NSString *)getSctpCapabilities;
 /*!
     @brief Returns whether the device can produce media of the given kind
