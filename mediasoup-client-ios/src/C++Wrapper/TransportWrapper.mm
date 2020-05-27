@@ -158,7 +158,13 @@ using namespace mediasoupclient;
         }
         
         mediasoupclient::SendTransport *transport = reinterpret_cast<mediasoupclient::SendTransport *>([nativeTransport pointerValue]);
-        mediasoupclient::Producer *nativeProducer = transport->Produce(producerListener, mediaStreamTrack, &encodingsVector, &codecOptionsJson, appDataJson);
+        
+        mediasoupclient::Producer *nativeProducer;
+        
+        // Prevent sdp error when called at the same time on multiple threads (a=mid)
+        @synchronized (self) {
+            nativeProducer = transport->Produce(producerListener, mediaStreamTrack, &encodingsVector, &codecOptionsJson, appDataJson);
+        }
         
         OwnedProducer *ownedProducer = new OwnedProducer(nativeProducer, producerListener);
         ::Producer *producer = [[::Producer alloc] initWithNativeProducer:[NSValue valueWithPointer:ownedProducer]];

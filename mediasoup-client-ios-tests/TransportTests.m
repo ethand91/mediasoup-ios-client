@@ -103,11 +103,12 @@
     self.track = [factory audioTrackWithTrackId:@"dsdasdsa"];
     self.producerDelegate = self;
     
+    // TODO
     RTCRtpEncodingParameters *encoding1 = [RTCUtils genRtpEncodingParameters:true maxBitrateBps:500000 minBitrateBps:0 maxFramerate:60 numTemporalLayers:0 scaleResolutionDownBy:0.0];
     
     self.encodings = @[encoding1];
     
-    Producer *producer = [self.sendTransport produce:self.delegate track:self.track encodings:self.encodings codecOptions:nil];
+    Producer *producer = [self.sendTransport produce:self.delegate track:self.track encodings:nil codecOptions:nil];
     XCTAssertNotNil(producer);
 }
 

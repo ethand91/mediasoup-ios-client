@@ -49,7 +49,7 @@
         @"parameters": videoParameters
     };
     
-    NSDictionary *rtxParameters = @{ @"apt": @"101" };
+    NSDictionary *rtxParameters = @{ @"apt": @101 };
     
     NSDictionary* rtxCodec = @{
         @"mimeType": @"video/rtx",
@@ -73,50 +73,42 @@
     NSDictionary* headerEx1 = @{
         @"kind": @"audio",
         @"uri": @"urn:ietf:params:rtp-hdrext:ssrc-audio-level",
-        @"preferredId": @1,
-        @"preferredEncrypt": @"false",
+        @"preferredId": @1
     };
     NSDictionary* headerEx2 = @{
         @"kind": @"video",
         @"uri": @"urn:ietf:params:rtp-hdrext:offset",
-        @"preferredId": @2,
-        @"preferredEncrypt": @"false"
+        @"preferredId": @2
     };
     NSDictionary* headerEx3 = @{
         @"kind": @"audio",
         @"uri": @"http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time",
-        @"preferredId": @3,
-        @"preferredEncrypt": @"false"
+        @"preferredId": @3
     };
     NSDictionary* headerEx4 = @{
         @"kind": @"video",
         @"uri": @"http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time",
-        @"preferredId": @3,
-        @"preferredEncrypt": @"false"
+        @"preferredId": @3
     };
     NSDictionary* headerEx5 = @{
         @"kind": @"video",
         @"uri": @"urn:3gpp:video-orientation",
-        @"preferredId": @4,
-        @"preferredEncrypt": @"false"
+        @"preferredId": @4
     };
     NSDictionary* headerEx6 = @{
         @"kind": @"audio",
         @"uri": @"urn:ietf:params:rtp-hdrext:sdes:mid",
-        @"preferredId": @5,
-        @"preferredEncrypt": @"false"
+        @"preferredId": @5
     };
     NSDictionary* headerEx7 = @{
         @"kind": @"video",
         @"uri": @"urn:ietf:params:rtp-hdrext:sdes:mid",
-        @"preferredId": @5,
-        @"preferredEncrypt": @"false"
+        @"preferredId": @5
     };
     NSDictionary* headerEx8 = @{
         @"kind": @"video",
         @"uri": @"urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id",
-        @"preferredId": @6,
-        @"preferredEncrypt": @"false"
+        @"preferredId": @6
     };
     
     NSArray* headerExtensions = @[headerEx1, headerEx2, headerEx3, headerEx4, headerEx5, headerEx6, headerEx7, headerEx8];
@@ -218,7 +210,7 @@
     
     NSDictionary *opusCodec = @{
         @"mimeType": @"audio/opus",
-        @"clockRate": @"48000",
+        @"clockRate": @48000,
         @"payloadType": @100,
         @"channels": @2,
         @"rtcpFeedback": @[],

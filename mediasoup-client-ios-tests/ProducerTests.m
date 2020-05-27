@@ -74,6 +74,14 @@
     XCTAssertTrue([self.producer.getKind isEqualToString:@"audio"]);
 }
 
+-(void)testGetRtpParameters {
+    XCTAssertNotNil([self.producer getRtpParameters]);
+}
+
+-(void)testGetAppData {
+    XCTAssertNotNil([self.producer getAppData]);
+}
+
 -(void)testGetTrack {
     RTCMediaStreamTrack *track = [self.producer getTrack];
     XCTAssertNotNil(track);

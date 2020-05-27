@@ -65,7 +65,7 @@ using namespace mediasoupclient;
 +(NSString *)getNativeAppData:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    const std::string nativeAppData = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetAppData();
+    const std::string nativeAppData = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetAppData().dump();
     
     return [NSString stringWithUTF8String:nativeAppData.c_str()];
 }
@@ -73,7 +73,7 @@ using namespace mediasoupclient;
 +(NSString *)getNativeRtpParameters:(NSValue *)nativeProducer {
     MSC_TRACE();
     
-    const std::string nativeRtpParameters = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetRtpParameters();
+    const std::string nativeRtpParameters = reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->GetRtpParameters().dump();
     
     return [NSString stringWithUTF8String:nativeRtpParameters.c_str()];
 }

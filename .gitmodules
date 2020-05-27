@@ -4,3 +4,4 @@
 [submodule "mediasoup-client-ios/dependencies/webrtc/src"]
 	path = mediasoup-client-ios/dependencies/webrtc/src
 	url = https://github.com/ethand91/webrtc-mac-src.git
+  branch = m79

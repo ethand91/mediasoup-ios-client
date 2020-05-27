@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/Consumer.hpp</key>
 		<data>
-		LrIQ+5fKfG7zE5dwv4UydQRJGbI=
+		5d7W14rIJS9EHrJXr1+WzCn7384=
 		</data>
 		<key>Headers/ConsumerWrapper.h</key>
 		<data>
@@ -18,23 +18,19 @@
 		</data>
 		<key>Headers/Device.h</key>
 		<data>
-		F7dUe5cmUu1xgrkrfbEt2tZAlZk=
+		WOr3TfPZYKPw3v0NNrz8rCJWX+4=
 		</data>
 		<key>Headers/Device.hpp</key>
 		<data>
-		lH1xuW4mPOurm+P6RAkI+kHDlW8=
+		s3VYZSUfR/Oh3vVAPXiyZwnwd7A=
 		</data>
 		<key>Headers/DeviceWrapper.h</key>
 		<data>
-		CZ50dKzq5n18S3v8yUmjt/rvRlM=
-		</data>
-		<key>Headers/Exception.hpp</key>
-		<data>
-		ViBVepUvqjr9Z6W+qbUh+3K9Jyk=
+		qVMOxXOG97o4wtM1Ti+HEB0umGQ=
 		</data>
 		<key>Headers/Handler.hpp</key>
 		<data>
-		M5YGJ+KTOvJ/vMeGH5kK5MSq9+E=
+		wVpdTTkbyxuU2sh9x8yypkSX6lI=
 		</data>
 		<key>Headers/Logger.h</key>
 		<data>
@@ -42,11 +38,15 @@
 		</data>
 		<key>Headers/Logger.hpp</key>
 		<data>
-		ETrLaWgZ4WIHTKOaTI18jCBTGMw=
+		b9FM7ca2Ck3ZqQR4sFY6ukGLw4M=
 		</data>
 		<key>Headers/LoggerWrapper.h</key>
 		<data>
 		ey6eE1takMfJt+zGhJDUVI8GK3I=
+		</data>
+		<key>Headers/MediaSoupClientErrors.hpp</key>
+		<data>
+		AKFeP+BZ6IyQR+wlQZm7rLMGJwo=
 		</data>
 		<key>Headers/Mediasoupclient.h</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/PeerConnection.hpp</key>
 		<data>
-		pkoM/c8fc9P2yopJDpNTlGrz9Kw=
+		/GscMoTqJcsxzyVDHmr0PWn0TFU=
 		</data>
 		<key>Headers/Producer.h</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/Producer.hpp</key>
 		<data>
-		hDHqQ9wX0Qmo8sEwi21hD/Uh9D8=
+		pGb6nW1O4XbMx8hcXdVOp0af22E=
 		</data>
 		<key>Headers/ProducerWrapper.h</key>
 		<data>
@@ -90,7 +90,7 @@
 		</data>
 		<key>Headers/Transport.hpp</key>
 		<data>
-		WwDPRUHqVnPGllPY/JFQ/VChBKI=
+		H+0EpLkPjassG6F+x/hsTvX2Wjs=
 		</data>
 		<key>Headers/TransportWrapper.h</key>
 		<data>
@@ -98,7 +98,7 @@
 		</data>
 		<key>Headers/Utils.hpp</key>
 		<data>
-		72aYKFtxeI0pK3zScfZy0vIBwS0=
+		VNRwPr5HS9Qxga2PJG6pUcjxLpQ=
 		</data>
 		<key>Headers/absl/algorithm/algorithm.h</key>
 		<data>
@@ -1450,23 +1450,23 @@
 		</data>
 		<key>Headers/mediasoupclient.hpp</key>
 		<data>
-		s8fwzWHUfjDaTPrg4MdYWHXYU5A=
+		H122ehQqSGa9CjrJ+Os3Z1s3sP4=
 		</data>
 		<key>Headers/ortc.hpp</key>
 		<data>
-		1QqM3/2lK4wjuMF+jAf7KO0XndU=
+		WyLwsvBqt72IuvEA10M5Tgy7QZ8=
 		</data>
 		<key>Headers/scalabilityMode.hpp</key>
 		<data>
-		jz+tL5We2lMPz0GV8bsZbScH0IE=
+		p+qwa2ESwDslfjivwiYK5l8Ek14=
 		</data>
 		<key>Headers/version.hpp</key>
 		<data>
-		t0kiL2fq6V1YJEcYYTLbEaDeOz8=
+		CljF6Kc4ufDETAr1dNEiesE1gyo=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		gOxJe6xliFeotyV4lic/EROeoEs=
+		wFQM3gXO1u+xjZjF+fi5lV/UDw0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -1490,11 +1490,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LrIQ+5fKfG7zE5dwv4UydQRJGbI=
+			5d7W14rIJS9EHrJXr1+WzCn7384=
 			</data>
 			<key>hash2</key>
 			<data>
-			SLgNzoCA0xAeHmjdPJRqFbHmtigI4SVgiTekeAH392I=
+			iuF3oK+oSNowCmX5PidN0VDra63JCkIcsA9SrdjN7b0=
 			</data>
 		</dict>
 		<key>Headers/ConsumerWrapper.h</key>
@@ -1512,55 +1512,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			F7dUe5cmUu1xgrkrfbEt2tZAlZk=
+			WOr3TfPZYKPw3v0NNrz8rCJWX+4=
 			</data>
 			<key>hash2</key>
 			<data>
-			oQQ41oQ5MQdO3MTWlnGl7t5tOwwyMKYoS1klqncMFb0=
+			Ns6ln7uldzvBtieOQonY6ZbKVrgD/HU2EcICS387jLc=
 			</data>
 		</dict>
 		<key>Headers/Device.hpp</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lH1xuW4mPOurm+P6RAkI+kHDlW8=
+			s3VYZSUfR/Oh3vVAPXiyZwnwd7A=
 			</data>
 			<key>hash2</key>
 			<data>
-			B+MC6YdKDTF7/8XyNWeI0uey68s+WOCAFYEmGRUEycw=
+			86sZJq3/z+6C+Fn+UagXVSuwocn2wgHUv0eicgrVrRA=
 			</data>
 		</dict>
 		<key>Headers/DeviceWrapper.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			CZ50dKzq5n18S3v8yUmjt/rvRlM=
+			qVMOxXOG97o4wtM1Ti+HEB0umGQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			8NcvOa7wvgomgJxIGzHqc609pRA1TF66QV1Yccliftw=
-			</data>
-		</dict>
-		<key>Headers/Exception.hpp</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ViBVepUvqjr9Z6W+qbUh+3K9Jyk=
-			</data>
-			<key>hash2</key>
-			<data>
-			kbH750ntttDQcZhCkt+YBU+2wFTbHIbqH1Z7FSbpuc0=
+			xpHRcmO/zChFQ9Cm48qRKfjZg8LUTdeHXIQnFHSl2Iw=
 			</data>
 		</dict>
 		<key>Headers/Handler.hpp</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			M5YGJ+KTOvJ/vMeGH5kK5MSq9+E=
+			wVpdTTkbyxuU2sh9x8yypkSX6lI=
 			</data>
 			<key>hash2</key>
 			<data>
-			h2f+yzzK36H2qbEzlQ2A/hEA5eP71DLJPM4r1/G/7NQ=
+			+o6M679g7QWrC/WFgRb9AX1B3N7VZry1UGmlEPpJ+4s=
 			</data>
 		</dict>
 		<key>Headers/Logger.h</key>
@@ -1578,11 +1567,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ETrLaWgZ4WIHTKOaTI18jCBTGMw=
+			b9FM7ca2Ck3ZqQR4sFY6ukGLw4M=
 			</data>
 			<key>hash2</key>
 			<data>
-			sp9d+DXHFkgbay7dFq8chLMlJ0+1qOm7bX/LNnVpFj8=
+			KH333eSuD8ZhBcN8TudHNhUoENwRBnX/G0t/FTlfE/g=
 			</data>
 		</dict>
 		<key>Headers/LoggerWrapper.h</key>
@@ -1594,6 +1583,17 @@
 			<key>hash2</key>
 			<data>
 			H0vcIovY2RD8+79XvFRdxwu1RlAMeHu0qjiVocIXziA=
+			</data>
+		</dict>
+		<key>Headers/MediaSoupClientErrors.hpp</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AKFeP+BZ6IyQR+wlQZm7rLMGJwo=
+			</data>
+			<key>hash2</key>
+			<data>
+			6KqXKBirO506ljJBSJ0SlDiS5VcRCDA1OKdTIJRDLxk=
 			</data>
 		</dict>
 		<key>Headers/Mediasoupclient.h</key>
@@ -1622,11 +1622,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pkoM/c8fc9P2yopJDpNTlGrz9Kw=
+			/GscMoTqJcsxzyVDHmr0PWn0TFU=
 			</data>
 			<key>hash2</key>
 			<data>
-			QHiQtvi3PIGrbn/JBfArzKD/Eh8kEzMUkwRTPURVTzk=
+			9Os2i4u1UBj4VxyHUHQxaLg/r0hCv1r6i1Wmkzb9Wtc=
 			</data>
 		</dict>
 		<key>Headers/Producer.h</key>
@@ -1644,11 +1644,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hDHqQ9wX0Qmo8sEwi21hD/Uh9D8=
+			pGb6nW1O4XbMx8hcXdVOp0af22E=
 			</data>
 			<key>hash2</key>
 			<data>
-			lmJAh9h3EfcB+JA3hDLB7nMaB4E+tGEV7ubZ08NFKQg=
+			ZgSYsVAFhiMJvGTCqSORjfI1vbdhisuaHzjMrLT3nn0=
 			</data>
 		</dict>
 		<key>Headers/ProducerWrapper.h</key>
@@ -1710,11 +1710,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WwDPRUHqVnPGllPY/JFQ/VChBKI=
+			H+0EpLkPjassG6F+x/hsTvX2Wjs=
 			</data>
 			<key>hash2</key>
 			<data>
-			5Fdygpe94d5grRegrZsveb9L4Mlz3YUeVQSka5LsJ8Q=
+			+iflULF7l8rv7YlRHQcjfcbp1Yeb0eg4hwzOqGhGjKY=
 			</data>
 		</dict>
 		<key>Headers/TransportWrapper.h</key>
@@ -1732,11 +1732,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			72aYKFtxeI0pK3zScfZy0vIBwS0=
+			VNRwPr5HS9Qxga2PJG6pUcjxLpQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			U0jw2JCzPLzpmsGtxIRbTVSf/jyfrw/Xluvu5/D0hXI=
+			TXGBbBDOKSdqkX8YGk51Ozi/8zjvxgviXWqriAEp1y8=
 			</data>
 		</dict>
 		<key>Headers/absl/algorithm/algorithm.h</key>
@@ -5450,44 +5450,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			s8fwzWHUfjDaTPrg4MdYWHXYU5A=
+			H122ehQqSGa9CjrJ+Os3Z1s3sP4=
 			</data>
 			<key>hash2</key>
 			<data>
-			XYRc0rI2G3WGuR7aUtI0XiGiRGA7108DcXN8Y5Kb3Ho=
+			BpL86MfAsJe+oFzaS/VHUVS2iEaJ/oCTQ0iv0/SOhMA=
 			</data>
 		</dict>
 		<key>Headers/ortc.hpp</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1QqM3/2lK4wjuMF+jAf7KO0XndU=
+			WyLwsvBqt72IuvEA10M5Tgy7QZ8=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZXFM3Pg7K1peApuQWg+lkwD+AUEpwC4fA8+d0TA2c28=
+			Cr0kmISiSmLuYd0Ec8ZQV3j5TCyl3KyZoOIiji71yEI=
 			</data>
 		</dict>
 		<key>Headers/scalabilityMode.hpp</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			jz+tL5We2lMPz0GV8bsZbScH0IE=
+			p+qwa2ESwDslfjivwiYK5l8Ek14=
 			</data>
 			<key>hash2</key>
 			<data>
-			6RdeCWBOGS/tZg0f6bKSgaylr4dTeX5ionziWmQwDaU=
+			cDBKp1Labrd0kDtIAd5cKIzIGHsAdLRnygp2Gb71hgQ=
 			</data>
 		</dict>
 		<key>Headers/version.hpp</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			t0kiL2fq6V1YJEcYYTLbEaDeOz8=
+			CljF6Kc4ufDETAr1dNEiesE1gyo=
 			</data>
 			<key>hash2</key>
 			<data>
-			htuMiTJfXDAyK4BcWqmlRyJHeUAaWd2ApxvXDX4xdzY=
+			FRsrlgcaqV0nRiO6ZJ7kwAhTzcKTkO0uyGT5ya1Glkc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

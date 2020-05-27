@@ -72,6 +72,23 @@ using namespace mediasoupclient;
     }
 }
 
++(NSString *)nativeGetSctpCapabilities:(NSValue *)nativeDevice {
+    MSC_TRACE()
+    
+    try {
+        const nlohmann::json sctpCapabilities = reinterpret_cast<mediasoupclient::Device *>([nativeDevice pointerValue])->GetSctpCapabilities();
+        std::string sctpCapabilitiesString = sctpCapabilities.dump();
+        
+        return [NSString stringWithUTF8String:sctpCapabilitiesString.c_str()];
+    } catch (const std::exception &e) {
+        MSC_ERROR("%s", e.what());
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+        
+        throw exception;
+    }
+}
+
 +(bool)nativeCanProduce:(NSValue *)nativeDevice kind:(NSString *)kind {
     MSC_TRACE();
     
@@ -89,7 +106,7 @@ using namespace mediasoupclient;
     }
 }
 
-+(NSValue *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
++(NSValue *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -98,6 +115,12 @@ using namespace mediasoupclient;
         const std::string iceParametersString = std::string([iceParameters UTF8String]);
         const std::string iceCandidatesString = std::string([iceCandidates UTF8String]);
         const std::string dtlsParametersString = std::string([dtlsParameters UTF8String]);
+        
+        nlohmann::json sctpParametersJson;
+        if (sctpParameters != nullptr) {
+            sctpParametersJson = nlohmann::json::parse(std::string([sctpParameters UTF8String]));
+        }
+        
         mediasoupclient::PeerConnection::Options* pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>(options);
         
         nlohmann::json appDataJson = nlohmann::json::object();
@@ -105,7 +128,7 @@ using namespace mediasoupclient;
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
         
-        mediasoupclient::SendTransport *nativeTransport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateSendTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), pcOptions, appDataJson);
+        mediasoupclient::SendTransport *nativeTransport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateSendTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), sctpParametersJson, pcOptions, appDataJson);
         
         return [NSValue valueWithPointer:nativeTransport];
     } catch(std::exception &e) {
@@ -119,7 +142,7 @@ using namespace mediasoupclient;
     return nullptr;
 }
 
-+(NSValue *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
++(NSValue *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -129,6 +152,11 @@ using namespace mediasoupclient;
         const std::string iceCandidatesString = std::string([iceCandidates UTF8String]);
         const std::string dtlsParametersString = std::string([dtlsParameters UTF8String]);
         
+        nlohmann::json sctpParametersJson;
+        if (sctpParameters != nullptr) {
+            sctpParametersJson = nlohmann::json::parse(std::string([sctpParameters UTF8String]));
+        }
+        
         mediasoupclient::PeerConnection::Options* pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>(options);
         
         nlohmann::json appDataJson = nlohmann::json::object();
@@ -136,7 +164,7 @@ using namespace mediasoupclient;
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
         
-        mediasoupclient::RecvTransport *nativeTransport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateRecvTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), pcOptions, appDataJson);
+        mediasoupclient::RecvTransport *nativeTransport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateRecvTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), sctpParametersJson, pcOptions, appDataJson);
         
         return [NSValue valueWithPointer:nativeTransport];
     } catch (std::exception &e) {
