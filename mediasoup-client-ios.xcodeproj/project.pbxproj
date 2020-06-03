@@ -21,6 +21,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F352408C0EE00AC60B4 /* libmediasoupclient.a */; };
+		3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F332408C0D500AC60B4 /* libsdptransform.a */; };
+		3519FB2024872D5600DD3AF5 /* libwebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F372408C11000AC60B4 /* libwebrtc.a */; };
+		3519FB22248731D500DD3AF5 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3519FB21248731D400DD3AF5 /* WebRTC.framework */; };
+		3519FB23248731D500DD3AF5 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3519FB21248731D400DD3AF5 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		351A83222394A68700BA7A13 /* Transport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A83212394A68700BA7A13 /* Transport.mm */; };
 		351A83232394AD5C00BA7A13 /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A83202394A4BA00BA7A13 /* Transport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		351A83242394AD5F00BA7A13 /* Mediasoupclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EEA28023911D3B00134D1C /* Mediasoupclient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,9 +57,6 @@
 		355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61292387702600986297 /* ConsumerWrapper.mm */; };
 		355C613323877F2B00986297 /* ProducerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C613223877F2B00986297 /* ProducerWrapper.mm */; };
 		355C61372387995200986297 /* TransportWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 355C61362387995200986297 /* TransportWrapper.mm */; };
-		356B3F282463F68200364472 /* libwebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F372408C11000AC60B4 /* libwebrtc.a */; };
-		356B3F292463F69000364472 /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F352408C0EE00AC60B4 /* libmediasoupclient.a */; };
-		356B3F2A2463F6A300364472 /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F332408C0D500AC60B4 /* libsdptransform.a */; };
 		3570311623977BFC00761AF5 /* LoggerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3570311523977BFC00761AF5 /* LoggerWrapper.mm */; };
 		3570311823977DF800761AF5 /* Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3570311723977DF800761AF5 /* Logger.mm */; };
 		3570311A23977E0F00761AF5 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3570311923977E0F00761AF5 /* Logger.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -99,6 +101,7 @@
 				35256BF9239A4AA800E27BB3 /* CoreVideo.framework in Embed Frameworks */,
 				35256BF7239A4AA600E27BB3 /* CoreMedia.framework in Embed Frameworks */,
 				35D17230238CFB5100FAF301 /* AVFoundation.framework in Embed Frameworks */,
+				3519FB23248731D500DD3AF5 /* WebRTC.framework in Embed Frameworks */,
 				35D1722E238CFB5000FAF301 /* CoreAudio.framework in Embed Frameworks */,
 				35D17232238CFB5300FAF301 /* AudioToolbox.framework in Embed Frameworks */,
 				35D1722C238CFB4B00FAF301 /* UIKit.framework in Embed Frameworks */,
@@ -109,6 +112,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3519FB21248731D400DD3AF5 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"; sourceTree = "<group>"; };
 		351A83202394A4BA00BA7A13 /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transport.h; sourceTree = "<group>"; };
 		351A83212394A68700BA7A13 /* Transport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Transport.mm; sourceTree = "<group>"; };
 		351A832C2394B08E00BA7A13 /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
@@ -134,7 +138,6 @@
 		353EA3DE23960C01000D5353 /* RecvTransportListenerImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecvTransportListenerImpl.m; sourceTree = "<group>"; };
 		353EA3E023960EBE000D5353 /* TransportTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportTests.m; sourceTree = "<group>"; };
 		353EA3E223963B6A000D5353 /* ProducerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProducerTests.m; sourceTree = "<group>"; };
-		3544B7E6238E604A00A6AA17 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"; sourceTree = "<group>"; };
 		35516F332408C0D500AC60B4 /* libsdptransform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsdptransform.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libsdptransform.a"; sourceTree = "<group>"; };
 		35516F352408C0EE00AC60B4 /* libmediasoupclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmediasoupclient.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libmediasoupclient.a"; sourceTree = "<group>"; };
 		35516F372408C11000AC60B4 /* libwebrtc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebrtc.a; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal/libwebrtc.a"; sourceTree = "<group>"; };
@@ -188,15 +191,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				356B3F282463F68200364472 /* libwebrtc.a in Frameworks */,
+				3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */,
 				35256BF6239A4AA600E27BB3 /* CoreMedia.framework in Frameworks */,
+				3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */,
 				35D1722F238CFB5100FAF301 /* AVFoundation.framework in Frameworks */,
 				35256BF1239A4A7800E27BB3 /* AudioToolbox.framework in Frameworks */,
 				35D1722B238CFB4B00FAF301 /* UIKit.framework in Frameworks */,
 				35D17231238CFB5300FAF301 /* AudioToolbox.framework in Frameworks */,
-				356B3F292463F69000364472 /* libmediasoupclient.a in Frameworks */,
+				3519FB22248731D500DD3AF5 /* WebRTC.framework in Frameworks */,
 				35256BF8239A4AA800E27BB3 /* CoreVideo.framework in Frameworks */,
-				356B3F2A2463F6A300364472 /* libsdptransform.a in Frameworks */,
+				3519FB2024872D5600DD3AF5 /* libwebrtc.a in Frameworks */,
 				35D1722D238CFB5000FAF301 /* CoreAudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,13 +330,13 @@
 		35E2E4892385289700E315FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3519FB21248731D400DD3AF5 /* WebRTC.framework */,
 				35516F372408C11000AC60B4 /* libwebrtc.a */,
 				35516F352408C0EE00AC60B4 /* libmediasoupclient.a */,
 				35516F332408C0D500AC60B4 /* libsdptransform.a */,
 				35256BF4239A4AA100E27BB3 /* CoreVideo.framework */,
 				35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */,
 				3538C5542397A91A007EB078 /* libc++.tbd */,
-				3544B7E6238E604A00A6AA17 /* WebRTC.framework */,
 				35D171EE238CD51C00FAF301 /* AVFoundation.framework */,
 				353BD1292387E23500A8734C /* UIKit.framework */,
 				355C61442387DA7B00986297 /* AVFoundation.framework */,

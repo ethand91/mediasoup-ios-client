@@ -17,10 +17,10 @@
 namespace webrtc {
 
 class MockVideoBitrateAllocator : public webrtc::VideoBitrateAllocator {
-  MOCK_METHOD2(GetAllocation,
-               VideoBitrateAllocation(uint32_t total_bitrate,
-                                      uint32_t framerate));
-  MOCK_METHOD1(GetPreferredBitrateBps, uint32_t(uint32_t framerate));
+  MOCK_METHOD(VideoBitrateAllocation,
+              Allocate,
+              (VideoBitrateAllocationParameters parameters),
+              (override));
 };
 
 }  // namespace webrtc

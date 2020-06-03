@@ -20,23 +20,17 @@
 #include "api/rtp_parameters.h"
 #include "api/rtp_receiver_interface.h"
 #include "api/rtp_sender_interface.h"
+#include "api/rtp_transceiver_direction.h"
 #include "api/scoped_refptr.h"
 #include "rtc_base/ref_count.h"
+#include "rtc_base/system/rtc_export.h"
 
 namespace webrtc {
-
-// https://w3c.github.io/webrtc-pc/#dom-rtcrtptransceiverdirection
-enum class RtpTransceiverDirection {
-  kSendRecv,
-  kSendOnly,
-  kRecvOnly,
-  kInactive
-};
 
 // Structure for initializing an RtpTransceiver in a call to
 // PeerConnectionInterface::AddTransceiver.
 // https://w3c.github.io/webrtc-pc/#dom-rtcrtptransceiverinit
-struct RtpTransceiverInit final {
+struct RTC_EXPORT RtpTransceiverInit final {
   RtpTransceiverInit();
   RtpTransceiverInit(const RtpTransceiverInit&);
   ~RtpTransceiverInit();
@@ -64,7 +58,7 @@ struct RtpTransceiverInit final {
 //
 // WebRTC specification for RTCRtpTransceiver, the JavaScript analog:
 // https://w3c.github.io/webrtc-pc/#dom-rtcrtptransceiver
-class RtpTransceiverInterface : public rtc::RefCountInterface {
+class RTC_EXPORT RtpTransceiverInterface : public rtc::RefCountInterface {
  public:
   // Media type of the transceiver. Any sender(s)/receiver(s) will have this
   // type as well.
@@ -128,8 +122,16 @@ class RtpTransceiverInterface : public rtc::RefCountInterface {
   // The SetCodecPreferences method overrides the default codec preferences used
   // by WebRTC for this transceiver.
   // https://w3c.github.io/webrtc-pc/#dom-rtcrtptransceiver-setcodecpreferences
-  // TODO(steveanton): Not implemented.
-  virtual void SetCodecPreferences(rtc::ArrayView<RtpCodecCapability> codecs);
+  virtual RTCError SetCodecPreferences(
+      rtc::ArrayView<RtpCodecCapability> codecs);
+  virtual std::vector<RtpCodecCapability> codec_preferences() const;
+
+  // Readonly attribute which contains the set of header extensions that was set
+  // with SetOfferedRtpHeaderExtensions, or a default set if it has not been
+  // called.
+  // https://w3c.github.io/webrtc-extensions/#rtcrtptransceiver-interface
+  virtual std::vector<RtpHeaderExtensionCapability> HeaderExtensionsToOffer()
+      const;
 
  protected:
   ~RtpTransceiverInterface() override = default;

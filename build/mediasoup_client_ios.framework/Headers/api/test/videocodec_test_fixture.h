@@ -25,7 +25,7 @@ namespace test {
 // Rates for the encoder and the frame number when to apply profile.
 struct RateProfile {
   size_t target_kbps;
-  size_t input_fps;
+  double input_fps;
   size_t frame_num;
 };
 
@@ -82,6 +82,9 @@ class VideoCodecTestFixture {
     std::string ToString() const;
     std::string CodecName() const;
 
+    // Name of this config, to be used for accounting by the test runner.
+    std::string test_name;
+
     // Plain name of YUV file to process without file extension.
     std::string filename;
 
@@ -125,6 +128,9 @@ class VideoCodecTestFixture {
 
     // Print out frame level stats.
     bool print_frame_level_stats = false;
+
+    // Path to a directory where encoded or/and decoded video should be saved.
+    std::string output_path;
 
     // Should video be saved persistently to disk for post-run visualization?
     struct VisualizationParams {
