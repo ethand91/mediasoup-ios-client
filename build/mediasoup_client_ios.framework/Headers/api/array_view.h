@@ -213,6 +213,14 @@ class ArrayView final : public impl::ArrayViewBase<T, Size> {
       : ArrayView(u.data(), u.size()) {
     static_assert(U::size() == Size, "Sizes must match exactly");
   }
+  template <
+      typename U,
+      typename std::enable_if<Size != impl::kArrayViewVarSize &&
+                              HasDataAndSize<U, T>::value>::type* = nullptr>
+  ArrayView(const U& u)  // NOLINT(runtime/explicit)
+      : ArrayView(u.data(), u.size()) {
+    static_assert(U::size() == Size, "Sizes must match exactly");
+  }
 
   // (Only if size is variable.) Construct an ArrayView from any type U that
   // has a size() method whose return value converts implicitly to size_t, and
@@ -283,6 +291,23 @@ static_assert(std::is_empty<ArrayView<int, 0>>::value, "");
 template <typename T>
 inline ArrayView<T> MakeArrayView(T* data, size_t size) {
   return ArrayView<T>(data, size);
+}
+
+// Only for primitive types that have the same size and aligment.
+// Allow reinterpret cast of the array view to another primitive type of the
+// same size.
+// Template arguments order is (U, T, Size) to allow deduction of the template
+// arguments in client calls: reinterpret_array_view<target_type>(array_view).
+template <typename U, typename T, std::ptrdiff_t Size>
+inline ArrayView<U, Size> reinterpret_array_view(ArrayView<T, Size> view) {
+  static_assert(sizeof(U) == sizeof(T) && alignof(U) == alignof(T),
+                "ArrayView reinterpret_cast is only supported for casting "
+                "between views that represent the same chunk of memory.");
+  static_assert(
+      std::is_fundamental<T>::value && std::is_fundamental<U>::value,
+      "ArrayView reinterpret_cast is only supported for casting between "
+      "fundamental types.");
+  return ArrayView<U, Size>(reinterpret_cast<U*>(view.data()), view.size());
 }
 
 }  // namespace rtc

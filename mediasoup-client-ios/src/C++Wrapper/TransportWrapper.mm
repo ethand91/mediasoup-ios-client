@@ -203,7 +203,12 @@ using namespace mediasoupclient;
         }
         
         mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::RecvTransport *>([nativeTransport pointerValue]);
-        mediasoupclient::Consumer *nativeConsumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
+        
+        mediasoupclient::Consumer *nativeConsumer;
+        
+        @synchronized(self) {
+            nativeConsumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
+        }
         
         OwnedConsumer *ownedConsumer = new OwnedConsumer(nativeConsumer, consumerListener);
         ::Consumer *consumer = [[::Consumer alloc] initWithNativeConsumer:[NSValue valueWithPointer:ownedConsumer]];
