@@ -80,8 +80,8 @@ make -C build_86_64
 
 
 # Create a FAT libmediasoup/libsdptransform library
-lipo -create build/libmediasoup/libmediasoup.a build_86_64/libmediasoup/libmediasoup.a -output lib/
-lipo -create build/libmediasoup/libsdptransform/libsdptransform.a build_86_64/libmediasoup/libsdptransform/libsdptransform -output lib/
+lipo -create build/libmediasoupclient/libmediasoupclient.a build_86_64/libmediasoupclient/libmediasoupclient.a -output libmediasoupclient/lib/libmediasoupclient.a
+lipo -create build/libmediasoupclient/libsdptransform/libsdptransform.a build_86_64/libmediasoupclient/libsdptransform/libsdptransform.a -output libmediasoupclient/lib/libsdptransform.a
 ```
 
 Once build include the libwebrtc.a, libmediasoup.a, libsdptransform.a in the project
