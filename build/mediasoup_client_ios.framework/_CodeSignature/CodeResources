@@ -14,7 +14,7 @@
 		</data>
 		<key>Frameworks/WebRTC.framework/WebRTC</key>
 		<data>
-		hf046H/IpZ/l0lmQCDqoMcWcpUc=
+		zDKQ5UcGq6FnsRUHChbyUGLbT4Q=
 		</data>
 		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Headers/Logger.h</key>
 		<data>
-		zXOIGBVhIeXwO5brOoRBsIMoE6I=
+		3y8U5JmBR9YREiz6XUwEV0HMRnI=
 		</data>
 		<key>Headers/Logger.hpp</key>
 		<data>
@@ -2033,11 +2033,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hf046H/IpZ/l0lmQCDqoMcWcpUc=
+			zDKQ5UcGq6FnsRUHChbyUGLbT4Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			SMJ+iVHCMSxmScGX7JIi6HrXamM3P/XKGWQoVoCjSyo=
+			Ua1DBhr2nlyv1A4LSmPZVZpjMa4KpN45hhEyhJ4aX5A=
 			</data>
 		</dict>
 		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
@@ -2132,11 +2132,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zXOIGBVhIeXwO5brOoRBsIMoE6I=
+			3y8U5JmBR9YREiz6XUwEV0HMRnI=
 			</data>
 			<key>hash2</key>
 			<data>
-			UbjYlTDez6LxZ/BlRnwIA0U2k6KTEJGd4Xi1Fmy6OsE=
+			FxWbs+NFZf4a+AZ1qYmIJ6havRCxPa/U0ZJIF42gbC4=
 			</data>
 		</dict>
 		<key>Headers/Logger.hpp</key>
