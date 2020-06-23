@@ -17,13 +17,4 @@
     return [NSString stringWithUTF8String:version.c_str()];
 }
 
-+(void)nativeInitialize {
-    [RTCPeerConnectionFactory initialize];
-    mediasoupclient::Initialize();
-}
-
-+(void)nativeCleanup {
-    mediasoupclient::Cleanup();
-}
-
 @end

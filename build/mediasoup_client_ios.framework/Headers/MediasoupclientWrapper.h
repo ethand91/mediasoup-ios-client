@@ -13,7 +13,6 @@
 
 @interface MediasoupclientWrapper : NSObject {}
 +(NSString *)nativeVersion;
-+(void)nativeInitialize;
 @end
 
 #endif /* MediasoupclientWrapper_h */

@@ -6,10 +6,10 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 
-#import "Device.h"
+#import "MediasoupDevice.h"
 #import "DeviceWrapper.h"
 
-@implementation Device : NSObject
+@implementation MediasoupDevice : NSObject
 
 -(instancetype)init {
     self = [super init];

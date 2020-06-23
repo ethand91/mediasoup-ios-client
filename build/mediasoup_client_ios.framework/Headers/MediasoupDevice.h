@@ -11,10 +11,10 @@
 #import "SendTransport.h"
 #import "RecvTransport.h"
 
-#ifndef Device_h
-#define Device_h
+#ifndef MediasoupDevice_h
+#define MediasoupDevice_h
 
-@interface Device : NSObject
+@interface MediasoupDevice : NSObject
 /*! @brief libmediasoupclient native device object */
 @property(nonatomic, strong) NSValue* _nativeDevice;
 

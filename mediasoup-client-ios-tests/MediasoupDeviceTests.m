@@ -15,15 +15,15 @@
 #import "mocks/RecvTransportListenerImpl.h"
 #import "utils/util.h"
 
-@interface DeviceTests : XCTestCase
+@interface MediasoupDeviceTests : XCTestCase
 @property (nonatomic) Device *device;
 @end
 
-@implementation DeviceTests
+@implementation MediasoupDeviceTests
 
 - (void)setUp {
     [super setUp];
-    self.device = [[Device alloc] init];
+    self.device = [[MediasoupDevice alloc] init];
 }
 
 - (void)tearDown {

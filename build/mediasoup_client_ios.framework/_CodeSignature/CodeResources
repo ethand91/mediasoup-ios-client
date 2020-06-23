@@ -14,7 +14,7 @@
 		</data>
 		<key>Frameworks/WebRTC.framework/WebRTC</key>
 		<data>
-		zDKQ5UcGq6FnsRUHChbyUGLbT4Q=
+		LWY1FSWVxstOE0d3DdRatqbHsEQ=
 		</data>
 		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -31,10 +31,6 @@
 		<key>Headers/ConsumerWrapper.h</key>
 		<data>
 		Z+Rx1gutXiCocnGIWPPbbIC95mY=
-		</data>
-		<key>Headers/Device.h</key>
-		<data>
-		WOr3TfPZYKPw3v0NNrz8rCJWX+4=
 		</data>
 		<key>Headers/Device.hpp</key>
 		<data>
@@ -64,13 +60,17 @@
 		<data>
 		AKFeP+BZ6IyQR+wlQZm7rLMGJwo=
 		</data>
+		<key>Headers/MediasoupDevice.h</key>
+		<data>
+		x919DrNhg9pVyQHz8c2C3Txzoh0=
+		</data>
 		<key>Headers/Mediasoupclient.h</key>
 		<data>
-		8w9pqp1eEBF0rmHtm/bPWXXW3A0=
+		FvFjkkQ0lY+C4B+O8UI9iK+2FyQ=
 		</data>
 		<key>Headers/MediasoupclientWrapper.h</key>
 		<data>
-		u+122mtCXEvD2v8ArAqqwDfq8fE=
+		etrIb+FPNmDcMmaRqL5eF9SlRck=
 		</data>
 		<key>Headers/PeerConnection.hpp</key>
 		<data>
@@ -2033,11 +2033,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zDKQ5UcGq6FnsRUHChbyUGLbT4Q=
+			LWY1FSWVxstOE0d3DdRatqbHsEQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ua1DBhr2nlyv1A4LSmPZVZpjMa4KpN45hhEyhJ4aX5A=
+			9BM09+pjLO7u8X65xoZsteRL3N6Zny5thPyNPae2XbQ=
 			</data>
 		</dict>
 		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
@@ -2082,17 +2082,6 @@
 			<key>hash2</key>
 			<data>
 			R6/ozxjK3bDn4XdkZNBvIXZoBTKdf0IDKX+YmgDO710=
-			</data>
-		</dict>
-		<key>Headers/Device.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			WOr3TfPZYKPw3v0NNrz8rCJWX+4=
-			</data>
-			<key>hash2</key>
-			<data>
-			Ns6ln7uldzvBtieOQonY6ZbKVrgD/HU2EcICS387jLc=
 			</data>
 		</dict>
 		<key>Headers/Device.hpp</key>
@@ -2172,26 +2161,37 @@
 			6KqXKBirO506ljJBSJ0SlDiS5VcRCDA1OKdTIJRDLxk=
 			</data>
 		</dict>
+		<key>Headers/MediasoupDevice.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			x919DrNhg9pVyQHz8c2C3Txzoh0=
+			</data>
+			<key>hash2</key>
+			<data>
+			IqWmHrl4PA9FmMd1ly7mobNw7h5AYH934aMcWpGzJmE=
+			</data>
+		</dict>
 		<key>Headers/Mediasoupclient.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8w9pqp1eEBF0rmHtm/bPWXXW3A0=
+			FvFjkkQ0lY+C4B+O8UI9iK+2FyQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			MfGenpQIJ0mRrftXHaGQvQh/BXUbshKGCoU/v+6FPWE=
+			+R0sGZmbaF9+3MwFWUGgwvWOfTFQBt0lu5RT1UGphLo=
 			</data>
 		</dict>
 		<key>Headers/MediasoupclientWrapper.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			u+122mtCXEvD2v8ArAqqwDfq8fE=
+			etrIb+FPNmDcMmaRqL5eF9SlRck=
 			</data>
 			<key>hash2</key>
 			<data>
-			z6Knqcbl/SZAhAW1kBnPBtunYEXppIsGmGOA5KFEVH4=
+			35QfxQumXXSge7Z1PU7UzHDKBnSuKkHnHrjzoN9M3KQ=
 			</data>
 		</dict>
 		<key>Headers/PeerConnection.hpp</key>
