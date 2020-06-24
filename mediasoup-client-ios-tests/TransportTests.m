@@ -17,7 +17,7 @@
 #import "utils/util.h"
 
 @interface TransportTests : XCTestCase<SendTransportListener, RecvTransportListener, ProducerListener>
-@property (nonatomic, strong) Device *device;
+@property (nonatomic, strong) MediasoupDevice *device;
 @property (nonatomic, strong) SendTransport *sendTransport;
 @property (nonatomic, strong) RecvTransport *recvTransport;
 @property (nonatomic, strong) NSString *connectionState;
@@ -31,7 +31,7 @@
 
 - (void)setUp {
     [super setUp];
-    self.device = [[Device alloc] init];
+    self.device = [[MediasoupDevice alloc] init];
     [self.device load:[Parameters generateRouterRtpCapabilities]];
 
     NSDictionary *remoteTransportParameters = [Parameters generateTransportRemoteParameters];

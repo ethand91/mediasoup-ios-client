@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Logger.h"
-#import "Device.h"
+#import "MediasoupDevice.h"
 #import "Transport.h"
 #import "Consumer.h"
 #import "Producer.h"
@@ -25,9 +25,6 @@
  */
 +(NSString *)version;
 /*! @brief Initializes the libmediasoupclient, initializes libwebrtc */
-+(void)initializePC;
-/*! @brief libmediasoupclient cleanup, cleans up libwebrtc */
-+(void)cleanup;
 @end
 
 #endif /* Mediasoupclient_h */
