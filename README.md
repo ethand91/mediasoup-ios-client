@@ -51,7 +51,7 @@ https://github.com/ethand91/mediasoup-ios-client-sample/blob/master/mediasoup-io
 [Mediasoupclient initializePC];
 
 // Create a Device
-Device *device = [[Device alloc] init];
+MediasoupDevice *device = [[MediasoupDevice alloc] init];
 
 // Communicate with our server app to retrieve router RTP capabilities
 NSString *routerRtpCapabilities = [mySignalling request:@"getRouterRtpCapabilities"];
@@ -124,7 +124,7 @@ Producer *videoProducer = [sendTransport produce:producerHandler.delegate track:
 
 ### Clone the repo and install submodules
 
-Due to the size of the WebRTC static library it cannot be uploaded to Github, therefore you will need to follow the instructions in the build folder and build it yourself.
+Due to the size of the WebRTC static library it cannot be uploaded to Github, therefore you will need to follow the instructions in the build folder and build it yourself. (This step is only needed for development, not for library usage)
 
 ```bash
 git clone https://github.com/ethand91/mediasoup-ios-client.git
