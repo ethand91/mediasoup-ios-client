@@ -40,7 +40,7 @@ https://github.com/ethand91/mediasoup-ios-client-sample/blob/master/mediasoup-io
 
 ## Documentation
 
-(Coming Soon)
+Documentation including API doc is located in the documentation folder.
 
 ## Usage Example
 
