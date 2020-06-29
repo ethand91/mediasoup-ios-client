@@ -722,3 +722,314 @@ Paused the producer (RTP is sent again to the server).
 ```
 This method should be called when the server side producer has been resumed (and vice-versa)
 ```
+
+Objective-C
+
+```
+[producer replaceTrack:newTrack]
+```
+
+Swift
+
+```
+producer.replaceTrack(newTrack)
+```
+
+Replaces the audio or video track being transmitted. No negotiation with the server is needed.
+
+| Argument | Type | Description | Required |
+| ----     | ---- | ----        | ----     |
+| track    | RTCMediaStreamTrack | An audio or video track. | Yes |
+
+Objective-C
+
+```
+[producer setMaxSpatialLayer:spatialLayer]
+```
+
+Swift
+
+```
+producer.setMaxSpatialLayer(spatialLayer)
+```
+
+In case of simulcast, this method limits the highest RTP stream being transmitted to the server.
+
+| Argument | Type | Description | Required |
+| ----     | ---- | ----        | ----     |
+| spatialLayer | int | The index of the entry in encodings representing the highest RTP stream that will be transmitted. | Yes |
+
+---
+
+## ProducerListener
+
+>@abstract
+
+This is an abstract listener which must be implemented and used according to the API.
+
+### Events
+
+Objective-C
+
+```
+-(void)onTransportClose(Producer *)producer
+```
+
+Swift
+
+```
+func onTransportClose(_ producer: Producer)
+```
+
+Executed when the transport this producer belongs to is closed for whatever reason. The producer itself is also closed.
+
+| Argument | Type | Description | Required |
+| ----     | ---- | ----        | ----     |
+| producer | Producer | The producer instance executing this method. | Yes |
+
+---
+
+## Consumer
+
+A consumer represents an audio or video remote source being transmitted from the mediasoup router to the client application through a WebRTC transport.
+
+### Methods
+
+Objective-C
+
+```
+[consumer getId];
+```
+
+Swift
+
+```
+consumer.getId()
+```
+
+Consumer identifier
+
+>@returns NSString
+
+Objective-C
+
+```
+[consumer getProducerId];
+```
+
+Swift
+
+```
+consumer.getProducerId()
+```
+
+The associated producer identifier
+
+>@returns NSString
+
+Objective-C
+
+```
+[consumer getKind];
+```
+
+Swift
+
+```
+consumer.getKind()
+```
+
+The media kind ("audio" or "video")
+
+>@returns NSString
+
+Objective-C
+
+```
+[consumer getRtpParameters];
+```
+
+Swift
+
+```
+consumer.getRtpParameters()
+```
+
+Consumer RTP parameters
+
+>@returns NSString
+
+Objective-C
+
+```
+[consumer getTrack];
+```
+
+Swift
+
+```
+consumer.getTrack()
+```
+
+The remote audio or video track
+
+>@returns RTCMediaTrack
+
+Objective-C
+
+```
+[consumer getStats];
+```
+
+Swift
+
+```
+consumer.getStats()
+```
+
+Gets the local RTP receiver statistics by calling getStats() in the underlying RTCRtpReceiver instance.
+
+>@returns NSString
+
+Objective-C
+
+```
+[consumer getAppData];
+```
+
+Swift
+
+```
+consumer.getAppData()
+```
+
+Custom data object provided by the application in the consumer factory method. The app can modify its content at any time.
+
+>@returns NSString
+
+Objective-C
+
+```
+[consumer isClosed];
+```
+
+Swift
+
+```
+consumer.isClosed()
+```
+
+Whether the consumer is closed.
+
+>@returns Bool
+
+Objective-C
+
+```
+[consumer isPaused];
+```
+
+Swift
+
+```
+consumer.isPaused()
+```
+
+Whether the consumer is paused.
+
+>@returns Bool
+
+Objective-C
+
+```
+[consumer close];
+```
+
+Swift
+
+```
+consumer.close()
+```
+
+Closes the consumer
+
+```
+This method should be called when the server side consumer has been closed (and vice-versa).
+```
+
+Objective-C
+
+```
+[consumer pause];
+```
+
+Swift
+
+```
+consumer.pause()
+```
+
+Pauses the consumer.
+
+```
+This method should be called when the server side consumer has been paused (and vice-versa).
+```
+
+Objective-C
+
+```
+[consumer resume];
+```
+
+Swift
+
+```
+consumer.resume()
+```
+
+Resumes the consumer.
+
+```
+This method should be called when the server side consumer has been resumed (and vice-versa).
+```
+
+---
+
+## ConsumerListener
+
+>@abstract
+
+This is an abstract class which must be implemented and used according to the API.
+
+### Events
+
+Objective-C
+
+```
+-(void)onTransportClose(Consumer *)consumer
+```
+
+Swift
+
+```
+func onTransportClose(_ consumer: Consumer!)
+```
+
+Executed when the transport this consumer belongs to is closed for whatever reason. The consumer itself is also closed.
+
+---
+
+## Logger
+
+libmediasoupclient inner Logger.
+
+### Enums
+
+#### LogLevel
+
+| Value | Description |
+| ----  | ----        |
+| TRACE | Logs everything |
+| WARN | Logs warning level and above. |
+| ERROR | Logs error level. |
+| NONE | Logs nothing. |
