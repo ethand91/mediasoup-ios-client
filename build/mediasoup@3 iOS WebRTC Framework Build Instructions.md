@@ -6,7 +6,7 @@
 
 Follow the below guide to install depot_tools: 
 
- https://webrtc.org/native-code/development/prerequisite-sw/ 
+https://webrtc.github.io/webrtc-org/native-code/development/prerequisite-sw/
 
 ---
 
