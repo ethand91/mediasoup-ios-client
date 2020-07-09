@@ -128,7 +128,7 @@ Due to the size of the WebRTC static library it cannot be uploaded to Github, th
 
 ```bash
 git clone https://github.com/ethand91/mediasoup-ios-client.git
-submodule init
-submodule update
+git submodule init
+git submodule update
 ```
  
