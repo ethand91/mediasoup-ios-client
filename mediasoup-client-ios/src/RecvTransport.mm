@@ -17,7 +17,6 @@
     self = [super initWithNativeTransport:nativeTransport];
     if (self) {
         self._nativeTransport = nativeTransport;
-        self._workerQueue = dispatch_queue_create("org.mediasoup.recvtransport", DISPATCH_QUEUE_SERIAL);
     }
     
     return self;
@@ -36,15 +35,11 @@
 -(Consumer *)consume:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData {
     [self checkTransportExists];
     
-    __block Consumer *consumer;
-    // The below MUST run on the same thread, otherwise it leads to a race problem
-    // when called at the same time on a different thread (sdp answer is produced with both video and audio being mid:0)
-    //dispatch_queue_t serialQueue = dispatch
-    dispatch_async(self._workerQueue, ^{
-        consumer = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
-    });
-    
-    return consumer;
+    @synchronized(self) {
+        Consumer *consumer = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
+        
+        return consumer;
+    }
 }
 
 -(void)checkTransportExists {
