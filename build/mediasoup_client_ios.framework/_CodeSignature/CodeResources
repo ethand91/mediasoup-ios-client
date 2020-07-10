@@ -14,7 +14,7 @@
 		</data>
 		<key>Frameworks/WebRTC.framework/WebRTC</key>
 		<data>
-		LWY1FSWVxstOE0d3DdRatqbHsEQ=
+		T+V7fTHhls2Y0aOGZwBqlEykIgM=
 		</data>
 		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/Mediasoupclient.h</key>
 		<data>
-		FvFjkkQ0lY+C4B+O8UI9iK+2FyQ=
+		SsOAY9hFaVE968vRfv8kTKFA49U=
 		</data>
 		<key>Headers/MediasoupclientWrapper.h</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>Headers/RecvTransport.h</key>
 		<data>
-		/JEB/J6KE9bwyo1/eux5RQ/4Wrc=
+		9Cieb1JGYmT3r2MdmqzYKeGOtko=
 		</data>
 		<key>Headers/SendTransport.h</key>
 		<data>
@@ -1998,7 +1998,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		wFQM3gXO1u+xjZjF+fi5lV/UDw0=
+		QcRanjMVlVHNrxum1NXK8FmXwvU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -2033,11 +2033,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LWY1FSWVxstOE0d3DdRatqbHsEQ=
+			T+V7fTHhls2Y0aOGZwBqlEykIgM=
 			</data>
 			<key>hash2</key>
 			<data>
-			9BM09+pjLO7u8X65xoZsteRL3N6Zny5thPyNPae2XbQ=
+			ZJhYesLZotK2b9/1euRRNw+8UY3Qj/VxEnXrOUFvDM4=
 			</data>
 		</dict>
 		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
@@ -2176,11 +2176,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FvFjkkQ0lY+C4B+O8UI9iK+2FyQ=
+			SsOAY9hFaVE968vRfv8kTKFA49U=
 			</data>
 			<key>hash2</key>
 			<data>
-			+R0sGZmbaF9+3MwFWUGgwvWOfTFQBt0lu5RT1UGphLo=
+			wcLrhiyRiWZBihuzdqiZ6QujDpxGQNbvhtiIELU7nPc=
 			</data>
 		</dict>
 		<key>Headers/MediasoupclientWrapper.h</key>
@@ -2253,11 +2253,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/JEB/J6KE9bwyo1/eux5RQ/4Wrc=
+			9Cieb1JGYmT3r2MdmqzYKeGOtko=
 			</data>
 			<key>hash2</key>
 			<data>
-			Dqf7hQRbNXYrcFQ0Zyvbp/VCTTWC9+p3CXAmo9T44qA=
+			p0CoQBWOy5kJ4WcBqVpURjGhFQwf4yktUN0VviInHcI=
 			</data>
 		</dict>
 		<key>Headers/SendTransport.h</key>

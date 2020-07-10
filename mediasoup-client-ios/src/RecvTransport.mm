@@ -17,6 +17,7 @@
     self = [super initWithNativeTransport:nativeTransport];
     if (self) {
         self._nativeTransport = nativeTransport;
+        self._workerQueue = dispatch_queue_create("org.mediasoup.recvtransport", DISPATCH_QUEUE_SERIAL);
     }
     
     return self;
@@ -38,17 +39,10 @@
     __block Consumer *consumer;
     // The below MUST run on the same thread, otherwise it leads to a race problem
     // when called at the same time on a different thread (sdp answer is produced with both video and audio being mid:0)
-    dispatch_queue_t main = dispatch_get_main_queue();
-    dispatch_block_t block = ^{
+    //dispatch_queue_t serialQueue = dispatch
+    dispatch_async(self._workerQueue, ^{
         consumer = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
-    };
-    
-    // Prevent deadlock if already on the main thread
-    if ([NSThread isMainThread]) {
-        block();
-    } else {
-        dispatch_sync(main, block);
-    }
+    });
     
     return consumer;
 }
