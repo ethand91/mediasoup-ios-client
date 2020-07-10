@@ -16,7 +16,6 @@
 @interface RecvTransport : Transport
 /*! @brief libmediasoupclient native recv transport object */
 @property(nonatomic, strong) NSValue* _nativeTransport;
-@property(nonatomic, strong) dispatch_queue_t _workerQueue;
 
 /*! @brief Disposes of the recv transport instance */
 -(void)dispose;
