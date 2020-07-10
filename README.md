@@ -43,7 +43,13 @@ https://github.com/ethand91/mediasoup-ios-client-sample/blob/master/mediasoup-io
 
 ## Documentation
 
-Documentation including API doc is located in the documentation folder.
+#### API
+
+https://github.com/ethand91/mediasoup-ios-client/blob/master/documentation/Api.md
+
+#### INSTALLATION (Only needed for development, not needed if you only intent to use the project)
+
+https://github.com/ethand91/mediasoup-ios-client/blob/master/documentation/Installation.md
 
 ## Usage Example
 
