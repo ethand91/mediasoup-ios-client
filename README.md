@@ -1,6 +1,5 @@
-![Cocoapods version] (https://img.shields.io/cocoapods/v/mediasoup_ios_client?color=green&label=Cocoapods&logo=Cocoapods)
-
-![License] (https://img.shields.io/github/license/ethand91/mediasoup-ios-client)
+![Cocoapods version](https://img.shields.io/cocoapods/v/mediasoup_ios_client?color=green&label=Cocoapods&logo=Cocoapods)
+![License](https://img.shields.io/github/license/ethand91/mediasoup-ios-client)
 
 # mediasoup-ios-client
 
