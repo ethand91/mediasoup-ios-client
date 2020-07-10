@@ -1,11 +1,11 @@
-![Cocoapods version](https://img.shields.io/cocoapods/v/mediasoup_ios_client?color=green&label=Cocoapods&logo=Cocoapods)
-![License](https://img.shields.io/github/license/ethand91/mediasoup-ios-client)
-
 # mediasoup-ios-client
 
 Objective-C wrapper library for libmediasoupclient for building mediasoup iOS based applications.
 
 **This project supports both 64 bit iOS devices and 64 bit iOS Simulators**
+
+![Cocoapods version](https://img.shields.io/cocoapods/v/mediasoup_ios_client?color=green&label=Cocoapods&logo=Cocoapods)
+![License](https://img.shields.io/github/license/ethand91/mediasoup-ios-client)
 
 ## Website and Documentation
 
