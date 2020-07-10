@@ -24,7 +24,6 @@
     @returns The libmediasoupclient version
  */
 +(NSString *)version;
-/*! @brief Initializes the libmediasoupclient, initializes libwebrtc */
 @end
 
 #endif /* Mediasoupclient_h */
