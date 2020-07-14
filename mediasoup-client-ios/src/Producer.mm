@@ -91,6 +91,8 @@
 
 -(void)close {
     [ProducerWrapper nativeClose:self._nativeProducer];
+    [self._nativeProducer release];
+    [self._nativeTrack release];
 }
 
 @end

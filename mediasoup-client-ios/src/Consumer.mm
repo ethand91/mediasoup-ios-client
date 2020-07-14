@@ -77,6 +77,7 @@
 
 -(void)close {
     [ConsumerWrapper nativeClose:self._nativeConsumer];
+    [self._nativeConsumer release];
 }
 
 @end

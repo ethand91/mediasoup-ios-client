@@ -110,6 +110,7 @@ using namespace mediasoupclient;
     MSC_TRACE();
     
     [TransportWrapper extractNativeTransport:nativeTransport]->Close();
+    [nativeTransport release];
 }
 
 +(NSValue *)nativeGetNativeTransport:(NSValue *)nativeTransport {
