@@ -4,3 +4,4 @@ xcuserdata/
 DerivedData/
 *.moved-aside
 *.pbxuser
+.DS_Store
