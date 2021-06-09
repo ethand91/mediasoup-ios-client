@@ -6,10 +6,10 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 
-#import "Logger.h"
+#import "MediasoupLogger.h"
 #import "LoggerWrapper.h"
 
-@implementation Logger : NSObject
+@implementation MediasoupLogger : NSObject
 
 +(void)setDefaultHandler {
     [LoggerWrapper nativeSetDefaultHandler];

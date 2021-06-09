@@ -89,6 +89,19 @@ public:
         
         return promise.get_future();
     };
+  
+    std::future<std::string> OnProduceData(
+                                           mediasoupclient::SendTransport* nativeTransport,
+                                           const nlohmann::json& sctpStreamParameters,
+                                           const std::string& label,
+                                           const std::string& protocol,
+                                           const nlohmann::json& appData) {
+      
+      __block std::promise<std::string> promise;
+      promise.set_value(std::string("not implemented"));
+      
+      return promise.get_future();
+    };
 };
 
 class RecvTransportListenerWrapper final : public mediasoupclient::RecvTransport::Listener {

@@ -17,7 +17,7 @@ typedef NS_ENUM(int, LogLevel) {
     TRACE = 3,
 };
 
-@interface Logger : NSObject {}
+@interface MediasoupLogger : NSObject {}
 
 /*!
     @brief Sets the log level of the libmediasoupclient

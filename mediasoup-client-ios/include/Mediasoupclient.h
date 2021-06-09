@@ -7,7 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 
-#import "Logger.h"
+#import "MediasoupLogger.h"
 #import "MediasoupDevice.h"
 #import "Transport.h"
 #import "Consumer.h"

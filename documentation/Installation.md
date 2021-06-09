@@ -23,6 +23,10 @@ gclient sync
 ```
 
 ---
+## Apply this patch you bastard!
+https://github.com/ethand91/webrtc-mac-src/commit/58c5047b4c5f412dd7dfdf523ea5a5eb3f80d932
+
+---
 
 ## Enable VP9 codec (Optional)
 
