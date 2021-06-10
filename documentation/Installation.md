@@ -23,7 +23,7 @@ gclient sync
 ```
 
 ---
-## Apply this patch you bastard!
+## If you pulled WebRTC repo as the step above, apply this patch so compilation works
 https://github.com/ethand91/webrtc-mac-src/commit/58c5047b4c5f412dd7dfdf523ea5a5eb3f80d932
 
 ---
