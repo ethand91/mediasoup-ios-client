@@ -167,8 +167,7 @@ using namespace mediasoupclient;
             nativeProducer = transport->Produce(producerListener, mediaStreamTrack, &encodingsVector, &codecOptionsJson, appDataJson);
         }
         
-        OwnedProducer *ownedProducer = new OwnedProducer(nativeProducer, producerListener);
-        ::Producer *producer = [[::Producer alloc] initWithNativeProducer:[NSValue valueWithPointer:ownedProducer]];
+        ::Producer *producer = [[::Producer alloc] initWithNativeProducer:[NSValue valueWithPointer:new OwnedProducer(nativeProducer, producerListener)]];
         producerListener->SetProducer(producer);
         
         return producer;
@@ -211,8 +210,7 @@ using namespace mediasoupclient;
             nativeConsumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
         }
         
-        OwnedConsumer *ownedConsumer = new OwnedConsumer(nativeConsumer, consumerListener);
-        ::Consumer *consumer = [[::Consumer alloc] initWithNativeConsumer:[NSValue valueWithPointer:ownedConsumer]];
+        ::Consumer *consumer = [[::Consumer alloc] initWithNativeConsumer:[NSValue valueWithPointer:new OwnedConsumer(nativeConsumer, consumerListener)]];
         consumerListener->SetConsumer(consumer);
         
         return consumer;
