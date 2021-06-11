@@ -3,7 +3,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 # C++ requirements
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD REQUIRED ON)
 
 # build for iphone or simulator
@@ -33,7 +33,7 @@ set(LIBSDPTRANSFORM_BUILD_TESTS OFF)
 set(LIBSDPTRANSFORM_BUILD_READMEHELPER OFF)
 
 # Set the sdk version and the min sdk version
-set(IPHONE_SDKVER "13.2")
+set(IPHONE_SDKVER "14.5")
 set(IPHONE_VERSION_MIN "9.0")
 
 # enable bitcode

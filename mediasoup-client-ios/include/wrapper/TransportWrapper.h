@@ -50,10 +50,12 @@ public:
         SendTransport* sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
         
         [this->listener_ onConnect:sendTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
-        
+
         std::promise<void> promise;
         promise.set_value();
-        
+
+        [transportObject release];
+
         return promise.get_future();
     };
     
@@ -62,6 +64,8 @@ public:
         SendTransport *sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
         
         [this->listener_ onConnectionStateChange:sendTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
+
+        [transportObject release];
     };
     
     std::future<std::string> OnProduce(
@@ -87,7 +91,22 @@ public:
             }
          ];
         
+        [transportObject release];
+
         return promise.get_future();
+    };
+  
+    std::future<std::string> OnProduceData(
+                                           mediasoupclient::SendTransport* nativeTransport,
+                                           const nlohmann::json& sctpStreamParameters,
+                                           const std::string& label,
+                                           const std::string& protocol,
+                                           const nlohmann::json& appData) {
+      
+      __block std::promise<std::string> promise;
+      promise.set_value(std::string("not implemented"));
+      
+      return promise.get_future();
     };
 };
 
@@ -112,6 +131,8 @@ public:
         
         std::promise<void> promise;
         promise.set_value();
+
+        [transportObject release];
         
         return promise.get_future();
     };
@@ -121,6 +142,8 @@ public:
         RecvTransport *recvTransport = [[[RecvTransport alloc] initWithNativeTransport:transportObject] autorelease];
         
         [this->listener_ onConnectionStateChange:recvTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
+      
+        [transportObject release];
     };
 };
 

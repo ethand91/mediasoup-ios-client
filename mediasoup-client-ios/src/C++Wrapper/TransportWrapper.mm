@@ -136,11 +136,11 @@ using namespace mediasoupclient;
                 webrtc::RtpEncodingParameters nativeEncoding;
                 nativeEncoding.active = encoding.isActive;
                 
-                if (encoding.maxBitrateBps != nil) nativeEncoding.max_bitrate_bps = (int)(size_t)encoding.maxBitrateBps;
-                if (encoding.minBitrateBps != nil) nativeEncoding.min_bitrate_bps = (int)(size_t)encoding.minBitrateBps;
-                if (encoding.maxFramerate != nil) nativeEncoding.max_framerate = (int)(size_t)encoding.maxFramerate;
-                if (encoding.numTemporalLayers != nil) nativeEncoding.num_temporal_layers = (int)(size_t)encoding.numTemporalLayers;
-                if (encoding.scaleResolutionDownBy != nil) nativeEncoding.scale_resolution_down_by = (double)[encoding.scaleResolutionDownBy doubleValue];
+                if (encoding.maxBitrateBps != nil) nativeEncoding.max_bitrate_bps = absl::make_optional(encoding.maxBitrateBps.intValue);
+                if (encoding.minBitrateBps != nil) nativeEncoding.min_bitrate_bps = absl::make_optional(encoding.minBitrateBps.intValue);
+                if (encoding.maxFramerate != nil) nativeEncoding.max_framerate = absl::make_optional(encoding.maxFramerate.doubleValue);
+                if (encoding.numTemporalLayers != nil) nativeEncoding.num_temporal_layers = absl::make_optional(encoding.numTemporalLayers.intValue);
+                if (encoding.scaleResolutionDownBy != nil) nativeEncoding.scale_resolution_down_by = absl::make_optional(encoding.scaleResolutionDownBy.doubleValue);
                 
                 encodingsVector.emplace_back(nativeEncoding);
             }
@@ -167,8 +167,7 @@ using namespace mediasoupclient;
             nativeProducer = transport->Produce(producerListener, mediaStreamTrack, &encodingsVector, &codecOptionsJson, appDataJson);
         }
         
-        OwnedProducer *ownedProducer = new OwnedProducer(nativeProducer, producerListener);
-        ::Producer *producer = [[::Producer alloc] initWithNativeProducer:[NSValue valueWithPointer:ownedProducer]];
+        ::Producer *producer = [[::Producer alloc] initWithNativeProducer:[NSValue valueWithPointer:new OwnedProducer(nativeProducer, producerListener)]];
         producerListener->SetProducer(producer);
         
         return producer;
@@ -211,8 +210,7 @@ using namespace mediasoupclient;
             nativeConsumer = transport->Consume(consumerListener, idString, producerIdString, kindString, &rtpParametersJson, appDataJson);
         }
         
-        OwnedConsumer *ownedConsumer = new OwnedConsumer(nativeConsumer, consumerListener);
-        ::Consumer *consumer = [[::Consumer alloc] initWithNativeConsumer:[NSValue valueWithPointer:ownedConsumer]];
+        ::Consumer *consumer = [[::Consumer alloc] initWithNativeConsumer:[NSValue valueWithPointer:new OwnedConsumer(nativeConsumer, consumerListener)]];
         consumerListener->SetConsumer(consumer);
         
         return consumer;
