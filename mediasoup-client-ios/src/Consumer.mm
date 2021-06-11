@@ -21,11 +21,8 @@
         
         webrtc::MediaStreamTrackInterface *nativeTrack = [ConsumerWrapper getNativeTrack:self._nativeConsumer];
         rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
-
-        RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
         
-        self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:factory];
-        free(factory);
+        self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:[[RTCPeerConnectionFactory alloc] init]];
     }
     
     return self;
@@ -77,6 +74,7 @@
 
 -(void)close {
     [ConsumerWrapper nativeClose:self._nativeConsumer];
+    [self._nativeConsumer release];
 }
 
 @end

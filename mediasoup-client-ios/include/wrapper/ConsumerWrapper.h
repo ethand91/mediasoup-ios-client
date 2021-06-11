@@ -27,42 +27,43 @@
 
 @end
 
-class OwnedConsumer {
-public:
-    OwnedConsumer(mediasoupclient::Consumer *consumer, mediasoupclient::Consumer::Listener *listener)
-    : consumer_(consumer), listener_(listener) {}
-    
-    ~OwnedConsumer() = default;
-    
-    mediasoupclient::Consumer *consumer() const { return consumer_.get(); }
-    
+class ConsumerListenerWrapper final : public mediasoupclient::Consumer::Listener {
 private:
-    std::unique_ptr<mediasoupclient::Consumer> consumer_;
-    std::unique_ptr<mediasoupclient::Consumer::Listener> listener_;
-};
-
-class ConsumerListenerWrapper : public mediasoupclient::Consumer::Listener {
-private:
-    Protocol<ConsumerListener> *listener;
-    ::Consumer *consumer;
+    Protocol<ConsumerListener>* listener_;
+    ::Consumer* consumer_;
 public:
-    ConsumerListenerWrapper(Protocol<ConsumerListener> *listener) {
-        this->listener = listener;
-    }
+    ConsumerListenerWrapper(Protocol<ConsumerListener>* listener)
+    : listener_(listener) {}
     
     ~ConsumerListenerWrapper() {
-        if (this->consumer != nullptr) {
-            free(this->consumer);
-        }
+        [consumer_ release];
+        [listener_ release];
     }
     
-    void OnTransportClose(mediasoupclient::Consumer *nativeConsumer) override {
-        [this->listener onTransportClose:this->consumer];
+    void OnTransportClose(mediasoupclient::Consumer* nativeConsumer) override {
+        [this->listener_ onTransportClose:this->consumer_];
     };
     
     void SetConsumer(::Consumer *consumer) {
-        this->consumer = consumer;
+        this->consumer_ = consumer;
     }
+};
+
+class OwnedConsumer {
+public:
+    OwnedConsumer(mediasoupclient::Consumer* consumer, mediasoupclient::Consumer::Listener* listener)
+    : consumer_(consumer), listener_(listener) {}
+    
+    ~OwnedConsumer() {
+        delete listener_;
+        delete consumer_;
+    };
+    
+    mediasoupclient::Consumer *consumer() const { return consumer_; }
+    
+private:
+    mediasoupclient::Consumer* consumer_;
+    mediasoupclient::Consumer::Listener* listener_;
 };
 
 #endif /* ConsumerWrapper_h */

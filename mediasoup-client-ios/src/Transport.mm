@@ -51,6 +51,7 @@
 
 -(void)close {
     [TransportWrapper nativeClose:self._nativeTransport];
+    [self._nativeTransport release];
 }
 
 @end

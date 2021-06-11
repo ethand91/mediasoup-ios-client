@@ -19,11 +19,8 @@
         
         webrtc::MediaStreamTrackInterface *nativeTrack = [ProducerWrapper getNativeTrack:self._nativeProducer];
         rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
-
-        RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
         
-        self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:factory];
-        free(factory);
+        self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:[[RTCPeerConnectionFactory alloc] init]];
     }
     
     return self;
@@ -79,10 +76,7 @@
     webrtc::MediaStreamTrackInterface *nativeTrack = [ProducerWrapper getNativeTrack:self._nativeProducer];
     rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> mediaTrack(nativeTrack);
 
-    RTCPeerConnectionFactory *factory = [[RTCPeerConnectionFactory alloc] init];
-    
-    self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:mediaTrack factory:factory];
-    free(factory);
+    self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:mediaTrack factory:[[RTCPeerConnectionFactory alloc] init]];
 }
 
 -(NSString *)getStats {
@@ -91,6 +85,8 @@
 
 -(void)close {
     [ProducerWrapper nativeClose:self._nativeProducer];
+    [self._nativeProducer release];
+    [self._nativeTrack release];
 }
 
 @end

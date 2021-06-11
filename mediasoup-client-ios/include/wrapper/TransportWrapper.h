@@ -32,66 +32,57 @@
 
 @end
 
-class OwnedSendTransport {
-public:
-    OwnedSendTransport(mediasoupclient::SendTransport *transport, mediasoupclient::SendTransport::Listener *listener)
-    : transport_(transport), listener_(listener) {}
-    
-    ~OwnedSendTransport() = default;
-    
-    mediasoupclient::SendTransport *transport() const { return transport_.get(); }
-    
-private:
-    std::unique_ptr<mediasoupclient::SendTransport> transport_;
-    std::unique_ptr<mediasoupclient::SendTransport::Listener> listener_;
-};
-
 class SendTransportListenerWrapper : public mediasoupclient::SendTransport::Listener {
 private:
-    Protocol<SendTransportListener> *listener;
+    Protocol<SendTransportListener>* listener_;
 public:
-    SendTransportListenerWrapper(Protocol<SendTransportListener> *listener) {
-        this->listener = listener;
-    };
+    SendTransportListenerWrapper(Protocol<SendTransportListener>* listener)
+    : listener_(listener) {}
     
-    ~SendTransportListenerWrapper() = default;
+    ~SendTransportListenerWrapper() {
+        [listener_ release];
+    }
     
-    std::future<void> OnConnect(mediasoupclient::Transport *nativeTransport, const nlohmann::json &dtlsParameters) override {
+    std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
         const std::string dtlsParametersString = dtlsParameters.dump();
         
-        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
-        SendTransport *sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
+        NSValue* transportObject = [NSValue valueWithPointer:nativeTransport];
+        SendTransport* sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
         
-        [this->listener onConnect:sendTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
-        
+        [this->listener_ onConnect:sendTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
+
         std::promise<void> promise;
         promise.set_value();
-        
+
+        [transportObject release];
+
         return promise.get_future();
     };
     
-    void OnConnectionStateChange(mediasoupclient::Transport *nativeTransport, const std::string &connectionState) override {
+    void OnConnectionStateChange(mediasoupclient::Transport* nativeTransport, const std::string& connectionState) override {
         NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
-        SendTransport *sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
+        SendTransport *sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
         
-        [this->listener onConnectionStateChange:sendTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
+        [this->listener_ onConnectionStateChange:sendTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
+
+        [transportObject release];
     };
     
     std::future<std::string> OnProduce(
-                                       mediasoupclient::SendTransport *nativeTransport,
-                                       const std::string &kind,
+                                       mediasoupclient::SendTransport* nativeTransport,
+                                       const std::string& kind,
                                        nlohmann::json rtpParameters,
-                                       const nlohmann::json &appData) override {
+                                       const nlohmann::json& appData) override {
         
         const std::string rtpParametersString = rtpParameters.dump();
         const std::string appDataString = appData.dump();
         
-        NSValue * transportObject = [NSValue valueWithPointer:nativeTransport];
-        SendTransport *sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
+        NSValue* transportObject = [NSValue valueWithPointer:nativeTransport];
+        SendTransport* sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
         
         __block std::promise<std::string> promise;
         
-        [this->listener onProduce:sendTransport
+        [this->listener_ onProduce:sendTransport
             kind: [NSString stringWithUTF8String: kind.c_str()]
             rtpParameters: [NSString stringWithUTF8String: rtpParametersString.c_str()]
             appData: [NSString stringWithUTF8String:appDataString.c_str()]
@@ -100,54 +91,94 @@ public:
             }
          ];
         
+        [transportObject release];
+
         return promise.get_future();
     };
+  
+    std::future<std::string> OnProduceData(
+                                           mediasoupclient::SendTransport* nativeTransport,
+                                           const nlohmann::json& sctpStreamParameters,
+                                           const std::string& label,
+                                           const std::string& protocol,
+                                           const nlohmann::json& appData) {
+      
+      __block std::promise<std::string> promise;
+      promise.set_value(std::string("not implemented"));
+      
+      return promise.get_future();
+    };
+};
+
+class RecvTransportListenerWrapper final : public mediasoupclient::RecvTransport::Listener {
+private:
+    Protocol<TransportListener>* listener_;
+public:
+    RecvTransportListenerWrapper(Protocol<TransportListener>* listener)
+    : listener_(listener) {}
+    
+    ~RecvTransportListenerWrapper() {
+        delete this;
+    }
+
+    std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
+        const std::string dtlsParametersString = dtlsParameters.dump();
+        
+        NSValue* transportObject = [NSValue valueWithPointer:nativeTransport];
+        RecvTransport* recvTransport = [[[RecvTransport alloc] initWithNativeTransport:transportObject] autorelease];
+        
+        [this->listener_ onConnect:recvTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
+        
+        std::promise<void> promise;
+        promise.set_value();
+
+        [transportObject release];
+        
+        return promise.get_future();
+    };
+    
+    void OnConnectionStateChange(mediasoupclient::Transport* nativeTransport, const std::string& connectionState) override {
+        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
+        RecvTransport *recvTransport = [[[RecvTransport alloc] initWithNativeTransport:transportObject] autorelease];
+        
+        [this->listener_ onConnectionStateChange:recvTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
+      
+        [transportObject release];
+    };
+};
+
+class OwnedSendTransport {
+public:
+    OwnedSendTransport(mediasoupclient::SendTransport* transport, SendTransportListenerWrapper* listener)
+    : transport_(transport), listener_(listener) {}
+    
+    ~OwnedSendTransport() {
+        delete transport_;
+        delete listener_;
+    }
+    
+    mediasoupclient::SendTransport* transport() const { transport_; }
+    
+private:
+    mediasoupclient::SendTransport* transport_;
+    SendTransportListenerWrapper* listener_;
 };
 
 class OwnedRecvTransport {
 public:
-    OwnedRecvTransport(mediasoupclient::RecvTransport *transport, mediasoupclient::RecvTransport::Listener *listener)
+    OwnedRecvTransport(mediasoupclient::RecvTransport* transport, RecvTransportListenerWrapper* listener)
     : transport_(transport), listener_(listener) {}
     
-    ~OwnedRecvTransport() = default;
+    ~OwnedRecvTransport() {
+        delete transport_;
+        delete listener_;
+    }
     
-    mediasoupclient::RecvTransport *transport() const { return transport_.get(); }
+    mediasoupclient::RecvTransport* transport() const { return transport_; }
     
 private:
-    std::unique_ptr<mediasoupclient::RecvTransport> transport_;
-    std::unique_ptr<mediasoupclient::RecvTransport::Listener> listener_;
-};
-
-class RecvTransportListenerWrapper : public mediasoupclient::RecvTransport::Listener {
-private:
-    Protocol<TransportListener> *listener;
-public:
-    RecvTransportListenerWrapper(Protocol<TransportListener> *listener) {
-        this->listener = listener;
-    };
-    
-    ~RecvTransportListenerWrapper() = default;
-    
-    std::future<void> OnConnect(mediasoupclient::Transport *nativeTransport, const nlohmann::json &dtlsParameters) override {
-        const std::string dtlsParametersString = dtlsParameters.dump();
-        
-        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
-        RecvTransport *recvTransport = [[RecvTransport alloc] initWithNativeTransport:transportObject];
-        
-        [this->listener onConnect:recvTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
-        
-        std::promise<void> promise;
-        promise.set_value();
-        
-        return promise.get_future();
-    };
-    
-    void OnConnectionStateChange(mediasoupclient::Transport *nativeTransport, const std::string &connectionState) override {
-        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
-        RecvTransport *recvTransport = [[RecvTransport alloc] initWithNativeTransport:transportObject];
-        
-        [this->listener onConnectionStateChange:recvTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
-    };
+    mediasoupclient::RecvTransport* transport_;
+    RecvTransportListenerWrapper* listener_;
 };
 
 #endif /* TransportWrapper_h */
