@@ -1,0 +1,11 @@
+--- webrtc-ios/src/sdk/objc/api/peerconnection/RTCStatisticsReport.mm	2021-07-12 12:15:52.000000000 +0700
++++ webrtc-ios/src/sdk/objc/api/peerconnection/RTCStatisticsReport.mm	2021-07-12 12:26:56.000000000 +0700
+@@ -37,7 +37,7 @@
+       case RTCStatsMemberInterface::kSequenceBool: {
+         std::vector<bool> sequence = *member->cast_to<RTCStatsMember<std::vector<bool>>>();
+         NSMutableArray *array = [NSMutableArray arrayWithCapacity:sequence.size()];
+-        for (const auto &item : sequence) {
++        for (const auto item : sequence) {
+           [array addObject:[NSNumber numberWithBool:item]];
+         }
+         return [array copy];

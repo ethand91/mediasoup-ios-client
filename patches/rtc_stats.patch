@@ -1,0 +1,11 @@
+--- webrtc-ios/src/stats/rtc_stats.cc	2021-07-12 11:49:08.000000000 +0700
++++ webrtc-ios/src/stats/rtc_stats.cc	2021-07-12 12:38:21.000000000 +0700
+@@ -27,7 +27,7 @@
+   rtc::StringBuilder sb;
+   sb << "[";
+   const char* separator = "";
+-  for (const T& element : vector) {
++  for (const T element : vector) {
+     sb << separator << rtc::ToString(element);
+     separator = ",";
+   }

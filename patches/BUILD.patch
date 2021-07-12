@@ -1,0 +1,16 @@
+--- webrtc-ios/src/build/config/compiler/BUILD.gn	2021-07-12 16:13:04.000000000 +0700
++++ webrtc-ios/src/build/config/compiler/BUILD.gn	2021-07-12 16:19:37.000000000 +0700
+@@ -365,6 +365,13 @@
+     }
+   }
+ 
++  if (use_xcode_clang) {
++    # This may be removed if the clang version in xcode > 12.4 includes the
++    # fix https://reviews.llvm.org/D73007.
++    # https://bugs.llvm.org/show_bug.cgi?id=44556
++    cflags += [ "-Wno-range-loop-analysis" ]
++  }
++
+   # Linux/Android/Fuchsia common flags setup.
+   # ---------------------------------
+   if (is_linux || is_android || is_fuchsia) {
