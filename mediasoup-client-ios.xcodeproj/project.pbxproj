@@ -580,11 +580,11 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include",
-					"/Users/pablito25sp/workspace/webrtc-ios/src",
-					"/Users/pablito25sp/workspace/webrtc-ios/src/third_party/abseil-cpp",
 					"${SRCROOT}/mediasoup-client-ios/dependencies",
 					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
 					"${SRCROOT}/mediasoup-client-ios/include/**",
+					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src",
+					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 				);
 				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
@@ -666,11 +666,11 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include",
-					"/Users/pablito25sp/workspace/webrtc-ios/src",
-					"/Users/pablito25sp/workspace/webrtc-ios/src/third_party/abseil-cpp",
 					"${SRCROOT}/mediasoup-client-ios/dependencies",
 					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
 					"${SRCROOT}/mediasoup-client-ios/include/**",
+					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src",
+					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 				);
 				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
