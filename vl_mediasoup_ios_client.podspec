@@ -1,17 +1,17 @@
 Pod::Spec.new do |spec|
-  spec.name         = "mediasoup_ios_client"
-  spec.version      = "1.5.4"
+  spec.name         = "vl_mediasoup_ios_client"
+  spec.version      = "1.5.5"
   spec.summary      = "Mediasoup 3 iOS Client"
 
   spec.description  = <<-DESC
     iOS implementation of libmediasoupclient
                    DESC
 
-  spec.homepage     = "https://github.com/ethand91/mediasoup-ios-client"
+  spec.homepage     = "https://github.com/fedulvtubudul/mediasoup-ios-client"
   spec.license      = "MIT"
   spec.author       = { "ethand91" => "ethan@maru.jp" }
   spec.platform     = :ios, "9.0"
-  spec.source       = { :git => "https://github.com/ethand91/mediasoup-ios-client.git", :submodules => true, :tag => "1.5.4" }
+  spec.source       = { :git => "https://github.com/fedulvtubudul/mediasoup-ios-client.git", :tag => "m92.1" }
   spec.module_name = "mediasoup"
 
 	# Disable arc
@@ -30,7 +30,8 @@ Pod::Spec.new do |spec|
 	# Include frameworks needed for WebRTC
   spec.frameworks = "AVFoundation", "AudioToolbox", "CoreAudio", "CoreMedia", "CoreVideo"
 
-  spec.vendored_frameworks = "build/mediasoup_client_ios.framework", "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"
+  spec.vendored_frameworks = "bin/mediasoup_client_ios.framework", "bin/WebRTC.framework"
 
   spec.module_map = "mediasoup-client-ios/mediasoup_ios_client.modulemap"
 end
+
