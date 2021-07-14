@@ -7,11 +7,11 @@ Pod::Spec.new do |spec|
     iOS implementation of libmediasoupclient
                    DESC
 
-  spec.homepage     = "https://github.com/fedulvtubudul/mediasoup-ios-client"
+  spec.homepage     = "https://github.com/VLprojects/mediasoup-ios-client"
   spec.license      = "MIT"
-  spec.author       = { "ethand91" => "ethan@maru.jp" }
+  spec.author       = { "Alexander Gorbunov" => "gorbunov.a@vlprojects.pro" }
   spec.platform     = :ios, "9.0"
-  spec.source       = { :git => "https://github.com/fedulvtubudul/mediasoup-ios-client.git", :tag => "m92.1" }
+  spec.source       = { :git => "https://github.com/VLprojects/mediasoup-ios-client.git", :tag => "m92.1" }
   spec.module_name = "mediasoup"
 
 	# Disable arc
