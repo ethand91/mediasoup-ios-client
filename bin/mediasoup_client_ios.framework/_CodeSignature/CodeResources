@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/Logger.hpp</key>
 		<data>
-		Brr8joIJWGNcApW3VwsemVmJf+Y=
+		W0NJ5Nn9A154OMm4p4svSonjNaA=
 		</data>
 		<key>Headers/LoggerWrapper.h</key>
 		<data>
@@ -1748,10 +1748,6 @@
 		<data>
 		htz/j9a0yy2ZIkcBWX1e3837FWQ=
 		</data>
-		<key>Headers/api/test/fake_datagram_transport.h</key>
-		<data>
-		GaGiYJ1Wf7xaoFKt9+pmMtSmsk0=
-		</data>
 		<key>Headers/api/test/fake_frame_decryptor.h</key>
 		<data>
 		TBDVCjWVOFOqz52IIGSP0qmPD9A=
@@ -1760,17 +1756,9 @@
 		<data>
 		osGT3f2ipiM41PgntJJZKR3btSs=
 		</data>
-		<key>Headers/api/test/fake_media_transport.h</key>
-		<data>
-		jL4ZVjEaeFc27aqtL7LHTJUadaQ=
-		</data>
 		<key>Headers/api/test/frame_generator_interface.h</key>
 		<data>
 		JH0df+8KyuQYtGb15tlKmPdXNfY=
-		</data>
-		<key>Headers/api/test/loopback_media_transport.h</key>
-		<data>
-		Cs/LpaRzaj3lQZfhmUgdy52lioE=
 		</data>
 		<key>Headers/api/test/mock_async_dns_resolver.h</key>
 		<data>
@@ -1900,10 +1888,6 @@
 		<data>
 		6tBTyfMcY1MVYYKzyTTB+jxm1Hc=
 		</data>
-		<key>Headers/api/test/track_id_stream_label_map.h</key>
-		<data>
-		nysXRkYqG0hXJxIwtBcHKSuHAyo=
-		</data>
 		<key>Headers/api/test/video/function_video_decoder_factory.h</key>
 		<data>
 		fvxT9ERaPZMiAIczyiCC83zijqQ=
@@ -1932,17 +1916,9 @@
 		<data>
 		zfaUJM5lGzt1bNmLDYw3MKdteTY=
 		</data>
-		<key>Headers/api/transport/congestion_control_interface.h</key>
-		<data>
-		zq6zQb662jNcfnc59Sczwgm/XDk=
-		</data>
 		<key>Headers/api/transport/data_channel_transport_interface.h</key>
 		<data>
 		z4WdXDGAj6ZTCfpFQOtDKOkkvF4=
-		</data>
-		<key>Headers/api/transport/datagram_transport_interface.h</key>
-		<data>
-		A/zFDegYrMYzANyf1LZTk1KFL8c=
 		</data>
 		<key>Headers/api/transport/enums.h</key>
 		<data>
@@ -1955,22 +1931,6 @@
 		<key>Headers/api/transport/goog_cc_factory.h</key>
 		<data>
 		bit5MVPdgjKS9JmwplXRC8dXpQ8=
-		</data>
-		<key>Headers/api/transport/media/audio_transport.h</key>
-		<data>
-		Tzofcb3i7tVZVRsaU5zNs1feA+Y=
-		</data>
-		<key>Headers/api/transport/media/media_transport_config.h</key>
-		<data>
-		Y3/6NGV5LmF6T3sT5w/a/F6Orp8=
-		</data>
-		<key>Headers/api/transport/media/media_transport_interface.h</key>
-		<data>
-		xemdorCO9IGFUb1oQ8urEDHlUlw=
-		</data>
-		<key>Headers/api/transport/media/video_transport.h</key>
-		<data>
-		pvnmpUfi5Hs0diDDmu/sWcUuRqk=
 		</data>
 		<key>Headers/api/transport/network_control.h</key>
 		<data>
@@ -2120,10 +2080,6 @@
 		<data>
 		68iOveVh02/6/K/AOUXzIBLUUZg=
 		</data>
-		<key>Headers/api/video/video_frame_marking.h</key>
-		<data>
-		80YkJU2IAKzRrS2uJIA3tY53+8w=
-		</data>
 		<key>Headers/api/video/video_frame_metadata.h</key>
 		<data>
 		hutxB4jlpvqknDpNT/N+7U6V0GE=
@@ -2155,10 +2111,6 @@
 		<key>Headers/api/video/video_stream_decoder_create.h</key>
 		<data>
 		ngdY8Zl3bCZ5r85YxWxVoGwinSM=
-		</data>
-		<key>Headers/api/video/video_stream_encoder_create.h</key>
-		<data>
-		i67S7SDzYKEqWcQe/JcCYR3xlO4=
 		</data>
 		<key>Headers/api/video/video_stream_encoder_interface.h</key>
 		<data>
@@ -2383,7 +2335,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8xq/C0TeAHak1M2uv/rQl+NWBIPGC6bUSTDLn8jPFRg=
+			p000X7Xfszf4/4yKsdG5Xshm54qstOaV62vDj5opFVw=
 			</data>
 		</dict>
 		<key>Headers/LoggerWrapper.h</key>
@@ -5375,13 +5327,6 @@
 			TzhLBrueW674JaNJqGLzc9dE6/ghqQG+3vXyBR41Yyc=
 			</data>
 		</dict>
-		<key>Headers/api/test/fake_datagram_transport.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			7DgJ+qBJa8Jh81kDstgTW91eTmUIAoD3PsTqx5e8HWI=
-			</data>
-		</dict>
 		<key>Headers/api/test/fake_frame_decryptor.h</key>
 		<dict>
 			<key>hash2</key>
@@ -5396,25 +5341,11 @@
 			NLcE86NHY4r9F5Os9tWkS7jkB9lrc8Ld0Ng7V6Gim4s=
 			</data>
 		</dict>
-		<key>Headers/api/test/fake_media_transport.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			P1KuGseeOc3HvwYdrc3BFW4cvOShLOdhjjN0P42DdnE=
-			</data>
-		</dict>
 		<key>Headers/api/test/frame_generator_interface.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			aol19tSBBCD14V11esIVH/Pj1TGz3fVLdvxGGOTd8Cg=
-			</data>
-		</dict>
-		<key>Headers/api/test/loopback_media_transport.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			FMJYvqewY1/k1s+XpBqv705x217f3sbjFlfQPJEtSro=
 			</data>
 		</dict>
 		<key>Headers/api/test/mock_async_dns_resolver.h</key>
@@ -5641,13 +5572,6 @@
 			eQHduY57Whxddknl4QBlyQ6fRlqE6pOEKXvjJ95PB0I=
 			</data>
 		</dict>
-		<key>Headers/api/test/track_id_stream_label_map.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			GyxR7LvColjbGdvDv8suYwtDkF8icrcxH+34581A0WA=
-			</data>
-		</dict>
 		<key>Headers/api/test/video/function_video_decoder_factory.h</key>
 		<dict>
 			<key>hash2</key>
@@ -5697,25 +5621,11 @@
 			+uKq8TYcvbtjdBjNkijaUJvfamPBiJrnRgNg7nYzv0U=
 			</data>
 		</dict>
-		<key>Headers/api/transport/congestion_control_interface.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			uvI1ykfeclynZlAqk9JDF5ErMH2kXemmIyxt1GV16SI=
-			</data>
-		</dict>
 		<key>Headers/api/transport/data_channel_transport_interface.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			xQkIbnNKPJyOIPmHv/uO+6XH0JmoN6CXR3OrSsLoca0=
-			</data>
-		</dict>
-		<key>Headers/api/transport/datagram_transport_interface.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			L+ZgroY/0K4ZeZnn5BEVkpsQWEcpPANoEE09cLAo60o=
 			</data>
 		</dict>
 		<key>Headers/api/transport/enums.h</key>
@@ -5737,34 +5647,6 @@
 			<key>hash2</key>
 			<data>
 			/hh6bQTvAGQc3dhyPqFkKyc5/p71UMznsYFVRXdkTKw=
-			</data>
-		</dict>
-		<key>Headers/api/transport/media/audio_transport.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			d1pPRM1O4k3Ds3Zow+3pyq67IiGe7LcXjNhfvh+aYkk=
-			</data>
-		</dict>
-		<key>Headers/api/transport/media/media_transport_config.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			L4SHYrl1r/suuOdt+LVFONgWVutBEpIFwFwlWlJXsuk=
-			</data>
-		</dict>
-		<key>Headers/api/transport/media/media_transport_interface.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			kFAGaJ8PBKau8eA3VdmWiuAmWptuZbCsx2Z1bILE5Pk=
-			</data>
-		</dict>
-		<key>Headers/api/transport/media/video_transport.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			IPU8fXr/q9v94SV+D65vm+XkTQUS+CUz2CbSUbw5PYg=
 			</data>
 		</dict>
 		<key>Headers/api/transport/network_control.h</key>
@@ -6026,13 +5908,6 @@
 			BD8UTqBw8y6giH538eQoS45H8nIzG67bdCy+LQUs0qc=
 			</data>
 		</dict>
-		<key>Headers/api/video/video_frame_marking.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ZrR9SYUz9kEG9TBNHW6HRyRpbLrY84EnXIxI+WZ41Zc=
-			</data>
-		</dict>
 		<key>Headers/api/video/video_frame_metadata.h</key>
 		<dict>
 			<key>hash2</key>
@@ -6087,13 +5962,6 @@
 			<key>hash2</key>
 			<data>
 			rXwffpXzIWx8wBDu6yW9NxykGqgQXSmk1ttuPQvyvbE=
-			</data>
-		</dict>
-		<key>Headers/api/video/video_stream_encoder_create.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			uRNhEv1S9aNH/L7rDIo0uTT+3PUMo3Bpf8ODI8yFXBA=
 			</data>
 		</dict>
 		<key>Headers/api/video/video_stream_encoder_interface.h</key>

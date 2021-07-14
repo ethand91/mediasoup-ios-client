@@ -89,7 +89,7 @@ namespace mediasoupclient
 
 /* Logging macros. */
 
-using Logger = mediasoupclient::Logger;
+// using Logger = mediasoupclient::Logger;
 
 #define _MSC_LOG_SEPARATOR_CHAR "\n"
 
