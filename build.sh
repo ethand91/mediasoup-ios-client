@@ -125,7 +125,9 @@ cmake . -Bbuild_ios_arm64 \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
 	-DLIBSDPTRANSFORM_BUILD_TESTS=OFF \
 	-DIOS_SDK=iphone \
-	-DIOS_ARCHS="arm64"
+	-DIOS_ARCHS="arm64" \
+	-DPLATFORM=OS64 \
+	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 make -C build_ios_arm64
 
 # Build mediasoup-client-ios for simulators.
@@ -137,7 +139,9 @@ cmake . -Bbuild_sim_x86_64 \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
 	-DLIBSDPTRANSFORM_BUILD_TESTS=OFF \
 	-DIOS_SDK=iphonesimulator \
-	-DIOS_ARCHS="x86_64"
+	-DIOS_ARCHS="x86_64" \
+	-DPLATFORM=SIMULATOR64 \
+	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 make -C build_sim_x86_64
 
 # Can't be added to FAT library anyway, so can be skipped. Should be used when switched to new .xcframework format.
