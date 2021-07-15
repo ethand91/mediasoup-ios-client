@@ -86,15 +86,15 @@
 		355C613C2387D97100986297 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		355C61422387DA6100986297 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		355C61442387DA7B00986297 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		355D2358238D15C700965753 /* dependencies */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dependencies; path = "mediasoup-client-ios/dependencies"; sourceTree = "<group>"; };
+		355D2358238D15C700965753 /* dependencies */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dependencies; path = "vl-mediasoup-client-ios/dependencies"; sourceTree = "<group>"; };
 		3570311523977BFC00761AF5 /* LoggerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LoggerWrapper.mm; sourceTree = "<group>"; };
 		3570311723977DF800761AF5 /* MediasoupLogger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupLogger.mm; sourceTree = "<group>"; };
 		3570311923977E0F00761AF5 /* MediasoupLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupLogger.h; sourceTree = "<group>"; };
 		3570311B2397802C00761AF5 /* LoggerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoggerWrapper.h; sourceTree = "<group>"; };
-		357ABBB024052BAE005EF744 /* mediasoup_ios_client.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = mediasoup_ios_client.modulemap; sourceTree = "<group>"; };
+		357ABBB024052BAE005EF744 /* vl_mediasoup_client_ios.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = vl_mediasoup_client_ios.modulemap; sourceTree = "<group>"; };
 		35D7427D2390B71500C22679 /* MediasoupDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupDevice.h; sourceTree = "<group>"; };
 		35D7427F2390B8AD00C22679 /* MediasoupDevice.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupDevice.mm; sourceTree = "<group>"; };
-		35E2E47C2385284800E315FD /* mediasoup_client_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mediasoup_client_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35E2E47C2385284800E315FD /* vl_mediasoup_client_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = vl_mediasoup_client_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E2E4802385284800E315FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupclientWrapper.mm; sourceTree = "<group>"; };
 		35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupclientWrapper.h; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				355D2358238D15C700965753 /* dependencies */,
-				35E2E47E2385284800E315FD /* mediasoup-client-ios */,
+				35E2E47E2385284800E315FD /* vl-mediasoup-client-ios */,
 				35E2E47D2385284800E315FD /* Products */,
 				35E2E4892385289700E315FD /* Frameworks */,
 			);
@@ -179,20 +179,20 @@
 		35E2E47D2385284800E315FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35E2E47C2385284800E315FD /* mediasoup_client_ios.framework */,
+				35E2E47C2385284800E315FD /* vl_mediasoup_client_ios.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		35E2E47E2385284800E315FD /* mediasoup-client-ios */ = {
+		35E2E47E2385284800E315FD /* vl-mediasoup-client-ios */ = {
 			isa = PBXGroup;
 			children = (
 				350559B423A8CA1D00576D83 /* src */,
 				35EEA27F23911D2200134D1C /* include */,
 				35E2E4802385284800E315FD /* Info.plist */,
-				357ABBB024052BAE005EF744 /* mediasoup_ios_client.modulemap */,
+				357ABBB024052BAE005EF744 /* vl_mediasoup_client_ios.modulemap */,
 			);
-			path = "mediasoup-client-ios";
+			path = "vl-mediasoup-client-ios";
 			sourceTree = "<group>";
 		};
 		35E2E4892385289700E315FD /* Frameworks */ = {
@@ -269,9 +269,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		35E2E47B2385284800E315FD /* mediasoup-client-ios */ = {
+		35E2E47B2385284800E315FD /* vl-mediasoup-client-ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "mediasoup-client-ios" */;
+			buildConfigurationList = 35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "vl-mediasoup-client-ios" */;
 			buildPhases = (
 				35A708F3238FABC900BD3716 /* ShellScript */,
 				35E2E4772385284800E315FD /* Headers */,
@@ -282,9 +282,9 @@
 			);
 			dependencies = (
 			);
-			name = "mediasoup-client-ios";
+			name = "vl-mediasoup-client-ios";
 			productName = Project;
-			productReference = 35E2E47C2385284800E315FD /* mediasoup_client_ios.framework */;
+			productReference = 35E2E47C2385284800E315FD /* vl_mediasoup_client_ios.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -305,7 +305,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 35E2E4762385284700E315FD /* Build configuration list for PBXProject "mediasoup-client-ios" */;
+			buildConfigurationList = 35E2E4762385284700E315FD /* Build configuration list for PBXProject "vl-mediasoup-client-ios" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -318,7 +318,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				35E2E47B2385284800E315FD /* mediasoup-client-ios */,
+				35E2E47B2385284800E315FD /* vl-mediasoup-client-ios */,
 				357ABBA9240517BD005EF744 /* fat-library */,
 			);
 		};
@@ -340,7 +340,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nFRAMEWORK_NAME=\"mediasoup-client-ios\"\nBUILD_DIR=\"${SRCROOT}/build/mediasoup-client-ios\"\nOUTPUT_DIR=\"${SRCROOT}/bin\"\n\n# Remove build directory if it exists\nif [ -d \"${BUILD_DIR}\" ]; then\n\trm -rf \"${BUILD_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch arm64 only_active_arch=no -sdk \"iphoneos\" -derivedDataPath \"${BUILD_DIR}\"\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch x86_64 only_active_arch=no -sdk \"iphonesimulator\" -derivedDataPath \"${BUILD_DIR}\"\n\n# Prepare output directory\nmkdir -p ${OUTPUT_DIR}\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\" ]; then\n\trm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\"\nfi\n\n# Copy the device version of the framework\ncp -r \"${BUILD_DIR}/Build/Products/Release-iphoneos/mediasoup_client_ios.framework\" \"${OUTPUT_DIR}\"\n\n# Create the FAT framework\nlipo -create -output \"${OUTPUT_DIR}/mediasoup_client_ios.framework/mediasoup_client_ios\" \"${BUILD_DIR}/Build/Products/Release-iphoneos/mediasoup_client_ios.framework/mediasoup_client_ios\" \"${BUILD_DIR}/Build/Products/Release-iphonesimulator/mediasoup_client_ios.framework/mediasoup_client_ios\"\n";
+			shellScript = "set -e\n\nFRAMEWORK_NAME=\"vl-mediasoup-client-ios\"\nBUILD_DIR=\"${SRCROOT}/build/vl-mediasoup-client-ios\"\nOUTPUT_DIR=\"${SRCROOT}/bin\"\n\n# Remove build directory if it exists\nif [ -d \"${BUILD_DIR}\" ]; then\n\trm -rf \"${BUILD_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch arm64 only_active_arch=no -sdk \"iphoneos\" -derivedDataPath \"${BUILD_DIR}\"\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch x86_64 only_active_arch=no -sdk \"iphonesimulator\" -derivedDataPath \"${BUILD_DIR}\"\n\n# Prepare output directory\nmkdir -p ${OUTPUT_DIR}\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\" ]; then\n\trm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\"\nfi\n\n# Copy the device version of the framework\ncp -r \"${BUILD_DIR}/Build/Products/Release-iphoneos/vl_mediasoup_client_ios.framework\" \"${OUTPUT_DIR}\"\n\n# Create the FAT framework\nlipo -create -output \"${OUTPUT_DIR}/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\" \"${BUILD_DIR}/Build/Products/Release-iphoneos/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\" \"${BUILD_DIR}/Build/Products/Release-iphonesimulator/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\"\n";
 		};
 		35A708F3238FABC900BD3716 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -357,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Script to copy mediasoup/webrtc header files to project\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include\"\n\necho \"Copying mediasoup header files to the Framework\"\n# Copy mediasoup headers to framework\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    cp -rf \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/\"\n\necho \"Copying webrtc header files to the framework\"\n# Copy webrtc api to the framework\nfor header in `find ./api -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\n# Copy webrtc third_party abseil-cpp\necho \"Copying webrtc third party header files\"\ncd \"${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp\"\n\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n";
+			shellScript = "# Script to copy mediasoup/webrtc header files to project\ncd \"${SRCROOT}/vl-mediasoup-client-ios/dependencies/libmediasoupclient/include\"\n\necho \"Copying mediasoup header files to the Framework\"\n# Copy mediasoup headers to framework\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    cp -rf \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\ncd \"${SRCROOT}/vl-mediasoup-client-ios/dependencies/webrtc/src/\"\n\necho \"Copying webrtc header files to the framework\"\n# Copy webrtc api to the framework\nfor header in `find ./api -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n\n# Copy webrtc third_party abseil-cpp\necho \"Copying webrtc third party header files\"\ncd \"${SRCROOT}/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp\"\n\nfor header in `find . -name \"*.hpp\" -o -name \"*.h\"`; do\n    echo \"copying ${header} to ${BUILT_PROJECTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\n    ditto \"${header}\" \"${BUILT_PRODUCTS_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/${header}\"\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -459,7 +459,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp $(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/ ${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LIBRARY_SEARCH_PATHS = "${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs";
+				LIBRARY_SEARCH_PATHS = "${SRCROOT}/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -527,7 +527,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp $(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/ ${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LIBRARY_SEARCH_PATHS = "${SRCROOT}/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs";
+				LIBRARY_SEARCH_PATHS = "${SRCROOT}/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -568,9 +568,9 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
-					"$(BUILT_PRODUCTS_DIR)/mediasoup_client_ios.framework/Frameworks/",
-					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
+					"$(BUILT_PRODUCTS_DIR)/vl_mediasoup_client_ios.framework/Frameworks/",
+					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -579,14 +579,14 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include",
-					"${SRCROOT}/mediasoup-client-ios/dependencies",
-					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
-					"${SRCROOT}/mediasoup-client-ios/include/**",
-					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src",
-					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
+					"${SRCROOT}/vl-mediasoup-client-ios/dependencies/libmediasoupclient/include",
+					"${SRCROOT}/vl-mediasoup-client-ios/dependencies",
+					"${SRCROOT}/vl-mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
+					"${SRCROOT}/vl-mediasoup-client-ios/include/**",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 				);
-				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
+				INFOPLIST_FILE = "vl-mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -594,16 +594,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
-					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
-					"$(BUILT_PRODUCTS_DIR)/mediasoup_client_ios.framework/Frameworks",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
+					"$(BUILT_PRODUCTS_DIR)/vl_mediasoup_client_ios.framework/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
-					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
-					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
+					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
+					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/libmediasoupclient/lib",
+					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 				);
-				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
+				MODULEMAP_FILE = "${SRCROOT}/vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode-marker";
@@ -623,7 +623,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/mediasoup-client-ios/**";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/vl-mediasoup-client-ios/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -654,9 +654,9 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
-					"$(BUILT_PRODUCTS_DIR)/mediasoup_client_ios.framework/Frameworks/",
-					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
+					"$(BUILT_PRODUCTS_DIR)/vl_mediasoup_client_ios.framework/Frameworks/",
+					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -665,14 +665,14 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/include",
-					"${SRCROOT}/mediasoup-client-ios/dependencies",
-					"${SRCROOT}/mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
-					"${SRCROOT}/mediasoup-client-ios/include/**",
-					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src",
-					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
+					"${SRCROOT}/vl-mediasoup-client-ios/dependencies/libmediasoupclient/include",
+					"${SRCROOT}/vl-mediasoup-client-ios/dependencies",
+					"${SRCROOT}/vl-mediasoup-client-ios/dependencies/libmediasoupclient/deps/libsdptransform/include/",
+					"${SRCROOT}/vl-mediasoup-client-ios/include/**",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 				);
-				INFOPLIST_FILE = "mediasoup-client-ios/Info.plist";
+				INFOPLIST_FILE = "vl-mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -680,16 +680,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
-					"$(SRCROOT)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
-					"$(BUILT_PRODUCTS_DIR)/mediasoup_client_ios.framework/Frameworks",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs",
+					"$(BUILT_PRODUCTS_DIR)/vl_mediasoup_client_ios.framework/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
-					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/libmediasoupclient/lib",
-					"$(PROJECT_DIR)/mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
+					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
+					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/libmediasoupclient/lib",
+					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 				);
-				MODULEMAP_FILE = "${SRCROOT}/mediasoup-client-ios/mediasoup_ios_client.modulemap";
+				MODULEMAP_FILE = "${SRCROOT}/vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
@@ -709,7 +709,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/mediasoup-client-ios/**";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/vl-mediasoup-client-ios/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -730,7 +730,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35E2E4762385284700E315FD /* Build configuration list for PBXProject "mediasoup-client-ios" */ = {
+		35E2E4762385284700E315FD /* Build configuration list for PBXProject "vl-mediasoup-client-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35E2E4822385284800E315FD /* Debug */,
@@ -739,7 +739,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "mediasoup-client-ios" */ = {
+		35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "vl-mediasoup-client-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35E2E4852385284800E315FD /* Debug */,
