@@ -14,7 +14,7 @@ export OUTPUT_DIR=$(pwd)/bin
 echo "OUTPUT_DIR = $OUTPUT_DIR"
 export PATCHES_DIR=$(pwd)/patches
 echo "PATCHES_DIR = $PATCHES_DIR"
-export WEBRTC_DIR=$PROJECT_DIR/mediasoup-client-ios/dependencies/webrtc/src
+export WEBRTC_DIR=$PROJECT_DIR/vl-mediasoup-client-ios/dependencies/webrtc/src
 echo "WEBRTC_DIR = $WEBRTC_DIR"
 
 # Prepare directories.
@@ -41,7 +41,7 @@ git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export PATH=$WORK_DIR/depot_tools:$PATH
 
 # Get libmediasoupclient.
-cd $PROJECT_DIR/mediasoup-client-ios/dependencies
+cd $PROJECT_DIR/vl-mediasoup-client-ios/dependencies
 echo 'Cloning libmediasoupclient'
 rm -rf libmediasoupclient
 git clone https://github.com/VLprojects/libmediasoupclient.git
@@ -96,7 +96,7 @@ rm -rf $OUTPUT_DIR/WebRTC.framework
 cp -R $WEBRTC_DIR/out_ios_libs/WebRTC.framework $OUTPUT_DIR/WebRTC.framework
 
 # Build mediasoup-ios-client.
-cd $PROJECT_DIR/mediasoup-client-ios/dependencies/
+cd $PROJECT_DIR/vl-mediasoup-client-ios/dependencies/
 
 # Build mediasoup-client-ios for devices.
 cmake . -Bbuild_ios_arm64 \
@@ -156,5 +156,5 @@ lipo -create \
 # ??? build_sim_arm64/libmediasoupclient/libmediasoupclient.a \
 # ??? build_sim_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
 
-cp $PATCHES_DIR/byte_order.h $PROJECT_DIR/mediasoup-client-ios/dependencies/webrtc/src/rtc_base/
-open $PROJECT_DIR/mediasoup-client-ios.xcodeproj
+cp $PATCHES_DIR/byte_order.h $PROJECT_DIR/vl-mediasoup-client-ios/dependencies/webrtc/src/rtc_base/
+open $PROJECT_DIR/vl-mediasoup-client-ios.xcodeproj
