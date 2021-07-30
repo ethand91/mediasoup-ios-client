@@ -15,16 +15,8 @@
 #define MediasoupDevice_h
 
 @interface MediasoupDevice : NSObject
-/*! @brief libmediasoupclient native device object */
-@property(nonatomic, strong) NSValue* _nativeDevice;
-
-/*!
-    @brief Creates a new libmediasoupclient device object
-    @return New libmediasoupclient device object
- */
 -(id)init;
-/*! @brief Destroys the libmediasoupclient device */
--(void)dispose;
+
 /*!
     @brief Loads the device with the RTP capabilities of the mediasoup router
     @discussion This method takes the RTP capabilities of the mediasoup router and works out what media codecs to use etc.

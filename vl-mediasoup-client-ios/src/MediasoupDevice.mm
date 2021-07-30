@@ -9,44 +9,56 @@
 #import "MediasoupDevice.h"
 #import "DeviceWrapper.h"
 
+@interface MediasoupDevice()
+@property(nonatomic, retain) NSValue *nativeDevice;
+@end
+
 @implementation MediasoupDevice : NSObject
 
 -(instancetype)init {
     self = [super init];
     if (self) {
-        self._nativeDevice = [DeviceWrapper nativeNewDevice];
+        self.nativeDevice = [DeviceWrapper nativeNewDevice];
     }
     
     return self;
 }
 
+-(void)dealloc {
+    if (self.nativeDevice != nil) {
+        [DeviceWrapper nativeFreeDevice: self.nativeDevice];
+    }
+    self.nativeDevice = nil;
+    [super dealloc];
+}
+
 -(void)load:(NSString *)routerRtpCapabilities {
     [self checkDeviceExists];
-    [DeviceWrapper nativeLoad:self._nativeDevice routerRtpCapabilities:routerRtpCapabilities];
+    [DeviceWrapper nativeLoad:self.nativeDevice routerRtpCapabilities:routerRtpCapabilities];
 }
 
 -(bool)isLoaded {
     [self checkDeviceExists];
     
-    return [DeviceWrapper nativeIsLoaded:self._nativeDevice];
+    return [DeviceWrapper nativeIsLoaded:self.nativeDevice];
 }
 
 -(NSString *)getRtpCapabilities {
     [self checkDeviceExists];
     
-    return [DeviceWrapper nativeGetRtpCapabilities:self._nativeDevice];
+    return [DeviceWrapper nativeGetRtpCapabilities:self.nativeDevice];
 }
 
 -(NSString *)getSctpCapabilities {
     [self checkDeviceExists];
     
-    return [DeviceWrapper nativeGetSctpCapabilities:self._nativeDevice];
+    return [DeviceWrapper nativeGetSctpCapabilities:self.nativeDevice];
 }
 
 -(bool)canProduce:(NSString *)kind {
     [self checkDeviceExists];
     
-    return [DeviceWrapper nativeCanProduce:self._nativeDevice kind:kind];
+    return [DeviceWrapper nativeCanProduce:self.nativeDevice kind:kind];
 }
 
 -(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters {
@@ -56,7 +68,7 @@
 -(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
     [self checkDeviceExists];
     
-    NSObject *transport = [DeviceWrapper nativeCreateSendTransport:self._nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
+    NSObject *transport = [DeviceWrapper nativeCreateSendTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
     
     return [[SendTransport alloc] initWithNativeTransport:transport];
 }
@@ -68,13 +80,13 @@
 -(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
     [self checkDeviceExists];
     
-    NSObject *transport = [DeviceWrapper nativeCreateRecvTransport:self._nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
+    NSObject *transport = [DeviceWrapper nativeCreateRecvTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
     
     return [[RecvTransport alloc] initWithNativeTransport:transport];
 }
 
 -(void)checkDeviceExists {
-    if (self._nativeDevice == nil) {
+    if (self.nativeDevice == nil) {
         NSException* exception = [NSException exceptionWithName:@"IllegalStateException" reason:@"Device has been disposed." userInfo:nil];
         
         throw exception;
