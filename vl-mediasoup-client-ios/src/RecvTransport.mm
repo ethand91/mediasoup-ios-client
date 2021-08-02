@@ -22,12 +22,6 @@
     return self;
 }
 
--(void)dispose {
-    [self checkTransportExists];
-    
-    [TransportWrapper nativeFreeTransport:self._nativeTransport];
-}
-
 -(Consumer *)consume:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters {
     return [self consume:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:nil];
 }
