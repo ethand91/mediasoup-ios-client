@@ -54,8 +54,6 @@ public:
         std::promise<void> promise;
         promise.set_value();
 
-        [transportObject release];
-
         return promise.get_future();
     };
     
@@ -64,8 +62,6 @@ public:
         SendTransport *sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
         
         [this->listener_ onConnectionStateChange:sendTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
-
-        [transportObject release];
     };
     
     std::future<std::string> OnProduce(
@@ -90,8 +86,6 @@ public:
                 promise.set_value(std::string([id UTF8String]));
             }
          ];
-        
-        [transportObject release];
 
         return promise.get_future();
     };
@@ -132,8 +126,6 @@ public:
         std::promise<void> promise;
         promise.set_value();
 
-        [transportObject release];
-        
         return promise.get_future();
     };
     
@@ -142,8 +134,6 @@ public:
         RecvTransport *recvTransport = [[[RecvTransport alloc] initWithNativeTransport:transportObject] autorelease];
         
         [this->listener_ onConnectionStateChange:recvTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
-      
-        [transportObject release];
     };
 };
 
