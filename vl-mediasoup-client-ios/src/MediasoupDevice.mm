@@ -68,7 +68,7 @@
 -(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
     [self checkDeviceExists];
     
-    NSObject *transport = [DeviceWrapper nativeCreateSendTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
+    NSValue *transport = [DeviceWrapper nativeCreateSendTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
     
     return [[SendTransport alloc] initWithNativeTransport:transport];
 }
@@ -80,7 +80,7 @@
 -(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
     [self checkDeviceExists];
     
-    NSObject *transport = [DeviceWrapper nativeCreateRecvTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
+    NSValue *transport = [DeviceWrapper nativeCreateRecvTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
     
     return [[RecvTransport alloc] initWithNativeTransport:transport];
 }

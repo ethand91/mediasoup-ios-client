@@ -15,10 +15,6 @@
 
 -(instancetype)initWithNativeTransport:(NSValue *)nativeTransport {
     self = [super initWithNativeTransport:nativeTransport];
-    if (self) {
-        self._nativeTransport = nativeTransport;
-    }
-    
     return self;
 }
 
