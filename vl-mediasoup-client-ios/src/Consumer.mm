@@ -28,6 +28,15 @@
     return self;
 }
 
+- (void)dealloc {
+    if (__nativeConsumer != nil && ![ConsumerWrapper isNativeClosed:__nativeConsumer]) {
+        [ConsumerWrapper nativeClose:__nativeConsumer];
+    }
+    [__nativeConsumer release];
+    [__nativeTrack release];
+    [super dealloc];
+}
+
 -(NSString *)getId {
     return [ConsumerWrapper getNativeId:self._nativeConsumer];
 }
@@ -74,7 +83,6 @@
 
 -(void)close {
     [ConsumerWrapper nativeClose:self._nativeConsumer];
-    [self._nativeConsumer release];
 }
 
 @end
