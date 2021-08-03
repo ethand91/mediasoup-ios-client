@@ -74,7 +74,7 @@ public:
         const std::string appDataString = appData.dump();
         
         NSValue* transportObject = [NSValue valueWithPointer:nativeTransport];
-        SendTransport* sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
+        SendTransport* sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
         
         __block std::promise<std::string> promise;
         
@@ -84,6 +84,7 @@ public:
             appData: [NSString stringWithUTF8String:appDataString.c_str()]
             callback: ^(NSString* id) {
                 promise.set_value(std::string([id UTF8String]));
+                [sendTransport release];
             }
          ];
 
