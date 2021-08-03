@@ -26,6 +26,15 @@
     return self;
 }
 
+-(void)dealloc {
+    if (__nativeProducer != nil && ![ProducerWrapper isNativeClosed:__nativeProducer]) {
+        [ProducerWrapper nativeClose:__nativeProducer];
+    }
+    [__nativeProducer release];
+    [__nativeTrack release];
+    [super dealloc];
+}
+
 -(NSString *)getId {
     return [ProducerWrapper getNativeId:self._nativeProducer];
 }
@@ -85,8 +94,6 @@
 
 -(void)close {
     [ProducerWrapper nativeClose:self._nativeProducer];
-    [self._nativeProducer release];
-    [self._nativeTrack release];
 }
 
 @end
