@@ -22,10 +22,6 @@
 }
 
 -(void)dealloc {
-    if (__nativeTransport  != nil && ![TransportWrapper isNativeClosed:__nativeTransport]) {
-        [TransportWrapper nativeClose:__nativeTransport];
-    }
-
     [__nativeTransport release];
     [super dealloc];
 }
