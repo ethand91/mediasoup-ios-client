@@ -18,6 +18,14 @@
 /*! @brief libmediasoupclient native send transport object */
 @property(nonatomic, strong) NSValue* _nativeTransport;
 
+/*!
+    @brief Instructs the transport to send an audio or video track to the mediasoup router
+    @param listener ProducerListener delegate
+    @param track An audio or video track
+    @param encodings Encoding settings
+    @param codecOptions Per codec specific options
+    @return Producer
+ */
 -(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions;
 /*!
    @brief Instructs the transport to send an audio or video track to the mediasoup router
