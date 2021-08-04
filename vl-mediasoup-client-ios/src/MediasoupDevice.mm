@@ -70,7 +70,7 @@
     
     NSValue *transport = [DeviceWrapper nativeCreateSendTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
     
-    return [[SendTransport alloc] initWithNativeTransport:transport];
+    return [[[SendTransport alloc] initWithNativeTransport:transport] autorelease];
 }
 
 -(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters {
@@ -82,7 +82,7 @@
     
     NSValue *transport = [DeviceWrapper nativeCreateRecvTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
     
-    return [[RecvTransport alloc] initWithNativeTransport:transport];
+    return [[[RecvTransport alloc] initWithNativeTransport:transport] autorelease];
 }
 
 -(void)checkDeviceExists {
