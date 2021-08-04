@@ -15,9 +15,6 @@
 #define SendTransport_h
 
 @interface SendTransport : Transport
-/*! @brief libmediasoupclient native send transport object */
-@property(nonatomic, strong) NSValue* _nativeTransport;
-
 /*!
     @brief Instructs the transport to send an audio or video track to the mediasoup router
     @param listener ProducerListener delegate

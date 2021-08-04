@@ -13,11 +13,6 @@
 
 @implementation SendTransport : Transport
 
--(instancetype)initWithNativeTransport:(NSValue *)nativeTransport {
-    self = [super initWithNativeTransport:nativeTransport];
-    return self;
-}
-
 -(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions {
     return [self produce:listener track:track encodings:encodings codecOptions:codecOptions appData:nil];
 }

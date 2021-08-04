@@ -14,9 +14,6 @@
 #define RecvTransport_h
 
 @interface RecvTransport : Transport
-/*! @brief libmediasoupclient native recv transport object */
-@property(nonatomic, strong) NSValue* _nativeTransport;
-
 /*!
     @brief Instructs the transport to receive an audio or video track to the mediasoup router
     @param listener ConsumerListener deletage
