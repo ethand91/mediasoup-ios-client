@@ -10,17 +10,22 @@
 #import "Producer.h"
 #import "ProducerWrapper.h"
 
+@interface Producer ()
+@property(nonatomic, retain) RTCPeerConnectionFactory *factory;
+@end
+
 @implementation Producer : NSObject
 
 -(instancetype)initWithNativeProducer:(NSValue *)nativeProducer {
     self = [super init];
     if (self) {
-        self._nativeProducer = nativeProducer;
+        __nativeProducer = [nativeProducer retain];
         
         webrtc::MediaStreamTrackInterface *nativeTrack = [ProducerWrapper getNativeTrack:self._nativeProducer];
         rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
-        
-        self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:[[RTCPeerConnectionFactory alloc] init]];
+
+        _factory = [[RTCPeerConnectionFactory alloc] init];
+        __nativeTrack = [[RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:_factory] retain];
     }
     
     return self;
@@ -32,6 +37,7 @@
     }
     [__nativeProducer release];
     [__nativeTrack release];
+    [_factory release];
     [super dealloc];
 }
 
