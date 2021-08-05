@@ -12,20 +12,35 @@
 #import "Consumer.h"
 #import "ConsumerWrapper.h"
 
+@interface Consumer ()
+@property(nonatomic, retain) RTCPeerConnectionFactory *factory;
+@end
+
 @implementation Consumer : NSObject
 
 -(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer {
     self = [super init];
     if (self) {
-        self._nativeConsumer = nativeConsumer;
+        __nativeConsumer = [nativeConsumer retain];
         
         webrtc::MediaStreamTrackInterface *nativeTrack = [ConsumerWrapper getNativeTrack:self._nativeConsumer];
         rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
-        
-        self._nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:[[RTCPeerConnectionFactory alloc] init]];
+
+        _factory = [[RTCPeerConnectionFactory alloc] init];
+        __nativeTrack = [[RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:_factory] retain];
     }
     
     return self;
+}
+
+- (void)dealloc {
+    if (__nativeConsumer != nil && ![ConsumerWrapper isNativeClosed:__nativeConsumer]) {
+        [ConsumerWrapper nativeClose:__nativeConsumer];
+    }
+    [__nativeConsumer release];
+    [__nativeTrack release];
+    [_factory release];
+    [super dealloc];
 }
 
 -(NSString *)getId {
@@ -74,7 +89,6 @@
 
 -(void)close {
     [ConsumerWrapper nativeClose:self._nativeConsumer];
-    [self._nativeConsumer release];
 }
 
 @end

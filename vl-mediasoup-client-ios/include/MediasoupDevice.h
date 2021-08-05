@@ -15,7 +15,6 @@
 #define MediasoupDevice_h
 
 @interface MediasoupDevice : NSObject
--(id)init;
 
 /*!
     @brief Loads the device with the RTP capabilities of the mediasoup router
