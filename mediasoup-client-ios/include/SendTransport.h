@@ -18,8 +18,6 @@
 /*! @brief libmediasoupclient native send transport object */
 @property(nonatomic, strong) NSValue* _nativeTransport;
 
-/*! @brief Disposes of the send transport instance */
--(void)dispose;
 /*!
     @brief Instructs the transport to send an audio or video track to the mediasoup router
     @param listener ProducerListener delegate

@@ -22,12 +22,6 @@
     return self;
 }
 
--(void)dispose {
-    [self checkTransportExists];
-    
-    [TransportWrapper nativeFreeTransport:self._nativeTransport];
-}
-
 -(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions {
     return [self produce:listener track:track encodings:encodings codecOptions:codecOptions appData:nil];
 }
