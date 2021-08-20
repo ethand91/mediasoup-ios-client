@@ -6,10 +6,10 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 
-#import <WebRTC/RTCMediaStreamTrack.h>
-
 #ifndef Consumer_h
 #define Consumer_h
+
+@class RTCMediaStreamTrack;
 
 @interface Consumer : NSObject
 /*! @brief libmediasoupclient native consumer object */
