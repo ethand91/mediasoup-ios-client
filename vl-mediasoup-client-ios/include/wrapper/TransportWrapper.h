@@ -148,38 +148,4 @@ public:
     };
 };
 
-class OwnedSendTransport {
-public:
-    OwnedSendTransport(mediasoupclient::SendTransport* transport, SendTransportListenerWrapper* listener)
-    : transport_(transport), listener_(listener) {}
-    
-    ~OwnedSendTransport() {
-        delete transport_;
-        delete listener_;
-    }
-    
-    mediasoupclient::SendTransport* transport() const { transport_; }
-    
-private:
-    mediasoupclient::SendTransport* transport_;
-    SendTransportListenerWrapper* listener_;
-};
-
-class OwnedRecvTransport {
-public:
-    OwnedRecvTransport(mediasoupclient::RecvTransport* transport, RecvTransportListenerWrapper* listener)
-    : transport_(transport), listener_(listener) {}
-    
-    ~OwnedRecvTransport() {
-        delete transport_;
-        delete listener_;
-    }
-    
-    mediasoupclient::RecvTransport* transport() const { return transport_; }
-    
-private:
-    mediasoupclient::RecvTransport* transport_;
-    RecvTransportListenerWrapper* listener_;
-};
-
 #endif /* TransportWrapper_h */
