@@ -21,9 +21,13 @@
     [self checkTransportExists];
     
     @synchronized(self) {
-        Consumer *consumer = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
-        
-        return consumer;
+        @try {
+            Consumer *consumer = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
+
+            return consumer;
+        } @catch (...) {
+            return nil;
+        }
     }
 }
 

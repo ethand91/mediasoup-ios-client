@@ -5,6 +5,8 @@
 //  Created by Ethan.
 //  Copyright © 2019 Ethan. All rights reserved.
 //
+
+#import <libmediasoupclient/include/MediaSoupClientErrors.hpp>
 #import "Transport.hpp"
 #import "ProducerWrapper.h"
 #import "ConsumerWrapper.h"
@@ -83,7 +85,15 @@ public:
             rtpParameters: [NSString stringWithUTF8String: rtpParametersString.c_str()]
             appData: [NSString stringWithUTF8String:appDataString.c_str()]
             callback: ^(NSString* id) {
-                promise.set_value(std::string([id UTF8String]));
+                try {
+                    if (id == nil) {
+                        auto ep = make_exception_ptr(MediaSoupClientError("TransportIdIsNil"));
+                        promise.set_exception(ep);
+                    } else {
+                        promise.set_value(std::string([id UTF8String]));
+                    }
+                } catch(...) {
+                }
                 [sendTransport release];
             }
          ];
@@ -136,40 +146,6 @@ public:
         
         [this->listener_ onConnectionStateChange:recvTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
     };
-};
-
-class OwnedSendTransport {
-public:
-    OwnedSendTransport(mediasoupclient::SendTransport* transport, SendTransportListenerWrapper* listener)
-    : transport_(transport), listener_(listener) {}
-    
-    ~OwnedSendTransport() {
-        delete transport_;
-        delete listener_;
-    }
-    
-    mediasoupclient::SendTransport* transport() const { transport_; }
-    
-private:
-    mediasoupclient::SendTransport* transport_;
-    SendTransportListenerWrapper* listener_;
-};
-
-class OwnedRecvTransport {
-public:
-    OwnedRecvTransport(mediasoupclient::RecvTransport* transport, RecvTransportListenerWrapper* listener)
-    : transport_(transport), listener_(listener) {}
-    
-    ~OwnedRecvTransport() {
-        delete transport_;
-        delete listener_;
-    }
-    
-    mediasoupclient::RecvTransport* transport() const { return transport_; }
-    
-private:
-    mediasoupclient::RecvTransport* transport_;
-    RecvTransportListenerWrapper* listener_;
 };
 
 #endif /* TransportWrapper_h */

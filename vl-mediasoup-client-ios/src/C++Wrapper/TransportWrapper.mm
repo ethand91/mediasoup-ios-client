@@ -174,10 +174,8 @@ using namespace mediasoupclient;
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];
         NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
-        
-        throw exception;
-        
-        return nullptr;
+
+        @throw exception;
     }
 }
 
@@ -218,9 +216,7 @@ using namespace mediasoupclient;
         NSString *message = [NSString stringWithUTF8String:e.what()];
         NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
         
-        throw exception;
-        
-        return nullptr;
+        @throw exception;
     }
 }
 
