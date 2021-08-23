@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <WebRTC/RTCMediaStreamTrack.h>
 #import "SendTransport.h"
 #import "TransportWrapper.h"
 #import "Producer.h"

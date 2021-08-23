@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <WebRTC/RTCPeerConnectionFactory.h>
+#import <WebRTC/RTCMediaStreamTrack.h>
 #import "Producer.h"
 #import "ProducerWrapper.h"
 

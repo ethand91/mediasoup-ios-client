@@ -6,14 +6,14 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import <WebRTC/RTCPeerConnectionFactoryOptions.h>
-
-#import "Device.hpp"
-#import "SendTransport.h"
-#import "RecvTransport.h"
 
 #ifndef DeviceWrapper_h
 #define DeviceWrapper_h
+
+@protocol SendTransportListener;
+@protocol RecvTransportListener;
+
+@class RTCPeerConnectionFactoryOptions;
 
 @interface DeviceWrapper : NSObject {}
 +(NSValue *)nativeNewDevice;

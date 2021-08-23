@@ -6,11 +6,10 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 
-#import <WebRTC/RTCMediaStreamTrack.h>
-#import <WebRTC/RTCPeerConnectionFactory.h>
-
 #ifndef Producer_h
 #define Producer_h
+
+@class RTCMediaStreamTrack;
 
 @interface Producer : NSObject
 /*! @brief libmediasoupclient native producer object */

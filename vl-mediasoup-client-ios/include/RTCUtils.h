@@ -6,10 +6,11 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import <WebRTC/RTCRtpEncodingParameters.h>
 
 #ifndef RTCUtils_h
 #define RTCUtils_h
+
+@class RTCRtpEncodingParameters;
 
 @interface RTCUtils : NSObject {}
 

@@ -6,13 +6,16 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import <WebRTC/RTCPeerConnectionFactoryOptions.h>
-
-#import "SendTransport.h"
-#import "RecvTransport.h"
 
 #ifndef MediasoupDevice_h
 #define MediasoupDevice_h
+
+@class RTCPeerConnectionFactoryOptions;
+@class SendTransport;
+@class RecvTransport;
+@protocol SendTransportListener;
+@protocol RecvTransportListener;
+
 
 @interface MediasoupDevice : NSObject
 

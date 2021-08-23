@@ -7,6 +7,8 @@
 //
 
 #import "RTCUtils.h"
+#import <WebRTC/RTCRtpEncodingParameters.h>
+
 
 @implementation RTCUtils : NSObject
 

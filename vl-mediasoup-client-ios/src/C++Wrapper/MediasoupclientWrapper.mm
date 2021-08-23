@@ -5,7 +5,6 @@
 //  Created by Ethan.
 //  Copyright © 2019 Ethan. All rights reserved.
 //
-#import <WebRTC/RTCPeerConnectionFactory.h>
 
 #import "wrapper/MediasoupclientWrapper.h"
 
