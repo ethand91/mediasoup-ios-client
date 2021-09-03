@@ -47,11 +47,10 @@ public:
     
     std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
         const std::string dtlsParametersString = dtlsParameters.dump();
-        
-        NSValue* transportObject = [NSValue valueWithPointer:nativeTransport];
-        SendTransport* sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
-        
-        [this->listener_ onConnect:sendTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
+        const std::string nativeId = nativeTransport->GetId();
+        NSString* transportId = [NSString stringWithUTF8String:nativeId.c_str()];
+
+        [this->listener_ onConnect:transportId dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
 
         std::promise<void> promise;
         promise.set_value();
@@ -60,10 +59,10 @@ public:
     };
     
     void OnConnectionStateChange(mediasoupclient::Transport* nativeTransport, const std::string& connectionState) override {
-        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
-        SendTransport *sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
-        
-        [this->listener_ onConnectionStateChange:sendTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
+        const std::string nativeId = nativeTransport->GetId();
+        NSString* transportId = [NSString stringWithUTF8String:nativeId.c_str()];
+
+        [this->listener_ onConnectionStateChange:transportId connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
     };
     
     std::future<std::string> OnProduce(
@@ -74,13 +73,12 @@ public:
         
         const std::string rtpParametersString = rtpParameters.dump();
         const std::string appDataString = appData.dump();
-        
-        NSValue* transportObject = [NSValue valueWithPointer:nativeTransport];
-        SendTransport* sendTransport = [[SendTransport alloc] initWithNativeTransport:transportObject];
-        
+        const std::string nativeId = nativeTransport->GetId();
+        NSString* transportId = [NSString stringWithUTF8String:nativeId.c_str()];
+
         __block std::promise<std::string> promise;
         
-        [this->listener_ onProduce:sendTransport
+        [this->listener_ onProduce:transportId
             kind: [NSString stringWithUTF8String: kind.c_str()]
             rtpParameters: [NSString stringWithUTF8String: rtpParametersString.c_str()]
             appData: [NSString stringWithUTF8String:appDataString.c_str()]
@@ -94,7 +92,6 @@ public:
                     }
                 } catch(...) {
                 }
-                [sendTransport release];
             }
          ];
 
@@ -128,11 +125,10 @@ public:
 
     std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
         const std::string dtlsParametersString = dtlsParameters.dump();
-        
-        NSValue* transportObject = [NSValue valueWithPointer:nativeTransport];
-        RecvTransport* recvTransport = [[[RecvTransport alloc] initWithNativeTransport:transportObject] autorelease];
-        
-        [this->listener_ onConnect:recvTransport dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
+        const std::string nativeId = nativeTransport->GetId();
+        NSString* transportId = [NSString stringWithUTF8String:nativeId.c_str()];
+
+        [this->listener_ onConnect:transportId dtlsParameters:[NSString stringWithUTF8String:dtlsParametersString.c_str()]];
         
         std::promise<void> promise;
         promise.set_value();
@@ -141,10 +137,10 @@ public:
     };
     
     void OnConnectionStateChange(mediasoupclient::Transport* nativeTransport, const std::string& connectionState) override {
-        NSValue *transportObject = [NSValue valueWithPointer:nativeTransport];
-        RecvTransport *recvTransport = [[[RecvTransport alloc] initWithNativeTransport:transportObject] autorelease];
-        
-        [this->listener_ onConnectionStateChange:recvTransport connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
+        const std::string nativeId = nativeTransport->GetId();
+        NSString* transportId = [NSString stringWithUTF8String:nativeId.c_str()];
+
+        [this->listener_ onConnectionStateChange:transportId connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
     };
 };
 
