@@ -63,7 +63,7 @@ case $INPUT_STRING in
 		fetch --nohooks webrtc_ios
 		gclient sync
 		cd $WORK_DIR/webrtc-ios/src
-		git checkout -b m92 refs/remotes/branch-heads/4515
+		git checkout -b bh4577 refs/remotes/branch-heads/4577
 		gclient sync
 		# Apply patches to make it buildable with Xcode.
 		# patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/BUILD.patch
@@ -76,38 +76,27 @@ case $INPUT_STRING in
 		;;
 esac
 
-# cp $PATCHES_DIR/byte_order.h $WORK_DIR/webrtc-ios/src/rtc_base/byte_order.h
-# cp $PATCHES_DIR/byte_order.orig.h $WORK_DIR/webrtc-ios/src/rtc_base/byte_order.h
-
 echo 'Building WebRTC'
 cd $WORK_DIR/webrtc-ios/src
-rm -rf out_ios_libs
-python tools_webrtc/ios/build_ios_libs.py --extra-gn-args='is_component_build=false use_xcode_clang=true rtc_include_tests=false rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false'
+rm -rf $OUTPUT_DIR/WebRTC.xcframework
+python tools_webrtc/ios/build_ios_libs.py --output-dir $OUTPUT_DIR/ --extra-gn-args='rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true is_component_build=false rtc_enable_symbol_export=true use_xcode_clang=true rtc_include_tests=false rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false'
 
-# Create WebRTC universal (fat) library.
-cd $WORK_DIR/webrtc-ios/src/out_ios_libs
-ninja -C arm64_libs/ webrtc
-ninja -C x64_libs/ webrtc
-mkdir -p universal
-lipo -create \
-	arm64_libs/obj/libwebrtc.a \
-	x64_libs/obj/libwebrtc.a \
-	-output universal/libwebrtc.a
+# Create WebRTC framework.
+
 
 echo -e "Move webrtc directory..."
 read -n 1 INPUT_STRING
 # mv $WORK_DIR/webrtc-ios/src/* $WEBRTC_DIR
 
-rm -rf $OUTPUT_DIR/WebRTC.framework
+
 cp -R $WEBRTC_DIR/out_ios_libs/WebRTC.framework $OUTPUT_DIR/WebRTC.framework
 
 # Build mediasoup-ios-client.
 cd $PROJECT_DIR/vl-mediasoup-client-ios/dependencies/
 
-# Build mediasoup-client-ios for devices.
 cmake . -Bbuild_ios_arm64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$WEBRTC_DIR/out_ios_libs/universal \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/webrtc/device/arm64_libs/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -118,10 +107,9 @@ cmake . -Bbuild_ios_arm64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 make -C build_ios_arm64
 
-# Build mediasoup-client-ios for simulators.
 cmake . -Bbuild_sim_x86_64 \
 	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
-	-DLIBWEBRTC_BINARY_PATH=$WEBRTC_DIR/out_ios_libs/universal \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/webrtc/simulator/x64_libs/WebRTC.framework/WebRTC \
 	-DMEDIASOUP_LOG_TRACE=ON \
 	-DMEDIASOUP_LOG_DEV=ON \
 	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
@@ -132,19 +120,38 @@ cmake . -Bbuild_sim_x86_64 \
 	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 make -C build_sim_x86_64
 
-# Create a FAT libmediasoup / libsdptransform library
-mkdir -p libmediasoupclient/lib
+cmake . -Bbuild_sim_arm64 \
+	-DLIBWEBRTC_INCLUDE_PATH=$WEBRTC_DIR \
+	-DLIBWEBRTC_BINARY_PATH=$BUILD_DIR/webrtc/simulator/arm64_libs/WebRTC.framework/WebRTC \
+	-DMEDIASOUP_LOG_TRACE=ON \
+	-DMEDIASOUP_LOG_DEV=ON \
+	-DCMAKE_CXX_FLAGS="-fvisibility=hidden" \
+	-DLIBSDPTRANSFORM_BUILD_TESTS=OFF \
+	-DIOS_SDK=iphonesimulator \
+	-DIOS_ARCHS="arm64"\
+	-DPLATFORM=SIMULATORARM64 \
+	-DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
+make -C build_sim_arm64
+
+mkdir -p build_sim_fat
 lipo -create \
-	build_ios_arm64/libmediasoupclient/libmediasoupclient.a \
 	build_sim_x86_64/libmediasoupclient/libmediasoupclient.a \
-	-output libmediasoupclient/lib/libmediasoupclient.a
-
+	build_sim_arm64/libmediasoupclient/libmediasoupclient.a \
+	-output build_sim_fat/libmediasoupclient.a
 lipo -create \
-	build_ios_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
 	build_sim_x86_64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	-output libmediasoupclient/lib/libsdptransform.a
+	build_sim_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+	-output build_sim_fat/libsdptransform.a
 
-# TODO: перенести .a файлики в output_dir
+# todo: добавить -headers и -debug-symbols
+xcodebuild -create-xcframework \
+	-library build_ios_arm64/libmediasoupclient/libmediasoupclient.a \
+	-library build_sim_fat/libmediasoupclient.a \
+	-output $OUTPUT_DIR/mediasoupclient.xcframework
+xcodebuild -create-xcframework \
+	-library build_ios_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
+	-library build_sim_fat/libsdptransform.a \
+	-output $OUTPUT_DIR/sdptransform.xcframework
 
 cp $PATCHES_DIR/byte_order.h $PROJECT_DIR/vl-mediasoup-client-ios/dependencies/webrtc/src/rtc_base/
 open $PROJECT_DIR/vl-mediasoup-client-ios.xcodeproj
