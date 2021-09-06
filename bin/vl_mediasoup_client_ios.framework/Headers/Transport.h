@@ -59,16 +59,16 @@
 @required
 /*!
     @brief Called when the transport is about to establish the ICE+DTLS connection and needs to exchange information with the associated server side transport
-    @param transport Transport instance
+    @param transportId Transport identifier
     @param dtlsParameters Local DTLS parameters
  */
--(void)onConnect:(Transport *)transport dtlsParameters:(NSString *)dtlsParameters;
+-(void)onConnect:(NSString *)transportId dtlsParameters:(NSString *)dtlsParameters;
 /*!
     @brief Emitted when the local transport connection state changes
-    @param transport Transport instance
+    @param transportId Transport identifier
     @param connectionState Transport connection state
  */
--(void)onConnectionStateChange:(Transport *)transport connectionState:(NSString *)connectionState;
+-(void)onConnectionStateChange:(NSString *)transportId connectionState:(NSString *)connectionState;
 
 @end
 
