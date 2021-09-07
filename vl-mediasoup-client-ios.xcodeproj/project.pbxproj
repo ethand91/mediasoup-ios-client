@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F352408C0EE00AC60B4 /* libmediasoupclient.a */; };
 		3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F332408C0D500AC60B4 /* libsdptransform.a */; };
-		3519FB2024872D5600DD3AF5 /* libwebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F372408C11000AC60B4 /* libwebrtc.a */; };
 		351A83222394A68700BA7A13 /* Transport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A83212394A68700BA7A13 /* Transport.mm */; };
 		351A83232394AD5C00BA7A13 /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A83202394A4BA00BA7A13 /* Transport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		351A83242394AD5F00BA7A13 /* Mediasoupclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EEA28023911D3B00134D1C /* Mediasoupclient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -58,7 +57,12 @@
 		FF2FFA6F26E71B51005792FE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C61442387DA7B00986297 /* AVFoundation.framework */; };
 		FF2FFA7026E71B57005792FE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */; };
 		FF2FFA7326E71B9A005792FE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C613C2387D97100986297 /* AudioToolbox.framework */; };
-		FF2FFA8126E71F28005792FE /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2FFA8026E71F28005792FE /* WebRTC.xcframework */; };
+		FF2FFA9326E72B84005792FE /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2FFA9226E72B84005792FE /* WebRTC.xcframework */; };
+		FF4E6AFA26E7EF2600256877 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35256BF4239A4AA100E27BB3 /* CoreVideo.framework */; };
+		FF4E6AFE26E7EF4D00256877 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E6AFD26E7EF4D00256877 /* VideoToolbox.framework */; };
+		FF4E6B0226E7EF7500256877 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E6B0126E7EF7500256877 /* OpenGLES.framework */; };
+		FF4E6B0626E7EFC500256877 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E6B0526E7EFC500256877 /* Network.framework */; };
+		FF4E6B0A26E7EFEB00256877 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E6B0926E7EFEB00256877 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +84,6 @@
 		353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceWrapper.mm; sourceTree = "<group>"; };
 		35516F332408C0D500AC60B4 /* libsdptransform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsdptransform.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libsdptransform.a"; sourceTree = "<group>"; };
 		35516F352408C0EE00AC60B4 /* libmediasoupclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmediasoupclient.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libmediasoupclient.a"; sourceTree = "<group>"; };
-		35516F372408C11000AC60B4 /* libwebrtc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebrtc.a; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal/libwebrtc.a"; sourceTree = "<group>"; };
 		355C61292387702600986297 /* ConsumerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConsumerWrapper.mm; sourceTree = "<group>"; };
 		355C613223877F2B00986297 /* ProducerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProducerWrapper.mm; sourceTree = "<group>"; };
 		355C61362387995200986297 /* TransportWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TransportWrapper.mm; sourceTree = "<group>"; };
@@ -108,7 +111,11 @@
 		35FB2487238B870E0092EBCB /* ProducerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProducerWrapper.h; sourceTree = "<group>"; };
 		35FB248B238BA8920092EBCB /* ConsumerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsumerWrapper.h; sourceTree = "<group>"; };
 		35FB248C238BA8C00092EBCB /* DeviceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceWrapper.h; sourceTree = "<group>"; };
-		FF2FFA8026E71F28005792FE /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = bin/WebRTC.xcframework; sourceTree = "<group>"; };
+		FF2FFA9226E72B84005792FE /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = bin/WebRTC.xcframework; sourceTree = "<group>"; };
+		FF4E6AFD26E7EF4D00256877 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		FF4E6B0126E7EF7500256877 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		FF4E6B0526E7EFC500256877 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
+		FF4E6B0926E7EFEB00256877 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,14 +123,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF2FFA8126E71F28005792FE /* WebRTC.xcframework in Frameworks */,
+				FF4E6B0A26E7EFEB00256877 /* CoreGraphics.framework in Frameworks */,
+				FF2FFA9326E72B84005792FE /* WebRTC.xcframework in Frameworks */,
 				FF2FFA7026E71B57005792FE /* CoreMedia.framework in Frameworks */,
+				FF4E6AFE26E7EF4D00256877 /* VideoToolbox.framework in Frameworks */,
 				3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */,
 				FF2FFA6E26E71B4A005792FE /* UIKit.framework in Frameworks */,
+				FF4E6B0226E7EF7500256877 /* OpenGLES.framework in Frameworks */,
 				FF2FFA6F26E71B51005792FE /* AVFoundation.framework in Frameworks */,
 				FF2FFA7326E71B9A005792FE /* AudioToolbox.framework in Frameworks */,
 				3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */,
-				3519FB2024872D5600DD3AF5 /* libwebrtc.a in Frameworks */,
+				FF4E6B0626E7EFC500256877 /* Network.framework in Frameworks */,
+				FF4E6AFA26E7EF2600256877 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,9 +215,12 @@
 		35E2E4892385289700E315FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FF2FFA8026E71F28005792FE /* WebRTC.xcframework */,
+				FF4E6B0926E7EFEB00256877 /* CoreGraphics.framework */,
+				FF4E6B0526E7EFC500256877 /* Network.framework */,
+				FF4E6B0126E7EF7500256877 /* OpenGLES.framework */,
+				FF4E6AFD26E7EF4D00256877 /* VideoToolbox.framework */,
+				FF2FFA9226E72B84005792FE /* WebRTC.xcframework */,
 				2FE22FED26702F6A00E7E6AB /* CoreAudioTypes.framework */,
-				35516F372408C11000AC60B4 /* libwebrtc.a */,
 				35516F352408C0EE00AC60B4 /* libmediasoupclient.a */,
 				35516F332408C0D500AC60B4 /* libsdptransform.a */,
 				35256BF4239A4AA100E27BB3 /* CoreVideo.framework */,
@@ -605,6 +619,7 @@
 					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/libmediasoupclient/lib",
 					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
+					"$(PROJECT_DIR)/bin",
 				);
 				MODULEMAP_FILE = "${SRCROOT}/vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
@@ -690,6 +705,7 @@
 					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
 					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/libmediasoupclient/lib",
 					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
+					"$(PROJECT_DIR)/bin",
 				);
 				MODULEMAP_FILE = "${SRCROOT}/vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
