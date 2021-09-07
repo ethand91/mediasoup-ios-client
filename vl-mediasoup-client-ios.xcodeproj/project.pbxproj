@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -21,7 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		2FE2300826703E9600E7E6AB /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3519FB21248731D400DD3AF5 /* WebRTC.framework */; };
 		3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F352408C0EE00AC60B4 /* libmediasoupclient.a */; };
 		3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F332408C0D500AC60B4 /* libsdptransform.a */; };
 		3519FB2024872D5600DD3AF5 /* libwebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F372408C11000AC60B4 /* libwebrtc.a */; };
@@ -55,11 +54,15 @@
 		35F7268023A3261C009BCD7F /* RTCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 35F7267F23A3261C009BCD7F /* RTCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* ProducerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* TransportWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF2FFA6E26E71B4A005792FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353BD1292387E23500A8734C /* UIKit.framework */; };
+		FF2FFA6F26E71B51005792FE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C61442387DA7B00986297 /* AVFoundation.framework */; };
+		FF2FFA7026E71B57005792FE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */; };
+		FF2FFA7326E71B9A005792FE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355C613C2387D97100986297 /* AudioToolbox.framework */; };
+		FF2FFA8126E71F28005792FE /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2FFA8026E71F28005792FE /* WebRTC.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2FE22FED26702F6A00E7E6AB /* CoreAudioTypes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioTypes.framework; path = System/Library/Frameworks/CoreAudioTypes.framework; sourceTree = SDKROOT; };
-		3519FB21248731D400DD3AF5 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework"; sourceTree = "<group>"; };
 		351A83202394A4BA00BA7A13 /* Transport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transport.h; sourceTree = "<group>"; };
 		351A83212394A68700BA7A13 /* Transport.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Transport.mm; sourceTree = "<group>"; };
 		351A832C2394B08E00BA7A13 /* Consumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consumer.h; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		35FB2487238B870E0092EBCB /* ProducerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProducerWrapper.h; sourceTree = "<group>"; };
 		35FB248B238BA8920092EBCB /* ConsumerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsumerWrapper.h; sourceTree = "<group>"; };
 		35FB248C238BA8C00092EBCB /* DeviceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceWrapper.h; sourceTree = "<group>"; };
+		FF2FFA8026E71F28005792FE /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = bin/WebRTC.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,10 +116,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF2FFA8126E71F28005792FE /* WebRTC.xcframework in Frameworks */,
+				FF2FFA7026E71B57005792FE /* CoreMedia.framework in Frameworks */,
 				3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */,
+				FF2FFA6E26E71B4A005792FE /* UIKit.framework in Frameworks */,
+				FF2FFA6F26E71B51005792FE /* AVFoundation.framework in Frameworks */,
+				FF2FFA7326E71B9A005792FE /* AudioToolbox.framework in Frameworks */,
 				3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */,
 				3519FB2024872D5600DD3AF5 /* libwebrtc.a in Frameworks */,
-				2FE2300826703E9600E7E6AB /* WebRTC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,8 +204,8 @@
 		35E2E4892385289700E315FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF2FFA8026E71F28005792FE /* WebRTC.xcframework */,
 				2FE22FED26702F6A00E7E6AB /* CoreAudioTypes.framework */,
-				3519FB21248731D400DD3AF5 /* WebRTC.framework */,
 				35516F372408C11000AC60B4 /* libwebrtc.a */,
 				35516F352408C0EE00AC60B4 /* libmediasoupclient.a */,
 				35516F332408C0D500AC60B4 /* libsdptransform.a */,
@@ -563,7 +571,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs\"",
+					"$(PROJECT_DIR)/bin",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
@@ -577,6 +588,7 @@
 					"${SRCROOT}/vl-mediasoup-client-ios/include/**",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/include/",
 				);
 				INFOPLIST_FILE = "vl-mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
@@ -607,6 +619,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-all_load",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
@@ -643,7 +656,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs\"",
+					"$(PROJECT_DIR)/bin",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
@@ -657,6 +673,7 @@
 					"${SRCROOT}/vl-mediasoup-client-ios/include/**",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/include/",
 				);
 				INFOPLIST_FILE = "vl-mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
@@ -687,6 +704,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-all_load",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;

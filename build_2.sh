@@ -82,20 +82,23 @@ cd $WORK_DIR/webrtc/src
 # rtc_enable_objc_symbol_export=true
 # --output-dir $BUILD_DIR/
 
-# gn gen out_ios_libs/device/arm64_libs --args='target_os="ios" target_cpu="arm64" ios_deployment_target="10.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true'
-# gn gen out_ios_libs/device/arm64_libs --args='target_os="ios" target_cpu="arm64" is_component_build=false use_xcode_clang=true is_debug=false ios_deployment_target="10.0" rtc_libvpx_build_vp9=false use_goma=false ios_enable_code_signing=false enable_stripping=true rtc_enable_protobuf=false enable_ios_bitcode=false treat_warnings_as_errors=false'
-# gn gen out_ios_libs/simulator/x64_libs --args='target_os="ios" target_cpu="x64" is_component_build=false use_xcode_clang=true is_debug=true ios_deployment_target="10.0" rtc_libvpx_build_vp9=false use_goma=false ios_enable_code_signing=false enable_stripping=true rtc_enable_protobuf=false enable_ios_bitcode=false treat_warnings_as_errors=false'
+# gn gen out_ios_libs/device/arm64_libs --args='target_os="ios" target_cpu="arm64" ios_deployment_target="10.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
+# gn gen out_ios_libs/simulator/x64_libs --args='target_os="ios" target_cpu="x64" ios_deployment_target="10.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
 
-# cd $WORK_DIR/webrtc/src/out_ios_libs
+#cd $WORK_DIR/webrtc/src/out_ios_libs
 # ninja -C device/arm64_libs/ webrtc
 # ninja -C simulator/x64_libs/ webrtc
+
+# 3:20 - 3:32 собирал это
 # ninja -C device/arm64_libs sdk:framework_objc
 # ninja -C simulator/x64_libs sdk:framework_objc
 
-# cd $WORK_DIR/webrtc/src/out_ios_libs
-# ninja -C device/arm64_libs/ webrtc
-#ninja -C simulator/arm64_libs/ webrtc
-#ninja -C simulator/x64_libs/ webrtc
+cd $WORK_DIR/webrtc/src/out_ios_libs
+
+# 9:56 собирал это поверх, чтобы получить .a файлы вебртс
+ninja -C device/arm64_libs webrtc
+ninja -C simulator/x64_libs webrtc
+# ninja -C simulator/arm64_libs webrtc
 
 # xcodebuild -create-xcframework \
 # 	-framework device/arm64_libs/WebRTC.framework \
@@ -103,11 +106,12 @@ cd $WORK_DIR/webrtc/src
 	# -framework out/ios_x64/WebRTC.framework \
 	# -framework out/mac_x64/WebRTC.framework \
 
-# mkdir -p universal
-# lipo -create \
-# 	arm64_libs/obj/libwebrtc.a \
-# 	x64_libs/obj/libwebrtc.a \
-# 	-output universal/libwebrtc.a
+mkdir -p universal
+lipo -create \
+	device/arm64_libs/obj/libwebrtc.a \
+	simulator/x64_libs/obj/libwebrtc.a \
+	-output universal/libwebrtc.a
+
 # lipo -create \
 # 	simulator/arm64_libs/obj/libwebrtc.a \
 # 	simulator/x64_libs/obj/libwebrtc.a \
@@ -119,18 +123,18 @@ cd $WORK_DIR/webrtc/src
 # 	-output $OUTPUT_DIR/WebRTC.xcframework
 
 
-rm -rf out_ios_libs
-python tools_webrtc/ios/build_ios_libs.py --extra-gn-args='is_component_build=false use_xcode_clang=true rtc_include_tests=false rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false'
+# rm -rf out_ios_libs
+# python tools_webrtc/ios/build_ios_libs.py --extra-gn-args='is_component_build=false use_xcode_clang=true rtc_include_tests=false rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false'
 
-# Create WebRTC universal (fat) library.
-cd $WORK_DIR/webrtc/src/out_ios_libs
-ninja -C arm64_libs/ webrtc
-ninja -C x64_libs/ webrtc
-mkdir -p universal
-lipo -create \
-	arm64_libs/obj/libwebrtc.a \
-	x64_libs/obj/libwebrtc.a \
-	-output universal/libwebrtc.a
+# # Create WebRTC universal (fat) library.
+# cd $WORK_DIR/webrtc/src/out_ios_libs
+# ninja -C arm64_libs/ webrtc
+# ninja -C x64_libs/ webrtc
+# mkdir -p universal
+# lipo -create \
+# 	arm64_libs/obj/libwebrtc.a \
+# 	x64_libs/obj/libwebrtc.a \
+# 	-output universal/libwebrtc.a
 
 rm -rf $OUTPUT_DIR/WebRTC.framework
 cp -R $WEBRTC_DIR/out_ios_libs/WebRTC.framework $OUTPUT_DIR/WebRTC.framework
@@ -172,14 +176,12 @@ mkdir -p libmediasoupclient/lib
 lipo -create \
 	build_ios_arm64/libmediasoupclient/libmediasoupclient.a \
 	build_sim_x86_64/libmediasoupclient/libmediasoupclient.a \
-	-output libmediasoupclient/lib/libmediasoupclient.a
+	-output $OUTPUT_DIR/libmediasoupclient.a
 
 lipo -create \
 	build_ios_arm64/libmediasoupclient/libsdptransform/libsdptransform.a \
 	build_sim_x86_64/libmediasoupclient/libsdptransform/libsdptransform.a \
-	-output libmediasoupclient/lib/libsdptransform.a
-
-# TODO: перенести .a файлики в output_dir
+	-output $OUTPUT_DIR/libsdptransform.a
 
 cp $PATCHES_DIR/byte_order.h $PROJECT_DIR/vl-mediasoup-client-ios/dependencies/webrtc/src/rtc_base/
 open $PROJECT_DIR/vl-mediasoup-client-ios.xcodeproj

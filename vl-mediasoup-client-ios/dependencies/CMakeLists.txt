@@ -37,7 +37,7 @@ set(LIBSDPTRANSFORM_BUILD_READMEHELPER OFF)
 
 # Set the sdk version and the min sdk version
 set(IPHONE_SDKVER "14.5")
-set(IPHONE_VERSION_MIN "9.0")
+set(IPHONE_VERSION_MIN "13.0")
 
 # enable bitcode
 add_definitions(-DENABLE_BITCODE)
