@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F352408C0EE00AC60B4 /* libmediasoupclient.a */; };
-		3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35516F332408C0D500AC60B4 /* libsdptransform.a */; };
 		351A83222394A68700BA7A13 /* Transport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351A83212394A68700BA7A13 /* Transport.mm */; };
 		351A83232394AD5C00BA7A13 /* Transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 351A83202394A4BA00BA7A13 /* Transport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		351A83242394AD5F00BA7A13 /* Mediasoupclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 35EEA28023911D3B00134D1C /* Mediasoupclient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -63,6 +61,8 @@
 		FF4E6B0226E7EF7500256877 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E6B0126E7EF7500256877 /* OpenGLES.framework */; };
 		FF4E6B0626E7EFC500256877 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E6B0526E7EFC500256877 /* Network.framework */; };
 		FF4E6B0A26E7EFEB00256877 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4E6B0926E7EFEB00256877 /* CoreGraphics.framework */; };
+		FFFC03C626E867600088B7E0 /* mediasoupclient.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFC03C426E867600088B7E0 /* mediasoupclient.xcframework */; };
+		FFFC03C726E867600088B7E0 /* sdptransform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFC03C526E867600088B7E0 /* sdptransform.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,8 +82,6 @@
 		3538C5542397A91A007EB078 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		353BD1292387E23500A8734C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceWrapper.mm; sourceTree = "<group>"; };
-		35516F332408C0D500AC60B4 /* libsdptransform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsdptransform.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libsdptransform.a"; sourceTree = "<group>"; };
-		35516F352408C0EE00AC60B4 /* libmediasoupclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmediasoupclient.a; path = "mediasoup-client-ios/dependencies/libmediasoupclient/lib/libmediasoupclient.a"; sourceTree = "<group>"; };
 		355C61292387702600986297 /* ConsumerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ConsumerWrapper.mm; sourceTree = "<group>"; };
 		355C613223877F2B00986297 /* ProducerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProducerWrapper.mm; sourceTree = "<group>"; };
 		355C61362387995200986297 /* TransportWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TransportWrapper.mm; sourceTree = "<group>"; };
@@ -116,6 +114,8 @@
 		FF4E6B0126E7EF7500256877 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FF4E6B0526E7EFC500256877 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 		FF4E6B0926E7EFEB00256877 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FFFC03C426E867600088B7E0 /* mediasoupclient.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = mediasoupclient.xcframework; path = bin/mediasoupclient.xcframework; sourceTree = "<group>"; };
+		FFFC03C526E867600088B7E0 /* sdptransform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = sdptransform.xcframework; path = bin/sdptransform.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,16 +125,16 @@
 			files = (
 				FF4E6B0A26E7EFEB00256877 /* CoreGraphics.framework in Frameworks */,
 				FF2FFA9326E72B84005792FE /* WebRTC.xcframework in Frameworks */,
+				FFFC03C726E867600088B7E0 /* sdptransform.xcframework in Frameworks */,
 				FF2FFA7026E71B57005792FE /* CoreMedia.framework in Frameworks */,
 				FF4E6AFE26E7EF4D00256877 /* VideoToolbox.framework in Frameworks */,
-				3519FB1E24872D1200DD3AF5 /* libmediasoupclient.a in Frameworks */,
 				FF2FFA6E26E71B4A005792FE /* UIKit.framework in Frameworks */,
 				FF4E6B0226E7EF7500256877 /* OpenGLES.framework in Frameworks */,
 				FF2FFA6F26E71B51005792FE /* AVFoundation.framework in Frameworks */,
 				FF2FFA7326E71B9A005792FE /* AudioToolbox.framework in Frameworks */,
-				3519FB1F24872D3300DD3AF5 /* libsdptransform.a in Frameworks */,
 				FF4E6B0626E7EFC500256877 /* Network.framework in Frameworks */,
 				FF4E6AFA26E7EF2600256877 /* CoreVideo.framework in Frameworks */,
+				FFFC03C626E867600088B7E0 /* mediasoupclient.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,14 +215,14 @@
 		35E2E4892385289700E315FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC03C426E867600088B7E0 /* mediasoupclient.xcframework */,
+				FFFC03C526E867600088B7E0 /* sdptransform.xcframework */,
 				FF4E6B0926E7EFEB00256877 /* CoreGraphics.framework */,
 				FF4E6B0526E7EFC500256877 /* Network.framework */,
 				FF4E6B0126E7EF7500256877 /* OpenGLES.framework */,
 				FF4E6AFD26E7EF4D00256877 /* VideoToolbox.framework */,
 				FF2FFA9226E72B84005792FE /* WebRTC.xcframework */,
 				2FE22FED26702F6A00E7E6AB /* CoreAudioTypes.framework */,
-				35516F352408C0EE00AC60B4 /* libmediasoupclient.a */,
-				35516F332408C0D500AC60B4 /* libsdptransform.a */,
 				35256BF4239A4AA100E27BB3 /* CoreVideo.framework */,
 				35256BF2239A4A9B00E27BB3 /* CoreMedia.framework */,
 				3538C5542397A91A007EB078 /* libc++.tbd */,
@@ -360,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nFRAMEWORK_NAME=\"vl-mediasoup-client-ios\"\nBUILD_DIR=\"${SRCROOT}/build/vl-mediasoup-client-ios\"\nOUTPUT_DIR=\"${SRCROOT}/bin\"\n\n# Remove build directory if it exists\nif [ -d \"${BUILD_DIR}\" ]; then\n\trm -rf \"${BUILD_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch arm64 only_active_arch=no -sdk \"iphoneos\" -derivedDataPath \"${BUILD_DIR}\"\n# xcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" -scheme \"${FRAMEWORK_NAME}\" -configuration Release -arch x86_64 only_active_arch=no -sdk \"iphonesimulator\" -derivedDataPath \"${BUILD_DIR}\"\n\n# Prepare output directory\nmkdir -p ${OUTPUT_DIR}\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\" ]; then\n\trm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework\"\nfi\n\n# Copy the device version of the framework\ncp -r \"${BUILD_DIR}/Build/Products/Release-iphoneos/vl_mediasoup_client_ios.framework\" \"${OUTPUT_DIR}\"\n\n# Create the FAT framework\nlipo -create -output \"${OUTPUT_DIR}/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\" \"${BUILD_DIR}/Build/Products/Release-iphoneos/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\"  \n\n#\"${BUILD_DIR}/Build/Products/Release-iphonesimulator/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\"\n";
+			shellScript = "set -e\n\nFRAMEWORK_NAME=\"vl-mediasoup-client-ios\"\nBUILD_DIR=\"${SRCROOT}/build/vl-mediasoup-client-ios\"\nOUTPUT_DIR=\"${SRCROOT}/bin\"\n\n# Remove build directory if it exists\nif [ -d \"${BUILD_DIR}\" ]; then\n\trm -rf \"${BUILD_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch x86_64 -arch arm64 only_active_arch=no \\\n    -sdk \"iphonesimulator\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\n#xcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" \\\n#    -scheme \"${FRAMEWORK_NAME}\" \\\n#    -configuration Release \\\n#    -arch arm64 only_active_arch=no \\\n#    -sdk \"iphonesimulator\" \\\n#    -derivedDataPath \"${BUILD_DIR}\"\n\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch arm64 only_active_arch=no \\\n    -sdk \"iphoneos\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\n\n# Prepare output directory\nmkdir -p ${OUTPUT_DIR}\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\" ]; then\n\trm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\"\nfi\n\nxcodebuild -create-xcframework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-iphoneos/vl_mediasoup_client_ios.framework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-iphonesimulator/vl_mediasoup_client_ios.framework \\\n\t-output $OUTPUT_DIR/${FRAMEWORK_NAME}.xcframework\n\n\n# Copy the device version of the framework\n#cp -r \"${BUILD_DIR}/Build/Products/Release-iphoneos/vl_mediasoup_client_ios.framework\" \"${OUTPUT_DIR}\"\n\n# Create the FAT framework\n#lipo -create -output \"${OUTPUT_DIR}/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\" \"${BUILD_DIR}/Build/Products/Release-iphoneos/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\"  \n\n#\"${BUILD_DIR}/Build/Products/Release-iphonesimulator/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios\"\n";
 		};
 		35A708F3238FABC900BD3716 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
