@@ -1,6 +1,0 @@
-framework module vl_mediasoup_client_ios {
-    umbrella header "Mediasoupclient.h"
-    
-    export *
-    module * { export * }
-}
