@@ -55,8 +55,7 @@ case $INPUT_STRING in
 		fetch --nohooks webrtc_ios
 		gclient sync
 		cd $WORK_DIR/webrtc/src
-		# git checkout -b bh4577 refs/remotes/branch-heads/4577
-		git checkout -b m92 refs/remotes/branch-heads/4515
+		git checkout -b m93 refs/remotes/branch-heads/4577
 		gclient sync
 		# Apply patches to make it buildable with Xcode.
 		# patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/BUILD.patch
