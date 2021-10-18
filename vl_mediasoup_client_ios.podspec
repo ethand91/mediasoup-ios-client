@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.license      = "MIT"
   spec.author       = { "Alexander Gorbunov" => "gorbunov.a@vlprojects.pro" }
   spec.platform     = :ios, "13.0"
-  spec.source       = { :git => "https://github.com/VLprojects/mediasoup-ios-client.git", :tag => s.version.to_s }
+  spec.source       = { :git => "https://github.com/VLprojects/mediasoup-ios-client.git", :tag => spec.version.to_s }
   spec.module_name = "vl_mediasoup_client_ios"
 
 	# Disable arc
