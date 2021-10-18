@@ -97,7 +97,7 @@
 		357ABBB024052BAE005EF744 /* vl_mediasoup_client_ios.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = vl_mediasoup_client_ios.modulemap; sourceTree = "<group>"; };
 		35D7427D2390B71500C22679 /* MediasoupDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupDevice.h; sourceTree = "<group>"; };
 		35D7427F2390B8AD00C22679 /* MediasoupDevice.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupDevice.mm; sourceTree = "<group>"; };
-		35E2E47C2385284800E315FD /* vl_mediasoup_client_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = vl_mediasoup_client_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35E2E47C2385284800E315FD /* VLMediasoupClientiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VLMediasoupClientiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E2E4802385284800E315FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupclientWrapper.mm; sourceTree = "<group>"; };
 		35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupclientWrapper.h; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 		35E2E47D2385284800E315FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35E2E47C2385284800E315FD /* vl_mediasoup_client_ios.framework */,
+				35E2E47C2385284800E315FD /* VLMediasoupClientiOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -289,9 +289,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		35E2E47B2385284800E315FD /* vl-mediasoup-client-ios */ = {
+		35E2E47B2385284800E315FD /* VLMediasoupClientiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "vl-mediasoup-client-ios" */;
+			buildConfigurationList = 35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "VLMediasoupClientiOS" */;
 			buildPhases = (
 				35A708F3238FABC900BD3716 /* ShellScript */,
 				35E2E4772385284800E315FD /* Headers */,
@@ -302,9 +302,9 @@
 			);
 			dependencies = (
 			);
-			name = "vl-mediasoup-client-ios";
+			name = VLMediasoupClientiOS;
 			productName = Project;
-			productReference = 35E2E47C2385284800E315FD /* vl_mediasoup_client_ios.framework */;
+			productReference = 35E2E47C2385284800E315FD /* VLMediasoupClientiOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -338,7 +338,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				35E2E47B2385284800E315FD /* vl-mediasoup-client-ios */,
+				35E2E47B2385284800E315FD /* VLMediasoupClientiOS */,
 				357ABBA9240517BD005EF744 /* fat-library */,
 			);
 		};
@@ -360,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nFRAMEWORK_NAME=\"vl-mediasoup-client-ios\"\nBUILD_DIR=\"${SRCROOT}/build/vl-mediasoup-client-ios\"\nOUTPUT_DIR=\"${SRCROOT}/bin\"\n\n# Remove build directory if it exists\nif [ -d \"${BUILD_DIR}\" ]; then\n\trm -rf \"${BUILD_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch arm64 only_active_arch=no \\\n    -sdk \"iphoneos\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\nxcodebuild -project \"${FRAMEWORK_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch x86_64 -arch arm64 only_active_arch=no \\\n    -sdk \"iphonesimulator\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\n# Prepare output directory\nmkdir -p ${OUTPUT_DIR}\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\" ]; then\n\trm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\"\nfi\n\nxcodebuild -create-xcframework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-iphoneos/vl_mediasoup_client_ios.framework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-iphonesimulator/vl_mediasoup_client_ios.framework \\\n\t-output $OUTPUT_DIR/${FRAMEWORK_NAME}.xcframework\n";
+			shellScript = "set -e\n\nFRAMEWORK_NAME=\"VLMediasoupClientiOS\"\nBUILD_DIR=\"${SRCROOT}/build/VLMediasoupClientiOS\"\nOUTPUT_DIR=\"${SRCROOT}/bin\"\n\n# Remove build directory if it exists\nif [ -d \"${BUILD_DIR}\" ]; then\n\trm -rf \"${BUILD_DIR}\"\nfi\n\n# Build the framework for both device and simulator\nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch arm64 only_active_arch=no \\\n    -sdk \"iphoneos\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" \\\n    -scheme \"${FRAMEWORK_NAME}\" \\\n    -configuration Release \\\n    -arch x86_64 -arch arm64 only_active_arch=no \\\n    -sdk \"iphonesimulator\" \\\n    -derivedDataPath \"${BUILD_DIR}\"\n\n# Prepare output directory\nmkdir -p ${OUTPUT_DIR}\nif [ -d \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\" ]; then\n\trm -rf \"${OUTPUT_DIR}/${FRAMEWORK_NAME}.xcframework\"\nfi\n\nxcodebuild -create-xcframework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-iphoneos/${FRAMEWORK_NAME}.framework \\\n\t-framework ${BUILD_DIR}/Build/Products/Release-iphonesimulator/${FRAMEWORK_NAME}.framework \\\n\t-output $OUTPUT_DIR/${FRAMEWORK_NAME}.xcframework\n";
 		};
 		35A708F3238FABC900BD3716 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -757,7 +757,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "vl-mediasoup-client-ios" */ = {
+		35E2E4842385284800E315FD /* Build configuration list for PBXNativeTarget "VLMediasoupClientiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35E2E4852385284800E315FD /* Debug */,
