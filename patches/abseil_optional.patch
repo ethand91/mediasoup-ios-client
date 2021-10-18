@@ -1,0 +1,10 @@
+--- webrtc/src/third_party/abseil-cpp/absl/types/bad_optional_access.cc
++++ webrtc/src/third_party/abseil-cpp/absl/types/bad_optional_access.cc
+@@ -32,6 +32,7 @@ const char* bad_optional_access::what() const noexcept {
+ 
+ namespace optional_internal {
+ 
++__attribute__((visibility("default")))
+ void throw_bad_optional_access() {
+ #ifdef ABSL_HAVE_EXCEPTIONS
+   throw bad_optional_access();
