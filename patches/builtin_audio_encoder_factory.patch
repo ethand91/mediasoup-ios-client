@@ -1,0 +1,11 @@
+--- webrtc/src/api/audio_codecs/builtin_audio_encoder_factory.h
++++ webrtc/src/api/audio_codecs/builtin_audio_encoder_factory.h
+@@ -21,7 +21,7 @@ namespace webrtc {
+ // only need a subset of the codecs, consider using
+ // CreateAudioEncoderFactory<...codecs listed here...>() or
+ // CreateOpusAudioEncoderFactory() instead.
+-rtc::scoped_refptr<AudioEncoderFactory> CreateBuiltinAudioEncoderFactory();
++RTC_EXPORT rtc::scoped_refptr<AudioEncoderFactory> CreateBuiltinAudioEncoderFactory();
+ 
+ }  // namespace webrtc
+ 

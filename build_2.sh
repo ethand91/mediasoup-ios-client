@@ -60,6 +60,9 @@ case $INPUT_STRING in
 		gclient sync
 		# Apply patches to make it buildable with Xcode.
 		# patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/BUILD.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_decoder_factory.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_encoder_factory.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdp_video_format_utils.patch
 		;;
 	*)
 		export PATH=$WORK_DIR/depot_tools:$PATH
