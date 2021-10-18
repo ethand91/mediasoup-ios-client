@@ -57,8 +57,8 @@ case $INPUT_STRING in
 		cd $WORK_DIR/webrtc/src
 		git checkout -b m93 refs/remotes/branch-heads/4577
 		gclient sync
+
 		# Apply patches to make it buildable with Xcode.
-		# patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/BUILD.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_decoder_factory.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/builtin_audio_encoder_factory.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdp_video_format_utils.patch
@@ -68,21 +68,12 @@ case $INPUT_STRING in
 	*)
 		export PATH=$WORK_DIR/depot_tools:$PATH
 		cd $WEBRTC_DIR
-		
-		# git checkout -b m92 refs/remotes/branch-heads/4515
-		# git checkout m92
-		# git checkout -b m93 refs/remotes/branch-heads/4577
-		# git checkout m93
-		# gclient sync
-
 		git restore rtc_base/byte_order.h
 		;;
 esac
 
 echo 'Building WebRTC'
 cd $WEBRTC_DIR
-# python tools_webrtc/ios/build_ios_libs.py --extra-gn-args='rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true is_component_build=false rtc_enable_symbol_export=true use_xcode_clang=true rtc_include_tests=false rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false'
-# --output-dir $BUILD_DIR/
 
 gn gen out_ios_libs/device/arm64_libs --ide=xcode --args='target_os="ios" target_environment="device" target_cpu="arm64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
 gn gen out_ios_libs/simulator/x64_libs --ide=xcode --args='target_os="ios" target_environment="simulator" target_cpu="x64" ios_deployment_target="13.0" ios_enable_code_signing=false use_xcode_clang=true is_component_build=false rtc_include_tests=false is_debug=false rtc_libvpx_build_vp9=false enable_ios_bitcode=false use_goma=false rtc_enable_symbol_export=true rtc_include_builtin_audio_codecs=true rtc_include_builtin_video_codecs=true rtc_enable_protobuf=false use_rtti=true use_custom_libcxx=false enable_dsyms=true enable_stripping=true treat_warnings_as_errors=false'
