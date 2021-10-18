@@ -94,7 +94,7 @@
 		3570311723977DF800761AF5 /* MediasoupLogger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupLogger.mm; sourceTree = "<group>"; };
 		3570311923977E0F00761AF5 /* MediasoupLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupLogger.h; sourceTree = "<group>"; };
 		3570311B2397802C00761AF5 /* LoggerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoggerWrapper.h; sourceTree = "<group>"; };
-		357ABBB024052BAE005EF744 /* vl_mediasoup_client_ios.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = vl_mediasoup_client_ios.modulemap; sourceTree = "<group>"; };
+		357ABBB024052BAE005EF744 /* VLMediasoupClientiOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = VLMediasoupClientiOS.modulemap; sourceTree = "<group>"; };
 		35D7427D2390B71500C22679 /* MediasoupDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediasoupDevice.h; sourceTree = "<group>"; };
 		35D7427F2390B8AD00C22679 /* MediasoupDevice.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MediasoupDevice.mm; sourceTree = "<group>"; };
 		35E2E47C2385284800E315FD /* VLMediasoupClientiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VLMediasoupClientiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,7 +207,7 @@
 				350559B423A8CA1D00576D83 /* src */,
 				35EEA27F23911D2200134D1C /* include */,
 				35E2E4802385284800E315FD /* Info.plist */,
-				357ABBB024052BAE005EF744 /* vl_mediasoup_client_ios.modulemap */,
+				357ABBB024052BAE005EF744 /* VLMediasoupClientiOS.modulemap */,
 			);
 			path = "vl-mediasoup-client-ios";
 			sourceTree = "<group>";
