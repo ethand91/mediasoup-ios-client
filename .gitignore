@@ -10,6 +10,10 @@ build
 work
 vl-mediasoup-client-ios/dependencies/build_ios_arm64
 vl-mediasoup-client-ios/dependencies/build_sim_x86_64
+vl-mediasoup-client-ios/dependencies/build_sim_arm64
+vl-mediasoup-client-ios/dependencies/build_sim_fat
 vl-mediasoup-client-ios/dependencies/libmediasoupclient
 vl-mediasoup-client-ios/dependencies/webrtc
-
+vl-mediasoup-client-ios/dependencies/depot_tools
+bin/mediasoupclient.xcframework
+bin/sdptransform.xcframework
