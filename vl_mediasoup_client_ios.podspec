@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "vl_mediasoup_client_ios"
-  spec.version      = "1.5.17"
+  spec.version      = "1.5.18"
   spec.summary      = "Mediasoup 3 iOS Client"
 
   spec.description  = <<-DESC
