@@ -616,9 +616,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/libmediasoupclient/lib",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 					"$(PROJECT_DIR)/bin",
 				);
 				MODULEMAP_FILE = "${SRCROOT}/vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap";
@@ -702,9 +699,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/libmediasoupclient/lib",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 					"$(PROJECT_DIR)/bin",
 				);
 				MODULEMAP_FILE = "${SRCROOT}/vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap";
