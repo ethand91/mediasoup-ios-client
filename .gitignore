@@ -17,3 +17,4 @@ vl-mediasoup-client-ios/dependencies/webrtc
 vl-mediasoup-client-ios/dependencies/depot_tools
 bin/mediasoupclient.xcframework
 bin/sdptransform.xcframework
+.vscode
