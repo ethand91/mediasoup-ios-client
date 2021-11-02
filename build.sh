@@ -17,28 +17,44 @@ echo "PATCHES_DIR = $PATCHES_DIR"
 export WEBRTC_DIR=$PROJECT_DIR/vl-mediasoup-client-ios/dependencies/webrtc/src
 echo "WEBRTC_DIR = $WEBRTC_DIR"
 
+echo -e "Clear old build artifacts? (Y|n): \c"
+read -n 1 INPUT_STRING
+echo ""
+case $INPUT_STRING in
+	n|N)
+		;;
+	*)
+        declare -a COMPONENTS=(
+            "$OUTPUT_DIR"
+            "$BUILD_DIR"
+            "$WORK_DIR/build_ios_arm64"
+            "$WORK_DIR/build_sim_arm64"
+            "$WORK_DIR/build_sim_fat"
+            "$WORK_DIR/build_sim_x86_64"
+            "$WEBRTC_DIR/out_ios_libs"
+        )
+        for COMPONENT in "${COMPONENTS[@]}"
+        do
+            if [ -d $COMPONENT ]
+            then
+                echo "Removing dir $COMPONENT"
+                rm -rf $COMPONENT
+            fi
+        done
 
-echo -e "Clear working directory and refetch dependencies? (y|N): \c"
+        mkdir -p $OUTPUT_DIR
+        echo 'OUTPUT_DIR created'
+
+        mkdir -p $BUILD_DIR
+        echo 'BUILD_DIR created'
+		;;
+esac
+
+echo -e "Refetch dependencies? (y|N): \c"
 read -n 1 INPUT_STRING
 echo ""
 case $INPUT_STRING in
 	y|Y)
-		if [ -d $OUTPUT_DIR ]
-		then
-			echo 'Removing old output dir'
-			rm -rf $OUTPUT_DIR
-		fi
-		mkdir -p $OUTPUT_DIR
-		echo 'OUTPUT_DIR created'
-
-		if [ -d $BUILD_DIR ]
-		then
-			echo 'Removing old build dir'
-			rm -rf $BUILD_DIR
-		fi
-		mkdir -p $BUILD_DIR
-		echo 'BUILD_DIR created'
-
 		echo 'Cloning libmediasoupclient'
 		cd $PROJECT_DIR/vl-mediasoup-client-ios/dependencies
 		rm -rf libmediasoupclient
