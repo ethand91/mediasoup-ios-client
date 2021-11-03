@@ -1,0 +1,10 @@
+--- webrtc/src/sdk/objc/api/peerconnection/RTCPeerConnectionFactoryBuilder.h
++++ webrtc/src/sdk/objc/api/peerconnection/RTCPeerConnectionFactoryBuilder.h
+@@ -25,6 +25,7 @@ class AudioProcessing;
+ 
+ NS_ASSUME_NONNULL_BEGIN
+ 
++RTC_OBJC_EXPORT
+ @interface RTCPeerConnectionFactoryBuilder : NSObject
+ 
+ + (RTCPeerConnectionFactoryBuilder *)builder;

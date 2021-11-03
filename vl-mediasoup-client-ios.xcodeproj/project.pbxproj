@@ -603,6 +603,8 @@
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/include/",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/sdk/objc/api",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/sdk/objc/base",
 				);
 				INFOPLIST_FILE = "vl-mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
@@ -616,9 +618,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/libmediasoupclient/lib",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 					"$(PROJECT_DIR)/bin",
 				);
 				MODULEMAP_FILE = "${SRCROOT}/vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap";
@@ -689,6 +688,8 @@
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/include/",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/sdk/objc/api",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/sdk/objc/base",
 				);
 				INFOPLIST_FILE = "vl-mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
@@ -702,9 +703,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/universal",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/libmediasoupclient/lib",
-					"$(PROJECT_DIR)/vl-mediasoup-client-ios/dependencies/webrtc/src/out_ios_libs/WebRTC.framework",
 					"$(PROJECT_DIR)/bin",
 				);
 				MODULEMAP_FILE = "${SRCROOT}/vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap";

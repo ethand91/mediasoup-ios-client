@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "vl_mediasoup_client_ios"
-  spec.version      = "1.5.14"
+  spec.version      = "1.5.19"
   spec.summary      = "Mediasoup 3 iOS Client"
 
   spec.description  = <<-DESC
@@ -30,5 +30,5 @@ Pod::Spec.new do |spec|
   # Include frameworks needed for WebRTC
   spec.frameworks = "AVFoundation", "AudioToolbox", "CoreAudio", "CoreMedia", "CoreVideo"
   spec.vendored_frameworks = "bin/vl_mediasoup_client_ios.xcframework", "bin/WebRTC.xcframework"
-  spec.module_map = "vl_mediasoup_client_ios/vl_mediasoup_client_ios.modulemap"
+  spec.module_map = "vl-mediasoup-client-ios/vl_mediasoup_client_ios.modulemap"
 end

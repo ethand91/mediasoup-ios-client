@@ -32,12 +32,17 @@ using namespace mediasoupclient;
     delete reinterpret_cast<mediasoupclient::Device *>([nativeDevice pointerValue]);
 }
 
-+(void)nativeLoad:(NSValue *)nativeDevice routerRtpCapabilities:(NSString *)routerRtpCapabilities {
++(void)nativeLoad:(NSValue *)nativeDevice routerRtpCapabilities:(NSString *)routerRtpCapabilities
+    nativePCOptions:(NSValue *)nativePCOptions {
+
     MSC_TRACE();
     
     try {
         nlohmann::json routerRtpCapabilitiesJson = nlohmann::json::parse(std::string([routerRtpCapabilities UTF8String]));
-        reinterpret_cast<mediasoupclient::Device *>([nativeDevice pointerValue])->Load(routerRtpCapabilitiesJson);
+
+        const auto pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>([nativePCOptions pointerValue]);
+        const auto device = reinterpret_cast<mediasoupclient::Device *>([nativeDevice pointerValue]);
+        device->Load(routerRtpCapabilitiesJson, pcOptions);
     } catch (const std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];
@@ -106,7 +111,7 @@ using namespace mediasoupclient;
     }
 }
 
-+(NSValue *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
++(NSValue *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -120,9 +125,9 @@ using namespace mediasoupclient;
         if (sctpParameters != nullptr) {
             sctpParametersJson = nlohmann::json::parse(std::string([sctpParameters UTF8String]));
         }
-        
-        mediasoupclient::PeerConnection::Options* pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>(options);
-        
+
+        const auto pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>([nativePCOptions pointerValue]);
+
         nlohmann::json appDataJson = nlohmann::json::object();
         if (appData != nullptr) {
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
@@ -142,7 +147,7 @@ using namespace mediasoupclient;
     return nullptr;
 }
 
-+(NSValue *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
++(NSValue *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -156,9 +161,9 @@ using namespace mediasoupclient;
         if (sctpParameters != nullptr) {
             sctpParametersJson = nlohmann::json::parse(std::string([sctpParameters UTF8String]));
         }
-        
-        mediasoupclient::PeerConnection::Options* pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>(options);
-        
+
+        const auto pcOptions = reinterpret_cast<mediasoupclient::PeerConnection::Options *>([nativePCOptions pointerValue]);
+
         nlohmann::json appDataJson = nlohmann::json::object();
         if (appData != nullptr) {
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
