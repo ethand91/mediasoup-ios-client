@@ -8,9 +8,17 @@
 
 #import "MediasoupDevice.h"
 #import "DeviceWrapper.h"
+#import <libmediasoupclient/include/PeerConnection.hpp>
+#import "peerconnection/RTCPeerConnectionFactory+Private.h"
+#import "peerconnection/RTCPeerConnectionFactoryBuilder+DefaultComponents.h"
+
+using namespace mediasoupclient;
 
 @interface MediasoupDevice()
 @property(nonatomic, retain) NSValue *nativeDevice;
+@property(nonatomic, retain) RTCPeerConnectionFactoryBuilder *pcFactoryBuilder;
+@property(nonatomic, retain) RTCPeerConnectionFactory *pcFactory;
+@property(nonatomic, retain) NSValue *nativePCOptions;
 @end
 
 @implementation MediasoupDevice : NSObject
@@ -19,6 +27,13 @@
     self = [super init];
     if (self) {
         self.nativeDevice = [DeviceWrapper nativeNewDevice];
+
+        self.pcFactoryBuilder = [RTCPeerConnectionFactoryBuilder defaultBuilder];
+        self.pcFactory = [self.pcFactoryBuilder createPeerConnectionFactory];
+        auto pcOptions = new mediasoupclient::PeerConnection::Options();
+        pcOptions->factory = self.pcFactory.nativeFactory;
+
+        self.nativePCOptions = [NSValue valueWithPointer:pcOptions];
     }
     
     return self;
@@ -29,12 +44,20 @@
         [DeviceWrapper nativeFreeDevice: self.nativeDevice];
     }
     self.nativeDevice = nil;
+
+    self.pcFactoryBuilder = nil;
+
+    if (self.nativePCOptions != nil && self.nativePCOptions.pointerValue != nullptr) {
+        delete reinterpret_cast<mediasoupclient::PeerConnection::Options *>(self.nativePCOptions.pointerValue);
+    }
+    self.nativePCOptions = nil;
+
     [super dealloc];
 }
 
 -(void)load:(NSString *)routerRtpCapabilities {
     [self checkDeviceExists];
-    [DeviceWrapper nativeLoad:self.nativeDevice routerRtpCapabilities:routerRtpCapabilities];
+    [DeviceWrapper nativeLoad:self.nativeDevice routerRtpCapabilities:routerRtpCapabilities nativePCOptions:self.nativePCOptions];
 }
 
 -(bool)isLoaded {
@@ -62,25 +85,25 @@
 }
 
 -(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters {
-    return [self createSendTransport:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:nil options:nil appData:nil];
+    return [self createSendTransport:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:nil appData:nil];
 }
 
--(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
+-(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters appData:(NSString *)appData {
     [self checkDeviceExists];
-    
-    NSValue *transport = [DeviceWrapper nativeCreateSendTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
+
+    NSValue *transport = [DeviceWrapper nativeCreateSendTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters nativePCOptions:self.nativePCOptions appData:appData];
     
     return [[[SendTransport alloc] initWithNativeTransport:transport] autorelease];
 }
 
 -(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters {
-    return [self createRecvTransport:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:nil options:nil appData:nil];
+    return [self createRecvTransport:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:nil appData:nil];
 }
 
--(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData {
+-(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters appData:(NSString *)appData {
     [self checkDeviceExists];
     
-    NSValue *transport = [DeviceWrapper nativeCreateRecvTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters options:options appData:appData];
+    NSValue *transport = [DeviceWrapper nativeCreateRecvTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters nativePCOptions:self.nativePCOptions appData:appData];
     
     return [[[RecvTransport alloc] initWithNativeTransport:transport] autorelease];
 }
