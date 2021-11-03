@@ -603,6 +603,8 @@
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/include/",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/sdk/objc/api",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/sdk/objc/base",
 				);
 				INFOPLIST_FILE = "vl-mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
@@ -686,6 +688,8 @@
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/third_party/abseil-cpp",
 					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/include/",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/sdk/objc/api",
+					"$(SRCROOT)/vl-mediasoup-client-ios/dependencies/webrtc/src/sdk/objc/base",
 				);
 				INFOPLIST_FILE = "vl-mediasoup-client-ios/Info.plist";
 				INSTALL_OWNER = denvirethan;
