@@ -80,6 +80,7 @@ case $INPUT_STRING in
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdp_video_format_utils.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/sdk_BUILD.patch
 		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/abseil_optional.patch
+		patch -b -p0 -d $WORK_DIR < $PATCHES_DIR/RTCPeerConnectionFactoryBuilder.patch
 		;;
 	*)
 		export PATH=$WORK_DIR/depot_tools:$PATH
