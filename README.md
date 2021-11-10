@@ -4,8 +4,7 @@ Objective-C wrapper library for libmediasoupclient for building mediasoup iOS ba
 
 **This project supports both 64 bit iOS devices and 64 bit iOS Simulators**
 
-![Cocoapods version](https://img.shields.io/cocoapods/v/mediasoup_ios_client?color=green&label=Cocoapods&logo=Cocoapods)
-![License](https://img.shields.io/github/license/ethand91/mediasoup-ios-client)
+![License](https://img.shields.io/github/license/VLprojects/mediasoup-ios-client)
 
 ## Website and Documentation
 
@@ -27,7 +26,7 @@ Add the below into your Podfile:
 use_frameworks!
 
 target "target" do
-  pod "mediasoup_ios_client"
+  pod 'vl_mediasoup_client_ios', :git => 'https://github.com/VLprojects/mediasoup-ios-client.git'
 end
 ```
 
@@ -45,19 +44,16 @@ https://github.com/ethand91/mediasoup-ios-client-sample/blob/master/mediasoup-io
 
 #### API
 
-https://github.com/ethand91/mediasoup-ios-client/blob/master/documentation/Api.md
+https://github.com/VLprojects/mediasoup-ios-client/blob/master/documentation/Api.md
 
 #### INSTALLATION (Only needed for development, not needed if you only intent to use the project)
 
-https://github.com/ethand91/mediasoup-ios-client/blob/master/documentation/Installation.md
+https://github.com/VLprojects/mediasoup-ios-client/blob/master/documentation/Installation.md
 
 ## Usage Example
 
 ```objective-c
 #import "mediasoup_client_ios/Mediasoupclient.h
-
-// Initialize the underlaying libmediasoupclient
-[Mediasoupclient initializePC];
 
 // Create a Device
 MediasoupDevice *device = [[MediasoupDevice alloc] init];
@@ -129,15 +125,9 @@ RTCVideoTrack *videoTrack = [factory videoTrackWithSource:videoSource trackId:@"
 Producer *videoProducer = [sendTransport produce:producerHandler.delegate track:videoTrack encodings:nil codecOptions:nil];
 ```
 
-## Contributing
+## Roadmap
 
-### Clone the repo and install submodules
-
-Due to the size of the WebRTC static library it cannot be uploaded to Github, therefore you will need to follow the instructions in the build folder and build it yourself. (This step is only needed for development, not for library usage)
-
-```bash
-git clone https://github.com/ethand91/mediasoup-ios-client.git
-git submodule init
-git submodule update
-```
- 
+* Fix memory leaks
+* Update usage examples and tests, translate to modern Swift syntax
+* Update build instructions
+* Implement configuring codec factories
