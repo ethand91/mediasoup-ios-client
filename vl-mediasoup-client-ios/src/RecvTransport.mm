@@ -13,6 +13,11 @@
 
 @implementation RecvTransport : Transport
 
+-(void)dealloc {
+    [TransportWrapper nativeFreeRecvTransport:self._nativeTransport];
+    self._nativeTransport = nil;
+}
+
 -(Consumer *)consume:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters {
     return [self consume:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:nil];
 }

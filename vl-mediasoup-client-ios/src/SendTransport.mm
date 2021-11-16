@@ -14,6 +14,11 @@
 
 @implementation SendTransport : Transport
 
+-(void)dealloc {
+    [TransportWrapper nativeFreeSendTransport:self._nativeTransport];
+    self._nativeTransport = nil;
+}
+
 -(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions {
     return [self produce:listener track:track encodings:encodings codecOptions:codecOptions appData:nil];
 }

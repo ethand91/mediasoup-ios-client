@@ -227,4 +227,14 @@ using namespace mediasoupclient;
     return transport;
 }
 
++(void)nativeFreeSendTransport:(NSValue *)nativeTransport {
+    auto *transport = reinterpret_cast<mediasoupclient::SendTransport *>([nativeTransport pointerValue]);
+    delete transport;
+}
+
++(void)nativeFreeRecvTransport:(NSValue *)nativeTransport {
+    auto *transport = reinterpret_cast<mediasoupclient::RecvTransport *>([nativeTransport pointerValue]);
+    delete transport;
+}
+
 @end

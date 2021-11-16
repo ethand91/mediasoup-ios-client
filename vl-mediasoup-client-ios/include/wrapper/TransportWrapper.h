@@ -28,7 +28,8 @@
 +(void)nativeClose:(NSValue *)nativeTransport;
 +(NSValue *)nativeGetNativeTransport:(NSValue *)nativeTransport;
 +(::Producer *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(NSUInteger)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
-+(void)nativeFreeTransport:(NSValue *)nativeTransport;
++(void)nativeFreeSendTransport:(NSValue *)nativeTransport;
++(void)nativeFreeRecvTransport:(NSValue *)nativeTransport;
 +(::Consumer *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
 +(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport;
 
