@@ -143,4 +143,8 @@ using namespace mediasoupclient;
     reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue])->producer()->Close();
 }
 
++(void)nativeFree:(NSValue *)nativeProducer {
+    delete reinterpret_cast<OwnedProducer *>([nativeProducer pointerValue]);
+}
+
 @end

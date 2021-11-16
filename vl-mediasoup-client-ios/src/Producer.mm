@@ -39,6 +39,7 @@
     if (self.nativeProducer != nil && ![ProducerWrapper isNativeClosed:self.nativeProducer]) {
         [ProducerWrapper nativeClose:self.nativeProducer];
     }
+    [ProducerWrapper nativeFree:self.nativeProducer];
 }
 
 -(NSString *)getId {

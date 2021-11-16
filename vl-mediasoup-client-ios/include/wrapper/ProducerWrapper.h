@@ -26,7 +26,7 @@
 +(void)setNativeMaxSpatialLayer:(NSValue *)nativeProducer layer:(int)layer;
 +(void)nativeReplaceTrack:(NSValue *)nativeProducer track:(NSUInteger)track;
 +(void)nativeClose:(NSValue *)nativeProducer;
-
++(void)nativeFree:(NSValue *)nativeProducer;
 @end
 
 class ProducerListenerWrapper final : public mediasoupclient::Producer::Listener {
