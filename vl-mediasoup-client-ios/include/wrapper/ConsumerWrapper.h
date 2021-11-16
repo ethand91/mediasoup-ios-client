@@ -29,15 +29,14 @@
 
 class ConsumerListenerWrapper final : public mediasoupclient::Consumer::Listener {
 private:
-    Protocol<ConsumerListener>* listener_;
+    id<ConsumerListener> listener_;
     ::Consumer* consumer_;
 public:
     ConsumerListenerWrapper(Protocol<ConsumerListener>* listener)
     : listener_(listener) {}
     
     ~ConsumerListenerWrapper() {
-        [consumer_ release];
-        [listener_ release];
+        // TODO: check this case.
     }
     
     void OnTransportClose(mediasoupclient::Consumer* nativeConsumer) override {

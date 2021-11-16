@@ -15,15 +15,10 @@
 -(instancetype)initWithNativeTransport:(NSValue *)nativeTransport {
     self = [super init];
     if (self) {
-        __nativeTransport = [nativeTransport retain];
+        self._nativeTransport = nativeTransport;
     }
     
     return self;
-}
-
--(void)dealloc {
-    [__nativeTransport release];
-    [super dealloc];
 }
 
 -(NSString *)getId {

@@ -8,87 +8,87 @@
 
 #import <Foundation/Foundation.h>
 #import <WebRTC/RTCPeerConnectionFactory.h>
-
+#import "peerconnection/RTCMediaStreamTrack+Private.h"
 #import "Consumer.h"
 #import "ConsumerWrapper.h"
 
+
 @interface Consumer ()
-@property(nonatomic, retain) RTCPeerConnectionFactory *factory;
+@property(nonatomic, strong) NSValue* nativeConsumer;
+@property(nonatomic, strong) RTCMediaStreamTrack *nativeTrack;
+@property(nonatomic, strong) RTCPeerConnectionFactory *factory;
 @end
+
 
 @implementation Consumer : NSObject
 
 -(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer {
     self = [super init];
     if (self) {
-        __nativeConsumer = [nativeConsumer retain];
+        self.nativeConsumer = nativeConsumer;
         
-        webrtc::MediaStreamTrackInterface *nativeTrack = [ConsumerWrapper getNativeTrack:self._nativeConsumer];
+        webrtc::MediaStreamTrackInterface *nativeTrack = [ConsumerWrapper getNativeTrack:self.nativeConsumer];
         rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
 
-        _factory = [[RTCPeerConnectionFactory alloc] init];
-        __nativeTrack = [[RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:_factory] retain];
+        self.factory = [[RTCPeerConnectionFactory alloc] init];
+        self.nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:self.factory];
     }
     
     return self;
 }
 
 - (void)dealloc {
-    if (__nativeConsumer != nil && ![ConsumerWrapper isNativeClosed:__nativeConsumer]) {
-        [ConsumerWrapper nativeClose:__nativeConsumer];
+    if (self.nativeConsumer != nil && ![ConsumerWrapper isNativeClosed:self.nativeConsumer]) {
+        [ConsumerWrapper nativeClose:self.nativeConsumer];
     }
-    [__nativeConsumer release];
-    [__nativeTrack release];
-    [_factory release];
-    [super dealloc];
 }
 
 -(NSString *)getId {
-    return [ConsumerWrapper getNativeId:self._nativeConsumer];
+    return [ConsumerWrapper getNativeId:self.nativeConsumer];
 }
 
 -(NSString *)getProducerId {
-    return [ConsumerWrapper getNativeProducerId:self._nativeConsumer];
+    return [ConsumerWrapper getNativeProducerId:self.nativeConsumer];
 }
 
 -(bool)isClosed {
-    return [ConsumerWrapper isNativeClosed:self._nativeConsumer];
+    return [ConsumerWrapper isNativeClosed:self.nativeConsumer];
 }
 
 -(bool)isPaused {
-    return [ConsumerWrapper isNativePaused:self._nativeConsumer];
+    return [ConsumerWrapper isNativePaused:self.nativeConsumer];
 }
 
 -(NSString *)getKind {
-    return [ConsumerWrapper getNativeKind:self._nativeConsumer];
+    return [ConsumerWrapper getNativeKind:self.nativeConsumer];
 }
 
 -(RTCMediaStreamTrack *)getTrack {
-    return self._nativeTrack;
+    return self.nativeTrack;
 }
 
 -(NSString *)getRtpParameters {
-    return [ConsumerWrapper getNativeRtpParameters:self._nativeConsumer];
+    return [ConsumerWrapper getNativeRtpParameters:self.nativeConsumer];
 }
 
 -(NSString *)getAppData {
-    return [ConsumerWrapper getNativeAppData:self._nativeConsumer];
+    return [ConsumerWrapper getNativeAppData:self.nativeConsumer];
 }
 
 -(void)resume {
-    [ConsumerWrapper nativeResume:self._nativeConsumer];
+    [ConsumerWrapper nativeResume:self.nativeConsumer];
 }
 
 -(void)pause {
-    [ConsumerWrapper nativePause:self._nativeConsumer];
+    [ConsumerWrapper nativePause:self.nativeConsumer];
 }
 
 -(NSString *)getStats {
-    return [ConsumerWrapper getNativeStats:self._nativeConsumer];
+    return [ConsumerWrapper getNativeStats:self.nativeConsumer];
 }
 
 -(void)close {
-    [ConsumerWrapper nativeClose:self._nativeConsumer];
+    [ConsumerWrapper nativeClose:self.nativeConsumer];
 }
 
 @end

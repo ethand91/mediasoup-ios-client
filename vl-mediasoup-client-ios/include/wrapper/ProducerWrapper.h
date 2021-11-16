@@ -31,15 +31,14 @@
 
 class ProducerListenerWrapper final : public mediasoupclient::Producer::Listener {
 private:
-    Protocol<ProducerListener>* listener_;
+    id<ProducerListener> listener_;
     ::Producer* producer_;
 public:
     ProducerListenerWrapper(Protocol<ProducerListener>* listener)
     : listener_(listener) {}
     
     ~ProducerListenerWrapper() {
-        [producer_ release];
-        [listener_ release];
+        // TODO: Check this case.
     };
     
     void OnTransportClose(mediasoupclient::Producer* nativeProducer) override {

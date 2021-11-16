@@ -12,10 +12,8 @@
 @class RTCMediaStreamTrack;
 
 @interface Producer : NSObject
-/*! @brief libmediasoupclient native producer object */
-@property(nonatomic, strong) NSValue* _nativeProducer;
-/*! @brief Producer native track */
-@property(nonatomic, strong) RTCMediaStreamTrack *_nativeTrack;
+
+-(instancetype)initWithNativeProducer:(NSValue *)nativeProducer;
 
 /*! @return Producer identifier */
 -(NSString *)getId;

@@ -12,10 +12,8 @@
 @class RTCMediaStreamTrack;
 
 @interface Consumer : NSObject
-/*! @brief libmediasoupclient native consumer object */
-@property(nonatomic, strong) NSValue* _nativeConsumer;
-/*! @brief native consumer track object */
-@property(nonatomic, strong) RTCMediaStreamTrack *_nativeTrack;
+
+-(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer;
 
 /*! @return Consumer identifier */
 -(NSString *)getId;

@@ -144,12 +144,12 @@
 		350559B323A8C9AD00576D83 /* wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				35FB2486238B823F0092EBCB /* TransportWrapper.h */,
-				35FB2487238B870E0092EBCB /* ProducerWrapper.h */,
 				35FB248B238BA8920092EBCB /* ConsumerWrapper.h */,
 				35FB248C238BA8C00092EBCB /* DeviceWrapper.h */,
-				35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */,
 				3570311B2397802C00761AF5 /* LoggerWrapper.h */,
+				35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */,
+				35FB2487238B870E0092EBCB /* ProducerWrapper.h */,
+				35FB2486238B823F0092EBCB /* TransportWrapper.h */,
 			);
 			path = wrapper;
 			sourceTree = "<group>";
@@ -157,15 +157,15 @@
 		350559B423A8CA1D00576D83 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				35D7427F2390B8AD00C22679 /* MediasoupDevice.mm */,
-				35EEA27D23911CB000134D1C /* Mediasoupclient.mm */,
-				351A83212394A68700BA7A13 /* Transport.mm */,
+				355C612D23877D9C00986297 /* C++Wrapper */,
 				351A83302394B7F400BA7A13 /* Consumer.mm */,
+				35EEA27D23911CB000134D1C /* Mediasoupclient.mm */,
+				35D7427F2390B8AD00C22679 /* MediasoupDevice.mm */,
+				3570311723977DF800761AF5 /* MediasoupLogger.mm */,
 				351A83372394C11C00BA7A13 /* Producer.mm */,
 				351A833D2394DE2B00BA7A13 /* RecvTransport.mm */,
 				351A833F2394DE3A00BA7A13 /* SendTransport.mm */,
-				3570311723977DF800761AF5 /* MediasoupLogger.mm */,
-				355C612D23877D9C00986297 /* C++Wrapper */,
+				351A83212394A68700BA7A13 /* Transport.mm */,
 				35F7267C23A325DC009BCD7F /* webrtc */,
 			);
 			path = src;
@@ -175,11 +175,11 @@
 			isa = PBXGroup;
 			children = (
 				355C61292387702600986297 /* ConsumerWrapper.mm */,
+				353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */,
+				3570311523977BFC00761AF5 /* LoggerWrapper.mm */,
+				35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */,
 				355C613223877F2B00986297 /* ProducerWrapper.mm */,
 				355C61362387995200986297 /* TransportWrapper.mm */,
-				353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */,
-				35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */,
-				3570311523977BFC00761AF5 /* LoggerWrapper.mm */,
 			);
 			path = "C++Wrapper";
 			sourceTree = "<group>";
@@ -239,16 +239,16 @@
 		35EEA27F23911D2200134D1C /* include */ = {
 			isa = PBXGroup;
 			children = (
-				35F7267F23A3261C009BCD7F /* RTCUtils.h */,
-				350559B323A8C9AD00576D83 /* wrapper */,
-				3570311923977E0F00761AF5 /* MediasoupLogger.h */,
-				35D7427D2390B71500C22679 /* MediasoupDevice.h */,
-				35EEA28023911D3B00134D1C /* Mediasoupclient.h */,
-				351A83202394A4BA00BA7A13 /* Transport.h */,
 				351A832C2394B08E00BA7A13 /* Consumer.h */,
+				35EEA28023911D3B00134D1C /* Mediasoupclient.h */,
+				35D7427D2390B71500C22679 /* MediasoupDevice.h */,
+				3570311923977E0F00761AF5 /* MediasoupLogger.h */,
 				351A832D2394B09600BA7A13 /* Producer.h */,
-				351A83392394DC6A00BA7A13 /* SendTransport.h */,
 				351A833A2394DC7300BA7A13 /* RecvTransport.h */,
+				35F7267F23A3261C009BCD7F /* RTCUtils.h */,
+				351A83392394DC6A00BA7A13 /* SendTransport.h */,
+				351A83202394A4BA00BA7A13 /* Transport.h */,
+				350559B323A8C9AD00576D83 /* wrapper */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -574,7 +574,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_MODULES_DISABLE_PRIVATE_WARNING = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
@@ -659,7 +658,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_MODULES_DISABLE_PRIVATE_WARNING = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;

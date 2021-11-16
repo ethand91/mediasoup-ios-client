@@ -15,6 +15,8 @@
 /*! @brief libmediasoupclient Transport object */
 @property(nonatomic, strong) NSValue* _nativeTransport;
 
+-(instancetype)initWithNativeTransport:(NSValue *)nativeTransport;
+
 /*!
     @brief Transport identifier. It matches the id of the server side transport
     @return Transport Identifier

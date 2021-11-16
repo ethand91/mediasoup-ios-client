@@ -36,13 +36,13 @@
 
 class SendTransportListenerWrapper : public mediasoupclient::SendTransport::Listener {
 private:
-    Protocol<SendTransportListener>* listener_;
+    id<SendTransportListener> listener_;
 public:
     SendTransportListenerWrapper(Protocol<SendTransportListener>* listener)
     : listener_(listener) {}
     
     ~SendTransportListenerWrapper() {
-        [listener_ release];
+        // TODO: check this case.
     }
     
     std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
@@ -114,7 +114,7 @@ public:
 
 class RecvTransportListenerWrapper final : public mediasoupclient::RecvTransport::Listener {
 private:
-    Protocol<TransportListener>* listener_;
+    id<TransportListener> listener_;
 public:
     RecvTransportListenerWrapper(Protocol<TransportListener>* listener)
     : listener_(listener) {}

@@ -21,7 +21,7 @@
     encoding.numTemporalLayers = [NSNumber numberWithInt:numTemporalLayers];
     encoding.scaleResolutionDownBy = [NSNumber numberWithInt:scaleResolutionDownBy];
     
-    return [encoding autorelease];
+    return encoding;
 }
 
 @end
