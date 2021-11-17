@@ -31,8 +31,8 @@
 
 class ProducerListenerWrapper final : public mediasoupclient::Producer::Listener {
 private:
-    id<ProducerListener> listener_;
-    ::Producer* producer_;
+    __weak id<ProducerListener> listener_;
+    __unsafe_unretained ::Producer* producer_;
 public:
     ProducerListenerWrapper(Protocol<ProducerListener>* listener)
     : listener_(listener) {}

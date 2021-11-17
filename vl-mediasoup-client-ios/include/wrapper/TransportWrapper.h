@@ -37,7 +37,7 @@
 
 class SendTransportListenerWrapper : public mediasoupclient::SendTransport::Listener {
 private:
-    id<SendTransportListener> listener_;
+    __weak id<SendTransportListener> listener_;
 public:
     SendTransportListenerWrapper(Protocol<SendTransportListener>* listener)
     : listener_(listener) {}
@@ -115,7 +115,7 @@ public:
 
 class RecvTransportListenerWrapper final : public mediasoupclient::RecvTransport::Listener {
 private:
-    id<TransportListener> listener_;
+    __weak id<TransportListener> listener_;
 public:
     RecvTransportListenerWrapper(Protocol<TransportListener>* listener)
     : listener_(listener) {}

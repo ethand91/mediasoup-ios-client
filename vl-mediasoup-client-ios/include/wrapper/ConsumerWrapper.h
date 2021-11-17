@@ -29,8 +29,8 @@
 
 class ConsumerListenerWrapper final : public mediasoupclient::Consumer::Listener {
 private:
-    id<ConsumerListener> listener_;
-    ::Consumer* consumer_;
+    __weak id<ConsumerListener> listener_;
+    __unsafe_unretained ::Consumer* consumer_;
 public:
     ConsumerListenerWrapper(Protocol<ConsumerListener>* listener)
     : listener_(listener) {}
