@@ -48,7 +48,7 @@
 
 @end
 
-@protocol ConsumerListener <NSObject>
+@protocol ConsumerListener
 
 /*!
     @brief Executed when the transport this consumer belongs to is closed for whatever reason. The consumer itself is also closed

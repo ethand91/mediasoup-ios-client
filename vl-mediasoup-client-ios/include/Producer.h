@@ -60,7 +60,7 @@
 
 @end
 
-@protocol ProducerListener <NSObject>
+@protocol ProducerListener
 
 /*!
     @brief Executed when the transport this producer belongs to is closed for whatever reason. The producer itself is also closed
