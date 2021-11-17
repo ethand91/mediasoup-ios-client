@@ -41,6 +41,7 @@
     if (self.nativeConsumer != nil && ![ConsumerWrapper isNativeClosed:self.nativeConsumer]) {
         [ConsumerWrapper nativeClose:self.nativeConsumer];
     }
+    [ConsumerWrapper nativeFree:self.nativeConsumer];
 }
 
 -(NSString *)getId {

@@ -24,7 +24,7 @@
 +(void)nativePause:(NSValue *)nativeConsumer;
 +(NSString *)getNativeStats:(NSValue *)nativeConsumer;
 +(void)nativeClose:(NSValue *)nativeConsumer;
-
++(void)nativeFree:(NSValue *)nativeConsumer;
 @end
 
 class ConsumerListenerWrapper final : public mediasoupclient::Consumer::Listener {
@@ -50,7 +50,7 @@ public:
 
 class OwnedConsumer {
 public:
-    OwnedConsumer(mediasoupclient::Consumer* consumer, mediasoupclient::Consumer::Listener* listener)
+    OwnedConsumer(mediasoupclient::Consumer* consumer, ConsumerListenerWrapper* listener)
     : consumer_(consumer), listener_(listener) {}
     
     ~OwnedConsumer() {
@@ -62,7 +62,7 @@ public:
     
 private:
     mediasoupclient::Consumer* consumer_;
-    mediasoupclient::Consumer::Listener* listener_;
+    ConsumerListenerWrapper *listener_;
 };
 
 #endif /* ConsumerWrapper_h */

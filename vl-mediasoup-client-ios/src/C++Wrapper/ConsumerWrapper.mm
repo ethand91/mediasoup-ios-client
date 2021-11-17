@@ -103,4 +103,8 @@ using namespace mediasoupclient;
     reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue])->consumer()->Close();
 }
 
++(void)nativeFree:(NSValue *)nativeConsumer {
+    delete reinterpret_cast<OwnedConsumer *>([nativeConsumer pointerValue]);
+}
+
 @end
