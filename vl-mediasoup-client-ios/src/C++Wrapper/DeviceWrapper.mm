@@ -11,6 +11,8 @@
 #import "Device.hpp"
 #import "Logger.hpp"
 #import "Transport.hpp"
+#import "SendTransport.h"
+#import "RecvTransport.h"
 
 #import "wrapper/DeviceWrapper.h"
 #import "wrapper/TransportWrapper.h"
@@ -111,7 +113,7 @@ using namespace mediasoupclient;
     }
 }
 
-+(NSValue *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
++(::SendTransport *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -135,7 +137,10 @@ using namespace mediasoupclient;
         
         mediasoupclient::SendTransport *nativeTransport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateSendTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), sctpParametersJson, pcOptions, appDataJson);
         
-        return [NSValue valueWithPointer:nativeTransport];
+        auto ownedTransport = new OwnedSendTransport(nativeTransport, transportListener);
+        auto pOwnedTransport = [NSValue valueWithPointer:ownedTransport];
+        auto sendTransport = [[::SendTransport alloc] initWithNativeTransport:pOwnedTransport];
+        return sendTransport;
     } catch(std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];
@@ -147,7 +152,7 @@ using namespace mediasoupclient;
     return nullptr;
 }
 
-+(NSValue *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
++(::RecvTransport *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
     MSC_TRACE();
     
     try {
@@ -170,8 +175,11 @@ using namespace mediasoupclient;
         }
         
         mediasoupclient::RecvTransport *nativeTransport = reinterpret_cast<mediasoupclient::Device *>([ nativeDevice pointerValue])->CreateRecvTransport(transportListener, idString, nlohmann::json::parse(iceParametersString), nlohmann::json::parse(iceCandidatesString), nlohmann::json::parse(dtlsParametersString), sctpParametersJson, pcOptions, appDataJson);
-        
-        return [NSValue valueWithPointer:nativeTransport];
+
+        auto ownedTransport = new OwnedRecvTransport(nativeTransport, transportListener);
+        auto pOwnedTransport = [NSValue valueWithPointer:ownedTransport];
+        auto recvTransport = [[::RecvTransport alloc] initWithNativeTransport:pOwnedTransport];
+        return recvTransport;
     } catch (std::exception &e) {
         MSC_ERROR("%s", e.what());
         NSString *message = [NSString stringWithUTF8String:e.what()];

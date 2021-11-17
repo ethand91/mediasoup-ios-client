@@ -156,9 +156,10 @@ using namespace mediasoupclient;
         if (appData != nullptr) {
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
-        
-        mediasoupclient::SendTransport *transport = reinterpret_cast<mediasoupclient::SendTransport *>([nativeTransport pointerValue]);
-        
+
+        auto const ownedTransport = reinterpret_cast<OwnedSendTransport *>([nativeTransport pointerValue]);
+        auto const transport = ownedTransport->transport();
+
         mediasoupclient::Producer *nativeProducer;
         
         // Prevent sdp error when called at the same time on multiple threads (a=mid)
@@ -198,9 +199,10 @@ using namespace mediasoupclient;
         if (appData != nullptr) {
             appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
         }
-        
-        mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::RecvTransport *>([nativeTransport pointerValue]);
-        
+
+        auto const ownedTransport = reinterpret_cast<OwnedRecvTransport *>([nativeTransport pointerValue]);
+        auto const transport = ownedTransport->transport();
+
         mediasoupclient::Consumer *nativeConsumer;
         
         @synchronized(self) {
@@ -221,19 +223,21 @@ using namespace mediasoupclient;
 }
 
 +(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport {
-    mediasoupclient::Transport *transport = reinterpret_cast<mediasoupclient::Transport *>([nativeTransport pointerValue]);
+    auto const ownedTransport = reinterpret_cast<OwnedTransport *>([nativeTransport pointerValue]);
+    auto const transport = ownedTransport->transport();
+
     MSC_ASSERT(transport != nullptr, "native transport pointer null");
     
     return transport;
 }
 
 +(void)nativeFreeSendTransport:(NSValue *)nativeTransport {
-    auto *transport = reinterpret_cast<mediasoupclient::SendTransport *>([nativeTransport pointerValue]);
+    auto transport = reinterpret_cast<OwnedSendTransport *>([nativeTransport pointerValue]);
     delete transport;
 }
 
 +(void)nativeFreeRecvTransport:(NSValue *)nativeTransport {
-    auto *transport = reinterpret_cast<mediasoupclient::RecvTransport *>([nativeTransport pointerValue]);
+    auto transport = reinterpret_cast<OwnedRecvTransport *>([nativeTransport pointerValue]);
     delete transport;
 }
 

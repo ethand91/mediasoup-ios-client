@@ -113,6 +113,33 @@ public:
     };
 };
 
+class OwnedTransport {
+public:
+    virtual mediasoupclient::Transport *transport() const = 0;
+};
+
+class OwnedSendTransport final: public OwnedTransport {
+public:
+    OwnedSendTransport(mediasoupclient::SendTransport* transport, SendTransportListenerWrapper* listener)
+    : transport_(transport), listener_(listener) {
+
+        NSLog(@"OwnedSendTransport constructor");
+    }
+
+    ~OwnedSendTransport() {
+        NSLog(@"OwnedSendTransport destructor");
+
+        delete listener_;
+        delete transport_;
+    };
+
+    mediasoupclient::SendTransport *transport() const { return transport_; }
+
+private:
+    mediasoupclient::SendTransport* transport_;
+    SendTransportListenerWrapper *listener_;
+};
+
 class RecvTransportListenerWrapper final : public mediasoupclient::RecvTransport::Listener {
 private:
     __weak id<TransportListener> listener_;
@@ -121,7 +148,6 @@ public:
     : listener_(listener) {}
     
     ~RecvTransportListenerWrapper() {
-        delete this;
     }
 
     std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
@@ -143,6 +169,28 @@ public:
 
         [this->listener_ onConnectionStateChange:transportId connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
     };
+};
+
+class OwnedRecvTransport final : public OwnedTransport {
+public:
+    OwnedRecvTransport(mediasoupclient::RecvTransport* transport, RecvTransportListenerWrapper* listener)
+    : transport_(transport), listener_(listener) {
+
+        NSLog(@"OwnedRecvTransport constructor");
+    }
+
+    ~OwnedRecvTransport() {
+        NSLog(@"OwnedRecvTransport destructor");
+
+        delete listener_;
+        delete transport_;
+    };
+
+    mediasoupclient::RecvTransport *transport() const { return transport_; }
+
+private:
+    mediasoupclient::RecvTransport* transport_;
+    RecvTransportListenerWrapper *listener_;
 };
 
 #endif /* TransportWrapper_h */
