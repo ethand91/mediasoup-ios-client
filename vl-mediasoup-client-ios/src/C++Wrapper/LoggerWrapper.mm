@@ -19,7 +19,9 @@ using namespace mediasoupclient;
 }
 
 +(void)nativeSetDefaultHandler {
-    Logger::SetDefaultHandler();
+    if (Logger::handler == nullptr) {
+        Logger::handler = new Logger::DefaultLogHandler();
+    }
 }
 
 @end
