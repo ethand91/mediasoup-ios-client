@@ -11,9 +11,14 @@
 #ifndef Transport_h
 #define Transport_h
 
+@class RTCPeerConnectionFactory;
+
 @interface Transport : NSObject
 /*! @brief libmediasoupclient Transport object */
 @property(nonatomic, strong) NSValue* _nativeTransport;
+@property(nonatomic, strong) RTCPeerConnectionFactory *_pcFactory;
+
+-(instancetype)initWithNativeTransport:(NSValue *)nativeTransport pcFactory:(RTCPeerConnectionFactory *)pcFactory;
 
 /*!
     @brief Transport identifier. It matches the id of the server side transport

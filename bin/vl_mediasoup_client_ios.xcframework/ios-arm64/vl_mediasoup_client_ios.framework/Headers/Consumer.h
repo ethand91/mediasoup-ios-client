@@ -10,12 +10,11 @@
 #define Consumer_h
 
 @class RTCMediaStreamTrack;
+@class RTCPeerConnectionFactory;
 
 @interface Consumer : NSObject
-/*! @brief libmediasoupclient native consumer object */
-@property(nonatomic, strong) NSValue* _nativeConsumer;
-/*! @brief native consumer track object */
-@property(nonatomic, strong) RTCMediaStreamTrack *_nativeTrack;
+
+-(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer pcFactory:(RTCPeerConnectionFactory *)pcFactory;
 
 /*! @return Consumer identifier */
 -(NSString *)getId;
@@ -50,7 +49,7 @@
 
 @end
 
-@protocol ConsumerListener <NSObject>
+@protocol ConsumerListener
 
 /*!
     @brief Executed when the transport this consumer belongs to is closed for whatever reason. The consumer itself is also closed

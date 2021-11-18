@@ -10,12 +10,11 @@
 #define Producer_h
 
 @class RTCMediaStreamTrack;
+@class RTCPeerConnectionFactory;
 
 @interface Producer : NSObject
-/*! @brief libmediasoupclient native producer object */
-@property(nonatomic, strong) NSValue* _nativeProducer;
-/*! @brief Producer native track */
-@property(nonatomic, strong) RTCMediaStreamTrack *_nativeTrack;
+
+-(instancetype)initWithNativeProducer:(NSValue *)nativeProducer pcFactory:(RTCPeerConnectionFactory *)pcFactory;
 
 /*! @return Producer identifier */
 -(NSString *)getId;
@@ -62,7 +61,7 @@
 
 @end
 
-@protocol ProducerListener <NSObject>
+@protocol ProducerListener
 
 /*!
     @brief Executed when the transport this producer belongs to is closed for whatever reason. The producer itself is also closed

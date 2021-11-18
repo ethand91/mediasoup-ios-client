@@ -26,20 +26,19 @@
 +(void)setNativeMaxSpatialLayer:(NSValue *)nativeProducer layer:(int)layer;
 +(void)nativeReplaceTrack:(NSValue *)nativeProducer track:(NSUInteger)track;
 +(void)nativeClose:(NSValue *)nativeProducer;
-
++(void)nativeFree:(NSValue *)nativeProducer;
 @end
 
 class ProducerListenerWrapper final : public mediasoupclient::Producer::Listener {
 private:
-    Protocol<ProducerListener>* listener_;
-    ::Producer* producer_;
+    __weak id<ProducerListener> listener_;
+    __unsafe_unretained ::Producer* producer_;
 public:
     ProducerListenerWrapper(Protocol<ProducerListener>* listener)
     : listener_(listener) {}
     
     ~ProducerListenerWrapper() {
-        [producer_ release];
-        [listener_ release];
+        // TODO: Check this case.
     };
     
     void OnTransportClose(mediasoupclient::Producer* nativeProducer) override {

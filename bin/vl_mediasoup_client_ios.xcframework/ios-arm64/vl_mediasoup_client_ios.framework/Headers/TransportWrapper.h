@@ -17,6 +17,8 @@
 #ifndef TransportWrapper_h
 #define TransportWrapper_h
 
+@class RTCPeerConnectionFactory;
+
 @interface TransportWrapper : NSObject {}
 +(NSString *)getNativeId:(NSValue *)nativeTransport;
 +(NSString *)getNativeConnectionState:(NSValue *)nativeTransport;
@@ -27,22 +29,30 @@
 +(void)nativeUpdateIceServers:(NSValue *)nativeTransport iceServers:(NSString *)iceServers;
 +(void)nativeClose:(NSValue *)nativeTransport;
 +(NSValue *)nativeGetNativeTransport:(NSValue *)nativeTransport;
-+(::Producer *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(NSUInteger)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
-+(void)nativeFreeTransport:(NSValue *)nativeTransport;
-+(::Consumer *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
++(void)nativeFreeSendTransport:(NSValue *)nativeTransport;
++(void)nativeFreeRecvTransport:(NSValue *)nativeTransport;
+
++(::Producer *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener
+    pcFactory:(RTCPeerConnectionFactory *)pcFactory track:(NSUInteger)track
+    encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
+
++(::Consumer *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener
+    pcFactory:(RTCPeerConnectionFactory *)pcFactory id:(NSString *)id
+    producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters
+    appData:(NSString *)appData;
+
 +(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport;
 
 @end
 
 class SendTransportListenerWrapper : public mediasoupclient::SendTransport::Listener {
 private:
-    Protocol<SendTransportListener>* listener_;
+    __weak id<SendTransportListener> listener_;
 public:
     SendTransportListenerWrapper(Protocol<SendTransportListener>* listener)
     : listener_(listener) {}
     
     ~SendTransportListenerWrapper() {
-        [listener_ release];
     }
     
     std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
@@ -112,15 +122,41 @@ public:
     };
 };
 
+class OwnedTransport {
+public:
+    virtual mediasoupclient::Transport *transport() const = 0;
+};
+
+class OwnedSendTransport final: public OwnedTransport {
+public:
+    OwnedSendTransport(mediasoupclient::SendTransport* transport, SendTransportListenerWrapper* listener)
+    : transport_(transport), listener_(listener) {
+
+        NSLog(@"OwnedSendTransport constructor");
+    }
+
+    ~OwnedSendTransport() {
+        NSLog(@"OwnedSendTransport destructor");
+
+        delete listener_;
+        delete transport_;
+    };
+
+    mediasoupclient::SendTransport *transport() const { return transport_; }
+
+private:
+    mediasoupclient::SendTransport* transport_;
+    SendTransportListenerWrapper *listener_;
+};
+
 class RecvTransportListenerWrapper final : public mediasoupclient::RecvTransport::Listener {
 private:
-    Protocol<TransportListener>* listener_;
+    __weak id<TransportListener> listener_;
 public:
     RecvTransportListenerWrapper(Protocol<TransportListener>* listener)
     : listener_(listener) {}
     
     ~RecvTransportListenerWrapper() {
-        delete this;
     }
 
     std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
@@ -142,6 +178,28 @@ public:
 
         [this->listener_ onConnectionStateChange:transportId connectionState:[NSString stringWithUTF8String:connectionState.c_str()]];
     };
+};
+
+class OwnedRecvTransport final : public OwnedTransport {
+public:
+    OwnedRecvTransport(mediasoupclient::RecvTransport* transport, RecvTransportListenerWrapper* listener)
+    : transport_(transport), listener_(listener) {
+
+        NSLog(@"OwnedRecvTransport constructor");
+    }
+
+    ~OwnedRecvTransport() {
+        NSLog(@"OwnedRecvTransport destructor");
+
+        delete listener_;
+        delete transport_;
+    };
+
+    mediasoupclient::RecvTransport *transport() const { return transport_; }
+
+private:
+    mediasoupclient::RecvTransport* transport_;
+    RecvTransportListenerWrapper *listener_;
 };
 
 #endif /* TransportWrapper_h */
