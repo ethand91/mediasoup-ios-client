@@ -27,7 +27,9 @@
     
     @synchronized(self) {
         @try {
-            Consumer *consumer = [TransportWrapper nativeConsume:self._nativeTransport listener:listener id:id producerId:producerId kind:kind rtpParameters:rtpParameters appData:appData];
+            Consumer *consumer = [TransportWrapper nativeConsume:self._nativeTransport
+                listener:listener pcFactory:self._pcFactory id:id producerId:producerId kind:kind
+                rtpParameters:rtpParameters appData:appData];
 
             return consumer;
         } @catch (...) {

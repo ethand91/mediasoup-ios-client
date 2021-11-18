@@ -113,7 +113,12 @@ using namespace mediasoupclient;
     }
 }
 
-+(::SendTransport *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
++(::SendTransport *)nativeCreateSendTransport:(NSValue *)nativeDevice
+    listener:(id<SendTransportListener>)listener pcFactory:(RTCPeerConnectionFactory *)pcFactory
+    id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates
+    dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters
+    nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
+
     MSC_TRACE();
     
     try {
@@ -139,7 +144,7 @@ using namespace mediasoupclient;
         
         auto ownedTransport = new OwnedSendTransport(nativeTransport, transportListener);
         auto pOwnedTransport = [NSValue valueWithPointer:ownedTransport];
-        auto sendTransport = [[::SendTransport alloc] initWithNativeTransport:pOwnedTransport];
+        auto sendTransport = [[::SendTransport alloc] initWithNativeTransport:pOwnedTransport pcFactory:pcFactory];
         return sendTransport;
     } catch(std::exception &e) {
         MSC_ERROR("%s", e.what());
@@ -152,7 +157,12 @@ using namespace mediasoupclient;
     return nullptr;
 }
 
-+(::RecvTransport *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
++(::RecvTransport *)nativeCreateRecvTransport:(NSValue *)nativeDevice
+    listener:(id<RecvTransportListener>)listener pcFactory:(RTCPeerConnectionFactory *)pcFactory
+    id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates
+    dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters
+    nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData {
+
     MSC_TRACE();
     
     try {
@@ -178,7 +188,7 @@ using namespace mediasoupclient;
 
         auto ownedTransport = new OwnedRecvTransport(nativeTransport, transportListener);
         auto pOwnedTransport = [NSValue valueWithPointer:ownedTransport];
-        auto recvTransport = [[::RecvTransport alloc] initWithNativeTransport:pOwnedTransport];
+        auto recvTransport = [[::RecvTransport alloc] initWithNativeTransport:pOwnedTransport pcFactory:pcFactory];
         return recvTransport;
     } catch (std::exception &e) {
         MSC_ERROR("%s", e.what());

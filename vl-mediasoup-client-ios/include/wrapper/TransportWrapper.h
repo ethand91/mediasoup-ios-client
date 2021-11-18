@@ -17,6 +17,8 @@
 #ifndef TransportWrapper_h
 #define TransportWrapper_h
 
+@class RTCPeerConnectionFactory;
+
 @interface TransportWrapper : NSObject {}
 +(NSString *)getNativeId:(NSValue *)nativeTransport;
 +(NSString *)getNativeConnectionState:(NSValue *)nativeTransport;
@@ -27,10 +29,18 @@
 +(void)nativeUpdateIceServers:(NSValue *)nativeTransport iceServers:(NSString *)iceServers;
 +(void)nativeClose:(NSValue *)nativeTransport;
 +(NSValue *)nativeGetNativeTransport:(NSValue *)nativeTransport;
-+(::Producer *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(NSUInteger)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
 +(void)nativeFreeSendTransport:(NSValue *)nativeTransport;
 +(void)nativeFreeRecvTransport:(NSValue *)nativeTransport;
-+(::Consumer *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
+
++(::Producer *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener
+    pcFactory:(RTCPeerConnectionFactory *)pcFactory track:(NSUInteger)track
+    encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
+
++(::Consumer *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener
+    pcFactory:(RTCPeerConnectionFactory *)pcFactory id:(NSString *)id
+    producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters
+    appData:(NSString *)appData;
+
 +(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport;
 
 @end
@@ -43,7 +53,6 @@ public:
     : listener_(listener) {}
     
     ~SendTransportListenerWrapper() {
-        // TODO: check this case.
     }
     
     std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {

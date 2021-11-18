@@ -16,6 +16,7 @@
 @class SendTransport;
 @class RecvTransport;
 @class RTCPeerConnectionFactoryOptions;
+@class RTCPeerConnectionFactory;
 
 @interface DeviceWrapper : NSObject {}
 +(NSValue *)nativeNewDevice;
@@ -25,8 +26,19 @@
 +(NSString *)nativeGetRtpCapabilities:(NSValue *)nativeDevice;
 +(NSString *)nativeGetSctpCapabilities:(NSValue *)nativeDevice;
 +(bool)nativeCanProduce:(NSValue *)nativeDevice kind:(NSString *)kind;
-+(::SendTransport *)nativeCreateSendTransport:(NSValue *)nativeDevice listener:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData;
-+(::RecvTransport *)nativeCreateRecvTransport:(NSValue *)nativeDevice listener:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters: (NSString *)sctpParameters nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData;
+
++(::SendTransport *)nativeCreateSendTransport:(NSValue *)nativeDevice
+    listener:(id<SendTransportListener>)listener pcFactory:(RTCPeerConnectionFactory *)pcFactory
+    id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates
+    dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters
+    nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData;
+
++(::RecvTransport *)nativeCreateRecvTransport:(NSValue *)nativeDevice
+    listener:(id<RecvTransportListener>)listener pcFactory:(RTCPeerConnectionFactory *)pcFactory
+    id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates
+    dtlsParameters:(NSString *)dtlsParameters sctpParameters: (NSString *)sctpParameters
+    nativePCOptions:(NSValue *)nativePCOptions appData:(NSString *)appData;
+
 @end
 
 #endif /* DeviceWrapper_h */

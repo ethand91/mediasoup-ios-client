@@ -91,7 +91,10 @@ using namespace mediasoupclient;
 -(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters appData:(NSString *)appData {
     [self checkDeviceExists];
 
-    return [DeviceWrapper nativeCreateSendTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters nativePCOptions:self.nativePCOptions appData:appData];
+    return [DeviceWrapper nativeCreateSendTransport:self.nativeDevice listener:listener
+        pcFactory:self.pcFactory id:id iceParameters:iceParameters iceCandidates:iceCandidates
+        dtlsParameters:dtlsParameters sctpParameters:sctpParameters
+        nativePCOptions:self.nativePCOptions appData:appData];
 }
 
 -(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters {
@@ -101,7 +104,10 @@ using namespace mediasoupclient;
 -(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters appData:(NSString *)appData {
     [self checkDeviceExists];
     
-    return [DeviceWrapper nativeCreateRecvTransport:self.nativeDevice listener:listener id:id iceParameters:iceParameters iceCandidates:iceCandidates dtlsParameters:dtlsParameters sctpParameters:sctpParameters nativePCOptions:self.nativePCOptions appData:appData];
+    return [DeviceWrapper nativeCreateRecvTransport:self.nativeDevice listener:listener
+        pcFactory:self.pcFactory id:id iceParameters:iceParameters iceCandidates:iceCandidates
+        dtlsParameters:dtlsParameters sctpParameters:sctpParameters
+        nativePCOptions:self.nativePCOptions appData:appData];
 }
 
 -(void)checkDeviceExists {

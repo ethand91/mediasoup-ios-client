@@ -10,10 +10,11 @@
 #define Producer_h
 
 @class RTCMediaStreamTrack;
+@class RTCPeerConnectionFactory;
 
 @interface Producer : NSObject
 
--(instancetype)initWithNativeProducer:(NSValue *)nativeProducer;
+-(instancetype)initWithNativeProducer:(NSValue *)nativeProducer pcFactory:(RTCPeerConnectionFactory *)pcFactory;
 
 /*! @return Producer identifier */
 -(NSString *)getId;

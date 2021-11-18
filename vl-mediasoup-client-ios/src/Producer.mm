@@ -20,7 +20,7 @@
 
 @implementation Producer : NSObject
 
--(instancetype)initWithNativeProducer:(NSValue *)nativeProducer {
+-(instancetype)initWithNativeProducer:(NSValue *)nativeProducer pcFactory:(RTCPeerConnectionFactory *)pcFactory {
     self = [super init];
     if (self) {
         self.nativeProducer = nativeProducer;
@@ -28,8 +28,8 @@
         webrtc::MediaStreamTrackInterface *nativeTrack = [ProducerWrapper getNativeTrack:self.nativeProducer];
         rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
 
-        self.factory = [[RTCPeerConnectionFactory alloc] init];
-        self.nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:self.factory];
+        self.factory = pcFactory;
+        self.nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:pcFactory];
     }
     
     return self;
@@ -92,8 +92,7 @@
     webrtc::MediaStreamTrackInterface *nativeTrack = [ProducerWrapper getNativeTrack:self.nativeProducer];
     rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> mediaTrack(nativeTrack);
 
-    // TODO: shouldn't we use self.factory?
-    self.nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:mediaTrack factory:[[RTCPeerConnectionFactory alloc] init]];
+    self.nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:mediaTrack factory:self.factory];
 }
 
 -(NSString *)getStats {

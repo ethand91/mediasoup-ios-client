@@ -27,7 +27,10 @@
     NSUInteger nativeTrack = track.hash;
 
     @try {
-        Producer *producer = [TransportWrapper nativeProduce:self._nativeTransport listener:listener track:nativeTrack encodings:encodings codecOptions:codecOptions appData:appData];
+        Producer *producer = [TransportWrapper nativeProduce:self._nativeTransport listener:listener
+            pcFactory: self._pcFactory track:nativeTrack encodings:encodings
+            codecOptions:codecOptions appData:appData];
+
         return producer;
     } @catch (...) {
         return nil;

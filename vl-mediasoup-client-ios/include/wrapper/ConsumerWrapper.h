@@ -36,7 +36,6 @@ public:
     : listener_(listener) {}
     
     ~ConsumerListenerWrapper() {
-        // TODO: check this case.
     }
     
     void OnTransportClose(mediasoupclient::Consumer* nativeConsumer) override {

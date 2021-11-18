@@ -16,13 +16,12 @@
 @interface Consumer ()
 @property(nonatomic, strong) NSValue* nativeConsumer;
 @property(nonatomic, strong) RTCMediaStreamTrack *nativeTrack;
-@property(nonatomic, strong) RTCPeerConnectionFactory *factory;
 @end
 
 
 @implementation Consumer : NSObject
 
--(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer {
+-(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer pcFactory:(RTCPeerConnectionFactory *)pcFactory {
     self = [super init];
     if (self) {
         self.nativeConsumer = nativeConsumer;
@@ -30,8 +29,7 @@
         webrtc::MediaStreamTrackInterface *nativeTrack = [ConsumerWrapper getNativeTrack:self.nativeConsumer];
         rtc::scoped_refptr<webrtc::MediaStreamTrackInterface> track(nativeTrack);
 
-        self.factory = [[RTCPeerConnectionFactory alloc] init];
-        self.nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:self.factory];
+        self.nativeTrack = [RTCMediaStreamTrack mediaTrackForNativeTrack:track factory:pcFactory];
     }
     
     return self;

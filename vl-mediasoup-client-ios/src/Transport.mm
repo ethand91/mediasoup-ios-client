@@ -12,10 +12,11 @@
 
 @implementation Transport : NSObject
 
--(instancetype)initWithNativeTransport:(NSValue *)nativeTransport {
+-(instancetype)initWithNativeTransport:(NSValue *)nativeTransport pcFactory:(RTCPeerConnectionFactory *)pcFactory {
     self = [super init];
     if (self) {
         self._nativeTransport = nativeTransport;
+        self._pcFactory = pcFactory;
     }
     
     return self;

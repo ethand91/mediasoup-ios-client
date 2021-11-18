@@ -10,10 +10,11 @@
 #define Consumer_h
 
 @class RTCMediaStreamTrack;
+@class RTCPeerConnectionFactory;
 
 @interface Consumer : NSObject
 
--(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer;
+-(instancetype)initWithNativeConsumer:(NSValue *)nativeConsumer pcFactory:(RTCPeerConnectionFactory *)pcFactory;
 
 /*! @return Consumer identifier */
 -(NSString *)getId;
