@@ -55,6 +55,14 @@
 		35F7268023A3261C009BCD7F /* RTCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 35F7267F23A3261C009BCD7F /* RTCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* ProducerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* TransportWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F425553527B0237A00010508 /* DataProducer.mm in Sources */ = {isa = PBXBuildFile; fileRef = F425553427B0237A00010508 /* DataProducer.mm */; };
+		F425553727B0241E00010508 /* DataProducerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = F425553627B0241E00010508 /* DataProducerWrapper.mm */; };
+		F425553A27B0345500010508 /* DataConsumer.mm in Sources */ = {isa = PBXBuildFile; fileRef = F425553927B0345500010508 /* DataConsumer.mm */; };
+		F425553D27B03DA100010508 /* DataConsumerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = F425553C27B03DA100010508 /* DataConsumerWrapper.mm */; };
+		F425553E27B0507700010508 /* DataProducer.h in Headers */ = {isa = PBXBuildFile; fileRef = F425553227B019EC00010508 /* DataProducer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F425553F27B0507B00010508 /* DataConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = F425553827B0324500010508 /* DataConsumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F425554027B0508F00010508 /* DataProducerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F425553327B0202C00010508 /* DataProducerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F425554127B0509300010508 /* DataConsumerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F425553B27B034C000010508 /* DataConsumerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +114,14 @@
 		35FB2487238B870E0092EBCB /* ProducerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProducerWrapper.h; sourceTree = "<group>"; };
 		35FB248B238BA8920092EBCB /* ConsumerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsumerWrapper.h; sourceTree = "<group>"; };
 		35FB248C238BA8C00092EBCB /* DeviceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceWrapper.h; sourceTree = "<group>"; };
+		F425553227B019EC00010508 /* DataProducer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProducer.h; sourceTree = "<group>"; };
+		F425553327B0202C00010508 /* DataProducerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProducerWrapper.h; sourceTree = "<group>"; };
+		F425553427B0237A00010508 /* DataProducer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DataProducer.mm; sourceTree = "<group>"; };
+		F425553627B0241E00010508 /* DataProducerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DataProducerWrapper.mm; sourceTree = "<group>"; };
+		F425553827B0324500010508 /* DataConsumer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataConsumer.h; sourceTree = "<group>"; };
+		F425553927B0345500010508 /* DataConsumer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DataConsumer.mm; sourceTree = "<group>"; };
+		F425553B27B034C000010508 /* DataConsumerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataConsumerWrapper.h; sourceTree = "<group>"; };
+		F425553C27B03DA100010508 /* DataConsumerWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DataConsumerWrapper.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +145,8 @@
 				35FB2486238B823F0092EBCB /* TransportWrapper.h */,
 				35FB2487238B870E0092EBCB /* ProducerWrapper.h */,
 				35FB248B238BA8920092EBCB /* ConsumerWrapper.h */,
+				F425553327B0202C00010508 /* DataProducerWrapper.h */,
+				F425553B27B034C000010508 /* DataConsumerWrapper.h */,
 				35FB248C238BA8C00092EBCB /* DeviceWrapper.h */,
 				35EEA27A23911C0200134D1C /* MediasoupclientWrapper.h */,
 				3570311B2397802C00761AF5 /* LoggerWrapper.h */,
@@ -144,6 +162,8 @@
 				351A83212394A68700BA7A13 /* Transport.mm */,
 				351A83302394B7F400BA7A13 /* Consumer.mm */,
 				351A83372394C11C00BA7A13 /* Producer.mm */,
+				F425553927B0345500010508 /* DataConsumer.mm */,
+				F425553427B0237A00010508 /* DataProducer.mm */,
 				351A833D2394DE2B00BA7A13 /* RecvTransport.mm */,
 				351A833F2394DE3A00BA7A13 /* SendTransport.mm */,
 				3570311723977DF800761AF5 /* MediasoupLogger.mm */,
@@ -158,6 +178,8 @@
 			children = (
 				355C61292387702600986297 /* ConsumerWrapper.mm */,
 				355C613223877F2B00986297 /* ProducerWrapper.mm */,
+				F425553C27B03DA100010508 /* DataConsumerWrapper.mm */,
+				F425553627B0241E00010508 /* DataProducerWrapper.mm */,
 				355C61362387995200986297 /* TransportWrapper.mm */,
 				353BD12D2387E6FE00A8734C /* DeviceWrapper.mm */,
 				35EEA27823911B5D00134D1C /* MediasoupclientWrapper.mm */,
@@ -227,6 +249,8 @@
 				351A83202394A4BA00BA7A13 /* Transport.h */,
 				351A832C2394B08E00BA7A13 /* Consumer.h */,
 				351A832D2394B09600BA7A13 /* Producer.h */,
+				F425553227B019EC00010508 /* DataProducer.h */,
+				F425553827B0324500010508 /* DataConsumer.h */,
 				351A83392394DC6A00BA7A13 /* SendTransport.h */,
 				351A833A2394DC7300BA7A13 /* RecvTransport.h */,
 			);
@@ -248,8 +272,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F425554027B0508F00010508 /* DataProducerWrapper.h in Headers */,
 				35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */,
 				35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */,
+				F425553E27B0507700010508 /* DataProducer.h in Headers */,
 				35D762DE238CBA2E0033D7AD /* DeviceWrapper.h in Headers */,
 				3538C5532397A8AA007EB078 /* MediasoupDevice.h in Headers */,
 				351A833C2394DC7900BA7A13 /* RecvTransport.h in Headers */,
@@ -260,7 +286,9 @@
 				351A83282394AF7C00BA7A13 /* MediasoupclientWrapper.h in Headers */,
 				351A832F2394B7AB00BA7A13 /* Producer.h in Headers */,
 				351A832E2394B7A900BA7A13 /* Consumer.h in Headers */,
+				F425553F27B0507B00010508 /* DataConsumer.h in Headers */,
 				35F7268023A3261C009BCD7F /* RTCUtils.h in Headers */,
+				F425554127B0509300010508 /* DataConsumerWrapper.h in Headers */,
 				351A83242394AD5F00BA7A13 /* Mediasoupclient.h in Headers */,
 				351A83232394AD5C00BA7A13 /* Transport.h in Headers */,
 			);
@@ -371,16 +399,20 @@
 				35EEA27923911B5D00134D1C /* MediasoupclientWrapper.mm in Sources */,
 				35F7267E23A3260A009BCD7F /* RTCUtils.m in Sources */,
 				355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */,
+				F425553D27B03DA100010508 /* DataConsumerWrapper.mm in Sources */,
+				F425553A27B0345500010508 /* DataConsumer.mm in Sources */,
 				3538C55A2397AE5C007EB078 /* DeviceWrapper.mm in Sources */,
 				351A83382394C11C00BA7A13 /* Producer.mm in Sources */,
 				3570311623977BFC00761AF5 /* LoggerWrapper.mm in Sources */,
 				351A83402394DE3A00BA7A13 /* SendTransport.mm in Sources */,
 				351A83222394A68700BA7A13 /* Transport.mm in Sources */,
 				3570311823977DF800761AF5 /* MediasoupLogger.mm in Sources */,
+				F425553727B0241E00010508 /* DataProducerWrapper.mm in Sources */,
 				35EEA27E23911CB000134D1C /* Mediasoupclient.mm in Sources */,
 				355C61372387995200986297 /* TransportWrapper.mm in Sources */,
 				355C613323877F2B00986297 /* ProducerWrapper.mm in Sources */,
 				351A83312394B7F400BA7A13 /* Consumer.mm in Sources */,
+				F425553527B0237A00010508 /* DataProducer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

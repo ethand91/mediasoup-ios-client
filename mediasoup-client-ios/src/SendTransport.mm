@@ -34,6 +34,13 @@
     return producer;
 }
 
+-(DataProducer *)produceData:(id<DataProducerListener>)listener label:(NSString *)label protocol:(NSString *)protocol ordered:(bool)ordered maxPacketLifeTime:(int)maxPacketLifeTime maxRetransmits:(int)maxRetransmits appData:(NSString *)appData {
+    
+    DataProducer *producer = [TransportWrapper nativeProduceData:self._nativeTransport listener:listener label:label protocol:protocol ordered:ordered maxPacketLifeTime:maxPacketLifeTime maxRetransmits:maxRetransmits appData:appData];
+    
+    return producer;
+}
+
 -(void)checkTransportExists {
     if (self._nativeTransport == nil) {
         NSException* exception = [NSException exceptionWithName:@"IllegalStateException" reason:@"RecvTransport has been disposed." userInfo:nil];

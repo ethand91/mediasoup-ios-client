@@ -224,6 +224,79 @@ using namespace mediasoupclient;
     }
 }
 
++(::DataProducer *)nativeProduceData:(NSValue *)nativeTransport listener:(Protocol<DataProducerListener> *)listener label:(NSString *)label protocol:(NSString *)protocol ordered:(bool)ordered maxPacketLifeTime:(int)maxPacketLifeTime maxRetransmits:(int)maxRetransmits appData:(NSString *)appData {
+    MSC_TRACE();
+    
+    try {
+        auto producerListener = new DataProducerListenerWrapper(listener);
+        const std::string labelString = std::string([label UTF8String]);
+        const std::string protocolString = std::string([protocol UTF8String]);
+        
+        nlohmann::json appDataJson = nlohmann::json::object();
+        
+        if (appData != nullptr) {
+            appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
+        }
+        
+        mediasoupclient::SendTransport *transport = reinterpret_cast<mediasoupclient::SendTransport *>([nativeTransport pointerValue]);
+        
+        mediasoupclient::DataProducer *nativeProducer = transport->ProduceData(producerListener, labelString, protocolString, ordered, maxPacketLifeTime, maxPacketLifeTime, appDataJson);
+        
+        ::DataProducer *producer = [[::DataProducer alloc] initWithNativeProducer:[NSValue valueWithPointer:new OwnedDataProducer(nativeProducer, producerListener)]];
+        producerListener->SetProducer(producer);
+        
+        return producer;
+    } catch (std::exception &e) {
+        MSC_ERROR("%s", e.what());
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+        
+        throw exception;
+        
+        return nullptr;
+    }
+}
+
++(::DataConsumer *)nativeConsumeData:(NSValue *)nativeTransport listener:(Protocol<DataConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId label:(NSString *)label protocol:(NSString *)protocol appData:(NSString *)appData {
+    MSC_TRACE();
+    
+    try {
+        auto consumerListener = new DataConsumerListenerWrapper(listener);
+        const std::string idString = std::string([id UTF8String]);
+        const std::string producerIdString = std::string([producerId UTF8String]);
+        const std::string labelString = std::string([label UTF8String]);
+        const std::string protocolString = std::string([protocol UTF8String]);
+        
+        nlohmann::json appDataJson = nlohmann::json::object();
+        
+        if (appData != nullptr) {
+            appDataJson = nlohmann::json::parse(std::string([appData UTF8String]));
+        }
+        
+        mediasoupclient::RecvTransport *transport = reinterpret_cast<mediasoupclient::RecvTransport *>([nativeTransport pointerValue]);
+        
+        mediasoupclient::DataConsumer *nativeConsumer;
+        
+        @synchronized(self) {
+            nativeConsumer = transport->ConsumeData(consumerListener, idString, producerIdString, labelString, protocolString, appDataJson);
+        }
+        
+        ::DataConsumer *consumer = [[::DataConsumer alloc] initWithNativeConsumer:[NSValue valueWithPointer:new OwnedDataConsumer(nativeConsumer, consumerListener)]];
+        consumerListener->SetConsumer(consumer);
+        
+        return consumer;
+    } catch (std::exception &e) {
+        MSC_ERROR("%s", e.what());
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+        
+        throw exception;
+        
+        return nullptr;
+    }
+}
+
+
 +(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport {
     mediasoupclient::Transport *transport = reinterpret_cast<mediasoupclient::Transport *>([nativeTransport pointerValue]);
     MSC_ASSERT(transport != nullptr, "native transport pointer null");

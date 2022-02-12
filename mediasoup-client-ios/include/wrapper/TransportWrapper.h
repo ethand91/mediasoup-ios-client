@@ -8,6 +8,8 @@
 #import "Transport.hpp"
 #import "ProducerWrapper.h"
 #import "ConsumerWrapper.h"
+#import "DataProducerWrapper.h"
+#import "DataConsumerWrapper.h"
 #import "SendTransport.h"
 #import "RecvTransport.h"
 #import "Transport.h"
@@ -28,6 +30,8 @@
 +(::Producer *)nativeProduce:(NSValue *)nativeTransport listener:(Protocol<ProducerListener> *)listener track:(NSUInteger)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
 +(void)nativeFreeTransport:(NSValue *)nativeTransport;
 +(::Consumer *)nativeConsume:(NSValue *)nativeTransport listener:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
++(::DataProducer *)nativeProduceData:(NSValue *)nativeTransport listener:(Protocol<DataProducerListener> *)listener label:(NSString *)label protocol:(NSString *)protocol ordered:(bool)ordered maxPacketLifeTime:(int)maxPacketLifeTime maxRetransmits:(int)maxRetransmits appData:(NSString *)appData;
++(::DataConsumer *)nativeConsumeData:(NSValue *)nativeTransport listener:(Protocol<DataConsumerListener> *)listener id:(NSString *)id producerId:(NSString *)producerId label:(NSString *)label protocol:(NSString *)protocol appData:(NSString *)appData;
 +(mediasoupclient::Transport *)extractNativeTransport:(NSValue *)nativeTransport;
 
 @end
@@ -103,10 +107,28 @@ public:
                                            const std::string& protocol,
                                            const nlohmann::json& appData) {
       
-      __block std::promise<std::string> promise;
-      promise.set_value(std::string("not implemented"));
+        const std::string sctpStreamParametersString = sctpStreamParameters.dump();
+        const std::string appDataString = appData.dump();
+        
+        NSValue* transportObject = [NSValue valueWithPointer:nativeTransport];
+        SendTransport* sendTransport = [[[SendTransport alloc] initWithNativeTransport:transportObject] autorelease];
+        
+        __block std::promise<std::string> promise;
+        
+        [this->listener_ onProduceData:sendTransport
+            sctpStreamParameters: [NSString stringWithUTF8String: sctpStreamParametersString.c_str()]
+            label: [NSString stringWithUTF8String:label.c_str()]
+            protocol: [NSString stringWithUTF8String:protocol.c_str()]
+            appData: [NSString stringWithUTF8String:appDataString.c_str()]
+            callback: ^(NSString* id) {
+                promise.set_value(std::string([id UTF8String]));
+        
+            }
+        ];
+        
+        [transportObject release];
       
-      return promise.get_future();
+        return promise.get_future();
     };
 };
 
