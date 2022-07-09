@@ -55,6 +55,8 @@
 		35F7268023A3261C009BCD7F /* RTCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 35F7267F23A3261C009BCD7F /* RTCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2487238B870E0092EBCB /* ProducerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FB2486238B823F0092EBCB /* TransportWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0CE98BB2879F301002B2644 /* RTCPeerConnectionOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = F0CE98BA2879F301002B2644 /* RTCPeerConnectionOptions.h */; };
+		F0CE98BD2879F320002B2644 /* RTCPeerConnectionOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CE98BC2879F320002B2644 /* RTCPeerConnectionOptions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,8 @@
 		35FB2487238B870E0092EBCB /* ProducerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProducerWrapper.h; sourceTree = "<group>"; };
 		35FB248B238BA8920092EBCB /* ConsumerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsumerWrapper.h; sourceTree = "<group>"; };
 		35FB248C238BA8C00092EBCB /* DeviceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceWrapper.h; sourceTree = "<group>"; };
+		F0CE98BA2879F301002B2644 /* RTCPeerConnectionOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCPeerConnectionOptions.h; sourceTree = "<group>"; };
+		F0CE98BC2879F320002B2644 /* RTCPeerConnectionOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTCPeerConnectionOptions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				35F7267F23A3261C009BCD7F /* RTCUtils.h */,
+				F0CE98BA2879F301002B2644 /* RTCPeerConnectionOptions.h */,
 				350559B323A8C9AD00576D83 /* wrapper */,
 				3570311923977E0F00761AF5 /* MediasoupLogger.h */,
 				35D7427D2390B71500C22679 /* MediasoupDevice.h */,
@@ -236,6 +241,7 @@
 		35F7267C23A325DC009BCD7F /* webrtc */ = {
 			isa = PBXGroup;
 			children = (
+				F0CE98BC2879F320002B2644 /* RTCPeerConnectionOptions.m */,
 				35F7267D23A3260A009BCD7F /* RTCUtils.m */,
 			);
 			path = webrtc;
@@ -249,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35FB2489238B9E470092EBCB /* TransportWrapper.h in Headers */,
+				F0CE98BB2879F301002B2644 /* RTCPeerConnectionOptions.h in Headers */,
 				35FB2488238B9E400092EBCB /* ProducerWrapper.h in Headers */,
 				35D762DE238CBA2E0033D7AD /* DeviceWrapper.h in Headers */,
 				3538C5532397A8AA007EB078 /* MediasoupDevice.h in Headers */,
@@ -372,6 +379,7 @@
 				35F7267E23A3260A009BCD7F /* RTCUtils.m in Sources */,
 				355C612A2387702600986297 /* ConsumerWrapper.mm in Sources */,
 				3538C55A2397AE5C007EB078 /* DeviceWrapper.mm in Sources */,
+				F0CE98BD2879F320002B2644 /* RTCPeerConnectionOptions.m in Sources */,
 				351A83382394C11C00BA7A13 /* Producer.mm in Sources */,
 				3570311623977BFC00761AF5 /* LoggerWrapper.mm in Sources */,
 				351A83402394DE3A00BA7A13 /* SendTransport.mm in Sources */,
