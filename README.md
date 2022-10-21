@@ -142,6 +142,11 @@ git submodule update
 ```
  
  ---
+ 
+ Unfortunately my Macbook broke and I currently can't afford a new one. :( Will continue this project when I get a new mac.
+ 
+ ---
+
 
 Like my work? Any support is appreciated.
 
