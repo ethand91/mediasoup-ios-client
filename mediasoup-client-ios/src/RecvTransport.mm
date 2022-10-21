@@ -36,6 +36,15 @@
     }
 }
 
+-(DataConsumer *)consumeData:(id<DataConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId label:(NSString *)label protocol:(NSString *)protocol appData:(NSString *)appData {
+
+    
+    DataConsumer *consumer = [TransportWrapper nativeConsumeData:self._nativeTransport listener:listener id:id producerId:producerId label:label protocol:protocol appData:appData];
+    
+    return consumer;
+}
+
+
 -(void)checkTransportExists {
     if (self._nativeTransport == nil) {
         NSException* exception = [NSException exceptionWithName:@"IllegalStateException" reason:@"RecvTransport has been disposed." userInfo:nil];
